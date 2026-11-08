@@ -1,0 +1,487 @@
+{
+  "origin": "written for the demo; synthetic screenshot",
+  "request": "Attached is a screenshot of my refund message. It has been 12 days and nothing has come. I have not contacted them yet.",
+  "http_status": 200,
+  "response": {
+    "conversation_id": "conv_838c5539-363a-40d8-a219-191e6a8c7004",
+    "message_id": "msg_81735787-5bdf-424a-8c42-9e0edc741cc7",
+    "assistant_message_id": "msg_70957495-b006-4f30-9be9-9a1401915dad",
+    "case_id": "case_e63f96b5-c4e0-47ba-b5c7-b3ee27656dcc",
+    "processing_status": "completed",
+    "assistant_message": "## What I understood\n\nThe user has not yet contacted the merchant or the grievance officer.\n\n## Facts\n\nFacts supported by a document:\n- Order id: SM-7007 (page 1)\n- Refund status: initiated (page 1)\n- Merchant promised timeline days: Expected in 5-7 business days (page 1)\n- Pickup date: 3 November 2026 (page 1)\n- Refund initiated: 4 November 2026 (page 1)\n\nFacts you reported:\n- Support contact made: have not contacted\n- Grievance officer contacted: have not contacted\n- Refund status: nothing has come\n- Support contact made: I have not contacted them yet\n\nEvidence files:\n- refund_screenshot.png: completed\n\n## Legal sources that may apply\n\n- **Consumer Protection (E-Commerce) Rules, 2020, provision 6, sub-rule (4)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"(4) Any seller offering goods or services through a marketplace e-commerce entity shall:\n(a) have a prior written contract with the respective e-commerce entity in order to undertake or solicit\nsuch sale or offer;\nappoint a grievance officer for consumer grievance redressal and ensure that the grievance officer\nacknowledges the receipt of any consumer complaint within  forty-eight hours and redres\"\n\n## How this may relate to your case\n\n- A seller must appoint a grievance officer and ensure that the grievance officer acknowledges the receipt of any consumer complaint within 48 hours and redresses the complaint within one month from the date of receipt of the complaint.\n- A document showing that a refund was 'processed' or 'initiated' does not prove that the money reached your account. It does not confirm a credit; only your bank or payment app can confirm that.\n\n## Assessment\n\n**Informal resolution is recommended first.**\n\n- The refund is pending and there is no record that support has been contacted yet.\n\nSuggested next steps:\n1. Send a written support request to the seller or platform and keep proof of sending.\n2. State the order id, dates, amount and what outcome you want.\n3. Wait for a response before escalating.\n\nAssessment date: 2026-11-16.\n\n## Draft document\nA **support request** draft is included below for your review. It has not been sent or filed.\n\n## Limitations\n\n- This is general information and a draft for your review, not legal advice. I cannot guarantee any outcome.\n",
+    "case_summary": {
+      "identifiers": [
+        "SM-7007"
+      ],
+      "merchant": null,
+      "platform": null,
+      "amount_minor": null,
+      "currency": "INR",
+      "refund_status": "initiated"
+    },
+    "extracted_facts": [
+      {
+        "fact_id": "fact_07d8640c-970b-489a-886e-55c37a4296f9",
+        "case_id": "case_e63f96b5-c4e0-47ba-b5c7-b3ee27656dcc",
+        "fact_type": "support_contact_made",
+        "raw_value": "have not contacted",
+        "normalised_value": false,
+        "source_type": "user_message",
+        "source_id": "user",
+        "evidence_id": null,
+        "page_number": null,
+        "status": "user_reported",
+        "inferred": false,
+        "ambiguity_flag": false,
+        "supersedes_fact_id": null,
+        "created_at": "2026-11-08T22:23:47.552817Z"
+      },
+      {
+        "fact_id": "fact_d76e1185-380d-45bc-b0e2-36396d43c0b3",
+        "case_id": "case_e63f96b5-c4e0-47ba-b5c7-b3ee27656dcc",
+        "fact_type": "grievance_officer_contacted",
+        "raw_value": "have not contacted",
+        "normalised_value": false,
+        "source_type": "user_message",
+        "source_id": "user",
+        "evidence_id": null,
+        "page_number": null,
+        "status": "user_reported",
+        "inferred": false,
+        "ambiguity_flag": false,
+        "supersedes_fact_id": null,
+        "created_at": "2026-11-08T22:23:47.581763Z"
+      },
+      {
+        "fact_id": "fact_bf3dc1e9-e57c-4a99-b36e-adf5334a23e1",
+        "case_id": "case_e63f96b5-c4e0-47ba-b5c7-b3ee27656dcc",
+        "fact_type": "refund_status",
+        "raw_value": "nothing has come",
+        "normalised_value": "pending",
+        "source_type": "user_message",
+        "source_id": "user",
+        "evidence_id": null,
+        "page_number": null,
+        "status": "user_reported",
+        "inferred": false,
+        "ambiguity_flag": false,
+        "supersedes_fact_id": null,
+        "created_at": "2026-11-08T22:23:47.615846Z"
+      },
+      {
+        "fact_id": "fact_d964a854-b5c3-4f71-9e1d-b788a4df2a47",
+        "case_id": "case_e63f96b5-c4e0-47ba-b5c7-b3ee27656dcc",
+        "fact_type": "support_contact_made",
+        "raw_value": "I have not contacted them yet",
+        "normalised_value": false,
+        "source_type": "user_message",
+        "source_id": "user",
+        "evidence_id": null,
+        "page_number": null,
+        "status": "user_reported",
+        "inferred": false,
+        "ambiguity_flag": false,
+        "supersedes_fact_id": null,
+        "created_at": "2026-11-08T22:23:47.651930Z"
+      },
+      {
+        "fact_id": "fact_219bc412-cac1-4856-84d8-d4c9c800836e",
+        "case_id": "case_e63f96b5-c4e0-47ba-b5c7-b3ee27656dcc",
+        "fact_type": "order_id",
+        "raw_value": "SM-7007",
+        "normalised_value": "SM-7007",
+        "source_type": "evidence",
+        "source_id": "ev_b6f0d705-23d9-4da3-8798-f90fd31a3705",
+        "evidence_id": "ev_b6f0d705-23d9-4da3-8798-f90fd31a3705",
+        "page_number": 1,
+        "status": "document_supported",
+        "inferred": false,
+        "ambiguity_flag": false,
+        "supersedes_fact_id": null,
+        "created_at": "2026-11-08T22:23:47.675932Z"
+      },
+      {
+        "fact_id": "fact_008dcb84-2dfa-4a94-acfc-42987fbf88b1",
+        "case_id": "case_e63f96b5-c4e0-47ba-b5c7-b3ee27656dcc",
+        "fact_type": "refund_status",
+        "raw_value": "initiated",
+        "normalised_value": "initiated",
+        "source_type": "evidence",
+        "source_id": "ev_b6f0d705-23d9-4da3-8798-f90fd31a3705",
+        "evidence_id": "ev_b6f0d705-23d9-4da3-8798-f90fd31a3705",
+        "page_number": 1,
+        "status": "document_supported",
+        "inferred": false,
+        "ambiguity_flag": false,
+        "supersedes_fact_id": null,
+        "created_at": "2026-11-08T22:23:47.699471Z"
+      },
+      {
+        "fact_id": "fact_3d0f585a-b62a-4dcd-8a0c-8f3b8bf87b90",
+        "case_id": "case_e63f96b5-c4e0-47ba-b5c7-b3ee27656dcc",
+        "fact_type": "merchant_promised_timeline_days",
+        "raw_value": "Expected in 5-7 business days",
+        "normalised_value": 7,
+        "source_type": "evidence",
+        "source_id": "ev_b6f0d705-23d9-4da3-8798-f90fd31a3705",
+        "evidence_id": "ev_b6f0d705-23d9-4da3-8798-f90fd31a3705",
+        "page_number": 1,
+        "status": "document_supported",
+        "inferred": false,
+        "ambiguity_flag": false,
+        "supersedes_fact_id": null,
+        "created_at": "2026-11-08T22:23:47.724038Z"
+      },
+      {
+        "fact_id": "fact_04d9f7ee-79aa-4b66-86c9-ee2ba82cd9fe",
+        "case_id": "case_e63f96b5-c4e0-47ba-b5c7-b3ee27656dcc",
+        "fact_type": "pickup_date",
+        "raw_value": "3 November 2026",
+        "normalised_value": "2026-11-03",
+        "source_type": "evidence",
+        "source_id": "ev_b6f0d705-23d9-4da3-8798-f90fd31a3705",
+        "evidence_id": "ev_b6f0d705-23d9-4da3-8798-f90fd31a3705",
+        "page_number": 1,
+        "status": "document_supported",
+        "inferred": false,
+        "ambiguity_flag": false,
+        "supersedes_fact_id": null,
+        "created_at": "2026-11-08T22:23:47.747414Z"
+      },
+      {
+        "fact_id": "fact_2a1ae950-6118-4f51-891c-09888f3e338f",
+        "case_id": "case_e63f96b5-c4e0-47ba-b5c7-b3ee27656dcc",
+        "fact_type": "refund_initiated_date",
+        "raw_value": "4 November 2026",
+        "normalised_value": "2026-11-04",
+        "source_type": "evidence",
+        "source_id": "ev_b6f0d705-23d9-4da3-8798-f90fd31a3705",
+        "evidence_id": "ev_b6f0d705-23d9-4da3-8798-f90fd31a3705",
+        "page_number": 1,
+        "status": "document_supported",
+        "inferred": false,
+        "ambiguity_flag": false,
+        "supersedes_fact_id": null,
+        "created_at": "2026-11-08T22:23:47.771075Z"
+      }
+    ],
+    "evidence_processing": [
+      {
+        "filename": "refund_screenshot.png",
+        "status": "completed",
+        "error_code": null,
+        "methods": [
+          "ocr"
+        ]
+      }
+    ],
+    "legal_sources": [
+      {
+        "provision_id": "ECR_2020_P006_SR04",
+        "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 6, sub-rule (4)",
+        "excerpt": "(4) Any seller offering goods or services through a marketplace e-commerce entity shall:\n(a) have a prior written contract with the respective e-commerce entity in order to undertake or solicit\nsuch sale or offer;\nappoint a grievance officer for consumer grievance redressal and ensure that the grievance officer\nacknowledges the receipt of any consumer complaint within  forty-eight hours and redresses the\ncomplaint within one month from the date of receipt of the complaint;\nensure that the advertisements for marketing of goods or services are consistent with the actual\ncharacteristics, access a",
+        "role": "supporting",
+        "applicability": "unknown",
+        "source_validity": "current_for_date",
+        "official_url": "https://consumeraffairs.gov.in/public/upload/files/E%20commerce%20rules_1732703966.pdf"
+      }
+    ],
+    "retrieval_candidates": [
+      {
+        "chunk_id": "ECR_2020_P006_SR04::c0",
+        "provision_id": "ECR_2020_P006_SR04",
+        "source_id": "ECR_2020",
+        "dense_rank": 6,
+        "sparse_rank": 5,
+        "rrf_score": 0.10304178215866577,
+        "rerank_score": null,
+        "relevance_grade": 2,
+        "relevance_reason": "This provision mandates sellers to appoint a grievance officer for consumer grievance redressal, which is relevant to the consumer's refund case.",
+        "applicability": "unknown",
+        "applicability_reasons": [
+          "no reviewed conditions in the corpus for this provision"
+        ],
+        "source_validity": "current_for_date",
+        "role": "supporting",
+        "rejection_reason": null,
+        "added_because": null,
+        "accepted": true,
+        "conditional": true,
+        "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 6, sub-rule (4)"
+      },
+      {
+        "chunk_id": "ECR_2020_P005_SR03::c0",
+        "provision_id": "ECR_2020_P005_SR03",
+        "source_id": "ECR_2020",
+        "dense_rank": 1,
+        "sparse_rank": 2,
+        "rrf_score": 0.15594258207721362,
+        "rerank_score": null,
+        "relevance_grade": 1,
+        "relevance_reason": "This provision provides information requirements for marketplace e-commerce entities, which is background information but not directly relevant to the current issue of refund initiation.",
+        "applicability": "unknown",
+        "applicability_reasons": [
+          "no reviewed conditions in the corpus for this provision"
+        ],
+        "source_validity": "current_for_date",
+        "role": "background",
+        "rejection_reason": "relevance grade 1 below 2",
+        "added_because": null,
+        "accepted": false,
+        "conditional": false,
+        "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 5, sub-rule (3)"
+      },
+      {
+        "chunk_id": "ECR_2020_P004_SR10::c0",
+        "provision_id": "ECR_2020_P004_SR10",
+        "source_id": "ECR_2020",
+        "dense_rank": 2,
+        "sparse_rank": 1,
+        "rrf_score": 0.14172693425247074,
+        "rerank_score": null,
+        "relevance_grade": 1,
+        "relevance_reason": "This provision deals with the timing of refunds, which is background information but not directly relevant to the current issue of refund initiation.",
+        "applicability": "applicable",
+        "applicability_reasons": [
+          "fact fact_2a1ae950-6118-4f51-891c-09888f3e338f records refund_initiated_date"
+        ],
+        "source_validity": "current_for_date",
+        "role": "background",
+        "rejection_reason": "relevance grade 1 below 2",
+        "added_because": null,
+        "accepted": false,
+        "conditional": false,
+        "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (10)"
+      },
+      {
+        "chunk_id": "ECR_2020_P007_SR01::c0",
+        "provision_id": "ECR_2020_P007_SR01",
+        "source_id": "ECR_2020",
+        "dense_rank": 5,
+        "sparse_rank": 4,
+        "rrf_score": 0.1363308797281911,
+        "rerank_score": null,
+        "relevance_grade": 1,
+        "relevance_reason": "This provision provides general information requirements for inventory e-commerce entities, which is background information but not directly relevant to the current issue of refund initiation.",
+        "applicability": "unknown",
+        "applicability_reasons": [
+          "no reviewed conditions in the corpus for this provision"
+        ],
+        "source_validity": "current_for_date",
+        "role": "background",
+        "rejection_reason": "relevance grade 1 below 2",
+        "added_because": null,
+        "accepted": false,
+        "conditional": false,
+        "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 7, sub-rule (1)"
+      },
+      {
+        "chunk_id": "ECR_2020_P006_SR05::c0",
+        "provision_id": "ECR_2020_P006_SR05",
+        "source_id": "ECR_2020",
+        "dense_rank": 7,
+        "sparse_rank": 5,
+        "rrf_score": 0.13398169630753515,
+        "rerank_score": null,
+        "relevance_grade": 1,
+        "relevance_reason": "This provision provides information requirements for sellers, which is background information but not directly relevant to the current issue of refund initiation.",
+        "applicability": "unknown",
+        "applicability_reasons": [
+          "no reviewed conditions in the corpus for this provision"
+        ],
+        "source_validity": "current_for_date",
+        "role": "background",
+        "rejection_reason": "relevance grade 1 below 2",
+        "added_because": null,
+        "accepted": false,
+        "conditional": false,
+        "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 6, sub-rule (5)"
+      },
+      {
+        "chunk_id": "ECR_2020_P004_SR04::c0",
+        "provision_id": "ECR_2020_P004_SR04",
+        "source_id": "ECR_2020",
+        "dense_rank": 6,
+        "sparse_rank": 1,
+        "rrf_score": 0.11379843226097536,
+        "rerank_score": null,
+        "relevance_grade": 1,
+        "relevance_reason": "This provision requires e-commerce entities to appoint a grievance officer, which is background information but not directly relevant to the current issue of refund initiation.",
+        "applicability": "unknown",
+        "applicability_reasons": [
+          "no fact of type platform_name"
+        ],
+        "source_validity": "current_for_date",
+        "role": "background",
+        "rejection_reason": "relevance grade 1 below 2",
+        "added_because": null,
+        "accepted": false,
+        "conditional": false,
+        "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (4)"
+      },
+      {
+        "chunk_id": "ECR_2020_P007_SR04::c0",
+        "provision_id": "ECR_2020_P007_SR04",
+        "source_id": "ECR_2020",
+        "dense_rank": 1,
+        "sparse_rank": 2,
+        "rrf_score": 0.1589959935114808,
+        "rerank_score": null,
+        "relevance_grade": 2,
+        "relevance_reason": "This provision requires e-commerce entities to establish an adequate grievance redressal mechanism, which is relevant to the consumer's refund case.",
+        "applicability": "not_applicable",
+        "applicability_reasons": [
+          "refund_status is 'pending', not in ['denied', 'partial']"
+        ],
+        "source_validity": "current_for_date",
+        "role": "rejected",
+        "rejection_reason": "conditions not met: refund_status is 'pending', not in ['denied', 'partial']",
+        "added_because": null,
+        "accepted": false,
+        "conditional": false,
+        "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 7, sub-rule (4)"
+      },
+      {
+        "chunk_id": "ECR_2020_P006_SR03::c0",
+        "provision_id": "ECR_2020_P006_SR03",
+        "source_id": "ECR_2020",
+        "dense_rank": 2,
+        "sparse_rank": 3,
+        "rrf_score": 0.15477853191299895,
+        "rerank_score": null,
+        "relevance_grade": 3,
+        "relevance_reason": "This provision directly states that no seller shall refuse to refund consideration if the goods or services are defective, deficient, or spurious, or if they do not match the advertised features, which is directly relevant to the consumer's refund case.",
+        "applicability": "not_applicable",
+        "applicability_reasons": [
+          "refund_status is 'pending', not in ['denied', 'partial']"
+        ],
+        "source_validity": "current_for_date",
+        "role": "rejected",
+        "rejection_reason": "conditions not met: refund_status is 'pending', not in ['denied', 'partial']",
+        "added_because": null,
+        "accepted": false,
+        "conditional": false,
+        "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 6, sub-rule (3)"
+      },
+      {
+        "chunk_id": "ECR_2020_P007_SR02::c0",
+        "provision_id": "ECR_2020_P007_SR02",
+        "source_id": "ECR_2020",
+        "dense_rank": 10,
+        "sparse_rank": 18,
+        "rrf_score": 0.09456680252454899,
+        "rerank_score": null,
+        "relevance_grade": 0,
+        "relevance_reason": "This provision deals with false representation by e-commerce entities and does not address refund processes.",
+        "applicability": "unknown",
+        "applicability_reasons": [
+          "no reviewed conditions in the corpus for this provision"
+        ],
+        "source_validity": "current_for_date",
+        "role": "rejected",
+        "rejection_reason": "relevance grade 0 below 2",
+        "added_because": null,
+        "accepted": false,
+        "conditional": false,
+        "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 7, sub-rule (2)"
+      },
+      {
+        "chunk_id": "ECR_2020_P004_SR05::c0",
+        "provision_id": "ECR_2020_P004_SR05",
+        "source_id": "ECR_2020",
+        "dense_rank": 2,
+        "sparse_rank": 8,
+        "rrf_score": 0.0928690610201521,
+        "rerank_score": null,
+        "relevance_grade": 2,
+        "relevance_reason": "This provision requires e-commerce entities to acknowledge receipt of complaints within 48 hours and resolve them within a month, which is relevant to the refund status.",
+        "applicability": "not_applicable",
+        "applicability_reasons": [
+          "the only facts explicitly negate grievance_officer_contacted"
+        ],
+        "source_validity": "current_for_date",
+        "role": "rejected",
+        "rejection_reason": "conditions not met: the only facts explicitly negate grievance_officer_contacted",
+        "added_because": null,
+        "accepted": false,
+        "conditional": false,
+        "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (5)"
+      }
+    ],
+    "retrieval_summary": {
+      "corpus_version": "0381858588e1a7be",
+      "candidate_count": 10,
+      "accepted_count": 1,
+      "rejected_count": 9,
+      "retry_count": 0
+    },
+    "verification": {
+      "overall": "partially_verified",
+      "blocked_claims": [
+        {
+          "type": "unbacked_deadline",
+          "detail": "removed unbacked day-count '12 days'"
+        }
+      ],
+      "note": "deterministic citation/date/phrase guards only; claim-level entailment is DESIGN_ONLY"
+    },
+    "assessment": {
+      "outcome": "informal_resolution_recommended",
+      "reasons": [
+        "The refund is pending and there is no record that support has been contacted yet."
+      ],
+      "facts_used": [
+        "fact_07d8640c-970b-489a-886e-55c37a4296f9",
+        "fact_d76e1185-380d-45bc-b0e2-36396d43c0b3",
+        "fact_bf3dc1e9-e57c-4a99-b36e-adf5334a23e1",
+        "fact_d964a854-b5c3-4f71-9e1d-b788a4df2a47",
+        "fact_219bc412-cac1-4856-84d8-d4c9c800836e",
+        "fact_008dcb84-2dfa-4a94-acfc-42987fbf88b1",
+        "fact_3d0f585a-b62a-4dcd-8a0c-8f3b8bf87b90",
+        "fact_04d9f7ee-79aa-4b66-86c9-ee2ba82cd9fe",
+        "fact_2a1ae950-6118-4f51-891c-09888f3e338f"
+      ],
+      "provision_ids_used": [
+        "ECR_2020_P006_SR04"
+      ],
+      "missing_information": [],
+      "uncertainties": [
+        "relevance grade 1 below 2",
+        "relevance grade 1 below 2",
+        "relevance grade 1 below 2",
+        "relevance grade 1 below 2",
+        "relevance grade 1 below 2"
+      ],
+      "urgency": "unknown",
+      "next_steps": [
+        "Send a written support request to the seller or platform and keep proof of sending.",
+        "State the order id, dates, amount and what outcome you want.",
+        "Wait for a response before escalating."
+      ],
+      "lawyer_needed": false,
+      "lawyer_reason": null,
+      "rule_trace": [
+        "R3: The refund is pending and there is no record that support has been contacted yet.",
+        "decision_controller: LLM proposed needs_more_information; Python outcome informal_resolution_recommended wins"
+      ],
+      "llm_proposed_outcome": "needs_more_information"
+    },
+    "missing_information": [],
+    "next_steps": [
+      "Send a written support request to the seller or platform and keep proof of sending.",
+      "State the order id, dates, amount and what outcome you want.",
+      "Wait for a response before escalating."
+    ],
+    "document_draft": {
+      "draft_id": "doc_8263b457-b7e3-44a6-ba67-0e875f561c9b",
+      "case_id": "case_e63f96b5-c4e0-47ba-b5c7-b3ee27656dcc",
+      "draft_type": "support_request",
+      "content": "# DRAFT: prepared for your review. Not sent or filed.\n\nTo: [TO BE FILLED BY USER] — Customer Support\nSubject: Refund request for order SM-7007\n\nI am writing about order SM-7007 placed with [TO BE FILLED BY USER].\n\n**What happened**\n\n- Order id: SM-7007\n- Merchant: [TO BE FILLED BY USER]\n- Amount paid / refund amount: [TO BE FILLED BY USER]\n- Relevant dates: pickup: 3 November 2026; refund initiated: 4 November 2026\n- Current refund status: initiated\n\n- support contact made: False (reported by you)\n- grievance officer contacted: False (reported by you)\n- refund status: pending (reported by you)\n- support contact made: False (reported by you)\n- refund status: initiated (reported by document, page 1)\n- merchant promised timeline days: 7 (reported by document, page 1)\n- pickup date: 2026-11-03 (reported by document, page 1)\n- refund initiated date: 2026-11-04 (reported by document, page 1)\n\n**What I am asking for**\n\nPlease confirm the status of the refund and process the outstanding amount to the original payment method. Please reply in writing.\n\nYours sincerely,\n\n[TO BE FILLED BY USER]\n[TO BE FILLED BY USER]\n\n---\n\nThis is a draft prepared by an AI assistant for your review. It has not been sent or filed. Check every fact before using it.",
+      "status": "needs_review",
+      "missing_fields": [
+        "[TO BE FILLED BY USER]"
+      ],
+      "created_at": "2026-11-08T22:24:39.345957Z"
+    }
+  }
+}

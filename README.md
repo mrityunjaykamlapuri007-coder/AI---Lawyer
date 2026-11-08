@@ -20,6 +20,25 @@ Rules, 2020, recommends a proportionate next step, and drafts the letter to send
 4. **Prepares the draft.** A support request or formal grievance with `[TO BE FILLED BY USER]` blanks.
    No invented names, dates, amounts or order ids. Marked DRAFT.
 
+## Proof at a glance
+
+All numbers come from code-written, hashed raw outputs in [`ai_lawyer/evaluation/results/`](ai_lawyer/evaluation/results/),
+produced with the real model (Qwen2.5-7B-Instruct on free Kaggle T4 GPUs) on real cases.
+
+| The brief asks | Evidence | Result |
+|---|---|---|
+| Runs on real inputs | 17 real disputes from public consumer-commission reports, final run ([`real_behavior_run4/`](ai_lawyer/evaluation/results/real_behavior_run4/)) | **test 8/10, development 4/5** (+2 undetermined by design) |
+| Works on new inputs | 4 unseen real cases, expected outcomes committed *before* running ([`real_behavior_holdout/`](ai_lawyer/evaluation/results/real_behavior_holdout/)) | **3/4** |
+| Never invents law | every real-model answer scanned for section/rule numbers | **0 outside the verified corpus in 50 answers** |
+| Honest about unknowns | cases with missing dates or status | asks one question instead of concluding (e.g. R04, R06, R08, H04) |
+| Out of scope / adversarial | end-to-end demo through the real API ([`demo/TRANSCRIPT.md`](ai_lawyer/evaluation/results/demo/TRANSCRIPT.md)) | tenancy deposit refused with no law; asked to "cite Section 99, guarantee I win, confirm the seller violated the law", it repeats none of it, cites only verified provisions as "may apply" and asks for the missing date |
+| Text + image input | screenshot of a refund message in the same demo | read by local OCR (order id, dates, "5-7 business days") as document-supported facts; recommends contacting support first because the user had not |
+| Quality checking | four real runs, each kept unedited with a note | every failure diagnosed; fixes tested; a regression we introduced is reported, not hidden |
+| Cost at volume | [`cost_summary_run4.json`](ai_lawyer/evaluation/results/cost_summary_run4.json) | ~5 LLM calls, ~9,300 tokens, ~82 s per case; 0 JSON schema failures |
+| Model easy to swap | `.env` only | Kaggle vLLM today; any OpenAI-compatible API |
+
+Failures and limits are listed openly in [`SUBMISSION_NOTES.md`](SUBMISSION_NOTES.md).
+
 ## How it avoids invented law (the brief's main ground rule)
 
 | Control | What it does |
@@ -80,9 +99,12 @@ The model is chosen in `.env` only (see `.env.example`); no code change.
   development / 10 test before any run. Expected outcomes come from the rules applied to stated facts;
   2 are marked *undetermined*.
 - **17 synthetic cases** (`behavior_cases.jsonl`), always reported separately.
-- **Raw outputs, unedited and hashed:** [`ai_lawyer/evaluation/results/`](ai_lawyer/evaluation/results/)
-  (`real_behavior_run1/`: first run, crashed, kept as-is; `real_behavior/`: run after fixes;
-  `real_retrieval/`; `llm_calls.jsonl`; `llm_failures.jsonl`).
+- **4 held-out real cases** ([`real_stories_holdout.jsonl`](ai_lawyer/evaluation/dataset/real_stories_holdout.jsonl)),
+  collected after the fixes and committed before running.
+- **Raw outputs, unedited and hashed:** [`ai_lawyer/evaluation/results/`](ai_lawyer/evaluation/results/):
+  `real_behavior_run1/` to `real_behavior_run4/` (each with a `RUN_NOTE.md`), `real_behavior_holdout/`,
+  `real_retrieval/`, `demo/` (end-to-end API transcript), `llm_calls.jsonl` (every model call),
+  `llm_failures.jsonl`, `cost_summary_*.json`.
 
 Results and failures: [`SUBMISSION_NOTES.md`](SUBMISSION_NOTES.md).
 

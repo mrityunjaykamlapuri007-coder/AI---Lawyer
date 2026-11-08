@@ -1,0 +1,50 @@
+{
+  "origin": "written for the demo",
+  "request": "My landlord in Pune is refusing to return my security deposit of Rs 40,000 after I moved out. What can I do?",
+  "http_status": 200,
+  "response": {
+    "conversation_id": "conv_fb5fe722-ce22-4153-bf46-347a26ff5cd0",
+    "message_id": "msg_eddbcfca-4685-418e-abbe-e99b2f85d1dc",
+    "assistant_message_id": "msg_a8314978-3a29-43ef-88db-cb2dcacc7b72",
+    "case_id": null,
+    "processing_status": "out_of_scope",
+    "assistant_message": "## Scope\n\nThis assistant only handles unresolved e-commerce refund disputes in India: cancelled or returned orders, delayed, denied, partial or incorrect refunds. It does not cover tenancy or security-deposit matters, and I cannot prepare documents or represent you.\n\nPlease speak to a qualified lawyer or the appropriate authority for this issue.",
+    "case_summary": {},
+    "extracted_facts": [],
+    "evidence_processing": [],
+    "legal_sources": [],
+    "retrieval_candidates": [],
+    "retrieval_summary": {
+      "corpus_version": "",
+      "candidate_count": 0,
+      "accepted_count": 0,
+      "rejected_count": 0,
+      "retry_count": 0
+    },
+    "verification": {
+      "overall": "unverified",
+      "blocked_claims": []
+    },
+    "assessment": {
+      "outcome": "out_of_scope",
+      "reasons": [
+        "deterministic keyword match for tenancy"
+      ],
+      "facts_used": [],
+      "provision_ids_used": [],
+      "missing_information": [],
+      "uncertainties": [],
+      "urgency": "unknown",
+      "next_steps": [
+        "This assistant cannot help with this issue. Please speak to a qualified lawyer."
+      ],
+      "lawyer_needed": false,
+      "lawyer_reason": null,
+      "rule_trace": [],
+      "llm_proposed_outcome": null
+    },
+    "missing_information": [],
+    "next_steps": [],
+    "document_draft": null
+  }
+}
