@@ -55,7 +55,7 @@ Model swap: `.env` only (`LLM_PROVIDER/LLM_BASE_URL/LLM_MODEL`), one OpenAI-comp
 | Citations by id, rendered from corpus; unknown ids and unknown section numbers blocked | `legal_engine/citation_validator.py`, runner check in `evaluation/run_behavior_eval.py` |
 | No code path can mark anything human-verified | `test_no_code_path_outside_the_review_tool_writes_human_fields` |
 
-Result on real runs: RESULTS_TBD (section numbers outside the corpus; blocked citations).
+Result on real runs (17 real-case answers in run 2 with the real model; RUN3_SECTIONS_TBD): **0 section or rule numbers outside the verified corpus** (`results/real_behavior_run2/summary.md`). 0 JSON schema failures in every real call (`results/llm_calls.jsonl`; no `llm_failures.jsonl` written).
 
 ## 5. Quality: test design and results
 
@@ -65,8 +65,19 @@ Result on real runs: RESULTS_TBD (section numbers outside the corpus; blocked ci
   applied to the stated facts; 2 undetermined.
 - 17 synthetic cases, reported separately (`behavior_cases.jsonl`).
 
-**Behaviour, real models** (Qwen2.5-7B-Instruct fp16 on 2x T4, vLLM 0.33.0; bge-large-en-v1.5):
-RESULTS_TBD
+**Behaviour, real models** (Qwen2.5-7B-Instruct fp16 on 2x T4, vLLM 0.33.0; bge-large-en-v1.5).
+Each run is kept unedited with hashes (`results/real_behavior_run*/`).
+
+| Run | What changed before it | Test split (n=10) | Dev split (n=7) | Notes |
+|---|---|---|---|---|
+| 1 | first real run | crashed on case 5 | | R01 wrong outcome; 4 defects (section 6) |
+| 2 | run-1 defects fixed (`284171a`) | **8/10 pass** | 2/5 pass, 2 recorded | 0 invented section numbers |
+| 3 | run-2 extraction defects fixed from dev cases (`3e99a11`) | RUN3_TEST_TBD | RUN3_DEV_TBD | RUN3_NOTES_TBD |
+
+"Recorded" = expected outcome undetermined by the rules, so no pass/fail.
+In R01 (run 2) the LLM proposed "needs more information" and the Python rules overrode it with the
+correct "formal grievance": the rules own the outcome. In R02 the same override went the wrong way
+because the extracted fact was wrong (see section 6).
 
 **Retrieval, real corpus** (`results/real_retrieval/`; E3 hybrid RRF, test split, n=10):
 recall@10 0.57, precision@10 0.12, recall@20 0.95, MRR@20 0.15. Caveat: gold labels are
@@ -74,7 +85,7 @@ machine-derived and cover only the two generic provisions whose conditions are f
 (scope, grievance mechanism); the top results are refund-specific rules that cannot be labelled.
 Precision is a lower bound. E4 (reranker) not run.
 
-**Offline suite:** 343 tests pass (`pytest -q`); fixture behaviour suite 18/18.
+**Offline suite:** 353 tests pass (`pytest -q`); fixture behaviour suite 18/18.
 
 ## 6. Failures (real runs, kept)
 
@@ -87,7 +98,22 @@ Run 1 (`results/real_behavior_run1/`, kept unedited, crashed on case 5):
 4. **Crash.** The LLM returned the amount as the string "0.00"; the draft generator crashed and the
    runner aborted the whole run.
 All four were fixed as general defects (commit `284171a`), with tests in
-`tests/unit/test_fact_normalisation.py`; run 2 re-ran all 17 cases. RUN2_FAILURES_TBD
+`tests/unit/test_fact_normalisation.py`; run 2 re-ran all 17 cases.
+
+Run 2 (`results/real_behavior_run2/`): 5 failures, all in **fact extraction**, none from law:
+| Case | Expected -> got | Cause |
+|---|---|---|
+| R02 (dev) | needs info -> formal grievance | refund *had* reached the account; LLM labelled it "processed" (pending) |
+| R03 (dev) | formal grievance -> needs info | return date also tagged as cancellation date (two events, one sentence) -> false conflict; "sent notices" not seen as contact |
+| R04 (test) | needs info -> informal | "August 16th" given the current year (a guess); "kept calling customer care" not seen as contact |
+| R09 (dev) | needs info -> informal | delivery date tagged as purchase date; "reported it in the app" not seen as contact |
+| R12 (test) | formal grievance -> needs info | events worded "collected from my home" / "seller received it": no date got a role |
+Fixes for run 3 were designed from the development cases and generic phrasing only (commit
+`3e99a11`, tests in `tests/unit/test_run2_extraction_fixes.py`); R04/R12 (test) were not used to
+design fixes. R12's wording gap is left as a known limit. RUN3_FAILURES_TBD
+
+Reliability: one model call stalled 743 s through the free tunnel and failed; the automatic retry
+succeeded and the run continued (`results/llm_calls.jsonl`). The 120 s timeout did not cut it off.
 
 ## 7. Tools used and where AI got it wrong
 
@@ -107,7 +133,14 @@ Where it got it wrong (pick one for the doc):
 
 ## 8. Scale and cost
 
-COST_TBD (from `results/cost_summary.json`: LLM calls, tokens and seconds per case).
+Measured on run 2 (`results/cost_summary_run2.json`, 86 calls, 85 ok):
+| Per case | Value |
+|---|---|
+| LLM calls | ~5 (scope, facts, 2x relevance, reasoning) |
+| Tokens | ~7,300 prompt + ~2,100 completion (~9,400) |
+| LLM time on 2x T4 | ~2.6 min mean (one 743 s tunnel stall inflates it); reasoning ~40 s, relevance ~20 s, facts ~25-70 s, scope ~5 s |
+Money: tokens x the chosen provider's own per-token price (not estimated here). Embedding is local
+to the embedder service and small (30 provisions, one query per case).
 - Kaggle free GPU: marginal cost zero; a session is temporary.
 - At volume: per-case tokens x provider price; the corpus grows through the verification pipeline
   (new Gazette PDF -> official-copy check -> OCR checks -> gate), not through prompts.
