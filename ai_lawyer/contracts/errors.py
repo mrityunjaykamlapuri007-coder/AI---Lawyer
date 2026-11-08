@@ -65,3 +65,15 @@ class NotConfigured(UserSafeError):
             retryable=False,
             status_code=503,
         )
+
+
+class LLMUnavailable(UserSafeError):
+    """The configured model endpoint could not be reached or rejected the key."""
+
+    def __init__(self, message: str, *, retryable: bool = True) -> None:
+        super().__init__(
+            "llm_unavailable",
+            message,
+            retryable=retryable,
+            status_code=503,
+        )

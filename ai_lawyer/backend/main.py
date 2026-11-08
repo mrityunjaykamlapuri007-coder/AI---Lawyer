@@ -21,7 +21,10 @@ from fastapi.responses import JSONResponse
 from ai_lawyer.backend.api.routes import router
 from ai_lawyer.backend.db.migrate import migrate
 from ai_lawyer.backend.db.repo import Database
-from ai_lawyer.backend.services.llm_providers import get_llm
+from ai_lawyer.backend.services.llm_providers import (
+    ensure_real_mode_has_real_llm,
+    get_llm,
+)
 from ai_lawyer.backend.services.orchestrator import Orchestrator
 from ai_lawyer.config.settings import Settings, get_settings
 from ai_lawyer.contracts.errors import UserSafeError
@@ -61,6 +64,9 @@ def create_app(
     @asynccontextmanager
     async def lifespan(app: FastAPI) -> AsyncIterator[None]:
         app.state.settings = resolved
+        # Fail before loading the corpus, not after: real law must never be
+        # served by a fake model.
+        ensure_real_mode_has_real_llm(resolved)
         if orchestrator is not None:
             app.state.orchestrator = orchestrator
             app.state.db = orchestrator.db

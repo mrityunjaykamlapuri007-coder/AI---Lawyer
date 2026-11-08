@@ -213,3 +213,60 @@ Dry-run evidence (temp copy, fake test metadata, not real law):
 
 Blockers: the real runtime files are still absent because 0/149 real
 provisions are approved. Only Mri can approve.
+
+### K1 - Kaggle LLM server notebook
+
+| Field | Value |
+|---|---|
+| Status | IMPLEMENTED_NOT_TESTED (no Kaggle GPU session run here) |
+| Artifact | `kaggle/serve_llm.ipynb`, `kaggle/README.md` |
+| Local check | `pytest ai_lawyer/tests/unit/test_kaggle_notebook.py -q` -> 4 passed |
+
+- Starts vLLM with an OpenAI-compatible server for Llama 3.1 8B Instruct.
+- Two-T4 route: fp16, `--tensor-parallel-size 2`, `--dtype half`,
+  `--max-model-len 8192`.
+- One-T4 route: 4-bit AWQ. The notebook refuses to start fp16 8B on one 16 GB
+  GPU with an explicit message.
+- Reads `API_KEY` and `HF_TOKEN` from Kaggle Secrets; the HF token is passed to
+  the child process through the environment, never on the command line, and
+  nothing secret is printed.
+- Waits for `/v1/models` (10 min cold start), proves JSON-schema decoding, opens
+  a cloudflared quick tunnel and prints only the public URL, then heartbeats.
+- 401/403 guidance: "license not accepted or token wrong"; no silent fallback.
+- The notebook has not been executed on Kaggle. Model id, vLLM version, GPU
+  type and quantization must be recorded from the real session.
+
+Blockers for Mri: GPU/Internet toggles, phone verification, accepting the Meta
+license, a NEW `HF_TOKEN` (revoke the old exposed one), choosing the HF or
+Kaggle-Models route, and the random `API_KEY`.
+
+### K2 - app-side LLM wiring and smoke
+
+| Field | Value |
+|---|---|
+| Status | IMPLEMENTED_AND_TESTED (wiring); real-model smoke BLOCKED |
+| Test command | `pytest -q` |
+| Result | 222 passed, 1 warning in 15.00s |
+| Focused tests | `pytest ai_lawyer/tests/unit/test_llm_provider_config.py -q` -> 12 passed |
+| Smoke (fake, plumbing) | `python -m ai_lawyer.tools.llm_smoke --allow-fake` -> 3/3 steps passed, exit 0 |
+| Smoke (default) | `python -m ai_lawyer.tools.llm_smoke` -> REFUSED (fake provider), exit 2 |
+
+Changes:
+- Settings: `LLM_MODEL` (wins), legacy `LLM_MODEL_ID`, `LLM_JSON_SCHEMA_MODE`
+  (default true), `LLM_TIMEOUT_S` (120), `LLM_MAX_RETRIES_HTTP` (2),
+  `LLM_CALL_LOG`, `LLM_FAILURE_LOG`. `.env.example` updated with placeholders.
+- `openai_compatible` now sends JSON-schema constrained output when schema mode
+  is on; keeps the retry/repair path and the reject-on-schema-failure rule.
+- Clear typed failures: 401/403 -> bad `LLM_API_KEY` (no retry); connection
+  error -> tunnel/session message; timeout -> cold-GPU/`LLM_TIMEOUT_S` message;
+  no silent fallback to the fake model.
+- `CORPUS_MODE=real` + `LLM_PROVIDER=fake` is refused at startup before the
+  corpus is loaded.
+- Every call appends latency + prompt/completion tokens to
+  `evaluation/results/llm_calls.jsonl`. Every schema failure appends the raw
+  output verbatim to `evaluation/results/llm_failures.jsonl`.
+- `python -m ai_lawyer.tools.llm_smoke` tests fact extraction, relevance
+  grading and drafting against the same pydantic schemas.
+
+Blockers: a real smoke needs the Kaggle tunnel URL, the served model name and
+`LLM_API_KEY` in `.env`. None exist yet, so no real-model call has been made.

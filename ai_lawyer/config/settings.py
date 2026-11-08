@@ -54,13 +54,20 @@ class Settings(BaseSettings):
     compression_max_chars: int = 1200
 
     llm_provider: Literal["fake", "openai_compatible", "hf_local"] = "fake"
+    llm_model: str = ""
     llm_model_id: str = ""
     llm_model_path: str = ""
     llm_base_url: str = ""
     llm_api_key: str = ""
     llm_temperature: float = 0.0
     llm_max_tokens: int = 1500
-    llm_timeout_s: int = 60
+    llm_timeout_s: int = 120
+    # JSON-schema constrained decoding.  On by default for the 8B Kaggle model,
+    # which is weak at strict JSON; the retry-then-reject rule stays on top.
+    llm_json_schema_mode: bool = True
+    llm_max_retries_http: int = 2
+    llm_call_log: str = "ai_lawyer/evaluation/results/llm_calls.jsonl"
+    llm_failure_log: str = "ai_lawyer/evaluation/results/llm_failures.jsonl"
 
     max_upload_mb: int = 5
     max_message_chars: int = 4000
@@ -76,6 +83,8 @@ class Settings(BaseSettings):
         "vectorstore_dir",
         "sqlite_path",
         "evidence_dir",
+        "llm_call_log",
+        "llm_failure_log",
         mode="before",
     )
     @classmethod
@@ -106,6 +115,11 @@ class Settings(BaseSettings):
     @property
     def max_upload_bytes(self) -> int:
         return self.max_upload_mb * 1024 * 1024
+
+    @property
+    def llm_model_name(self) -> str:
+        """``LLM_MODEL`` wins; ``LLM_MODEL_ID`` stays for older configs."""
+        return self.llm_model or self.llm_model_id
 
 
 @lru_cache(maxsize=1)
