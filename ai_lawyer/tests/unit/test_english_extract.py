@@ -2,10 +2,18 @@ from __future__ import annotations
 
 from ai_lawyer.legal_rag.english_extract import (
     _candidate_title,
+    _counts,
     _line_is_english,
     _metadata,
     _split_parts,
 )
+
+
+def test_counts_treats_devanagari_marks_as_non_latin():
+    latin, other = _counts("(क) legal name")
+
+    assert latin == 9
+    assert other == 1
 
 
 def test_section_number_is_kept_on_a_mixed_english_page():

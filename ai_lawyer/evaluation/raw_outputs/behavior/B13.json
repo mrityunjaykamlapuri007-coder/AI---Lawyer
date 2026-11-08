@@ -30,10 +30,10 @@
   },
   "responses": [
     {
-      "conversation_id": "conv_ced84cff-dc96-47ea-b457-f8e49e7d59bc",
-      "message_id": "msg_9796acd9-e4ca-4866-ac51-ce93789b9d11",
-      "assistant_message_id": "msg_c32835f7-e7e7-481e-a0f4-95dc24524e68",
-      "case_id": "case_f3ca795b-a2be-42b2-9bd8-7c9b6acdd05b",
+      "conversation_id": "conv_568d4d20-e81e-490f-bdaf-8fc8b813d52d",
+      "message_id": "msg_cadbb4d7-81d4-4ae9-8702-59be3f9b0473",
+      "assistant_message_id": "msg_07f8f1dd-d4a5-4f76-9a9f-dc65767063ca",
+      "case_id": "case_89d3ff46-104c-45bd-b716-6f0b6f399a1f",
       "processing_status": "needs_clarification",
       "assistant_message": "## What I understood\n\nA consumer says an e-commerce refund is outstanding.\n\n## Facts\n\nFacts you reported:\n- Order id: FM-1313\n- Refund status: not refunded\n- Merchant promised timeline days: within 7 days\n\n## Legal sources that may apply\n\n- **TEST_ACT Article A1 (FIXTURE)** — role: supporting; applicability: applicable; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: Where a consumer cancels an order or returns goods, the seller must process a refund within a reasonable period after the cancellation or return.\"\n- **TEST_ACT Article A7 (FIXTURE)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: A seller must respond to a refund request within a period set by the platform.\"\n- **TEST_ACT Article A3 (FIXTURE)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: An e-commerce platform must provide a grievance officer to receive consumer complaints about refunds and returns.\"\n- **TEST_ACT Article A1 Proviso (FIXTURE)** — role: mandatory_qualifier; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: Provided that the seller may first require the consumer to return the goods.\"\n\n## How this may relate to your case\n\n- This provision may apply if the facts described are established.\n\n## Assessment\n\n**I need more information before assessing the next step.**\n\n- An essential fact is missing: an exact cancellation/return date.\n\nSuggested next steps:\n1. Answer the follow-up question so the refund timeline can be assessed.\n\nAssessment date: 2026-11-08.\n\n## Missing information\n- When did you cancel or return the order? Please give the exact date.\n- Have you contacted the seller or platform support in writing, and on what date?\n\n## Limitations\n\n- This is general information and a draft for your review, not legal advice. I cannot guarantee any outcome.\n- FIXTURE DATA, NOT REAL LAW: the citations above come from a synthetic test corpus and must not be relied on as legal authority.\n- You may want to speak to a qualified lawyer about your options (the user mentions a court or a limitation deadline).\n",
       "case_summary": {
@@ -48,8 +48,8 @@
       },
       "extracted_facts": [
         {
-          "fact_id": "fact_464bd3ed-bb2f-467c-9c60-89302b95224e",
-          "case_id": "case_f3ca795b-a2be-42b2-9bd8-7c9b6acdd05b",
+          "fact_id": "fact_43744272-5040-4095-aa59-9346e422d660",
+          "case_id": "case_89d3ff46-104c-45bd-b716-6f0b6f399a1f",
           "fact_type": "order_id",
           "raw_value": "FM-1313",
           "normalised_value": "FM-1313",
@@ -61,11 +61,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T01:30:30.511626Z"
+          "created_at": "2026-11-08T01:46:02.495353Z"
         },
         {
-          "fact_id": "fact_b747f989-72bd-4053-a1b1-97dc79753b05",
-          "case_id": "case_f3ca795b-a2be-42b2-9bd8-7c9b6acdd05b",
+          "fact_id": "fact_c6c5adca-7ded-45e5-9a2a-735b618a7d71",
+          "case_id": "case_89d3ff46-104c-45bd-b716-6f0b6f399a1f",
           "fact_type": "refund_status",
           "raw_value": "not refunded",
           "normalised_value": "not_received",
@@ -77,11 +77,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T01:30:30.528470Z"
+          "created_at": "2026-11-08T01:46:02.511921Z"
         },
         {
-          "fact_id": "fact_e8f5fd14-0c78-467e-96f2-56e66497433d",
-          "case_id": "case_f3ca795b-a2be-42b2-9bd8-7c9b6acdd05b",
+          "fact_id": "fact_96f809ee-8d02-4d38-8972-74e6ae8772fb",
+          "case_id": "case_89d3ff46-104c-45bd-b716-6f0b6f399a1f",
           "fact_type": "merchant_promised_timeline_days",
           "raw_value": "within 7 days",
           "normalised_value": 7,
@@ -93,7 +93,7 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T01:30:30.544947Z"
+          "created_at": "2026-11-08T01:46:02.536877Z"
         }
       ],
       "evidence_processing": [],
@@ -153,9 +153,9 @@
           "An essential fact is missing: an exact cancellation/return date."
         ],
         "facts_used": [
-          "fact_464bd3ed-bb2f-467c-9c60-89302b95224e",
-          "fact_b747f989-72bd-4053-a1b1-97dc79753b05",
-          "fact_e8f5fd14-0c78-467e-96f2-56e66497433d"
+          "fact_43744272-5040-4095-aa59-9346e422d660",
+          "fact_c6c5adca-7ded-45e5-9a2a-735b618a7d71",
+          "fact_96f809ee-8d02-4d38-8972-74e6ae8772fb"
         ],
         "provision_ids_used": [
           "TEST_ACT_A1",

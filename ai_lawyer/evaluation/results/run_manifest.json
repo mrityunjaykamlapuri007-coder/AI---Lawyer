@@ -1,6 +1,6 @@
 {
   "label": "FIXTURE DATA, NOT REAL LAW",
-  "generated_at": "2026-11-08T01:30:27.471733+00:00",
+  "generated_at": "2026-11-08T01:45:59.550430+00:00",
   "experiments": {
     "E1_dense_faiss": "RUN",
     "E2_sparse_bm25": "RUN",
@@ -24,12 +24,12 @@
     20
   ],
   "dataset": {
-    "rows": 8,
-    "development": 4,
-    "test": 4,
+    "rows": 16,
+    "development": 8,
+    "test": 8,
     "sha256": {
-      "development.jsonl": "a0443f8c47c33aeb87e4881570c9ae714eda326c54dcb34e157eb283f647124b",
-      "test.jsonl": "f13f5c001a27e1d9d9594c588d70c871f8326f7e9b08c752adf41cbc981c5c2d"
+      "development.jsonl": "6007a0f9f94d89f4abfb227437690592a90bcdce8e13cebb2908bf792212884c",
+      "test.jsonl": "22611ac8e0597f3ae0980b53cd6f4af37801f7bc20aa83b6df41225f5a1b544c"
     }
   },
   "packages": {

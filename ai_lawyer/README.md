@@ -63,7 +63,8 @@ notifications that share one PDF, and writes review-only `.txt` parts:
   --originals-dir ai_lawyer\legal_corpus\originals
 ```
 
-The first command writes `legal_corpus/extracted_en/` (6 parts, 100% Latin) and
+The first command writes `legal_corpus/extracted_en/` (6 parts; 5 are 100%
+Latin, ECR is 0.99957 because of 6 Devanagari enumeration markers) and
 `metadata.json` with candidate titles, dates, departments and gazette IDs quoted
 from the documents. The second writes `legal_corpus/draft/` (gitignored) and
 never creates the files real mode loads:
@@ -72,11 +73,16 @@ never creates the files real mode loads:
 - `sources_review.csv` / `provisions_review.csv` — review worksheets.
 - `draft_manifest.json` — counts and per-document OCR quality.
 - `DRAFT_REVIEW.md` — the review procedure.
+- `REVIEWER_CHECKLIST.md` — per-source metadata worksheet, section-gap report,
+  and mechanical flags (`short_text`, `replacement_char`, `devanagari`,
+  `starts_lowercase`, `long_page_span`).
 
 Current draft totals: **6 sources, 145 provisions** — Act 107, Commission Rules
 18, General Rules 5, E-Commerce Rules 8, Amendment 2, Jurisdiction Rules 5.
 Every draft source is `review_status: unverified`, so all provisions are
-unusable and cannot be cited. All six parts are 100% Latin and low OCR risk.
+unusable and cannot be cited. Five extracted parts are 100% Latin; the ECR part
+is 0.99957 because six Devanagari enumeration labels (`क, ख, ग, घ, ङ, च`) are
+preserved verbatim and flagged. All six parts are low OCR risk.
 `publisher`, `official_url`, `published_date` and effective dates remain blank
 until a human checks them against an official copy. Nothing is copied to
 `sources.json` / `provisions.json` automatically, and the agent never sets
@@ -105,8 +111,8 @@ until a human checks them against an official copy. Nothing is copied to
 
 - Real legal corpus ingestion, source verification, or real-law citations.
   **BLOCKED** until the user reviews the generated draft corpus and supplies
-  `ai_lawyer/legal_corpus/sources.json` and `provisions.json`. Draft generation
-  exists; four of five extracted texts need re-extraction first.
+  `ai_lawyer/legal_corpus/sources.json` and `provisions.json`. The English
+  extracts are complete; the draft still needs human legal review.
 - Cross-encoder reranking and E4 (optional model not installed).
 - Claim-level LLM entailment, National Consumer Helpline / Consumer Commission
   draft templates, corpus snapshots/archive checks, OCR, RAGAS, and Jev.
@@ -130,7 +136,7 @@ ai_lawyer/
   documents/         draft generator, validator, Jinja templates
   frontend/          Streamlit demo client
   evaluation/        metrics, datasets, harnesses, raw outputs, failure analysis
-  tests/             134 unit/integration tests (offline)
+  tests/             141 unit/integration tests (offline)
   docs/              reuse notes and final report
 ```
 
@@ -142,7 +148,7 @@ ai_lawyer/
 | Draft corpus ingestion (review-only, unverified) | IMPLEMENTED_AND_TESTED |
 | Real-law use | BLOCKED (drafts exist; no human-reviewed corpus) |
 | Optional LLM/embedder/reranker providers | IMPLEMENTED_NOT_TESTED (no network/model) |
-| Streamlit UI | IMPLEMENTED_NOT_TESTED (server boots and serves HTTP 200; no browser interaction test) |
+| Streamlit UI | IMPLEMENTED_AND_TESTED (2 headless `AppTest` interactions; not real-browser automation) |
 | OCR, claim entailment, RAGAS, Jev, snapshots | DESIGN_ONLY |
 
 See `docs/FINAL_REPORT.md` for exact test/evaluation totals and

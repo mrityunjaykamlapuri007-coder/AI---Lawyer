@@ -23,9 +23,9 @@ def _row(test_id="R1", scenario="S1", split="development", pid="TEST_ACT_A1"):
 
 def test_fixture_dataset_loads_and_is_labelled(corpus):
     dataset = load_dataset(DATASET_DIR, corpus)
-    assert len(dataset.rows) == 8
-    assert len(dataset.split("development")) == 4
-    assert len(dataset.split("test")) == 4
+    assert len(dataset.rows) == 16
+    assert len(dataset.split("development")) == 8
+    assert len(dataset.split("test")) == 8
     assert dataset.fixture is True
 
 

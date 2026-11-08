@@ -35,7 +35,7 @@ TypeError: replace() should be called on dataclass instances
 - **Cause:** `Settings` is a `pydantic_settings.BaseSettings`, not a dataclass.
 - **Fix:** use `settings.model_copy(update={...})`.
 - **Result after fix:** both harnesses ran. The retrieval harness produced
-  `raw_outputs/retrieval_raw.jsonl` (80 records), `results/retrieval_summary.csv`
+  `raw_outputs/retrieval_raw.jsonl` (160 records), `results/retrieval_summary.csv`
   (18 data rows), `results/verification_summary.csv` (2 data rows), and
   `results/run_manifest.json`.
 
@@ -112,6 +112,42 @@ assert (1 == 1 and 1 == 1 and 1 == 1 and 0 == 1)
 - **Result after fix:** `105 passed, 1 warning` (the warning is the
   Starlette/httpx `TestClient` deprecation, unrelated to product logic).
 
+### 5. Expanded retrieval dataset exposed a lexical-grader synonym gap
+
+- **Code:** `LEXICAL_GRADER_SYNONYM_MISS`
+- **Where:** `evaluation/dataset/` rows D-F05/T-F05 and T-F07, graded by
+  `contracts/fakes.py::FakeLLM`
+- **Observed:** the correct provision was retrieved, but the offline lexical
+  grader scored it below the acceptance threshold because the query used
+  "definition" while the provision said "means", and the query used "sent"
+  while the provision said "returned". The first expanded-dataset run showed
+  test recall 0.7143 instead of 1.0.
+- **Cause:** the fake grader is a token-overlap heuristic; it has no semantic
+  model, and the two word pairs share no token.
+- **Fix:** a small, explicit, documented alias map for the offline grader only
+  (`definition` / `meaning` / `means` → `mean`, `sent` / `returned` → `return`,
+  `reply` / `replied` / `response` / `responded` → `respond`). No query text or
+  expected label was changed to fit the model. A unit test pins the
+  "definition" / "means" case.
+- **Result after fix:** E5 test recall returned to 1.0; the final metrics are in
+  `results/verification_summary.csv`.
+
+### 6. Devanagari combining marks were not counted as non-Latin script
+
+- **Code:** `SCRIPT_COUNT_COMBINING_MARKS`
+- **Where:** `legal_rag/english_extract.py::_counts`,
+  `legal_rag/draft_ingest.py::text_quality`
+- **Observed:** a line mixing English with Devanagari matras could be scored as
+  fully Latin because only `char.isalpha()` was counted for non-ASCII text, and
+  combining marks are not `isalpha()`.
+- **Fix:** both counters now also count the Devanagari block `U+0900`–`U+097F`.
+  The ECR English extract still contains six Devanagari enumeration labels
+  (`क, ख, ग, घ, ङ, च`) because they are part of the source document; they are
+  preserved verbatim, flagged `devanagari`, and reported as a raw Latin share of
+  0.99957 rather than silently removed or translated.
+- **Result after fix:** unit tests cover both the counter and the flag. The
+  reviewer checklist lists the two affected ECR provisions.
+
 ## v2 §40.2 structured records
 
 The v2 spec requires a fixed record per failed case. These records cover the
@@ -128,6 +164,8 @@ threshold-based retrieval failures to record.
 | `B05` | assessment → response composition | `TEST_ACT_A1` (fixture) | same fixture set | n/a | `assessment_question_conflict` | High | Same unconditional question list | Same fix | n/a | Yes |
 | `B06` | assessment → response composition | `TEST_ACT_A1` (fixture) | same fixture set | n/a | `assessment_question_conflict` | High | Same unconditional question list | Same fix | n/a | Yes |
 | `B08` | assessment → response composition | `TEST_ACT_A1` (fixture) | same fixture set | n/a | `assessment_question_conflict` | High | Same unconditional question list | Same fix | n/a | Yes |
+| `D-F05`, `T-F05`, `T-F07` | relevance grading | `TEST_ACT_A6`, `TEST_ACT_A2` (fixture) | correct provisions retrieved | below acceptance | `lexical_grader_synonym_miss` (outside the v2 retrieval list) | Medium | Token-overlap fake grader had no bridge from "definition" to "means" or "sent" to "returned" | Documented alias map in `FakeLLM`; unit test; no labels changed | Test only | Yes |
+| `ECR_2020_P004`, `ECR_2020_P005` | extraction quality / draft flags | n/a | n/a | raw Latin share 0.99957 | `script_count_combining_marks` (outside the v2 retrieval list) | Low | Devanagari combining marks are not `isalpha()` | Count `U+0900`–`U+097F`; flag `devanagari`; leave text verbatim | n/a | Yes |
 
 ### Reason-code mapping
 
@@ -137,7 +175,7 @@ The v2 retrieval reason codes were checked against the observed failures:
 - `dense_search_miss`: not observed (E1 recall@5 = 1.0 on both splits).
 - `sparse_search_miss`: not observed (E2 recall@5 = 1.0 on both splits).
 - `fusion_rank_degradation`: not a failure in this run; E3 development MRR
-  (0.6333) was below E2 (0.6750) and above E1 (0.6125), which is reported as a
+  (0.8167) was below E2 (0.8375) and above E1 (0.8063), which is reported as a
   measured trade-off, not silently tuned away.
 - `reranker_rank_degradation`: E4 not run.
 - `metadata_filter_false_exclusion`: not observed.
@@ -172,9 +210,10 @@ overwritten.
 | Code | Limitation |
 |---|---|
 | `DATA_FIXTURE_ONLY` | All retrieval and behaviour numbers use an 11-provision synthetic corpus and a deterministic lexical `FakeLLM`. They are not evidence of real legal retrieval quality or legal correctness. |
-| `REAL_CORPUS_BLOCKED` | `ai_lawyer/legal_corpus/sources.json` and `provisions.json` do not exist. Real mode raises `CorpusValidationError`. English extracts exist in `legal_corpus/extracted_en/` (6 parts, 100% Latin) and `draft_ingest` produced 145 unverified draft provisions, but no source has been human-verified and candidate metadata still needs source-document confirmation. |
+| `REAL_CORPUS_BLOCKED` | `ai_lawyer/legal_corpus/sources.json` and `provisions.json` do not exist. Real mode raises `CorpusValidationError`. English extracts exist in `legal_corpus/extracted_en/` (6 parts; ECR Latin share 0.99957 because of 6 Devanagari markers) and `draft_ingest` produced 145 unverified draft provisions plus `REVIEWER_CHECKLIST.md`, but no source has been human-verified and candidate metadata still needs source-document confirmation. |
 | `NOT_RUN` | E4 (cross-encoder reranker) was not run. `RERANKER_ENABLED=false` and the optional model is not installed. The wrapper exists but has no offline test. |
-| `SMALL_SAMPLE` | Retrieval evaluation has 4 development and 4 test rows; each row has one relevant provision. Precision@K is mechanically diluted by the K denominator (0.2 at K=5, 0.05 at K=20) and is not comparable to a larger real benchmark. |
+| `SMALL_SAMPLE` | Retrieval evaluation has 8 development and 8 test rows; each row has one essential provision. Precision@K is mechanically diluted by the K denominator (0.225 at K=5, 0.05625 at K=20 on development) and is not comparable to a larger real benchmark. |
 | `DERIVED_CHECK` | `B09_missing_corpus` is a derived evaluator check: it removes the Consumer Commission provision from a copy of the corpus and confirms the outcome falls back to `needs_more_information`. It is not one of the 17 original user cases. |
 | `NO_HUMAN_REVIEW` | No `review_status: human_verified` was fabricated. The fixture sources are explicitly test sources; real sources remain unverified and unusable. |
-| `NO_VCS` | The workspace is not a git repository. There is no commit, branch, merge, or push evidence. |
+| `NO_BROWSER_AUTOMATION` | Streamlit is covered by 2 headless `AppTest` interactions, not a real browser. |
+| `LOCAL_VCS_ONLY` | A local git repository exists with four baseline commits plus the final documentation commit; there is no remote, push, branch, merge, or deployment evidence. |

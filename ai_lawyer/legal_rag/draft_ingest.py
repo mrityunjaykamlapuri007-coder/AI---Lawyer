@@ -169,7 +169,12 @@ def text_quality(text: str) -> tuple[float, float, float, Literal["low", "high"]
         1 for char in body if char in "\n\t" or "\x20" <= char <= "\x7e"
     )
     latin_letters = sum(1 for char in body if "A" <= char <= "Z" or "a" <= char <= "z")
-    other_letters = sum(1 for char in body if char.isalpha() and not char.isascii())
+    other_letters = sum(
+        1
+        for char in body
+        if not char.isascii()
+        and (char.isalpha() or 0x0900 <= ord(char) <= 0x097F)
+    )
     alpha_total = latin_letters + other_letters
     ascii_ratio = ascii_chars / len(body)
     letter_ratio = latin_letters / len(body)
@@ -528,6 +533,9 @@ def build_drafts(
         _write_provisions_csv(destination / "provisions_review.csv", provisions)
     )
     build.written.append(_write_readme(destination / "DRAFT_REVIEW.md", build))
+    build.written.append(
+        _write_checklist(destination / "REVIEWER_CHECKLIST.md", build)
+    )
     build.written.append(_write_manifest(destination / "draft_manifest.json", build))
     return build
 
@@ -669,6 +677,8 @@ def _write_readme(path: Path, build: DraftBuild) -> Path:
         "- `draft_sources.json` / `draft_provisions.json` - schema-valid drafts.",
         "- `sources_review.csv` - source metadata worksheet (URLs and dates are blank).",
         "- `provisions_review.csv` - one row per provision, with a text preview.",
+        "- `REVIEWER_CHECKLIST.md` - per-source checklist with mechanical quality",
+        "  flags and the metadata fields a human must fill.",
         "- `draft_manifest.json` - counts and per-document OCR quality.",
         "",
         "## Review steps",
@@ -704,6 +714,137 @@ def _write_readme(path: Path, build: DraftBuild) -> Path:
             f"{report.pages} | {report.ocr_risk} | {notes} |"
         )
     lines += [
+        "",
+        f"Generated: {build.retrieved_at.isoformat()}",
+        "",
+    ]
+    path.write_text("\n".join(lines), encoding="utf-8")
+    return path
+
+
+def _provision_flags(provision: Provision) -> list[str]:
+    """Mechanical quality flags for a reviewer.  These are not legal judgments."""
+    text = provision.original_text
+    collapsed = " ".join(text.split())
+    flags: list[str] = []
+    if not collapsed:
+        flags.append("empty")
+    elif len(collapsed) < 40:
+        flags.append("short_text")
+    if "\ufffd" in text:
+        flags.append("replacement_char")
+    if any("\u0900" <= char <= "\u097f" for char in text):
+        flags.append("devanagari")
+    if collapsed[:1].islower():
+        flags.append("starts_lowercase")
+    if provision.page_end - provision.page_start > 5:
+        flags.append("long_page_span")
+    return flags
+
+
+def _section_gaps(provisions: list[Provision]) -> tuple[list[int], list[int]]:
+    numbers = sorted(
+        int(provision.provision_id.rsplit("P", 1)[1])
+        for provision in provisions
+        if provision.provision_id.rsplit("P", 1)[-1].isdigit()
+    )
+    if not numbers:
+        return [], []
+    expected = set(range(1, max(numbers) + 1))
+    return sorted(expected - set(numbers)), numbers
+
+
+def _write_checklist(path: Path, build: DraftBuild) -> Path:
+    by_source: dict[str, list[Provision]] = {}
+    for provision in build.provisions:
+        by_source.setdefault(provision.source_id, []).append(provision)
+
+    lines = [
+        "# Reviewer checklist — draft corpus",
+        "",
+        "**These entries have NOT been reviewed and are NOT citable.** Every source",
+        "is `review_status: unverified`. This checklist only organises the mechanical",
+        "draft so a human can verify it faster. It does not add, repair, or decide",
+        "any legal text.",
+        "",
+        "The `Flags` column is a mechanical heuristic (`short_text`,",
+        "`replacement_char`, `devanagari`, `starts_lowercase`, `long_page_span`).",
+        "A flag is a prompt to look closer, not a conclusion.",
+        "",
+        "## Summary",
+        "",
+        "| source_id | provisions | flags | OCR risk | title status |",
+        "| --- | --- | --- | --- | --- |",
+    ]
+    reports = {report.source_id: report for report in build.reports}
+    for source in build.sources:
+        provisions = by_source.get(source.source_id, [])
+        flagged = sum(1 for p in provisions if _provision_flags(p))
+        report = reports[source.source_id]
+        title_status = (
+            "extracted"
+            if report.title_extracted
+            else ("candidate" if report.candidate_title else "placeholder")
+        )
+        lines.append(
+            f"| {source.source_id} | {len(provisions)} | {flagged} | "
+            f"{report.ocr_risk} | {title_status} |"
+        )
+
+    for source in build.sources:
+        provisions = by_source.get(source.source_id, [])
+        report = reports[source.source_id]
+        gaps, numbers = _section_gaps(provisions)
+        lines += [
+            "",
+            f"## {source.source_id}",
+            "",
+            f"- Draft title: {source.title}",
+            f"- Title source: "
+            + (
+                "extracted from the document"
+                if report.title_extracted
+                else (
+                    "candidate quoted from the document; confirm it"
+                    if report.candidate_title
+                    else "placeholder; a reviewer must supply the official title"
+                )
+            ),
+            f"- Pages: {report.pages}; provisions: {len(provisions)}",
+            f"- Section numbers found: "
+            + (f"{numbers[0]}–{numbers[-1]}" if numbers else "none")
+            + (f"; gaps: {gaps}" if gaps else "; no numeric gaps"),
+            f"- Candidate dates: " + ("; ".join(report.candidate_dates) or "none quoted"),
+            f"- Candidate department: "
+            + ("; ".join(report.candidate_departments) or "none quoted"),
+            f"- Candidate gazette id: "
+            + ("; ".join(report.candidate_gazette_ids) or "none quoted"),
+            "- Must be supplied by a human: publisher, official URL, publication",
+            "  date, effective-from date, effective-to date, version status.",
+            "- Keep `review_status: unverified` until every provision below has been",
+            "  checked against the official document.",
+            "",
+            "| provision_id | pages | chars | flags | preview |",
+            "| --- | --- | --- | --- | --- |",
+        ]
+        for provision in provisions:
+            preview = " ".join(provision.original_text.split())[:110]
+            flags = ", ".join(_provision_flags(provision)) or "-"
+            preview = preview.replace("|", "\\|")
+            lines.append(
+                f"| {provision.provision_id} | {provision.page_start}–"
+                f"{provision.page_end} | {len(provision.original_text)} | "
+                f"{flags} | {preview} |"
+            )
+
+    lines += [
+        "",
+        "## After review",
+        "",
+        "Copy only approved entries to `legal_corpus/sources.json` and",
+        "`legal_corpus/provisions.json`, set `review_status: human_verified` on",
+        "sources you personally checked, and rerun the index build with",
+        "`CORPUS_MODE=real`. Do not copy this checklist itself into the corpus.",
         "",
         f"Generated: {build.retrieved_at.isoformat()}",
         "",

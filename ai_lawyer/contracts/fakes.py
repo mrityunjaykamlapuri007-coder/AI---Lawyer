@@ -23,6 +23,29 @@ _STOP = {
     "my", "me", "i", "you", "your", "we", "our", "they", "their", "has", "have",
     "had", "not", "no", "but", "if", "about", "what", "should", "can", "could",
 }
+# Small, explicit synonym map for the offline lexical grader only.  It bridges
+# common consumer phrasings ("definition" / "means", "sent" / "returned") that
+# a lexical matcher would otherwise miss.  This is NOT a semantic model and it
+# never rewrites legal text.
+_ALIASES = {
+    "definition": "mean",
+    "meaning": "mean",
+    "means": "mean",
+    "sent": "return",
+    "returned": "return",
+    "reply": "respond",
+    "replied": "respond",
+    "response": "respond",
+    "responded": "respond",
+}
+
+
+def _fold(token: str) -> str:
+    token = _ALIASES.get(token, token)
+    for suffix in ("ing", "ed", "es", "s"):
+        if len(token) > 4 and token.endswith(suffix):
+            return token[: -len(suffix)]
+    return token
 
 
 def tokens(text: str) -> list[str]:
@@ -140,21 +163,15 @@ class FakeLLM:
         return {}
 
     def _grade_candidates(self, opts: dict[str, Any]) -> list[dict[str, Any]]:
-        def fold(token: str) -> str:
-            for suffix in ("ing", "ed", "es", "s"):
-                if len(token) > 4 and token.endswith(suffix):
-                    return token[: -len(suffix)]
-            return token
-
         case_text = str(opts.get("case_summary", ""))
-        q = {fold(t) for t in tokens(case_text)} or {"refund"}
+        q = {_fold(t) for t in tokens(case_text)} or {"refund"}
         grades: list[dict[str, Any]] = []
         for cand in opts.get("candidates", []):
             # Coverage of the provision's own text, not of the long case
             # message: otherwise one short relevant provision is always
             # diluted below the acceptance grade.
             provision_text = str(cand.get("original_text", ""))
-            p = {fold(t) for t in tokens(provision_text)}
+            p = {_fold(t) for t in tokens(provision_text)}
             common = sorted(q & p)
             coverage = len(common) / max(1, len(p))
             if coverage >= 0.28 or len(common) >= 5:

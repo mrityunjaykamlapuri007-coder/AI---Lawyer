@@ -107,7 +107,12 @@ class EnglishExtract:
 
 def _counts(text: str) -> tuple[int, int]:
     latin = sum(1 for char in text if char.isascii() and char.isalpha())
-    other = sum(1 for char in text if char.isalpha() and not char.isascii())
+    other = sum(
+        1
+        for char in text
+        if not char.isascii()
+        and (char.isalpha() or 0x0900 <= ord(char) <= 0x097F)
+    )
     return latin, other
 
 

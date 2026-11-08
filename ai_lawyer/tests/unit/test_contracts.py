@@ -67,6 +67,35 @@ def test_fake_llm_scripted_invalid_and_default():
         bad.generate_structured("x", RelevanceGradeBatch, {"task": "relevance_grader"})
 
 
+def test_fake_llm_scripts_and_default_relevance_grading():
+    llm = FakeLLM()
+    batch = llm.generate_structured(
+        "x",
+        RelevanceGradeBatch,
+        {
+            "task": "relevance_grader",
+            "case_summary": "What is the definition of refund?",
+            "candidates": [
+                {
+                    "provision_id": "A6",
+                    "citation": "",
+                    "original_text": "'refund' means the return of money paid for goods.",
+                    "search_text": "",
+                },
+                {
+                    "provision_id": "A2",
+                    "citation": "",
+                    "original_text": "This does not apply where the consumer has not returned the goods.",
+                    "search_text": "",
+                },
+            ],
+        },
+    )
+    grades = {item.provision_id: item.grade for item in batch.grades}
+
+    assert grades["A6"] >= 2
+
+
 def test_fake_llm_invented_provision_is_visible_to_guards():
     llm = FakeLLM(invented_provision_id="INVENTED_A99")
     draft = llm.generate_structured(

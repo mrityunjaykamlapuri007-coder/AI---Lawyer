@@ -19,11 +19,11 @@ verification section is the authoritative run.
 | T3 | Source validity, applicability, relevance filter, acceptance, retry/abstention | Done | `test_engine.py` |
 | T4 | LLM adapters, reasoning prompt, citation/phrase/date guards, decision controller | Done | `test_engine.py`; provider adapters are lazy |
 | T5 | SQLite schema/repo, fact extraction, case manager, evidence store, assessment, documents, orchestrator, response generator | Done | `test_services.py`, `test_documents.py`, `test_pipeline.py` |
-| T6 | FastAPI endpoints + Streamlit client | API done; UI not browser-tested | `test_api.py`; UI is a local demo client |
-| T7 | Retrieval dataset, behaviour dataset, metrics, harnesses, failure analysis | Done | `raw_outputs/`, `results/`, `failure_analysis.md` |
+| T6 | FastAPI endpoints + Streamlit client | API done; UI headless-tested | `test_api.py`; `test_streamlit_app.py` (2 `AppTest` interactions, not a real browser) |
+| T7 | Retrieval dataset, behaviour dataset, metrics, harnesses, failure analysis | Done | 16 retrieval rows; `raw_outputs/`, `results/`, `failure_analysis.md` |
 | T8 | README, reuse notes, progress log, final report | Done | `README.md`, `docs/`, this file |
-| T9 | English extraction + review-only draft corpus builder (sources, provisions, worksheets, quality flags) | Done | `legal_rag/english_extract.py`, `legal_rag/draft_ingest.py`; 10 + 18 tests; output in `legal_corpus/extracted_en/` and `legal_corpus/draft/` |
-| T10 | Local git baseline, documentation refresh, final test run | Done | `git init` + initial local commit; 134 tests pass |
+| T9 | English extraction + review-only draft corpus builder (sources, provisions, worksheets, checklist, quality flags) | Done | `legal_rag/english_extract.py`, `legal_rag/draft_ingest.py`; 11 + 21 tests; output in `legal_corpus/extracted_en/` and `legal_corpus/draft/` |
+| T10 | Local git baseline, documentation refresh, final test run | Done | `git init` + local commits; 141 tests pass |
 
 ## Final verification
 
@@ -37,12 +37,14 @@ Run from the project root:
 
 Observed results:
 
-- `pytest -q`: **134 passed, 1 warning**. The warning is the Starlette/httpx
-  `TestClient` deprecation, not a product failure.
-- Retrieval harness exit code 0; 8 fixture rows (4 development, 4 test), K in
-  {5,10,20}; E1/E2/E3/E5 run; E4 marked `NOT RUN`.
+- `pytest -q`: **141 passed, 1 warning in 8.60s**. The warning is the
+  Starlette/httpx `TestClient` deprecation, not a product failure.
+- Retrieval harness exit code 0; 16 fixture rows (8 development, 8 test), K in
+  {5,10,20}; E1/E2/E3/E5 run; E4 marked `NOT RUN`; 160 raw records.
 - Behaviour harness exit code 0; **17/17 core cases PASS** plus the derived
   **B09_missing_corpus PASS** = **18/18 checks PASS**.
+- Streamlit `AppTest`: **2 passed in 2.06s** (fixture banner + response render,
+  and offline startup). These are headless script tests, not browser automation.
 
 ## Product decisions recorded during implementation
 
@@ -66,14 +68,15 @@ Observed results:
 
 ## Deviations and open issues
 
-1. **Local VCS only.** A local git repository exists with an initial commit
-   `6355475` plus a docs-refresh commit. No remote, push, branch, merge, or
+1. **Local VCS only.** A local git repository exists with four baseline commits
+   plus the final documentation commit. No remote, push, branch, merge, or
    deploy was made.
 2. **Real corpus blocked.** `ai_lawyer/legal_corpus/sources.json` and
    `provisions.json` are absent. English-only extracts exist in
-   `legal_corpus/extracted_en/` (6 parts, 100% Latin), and
-   `legal_rag/draft_ingest.py` generates review-only drafts: 6 sources and 145
-   provisions, all `unverified`, 0 usable. Candidate metadata is quoted from the
+   `legal_corpus/extracted_en/` (6 parts; ECR is 0.99957 Latin because of 6
+   Devanagari enumeration markers), and `legal_rag/draft_ingest.py` generates
+   review-only drafts: 6 sources and 145 provisions, all `unverified`, 0 usable,
+   with `REVIEWER_CHECKLIST.md`. Candidate metadata is quoted from the
    documents; publisher, URL, publication date and effective dates remain blank
    for human review. Real mode still raises `CorpusValidationError`; this is
    expected, not a crash.
@@ -83,11 +86,19 @@ Observed results:
    per case; the first 13/17 run was replaced by the passing rerun. The exact
    observed failure lines and fixes are preserved in
    `evaluation/failure_analysis.md`.
-5. **Streamlit UI not browser-tested.** The API contract is covered by
-   `TestClient`; the UI was not exercised in a real browser during this run.
+5. **Streamlit is headless-tested, not browser-tested.** Two `AppTest` cases
+   execute the real app script and submit a chat message with fake HTTP
+   responses. They do not cover a real browser or a live backend.
 6. **Fixture metrics are not real-law metrics.** The corpus is synthetic, the
-   dataset is 8 rows, and `FakeLLM` is a deterministic lexical grader.
-7. **Installed versions.** `requirements.txt` is pinned to the versions found in
+   retrieval dataset is 16 rows, and `FakeLLM` is a deterministic lexical
+   grader with a small documented synonym map. The map exists because the
+   expanded rows exposed misses for "definition"/"means" and "sent"/"returned";
+   it is not a semantic model.
+7. **Devanagari markers preserved.** The ECR English extract contains six
+   Devanagari enumeration labels. They are counted as non-Latin, flagged
+   `devanagari`, and left verbatim; repairing or removing them needs a human
+   decision or proper OCR.
+8. **Installed versions.** `requirements.txt` is pinned to the versions found in
    `.venv` on 2026-11-08 (`pandas==3.1.1`, `pymupdf==2.1`,
    `pydantic-settings==2.16.2`, `python-multipart==0.0.33`, `pytest==9.2.0`).
 
@@ -95,7 +106,7 @@ Observed results:
 
 ```text
 .venv\Scripts\python.exe -m pytest -q
-134 passed, 1 warning
+141 passed, 1 warning in 8.60s
 ```
 
 If the count differs, rerun the command and trust the terminal output over this

@@ -5,10 +5,11 @@
 **Package:** `ai_lawyer/`  
 **Mode:** fixture demo — **`FIXTURE DATA, NOT REAL LAW`**  
 **Bottom line:** the fixture-mode MVP is implemented, runs end to end, and is
-covered by 134 offline tests plus 18 behaviour checks. A review-only draft
-corpus (6 sources, 145 provisions) was generated from the English extracted
-text. Real-law use is still **BLOCKED**: no reviewed real corpus exists and no
-real source has been verified. No real legal metric is reported.
+covered by 141 offline tests plus 18 behaviour checks. A review-only draft
+corpus (6 sources, 145 provisions) and a mechanical reviewer checklist were
+generated from the English extracted text. Real-law use is still **BLOCKED**:
+no reviewed real corpus exists and no real source has been verified. No real
+legal metric is reported.
 
 ---
 
@@ -23,8 +24,8 @@ Status labels: `IMPLEMENTED_AND_TESTED`, `IMPLEMENTED_NOT_TESTED`,
 | Contracts (Fact, Candidate, Assessment, LegalDraft, Evidence, DocumentDraft, CorpusManifest) | IMPLEMENTED_AND_TESTED | `contracts/models.py`; `tests/unit/test_contracts.py` |
 | Fixture corpus loader, validation, manifest hash, unusable-source gate | IMPLEMENTED_AND_TESTED | `legal_rag/corpus_loader.py`; `test_corpus_loader.py` (9 tests) |
 | Real corpus mode | BLOCKED | `sources.json` / `provisions.json` absent; fails closed with `CorpusValidationError`; test `test_real_mode_without_sources_fails_clearly` |
-| English extraction from bilingual PDFs | IMPLEMENTED_AND_TESTED | `legal_rag/english_extract.py`; 10 tests; 6 parts, 100% Latin, candidate metadata quoted from source |
-| Draft corpus ingestion (mechanical, review-only) | IMPLEMENTED_AND_TESTED | `legal_rag/draft_ingest.py`; 18 tests; writes `legal_corpus/draft/`; 6 sources, 145 provisions, all `unverified`, 0 usable |
+| English extraction from bilingual PDFs | IMPLEMENTED_AND_TESTED | `legal_rag/english_extract.py`; 11 tests; 6 parts; 5 parts 100% Latin, ECR 0.99957 because of 6 Devanagari enumeration markers; candidate metadata quoted from source |
+| Draft corpus ingestion (mechanical, review-only) | IMPLEMENTED_AND_TESTED | `legal_rag/draft_ingest.py`; 21 tests; writes `legal_corpus/draft/`; 6 sources, 145 provisions, all `unverified`, 0 usable; `REVIEWER_CHECKLIST.md` with mechanical flags and section-gap report |
 | Provision-aware chunker with stable chunk ids | IMPLEMENTED_AND_TESTED | `legal_rag/chunker.py`; 4 tests |
 | FAISS dense index, BM25 sparse index, atomic build, stale-index rejection | IMPLEMENTED_AND_TESTED | `legal_rag/index_manager.py`; 8 tests; CLI build verified |
 | Reciprocal Rank Fusion | IMPLEMENTED_AND_TESTED | `legal_rag/rrf.py`; 5 tests |
@@ -45,10 +46,10 @@ Status labels: `IMPLEMENTED_AND_TESTED`, `IMPLEMENTED_NOT_TESTED`,
 | Document generator + validator | IMPLEMENTED_AND_TESTED | `documents/`; 5 tests; templates for `support_request`, `formal_grievance` |
 | Orchestrator / response generator | IMPLEMENTED_AND_TESTED | `backend/services/orchestrator.py`, `response_generator.py`; 9 integration tests |
 | FastAPI endpoints and safe error envelope | IMPLEMENTED_AND_TESTED | `backend/main.py`, `backend/api/routes.py`; 6 API tests + live smoke |
-| Streamlit client | IMPLEMENTED_NOT_TESTED | Starts and serves HTTP 200; no automated browser interaction; escaped rendering and fixture banner present |
+| Streamlit client | IMPLEMENTED_AND_TESTED | Starts and serves HTTP 200; 2 headless Streamlit `AppTest` interaction tests (banner, chat flow, draft render, offline state); not real-browser automation |
 | `FakeLLM`, `HashEmbedder` | MOCKED_FOR_TESTING | Deterministic, offline; used by all tests and the demo |
 | OpenAI-compatible / HF-local LLM, SentenceTransformer embedder | IMPLEMENTED_NOT_TESTED | Lazy adapters exist; no network, model download, or GPU run |
-| Retrieval evaluation E1/E2/E3/E5 | IMPLEMENTED_AND_TESTED (FIXTURE) | `run_retrieval_eval.py`; 80 raw records |
+| Retrieval evaluation E1/E2/E3/E5 | IMPLEMENTED_AND_TESTED (FIXTURE) | `run_retrieval_eval.py`; 160 raw records over 16 rows |
 | Retrieval evaluation E4 | DESIGN_ONLY / NOT RUN | Optional reranker unavailable |
 | Behaviour evaluation | IMPLEMENTED_AND_TESTED (FIXTURE) | `run_behavior_eval.py`; 17 core cases + 1 derived check |
 | Real legal corpus, OCR, claim entailment, RAGAS, Jev, snapshots | DESIGN_ONLY / BLOCKED | See Sections 11 and 14 |
@@ -98,10 +99,10 @@ ROUGE/BERTScore dashboard.
   with a validator that blocks unbacked ids, dates, amounts, and citations.
 - `frontend/`: Streamlit demo client with escaped rendering, fixture banner,
   facts/sources/assessment/draft panels, and no send button.
-- `evaluation/`: metric implementations, 8-row fixture retrieval dataset,
-  17-case behaviour dataset, retrieval/behaviour harnesses, raw outputs,
-  run manifests, failure analysis.
-- `tests/`: 134 offline unit/integration tests.
+- `evaluation/`: metric implementations, 16-row fixture retrieval dataset
+  (8 development, 8 test), 17-case behaviour dataset, retrieval/behaviour
+  harnesses, raw outputs, run manifests, failure analysis.
+- `tests/`: 141 offline unit/integration tests.
 
 ---
 
@@ -114,8 +115,8 @@ ROUGE/BERTScore dashboard.
 | Real corpus `ai_lawyer/legal_corpus/sources.json` | Absent |
 | Real corpus `ai_lawyer/legal_corpus/provisions.json` | Absent |
 | Supplied PDFs in `ai_lawyer/legal_corpus/originals/` | Present (gitignored); SHA-256 recorded in draft sources; byte-identical to the copies in `ai-lawyer/legal_corpus/originals/` |
-| Extracted English parts (`legal_corpus/extracted_en/`) | 6 parts, 100% Latin, low OCR risk; Hindi lines dropped rather than repaired |
-| Draft corpus (`ai_lawyer/legal_corpus/draft/`) | 6 unverified sources, 145 draft provisions, 0 usable; generated 2026-11-08 |
+| Extracted English parts (`legal_corpus/extracted_en/`) | 6 parts; 5 parts 100% Latin, ECR 0.99957 Latin because 6 Devanagari enumeration markers were kept; low OCR risk; Hindi lines dropped rather than repaired |
+| Draft corpus (`ai_lawyer/legal_corpus/draft/`) | 6 unverified sources, 145 draft provisions, 0 usable; generated 2026-11-08; includes `REVIEWER_CHECKLIST.md` |
 | Source review | No real source has `review_status: human_verified`; none was fabricated |
 | Draft metadata | Candidate titles, dates, departments and gazette IDs are quoted from the documents; `publisher`, `official_url`, `published_date` and effective dates remain blank for human review |
 | Fixture corpus | 11 synthetic provisions under 4 fake sources (`TEST_ACT`, `TEST_OLD`, `TEST_FUTURE`, `TEST_UNVERIFIED`); 10 usable, 1 unusable; every text starts `FAKE TEST TEXT:` |
@@ -133,6 +134,14 @@ drafts that already contain `human_verified` entries. Mechanical segmentation
 produced 145 provisions: Act 107, Commission Rules 18, General Rules 5,
 E-Commerce Rules 8, Amendment 2, Jurisdiction Rules 5. All six sources remain
 `unverified`, so the loader reports 0 usable provisions.
+
+The generated `REVIEWER_CHECKLIST.md` adds a per-source metadata worksheet, a
+section-gap report, and mechanical flags (`short_text`, `replacement_char`,
+`devanagari`, `starts_lowercase`, `long_page_span`). A flag is a prompt to look
+closer, not a legal judgment. The ECR extract contains six Devanagari
+enumeration labels (`क, ख, ग, घ, ङ, च`) on otherwise English list items; they are
+flagged and preserved verbatim, not silently translated or deleted. Fixing
+them requires a human decision or proper OCR.
 
 ---
 
@@ -169,7 +178,7 @@ POST /conversations + POST /conversations/{id}/messages
   "FIXTURE DATA, NOT REAL LAW" present in the answer
 
 streamlit run ... --server.headless true --server.port 8502
-→ HTTP 200 (server boot only; no browser interaction automation)
+→ HTTP 200 (server boot only; interaction covered separately by headless AppTest)
 ```
 
 ---
@@ -222,6 +231,10 @@ jurisdiction_rules_2021.pdf: pages_kept=1/2 parts=1 latin_share=100.0%
 wrote 6 part files
 ```
 
+The tool prints `latin_share` at one decimal, so the ECR line shows `100.0%`.
+The raw count for that part is 13,848 Latin letters and 6 Devanagari letters,
+i.e. `0.99957`; those six labels are kept and flagged.
+
 Draft build observed:
 
 ```text
@@ -234,8 +247,13 @@ draft sources=6 provisions=145 review_status=unverified citation_ready=false
   JUR_2021: pages=2 sections=5 ascii=99.5% letters=74.1% latin_share=100.0% ocr_risk=low
 ```
 
+The draft builder also rounds to one decimal. ECR is the only part with the six
+Devanagari labels; the checklist flags the two affected provisions
+(`ECR_2020_P004`, `ECR_2020_P005`).
+
 Artifacts: `legal_corpus/draft/{draft_sources.json,draft_provisions.json,
-sources_review.csv,provisions_review.csv,draft_manifest.json,DRAFT_REVIEW.md}`.
+sources_review.csv,provisions_review.csv,draft_manifest.json,DRAFT_REVIEW.md,
+REVIEWER_CHECKLIST.md}`.
 They are generated, gitignored, and every source is `unverified`, so the
 loader reports 0 usable provisions.
 
@@ -249,7 +267,7 @@ loader reports 0 usable provisions.
 ```
 
 - Corpus: fixture, version `d269bfc2722114f8`.
-- Retrieval split: 4 development rows + 4 test rows (`evaluation/dataset/`).
+- Retrieval split: 8 development rows + 8 test rows (`evaluation/dataset/`).
 - K values: 5, 10, 20.
 - Retrieval modes: E1 FAISS dense, E2 BM25 sparse, E3 hybrid + RRF, E5
   verification. E4 reranker: NOT RUN.
@@ -272,33 +290,38 @@ not be reported as real legal retrieval quality.
 
 | Mode | Split | n | P@5 | R@5 | MRR@5 | nDCG@5 | Recall N/A |
 |---|---|---:|---:|---:|---:|---:|---:|
-| E1 dense | development | 4 | 0.2000 | 1.0000 | 0.6125 | 0.7044 | 1 |
-| E1 dense | test | 4 | 0.2000 | 1.0000 | 1.0000 | 1.0000 | 1 |
-| E2 sparse | development | 4 | 0.2000 | 1.0000 | 0.6750 | 0.7544 | 1 |
-| E2 sparse | test | 4 | 0.2000 | 1.0000 | 1.0000 | 1.0000 | 1 |
-| E3 hybrid | development | 4 | 0.2000 | 1.0000 | 0.6333 | 0.7217 | 1 |
-| E3 hybrid | test | 4 | 0.2000 | 1.0000 | 1.0000 | 1.0000 | 1 |
+| E1 dense | development | 8 | 0.2250 | 1.0000 | 0.8063 | 0.8014 | 1 |
+| E1 dense | test | 8 | 0.2000 | 1.0000 | 0.9000 | 0.9194 | 1 |
+| E2 sparse | development | 8 | 0.2250 | 1.0000 | 0.8375 | 0.8436 | 1 |
+| E2 sparse | test | 8 | 0.2000 | 1.0000 | 0.9063 | 0.9244 | 1 |
+| E3 hybrid | development | 8 | 0.2250 | 1.0000 | 0.8167 | 0.8239 | 1 |
+| E3 hybrid | test | 8 | 0.2000 | 1.0000 | 0.9063 | 0.9244 | 1 |
 
-At K=10 the precision values halve to 0.1000 and at K=20 to 0.0500, because the
-fixed-K denominator is used. Recall, MRR, and nDCG do not change at K>=5 for
-these rows. Full values: `evaluation/results/retrieval_summary.csv`.
+At K=10 the precision values halve to 0.1125 and at K=20 to 0.05625 for the
+development split (0.1000 and 0.0500 for the test split), because the fixed-K
+denominator is used. Recall, MRR, and nDCG do not change at K>=5 for these rows.
+Full values: `evaluation/results/retrieval_summary.csv`.
 
-**Honest reading:** the test split is saturated at these tiny sample sizes; the
-development split shows E2 (0.6750) > E3 (0.6333) > E1 (0.6125) on MRR. The
-hybrid is not the best configuration on 4 development rows. No tuning on the
-test split was performed.
+**Honest reading:** recall@5 is 1.0 for every mode on both splits, but each row
+has one essential provision, so recall is easy to saturate. The development
+split shows E2 (0.8375) > E3 (0.8167) > E1 (0.8063) on MRR. The hybrid is not
+the best configuration on these 8 development rows, and no tuning on the test
+split was performed. Precision falls mechanically when K rises; it is not a
+quality signal on an 11-provision corpus.
 
 ### 8.2 Verification (E5)
 
 | Split | n | Mean accepted | Precision | Recall | MRR | nDCG | Applicability precision | Applicability recall | False acceptance | Abstentions |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| development | 4 | 3.00 | 0.3750 | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 0.0000 | 0 |
-| test | 4 | 5.25 | 0.2146 | 1.0000 | 0.7813 | 0.8289 | 1.0000 | 1.0000 | 0.0000 | 0 |
+| development | 8 | 3.7500 | 0.3512 | 1.0000 | 1.0000 | 0.9884 | 1.0000 | 0.7500 | 0.0000 | 0 |
+| test | 8 | 4.3750 | 0.2677 | 1.0000 | 0.8073 | 0.8631 | 1.0000 | 1.0000 | 0.0000 | 0 |
 
 The verification "precision" is computed at the number of accepted provisions,
-not at a fixed K, so it is not directly comparable to P@K. The applicability
-numbers are perfect on 8 fixture rows and therefore not evidence of real-world
-calibration.
+not at a fixed K, so it is not directly comparable to P@K. Applicability
+precision is 1.0 on all 16 fixture rows and test recall is 1.0, but development
+recall is 0.75; this is not evidence of real-world calibration. Development
+applicability recall 0.75 means at least one labelled-not-applicable case was
+not detected; row-level data is in `raw_outputs/retrieval_raw.jsonl`.
 
 ### 8.3 Behaviour suite
 
@@ -329,13 +352,18 @@ calibration.
 Results file: `evaluation/results/behavior_summary.csv`;
 manifest: `evaluation/results/behavior_manifest.json`.
 
+The Streamlit client has 2 headless `AppTest` interactions (`2 passed in
+2.06s`): one renders the fixture banner, submits a chat message, and checks the
+response and editable draft; the other checks offline startup. They are not
+real-browser tests.
+
 ---
 
 ## 9. Raw outputs
 
 | Artifact | Path |
 |---|---|
-| Retrieval raw records (80 lines) | `ai_lawyer/evaluation/raw_outputs/retrieval_raw.jsonl` |
+| Retrieval raw records (160 lines) | `ai_lawyer/evaluation/raw_outputs/retrieval_raw.jsonl` |
 | Behaviour raw payloads (18 JSON files) | `ai_lawyer/evaluation/raw_outputs/behavior/<test_id>.json` |
 | Retrieval summary | `ai_lawyer/evaluation/results/retrieval_summary.csv` |
 | Verification summary | `ai_lawyer/evaluation/results/verification_summary.csv` |
@@ -356,18 +384,21 @@ failure text is preserved in `failure_analysis.md`.
 
 ```text
 .venv\Scripts\python.exe -m pytest -q
-134 passed, 1 warning
+141 passed, 1 warning in 8.60s
 ```
 
 - Python: 3.12.14 on Windows.
 - Warning: Starlette/httpx `TestClient` deprecation; unrelated to product logic.
 - Network/model use in tests: none.
-- Breakdown: 9 integration pipeline, 6 API, 4 chunker, 7 contracts, 9 corpus
-  loader, 4 dataset loader, 5 documents, 18 draft ingest, 10 English extract,
-  27 engine, 8 index manager, 7 metrics, 5 RRF, 15 services = 134.
+- Breakdown: 9 integration pipeline, 2 Streamlit `AppTest`, 6 API, 4 chunker,
+  8 contracts, 9 corpus loader, 4 dataset loader, 5 documents, 21 draft ingest,
+  27 engine, 11 English extract, 8 index manager, 7 metrics, 5 RRF,
+  15 services = 141.
 - Earlier in the session the suite was 105 passed before the final BM25
-  tokenizer test was added, 106 before the draft-ingest tests were added, and
-  121 before the English-extraction and manifest tests were added.
+  tokenizer test was added, 106 before the draft-ingest tests were added, 121
+  before the English-extraction and manifest tests were added, 134 before the
+  reviewer-checklist tests and 139 before the Streamlit `AppTest` file. The run
+  above is the authoritative final count.
 
 ---
 
@@ -380,23 +411,27 @@ Detailed observed failures and fixes: `evaluation/failure_analysis.md`.
    real source is `human_verified`. Candidate titles, dates, departments and
    gazette IDs still need source-document confirmation. Real mode raises
    `CorpusValidationError`.
-2. **All metrics are fixture-only.** 11 synthetic provisions, 8 retrieval rows,
+2. **All metrics are fixture-only.** 11 synthetic provisions, 16 retrieval rows,
    `HashEmbedder`, and a deterministic lexical `FakeLLM`.
 3. **E4 reranker not run.** The wrapper exists but the optional model is not
    installed and `RERANKER_ENABLED=false`.
-4. **Streamlit is not browser-automated.** The server boots and serves 200; the
-   interactive flow was not driven by a browser test.
-5. **Retrieval sample is tiny.** Four development and four test rows, one
-   relevant provision each; precision@K is mechanically diluted by K.
+4. **Streamlit is tested headlessly, not in a real browser.** Two Streamlit
+   `AppTest` cases drive the app script and a submitted chat message with fake
+   HTTP responses. They are not browser automation and do not test real network
+   behaviour.
+5. **Retrieval sample is still small.** Eight development and eight test rows,
+   one relevant provision each; precision@K is mechanically diluted by K.
 6. **No claim-level entailment.** Guards check citations, phrases, dates, and
    draft facts, but there is no LLM entailment verifier over every sentence.
 7. **No OCR.** Scanned PDFs are not supported; the Hindi text layer was dropped
-   rather than repaired because its font mapping is broken. Text extraction
-   only, English layer only.
+   rather than repaired because its font mapping is broken. Six Devanagari
+   enumeration markers remain in the ECR English extract; they are preserved and
+   flagged for review, not translated or silently deleted.
 8. **No auth or multi-tenancy.** `X-User-Id` is a demo header, not an
    authentication mechanism. The app is a local demo.
-9. **Repository has no push/remote history.** A local git repository and initial
-   commit exist; nothing was pushed, merged, or deployed.
+9. **Repository has no remote.** A local git repository exists with four
+   baseline commits plus the final documentation commit; nothing was pushed,
+   merged, or deployed.
 10. **First failing behaviour outputs were overwritten.** See the process
     deviation in `failure_analysis.md`.
 
@@ -443,8 +478,8 @@ Only what is needed to move from this fixture prototype to a safer, real system:
 6. Install and calibrate the reranker on development data only; then run E4.
 7. Add a claim-level entailment verifier and test it against supported and
    unsupported claims.
-8. Add browser-level tests for the Streamlit UI and an end-to-end API test with
-   uploads.
+8. Add real-browser tests for the Streamlit UI in addition to the headless
+   `AppTest` cases, and an end-to-end API test with uploads.
 9. Add authentication, per-user isolation, retention rules, and encrypted
    evidence storage before any shared deployment.
 10. Only after the baseline is stable: OCR, RAGAS, Jev, snapshots, and the
@@ -474,16 +509,18 @@ No stretch item was allowed to delay evaluation, the README, or the report.
 ### Merge log
 
 A local git repository was initialized at the workspace root on 2026-11-08. It
-has an initial commit `6355475` plus a documentation-refresh commit; run
-`git log --oneline` for the full local history. There is no remote, branch,
-merge, push, or deployment log. `reference/` and the user's original
+has an initial commit `6355475` plus the docs refresh `6650ca8`, the local
+baseline `38d71e7`, the test output fix `efd05f8`, and the final documentation
+commit; run `git log --oneline` for the full local history. There is no remote,
+branch, merge, push, or deployment log. `reference/` and the user's original
 `ai-lawyer/` are gitignored and unmodified. The logical change set is:
 
 | Area | Change |
 |---|---|
 | Reference project | Untouched |
 | New package | `ai_lawyer/` added (config, contracts, corpus fixtures, RAG, engine, backend, documents, frontend, evaluation, tests, docs) |
-| Draft corpus tooling | `legal_rag/english_extract.py` + `legal_rag/draft_ingest.py` and their tests; generated `legal_corpus/extracted_en/` and `legal_corpus/draft/` (draft dir gitignored) |
+| Draft corpus tooling | `legal_rag/english_extract.py` + `legal_rag/draft_ingest.py` and their tests; generated `legal_corpus/extracted_en/` and `legal_corpus/draft/` (draft dir gitignored); checklist and mechanical flags included |
+| Evaluation | Expanded to 16 fixture retrieval rows, added E5 recomputation, and 2 Streamlit `AppTest` interactions; raw outputs regenerated |
 | Corpus loader | `validate_and_build` gained `warn_unusable` (default unchanged) so draft validation stays quiet |
 | Root config | `.env.example`, `.gitignore`, `requirements.txt`, `pytest.ini` |
 | Requirements | Pins corrected to the installed `.venv` versions on 2026-11-08 |
@@ -506,7 +543,7 @@ Deliberately not built, with reasons:
 | Jev adapter | Stretch experiment only |
 | Auth, multi-tenancy, public deployment | Local demo only; security note applies |
 | Streaming, multilingual UI, voice | Out of scope |
-| Full 150-question set | Only the 8 fixture retrieval rows and 17 behaviour cases exist |
+| Full 150-question set | Only the 16 fixture retrieval rows and 17 behaviour cases exist |
 | LLM-judge evaluation | Would add variability without a validated rubric |
 
 ---

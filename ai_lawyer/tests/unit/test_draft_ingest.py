@@ -10,6 +10,8 @@ import pytest
 from ai_lawyer.legal_rag.corpus_loader import validate_and_build
 from ai_lawyer.legal_rag.draft_ingest import (
     DocumentSpec,
+    _provision_flags,
+    _section_gaps,
     build_drafts,
     extract_title,
     script_mix_note,
@@ -17,6 +19,7 @@ from ai_lawyer.legal_rag.draft_ingest import (
     split_sections,
     text_quality,
 )
+from ai_lawyer.contracts.models import Provision
 
 ACT_TEXT = """===== PAGE 1 =====
 THE TEST ACT, 2020
@@ -113,6 +116,14 @@ def test_text_quality_flags_mixed_script_as_high_risk():
     assert script_mix_note(latin_share) is not None
 
 
+def test_text_quality_counts_combining_devanagari_marks():
+    text = "(क) legal name of the e-commerce entity;\n"
+    _, _, latin_share, risk = text_quality(text)
+
+    assert latin_share < 1.0
+    assert risk == "low"
+
+
 def _write(path: Path, text: str) -> Path:
     path.write_text(text, encoding="utf-8")
     return path
@@ -204,6 +215,11 @@ def test_build_drafts_writes_review_worksheets_and_manifest(tmp_path: Path):
     assert manifest["citation_ready"] is False
     assert manifest["provisions_count"] == 3
     assert (build.out_dir / "DRAFT_REVIEW.md").exists()
+    checklist = (build.out_dir / "REVIEWER_CHECKLIST.md").read_text(encoding="utf-8")
+    assert "NOT been reviewed" in checklist
+    assert "TEST_ACT_P001" in checklist
+    assert "Must be supplied by a human" in checklist
+    assert "official URL" in checklist
 
 
 def test_build_drafts_refuses_to_overwrite_verified_draft(tmp_path: Path):
@@ -322,3 +338,50 @@ def test_build_drafts_from_manifest_uses_text_dir_and_title_hint(tmp_path: Path)
     assert row["title_status"] == "candidate"
     assert row["candidate_dates"] == "1st January, 2020"
     assert row["official_url"] == ""
+
+
+def _provision(provision_id: str, text: str) -> Provision:
+    return Provision(
+        provision_id=provision_id,
+        source_id="TEST_ACT",
+        citation="TEST_ACT test",
+        hierarchy_type="section",
+        parent_provision_id=None,
+        original_text=text,
+        search_text="",
+        provisos=[],
+        exceptions=[],
+        definitions_used=[],
+        cross_references=[],
+        mandatory_context=[],
+        conditions=[],
+        page_start=1,
+        page_end=1,
+    )
+
+
+def test_provision_flags_are_mechanical_and_conservative():
+    assert _provision_flags(
+        _provision("TEST_ACT_P001", "A complete sentence that is long enough to review.")
+    ) == []
+    assert "short_text" in _provision_flags(_provision("TEST_ACT_P002", "1. Short."))
+    assert "starts_lowercase" in _provision_flags(
+        _provision("TEST_ACT_P003", "lowercase start but otherwise a full sentence.")
+    )
+    assert "devanagari" in _provision_flags(
+        _provision("TEST_ACT_P004", "Mixed text with \u0915\u0947\u0902\u0926\u094d\u0930\u0940\u092f characters.")
+    )
+    assert "replacement_char" in _provision_flags(
+        _provision("TEST_ACT_P005", "Text with a broken \ufffd character inside.")
+    )
+
+
+def test_section_gaps_reports_missing_numbers():
+    provisions = [
+        _provision("TEST_ACT_P001", "First."),
+        _provision("TEST_ACT_P003", "Third."),
+    ]
+    gaps, numbers = _section_gaps(provisions)
+
+    assert numbers == [1, 3]
+    assert gaps == [2]
