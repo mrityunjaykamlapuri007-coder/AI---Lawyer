@@ -1,0 +1,11 @@
+# held-out run: 4 cases pre-registered in commit 2d2e3e6, same code as run 4
+Sun Nov  8 22:05:07 UTC 2026
+summary: C:\Users\Lenovo\OneDrive\Documents\Default Project\ai_lawyer\evaluation\results\real_behavior\summary.md
+H01: PASS (formal_grievance_recommended)
+H02: PASS (formal_grievance_recommended)
+H03: FAIL (out_of_scope) — outcome 'out_of_scope' != 'formal_grievance_recommended'
+H04: PASS (needs_more_information)
+REAL: 3/4 checks PASS (4 core cases)
+summary: C:\Users\Lenovo\OneDrive\Documents\Default Project\ai_lawyer\evaluation\results\real_behavior\behavior_summary.csv
+exit=1
+Sun Nov  8 22:09:45 UTC 2026

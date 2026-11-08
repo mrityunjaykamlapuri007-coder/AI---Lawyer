@@ -1,0 +1,592 @@
+{
+  "label": "REAL CORPUS, VERIFIED SUBSET (30 usable)",
+  "test_id": "R16",
+  "category": "wrong_laptop_return_refund_rejected",
+  "notes": null,
+  "now": "2026-11-08",
+  "turns": [
+    {
+      "message": "I ordered an HP Pavilion laptop on Amazon on December 26, 2023 and paid Rs 61,990. It was delivered on December 27, 2023, but it was an obsolete IBM ThinkPad, not what I ordered. I contacted customer care immediately; they asked me to photograph the product and upload the photos, which I did. The item was picked up on January 1, 2024, but no refund came. On January 7, 2024 I got a message that the return was lost in transit. On January 19, 2024 Amazon emailed that it cannot refund me because the returned item is different from what I ordered and my number of refunds exceeds expectations under its Use Policy. I replied that I returned it because it was different from what I ordered."
+    }
+  ],
+  "expected": {
+    "outcome": "formal_grievance_recommended",
+    "rule": "R5",
+    "rationale": "Refund denied, exact purchase and pickup dates, support contacted, grievance officer not mentioned."
+  },
+  "corpus": {
+    "mode": "real",
+    "version": "0381858588e1a7be",
+    "usable_count": 30,
+    "usable_ids": [
+      "ECR_2020_P001",
+      "ECR_2020_P002",
+      "ECR_2020_P004_SR02",
+      "ECR_2020_P004_SR03",
+      "ECR_2020_P004_SR04",
+      "ECR_2020_P004_SR05",
+      "ECR_2020_P004_SR06",
+      "ECR_2020_P004_SR07",
+      "ECR_2020_P004_SR08",
+      "ECR_2020_P004_SR09",
+      "ECR_2020_P004_SR10",
+      "ECR_2020_P004_SR11",
+      "ECR_2020_P005_SR01",
+      "ECR_2020_P005_SR02",
+      "ECR_2020_P005_SR03",
+      "ECR_2020_P005_SR04",
+      "ECR_2020_P005_SR05",
+      "ECR_2020_P006_SR01",
+      "ECR_2020_P006_SR02",
+      "ECR_2020_P006_SR03",
+      "ECR_2020_P006_SR04",
+      "ECR_2020_P006_SR05",
+      "ECR_2020_P007_SR01",
+      "ECR_2020_P007_SR02",
+      "ECR_2020_P007_SR03",
+      "ECR_2020_P007_SR04",
+      "ECR_2020_P007_SR05",
+      "ECR_2020_P008",
+      "ECR_2021_AMENDMENT_P001",
+      "ECR_2021_AMENDMENT_P002"
+    ]
+  },
+  "responses": [
+    {
+      "conversation_id": "conv_7299ee14-9ac5-4259-8e2d-ca0fba0c1ba6",
+      "message_id": "msg_ec5fabf3-f633-4088-bfc3-b30a126d9fa3",
+      "assistant_message_id": "msg_e323007e-c2cd-4c5f-b11d-97495244ba46",
+      "case_id": "case_8a9a8c17-6829-4eba-b144-b5fb166d79d7",
+      "processing_status": "needs_clarification",
+      "assistant_message": "## What I understood\n\nThe user purchased an HP Pavilion laptop from Amazon but received an obsolete IBM ThinkPad instead. The user has initiated a return process but has not received a refund.\n\n## Facts\n\nFacts you reported:\n- Refund status: no refund\n- Support contact made: i contacted\n- Support response: replied that I returned it because it was diffe\n- Purchase date: December 26, 2023\n- Purchase date: December 27, 2023\n- Pickup date: January 1, 2024\n- Return requested: January 7, 2024\n- Return requested: January 19, 2024\n- Merchant name: HP\n- Platform name: Amazon\n- Refund status: no refund came\n\n## Legal sources that may apply\n\n- **Consumer Protection (E-Commerce) Rules, 2020, provision 7, sub-rule (1)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"7. Duties and liabilities of inventory e-commerce entities: -\n(1) Every inventory e-commerce entity shall provide the following information in a clear and accessible\nmanner, displayed prominently to its users:\n(a)      accurate information related to return, refund, exchange, warranty and guarantee, delivery and\nshipment, cost of return shipping, mode of payments, grievance redressal mechanism, an\"\n- **Consumer Protection (E-Commerce) Rules, 2020, provision 6, sub-rule (5)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"(5)\nAny seller offering goods or services through a marketplace e-commerce entity shall provide the\nfollowing information to the e-commerce entity to be displayed on its platform or website:\n(a)  all contractual information required to be disclosed by law;\ntotal price in single figure of any good or service, along with the breakup price for the good or\nservice, showing all the compulsory and volun\"\n- **Consumer Protection (E-Commerce) Rules, 2020, provision 2** — role: supporting; applicability: applicable; source validity: current_for_date. Excerpt: \"2. Scope and Applicability. – (1) Save as otherwise expressly provided by the Central Government by\nnotification, these rules shall apply to:\n(a) all goods and services bought or sold over digital or electronic network including digital products;\n(b) all models of e-commerce, including marketplace and inventory models of e-commerce;\n(c) all e-commerce retail, including multi-channel single brand r\"\n\n## How this may relate to your case\n\n- The merchant may apply if it fails to provide accurate information related to return, refund, and exchange policies, which could include the reason for the discrepancy between the ordered and received items.\n\n## Assessment\n\n**I need more information before assessing the next step.**\n\n- The case contains conflicting dates or values that must be resolved first.\n\nSuggested next steps:\n1. Answer the follow-up question so the refund timeline can be assessed.\n\nAssessment date: 2026-11-08.\n\n## Missing information\n- I have different dates that do not agree (purchase date: December 26, 2023; purchase date: December 27, 2023; pickup date: January 1, 2024; return requested: January 7, 2024; return requested: January 19, 2024). These dates conflict. Which one is correct?\n\n## Limitations\n\n- This is general information and a draft for your review, not legal advice. I cannot guarantee any outcome.\n",
+      "case_summary": {
+        "identifiers": [],
+        "merchant": "HP",
+        "platform": "Amazon",
+        "amount_minor": null,
+        "currency": "INR",
+        "refund_status": "not_received"
+      },
+      "extracted_facts": [
+        {
+          "fact_id": "fact_8d478406-da31-4ee0-8601-08abdf7786c2",
+          "case_id": "case_8a9a8c17-6829-4eba-b144-b5fb166d79d7",
+          "fact_type": "refund_status",
+          "raw_value": "no refund",
+          "normalised_value": "not_received",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T22:02:13.527267Z"
+        },
+        {
+          "fact_id": "fact_f856ed87-9420-481a-bb69-3c1147d91eb0",
+          "case_id": "case_8a9a8c17-6829-4eba-b144-b5fb166d79d7",
+          "fact_type": "support_contact_made",
+          "raw_value": "i contacted",
+          "normalised_value": true,
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T22:02:13.548115Z"
+        },
+        {
+          "fact_id": "fact_fcccc6fa-fef3-4b2c-b542-9190d72fe040",
+          "case_id": "case_8a9a8c17-6829-4eba-b144-b5fb166d79d7",
+          "fact_type": "support_response",
+          "raw_value": "replied that I returned it because it was diffe",
+          "normalised_value": "replied that I returned it because it was diffe",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T22:02:13.574121Z"
+        },
+        {
+          "fact_id": "fact_e4ea0fb4-a615-4087-b9c2-377868ed0619",
+          "case_id": "case_8a9a8c17-6829-4eba-b144-b5fb166d79d7",
+          "fact_type": "purchase_date",
+          "raw_value": "December 26, 2023",
+          "normalised_value": "2023-12-26",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": true,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T22:02:13.600784Z"
+        },
+        {
+          "fact_id": "fact_0985c114-6ced-484b-b5c4-39129b7bc1bb",
+          "case_id": "case_8a9a8c17-6829-4eba-b144-b5fb166d79d7",
+          "fact_type": "purchase_date",
+          "raw_value": "December 27, 2023",
+          "normalised_value": "2023-12-27",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": true,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T22:02:13.624318Z"
+        },
+        {
+          "fact_id": "fact_ef5432d9-f421-4131-b1c0-7cc3d51022ae",
+          "case_id": "case_8a9a8c17-6829-4eba-b144-b5fb166d79d7",
+          "fact_type": "pickup_date",
+          "raw_value": "January 1, 2024",
+          "normalised_value": "2024-01-01",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": true,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T22:02:13.649228Z"
+        },
+        {
+          "fact_id": "fact_1e6d73c7-ecd5-4d3c-90e8-3f30971e89c9",
+          "case_id": "case_8a9a8c17-6829-4eba-b144-b5fb166d79d7",
+          "fact_type": "return_requested_date",
+          "raw_value": "January 7, 2024",
+          "normalised_value": "2024-01-07",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": true,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T22:02:13.672135Z"
+        },
+        {
+          "fact_id": "fact_43ce6a2b-cdd5-4692-9449-e7a1f73bd38e",
+          "case_id": "case_8a9a8c17-6829-4eba-b144-b5fb166d79d7",
+          "fact_type": "return_requested_date",
+          "raw_value": "January 19, 2024",
+          "normalised_value": "2024-01-19",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": true,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T22:02:13.694202Z"
+        },
+        {
+          "fact_id": "fact_3aea0329-2424-478b-ae3d-47c4d1d9ffde",
+          "case_id": "case_8a9a8c17-6829-4eba-b144-b5fb166d79d7",
+          "fact_type": "merchant_name",
+          "raw_value": "HP",
+          "normalised_value": "HP",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T22:02:13.715575Z"
+        },
+        {
+          "fact_id": "fact_25ca4331-3864-48c8-a89b-7a912a47f495",
+          "case_id": "case_8a9a8c17-6829-4eba-b144-b5fb166d79d7",
+          "fact_type": "platform_name",
+          "raw_value": "Amazon",
+          "normalised_value": "Amazon",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T22:02:13.738601Z"
+        },
+        {
+          "fact_id": "fact_b71f0d68-0152-4b0b-b100-dce5719bb3b3",
+          "case_id": "case_8a9a8c17-6829-4eba-b144-b5fb166d79d7",
+          "fact_type": "refund_status",
+          "raw_value": "no refund came",
+          "normalised_value": "not_received",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T22:02:13.760498Z"
+        }
+      ],
+      "evidence_processing": [],
+      "legal_sources": [
+        {
+          "provision_id": "ECR_2020_P007_SR01",
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 7, sub-rule (1)",
+          "excerpt": "7. Duties and liabilities of inventory e-commerce entities: -\n(1) Every inventory e-commerce entity shall provide the following information in a clear and accessible\nmanner, displayed prominently to its users:\n(a)      accurate information related to return, refund, exchange, warranty and guarantee, delivery and\nshipment, cost of return shipping, mode of payments, grievance redressal mechanism, and any\nother similar information which may be required by consumers to make informed decisions;\n(b)      all mandatory notices and information required by applicable laws;\n(c)      information on avail",
+          "role": "supporting",
+          "applicability": "unknown",
+          "source_validity": "current_for_date",
+          "official_url": "https://consumeraffairs.gov.in/public/upload/files/E%20commerce%20rules_1732703966.pdf"
+        },
+        {
+          "provision_id": "ECR_2020_P006_SR05",
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 6, sub-rule (5)",
+          "excerpt": "(5)\nAny seller offering goods or services through a marketplace e-commerce entity shall provide the\nfollowing information to the e-commerce entity to be displayed on its platform or website:\n(a)  all contractual information required to be disclosed by law;\ntotal price in single figure of any good or service, along with the breakup price for the good or\nservice, showing all the compulsory and voluntary charges such as delivery charges, postage and\nhandling charges, conveyance charges and the applicable tax, as applicable;\nall mandatory notices and information provided by applicable laws, and th",
+          "role": "supporting",
+          "applicability": "unknown",
+          "source_validity": "current_for_date",
+          "official_url": "https://consumeraffairs.gov.in/public/upload/files/E%20commerce%20rules_1732703966.pdf"
+        },
+        {
+          "provision_id": "ECR_2020_P002",
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 2",
+          "excerpt": "2. Scope and Applicability. – (1) Save as otherwise expressly provided by the Central Government by\nnotification, these rules shall apply to:\n(a) all goods and services bought or sold over digital or electronic network including digital products;\n(b) all models of e-commerce, including marketplace and inventory models of e-commerce;\n(c) all e-commerce retail, including multi-channel single brand retailers and single brand retailers in single or\nmultiple formats; and\n(d) all forms of unfair trade practices across all models of e-commerce:\n             Provided that these rules shall not apply t",
+          "role": "supporting",
+          "applicability": "applicable",
+          "source_validity": "current_for_date",
+          "official_url": "https://consumeraffairs.gov.in/public/upload/files/E%20commerce%20rules_1732703966.pdf"
+        }
+      ],
+      "retrieval_candidates": [
+        {
+          "chunk_id": "ECR_2020_P007_SR01::c0",
+          "provision_id": "ECR_2020_P007_SR01",
+          "source_id": "ECR_2020",
+          "dense_rank": 3,
+          "sparse_rank": 4,
+          "rrf_score": 0.13827912344703389,
+          "rerank_score": null,
+          "relevance_grade": 2,
+          "relevance_reason": "While this provision outlines the information inventory e-commerce entities must provide, it is more background information regarding the duties and liabilities of these entities.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "supporting",
+          "rejection_reason": null,
+          "added_because": null,
+          "accepted": true,
+          "conditional": true,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 7, sub-rule (1)"
+        },
+        {
+          "chunk_id": "ECR_2020_P006_SR05::c0",
+          "provision_id": "ECR_2020_P006_SR05",
+          "source_id": "ECR_2020",
+          "dense_rank": 6,
+          "sparse_rank": 1,
+          "rrf_score": 0.13685294419793348,
+          "rerank_score": null,
+          "relevance_grade": 2,
+          "relevance_reason": "This provision provides detailed information that sellers must provide to marketplace e-commerce entities, which is more background information rather than directly addressing the current situation.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "supporting",
+          "rejection_reason": null,
+          "added_because": null,
+          "accepted": true,
+          "conditional": true,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 6, sub-rule (5)"
+        },
+        {
+          "chunk_id": "ECR_2020_P002::c0",
+          "provision_id": "ECR_2020_P002",
+          "source_id": "ECR_2020",
+          "dense_rank": 14,
+          "sparse_rank": 2,
+          "rrf_score": 0.09615611189089718,
+          "rerank_score": null,
+          "relevance_grade": 2,
+          "relevance_reason": "This provision outlines the scope and applicability of the Consumer Protection (E-Commerce) Rules, 2020, which are relevant to the case as it involves an online purchase through Amazon.",
+          "applicability": "applicable",
+          "applicability_reasons": [
+            "fact fact_25ca4331-3864-48c8-a89b-7a912a47f495 records platform_name"
+          ],
+          "source_validity": "current_for_date",
+          "role": "supporting",
+          "rejection_reason": null,
+          "added_because": null,
+          "accepted": true,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 2"
+        },
+        {
+          "chunk_id": "ECR_2020_P005_SR03::c0",
+          "provision_id": "ECR_2020_P005_SR03",
+          "source_id": "ECR_2020",
+          "dense_rank": 1,
+          "sparse_rank": 1,
+          "rrf_score": 0.15520095024392186,
+          "rerank_score": null,
+          "relevance_grade": 1,
+          "relevance_reason": "This provision is about the information that marketplace e-commerce entities must provide to users, which is more background information for the current case.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "background",
+          "rejection_reason": "relevance grade 1 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 5, sub-rule (3)"
+        },
+        {
+          "chunk_id": "ECR_2020_P004_SR10::c0",
+          "provision_id": "ECR_2020_P004_SR10",
+          "source_id": "ECR_2020",
+          "dense_rank": 2,
+          "sparse_rank": 1,
+          "rrf_score": 0.12685295415399028,
+          "rerank_score": null,
+          "relevance_grade": 1,
+          "relevance_reason": "This provision deals with the obligation of e-commerce entities to process refunds within a reasonable period, which is background information in the context of the specific case.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no fact of type refund_initiated_date"
+          ],
+          "source_validity": "current_for_date",
+          "role": "background",
+          "rejection_reason": "relevance grade 1 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (10)"
+        },
+        {
+          "chunk_id": "ECR_2020_P004_SR04::c0",
+          "provision_id": "ECR_2020_P004_SR04",
+          "source_id": "ECR_2020",
+          "dense_rank": 8,
+          "sparse_rank": 1,
+          "rrf_score": 0.11313434965797552,
+          "rerank_score": null,
+          "relevance_grade": 1,
+          "relevance_reason": "This provision focuses on the establishment of a grievance redressal mechanism by e-commerce entities, which is background information for the current case.",
+          "applicability": "applicable",
+          "applicability_reasons": [
+            "fact fact_25ca4331-3864-48c8-a89b-7a912a47f495 records platform_name"
+          ],
+          "source_validity": "current_for_date",
+          "role": "background",
+          "rejection_reason": "relevance grade 1 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (4)"
+        },
+        {
+          "chunk_id": "ECR_2021_AMENDMENT_P002::c0",
+          "provision_id": "ECR_2021_AMENDMENT_P002",
+          "source_id": "ECR_2021_AMENDMENT",
+          "dense_rank": 9,
+          "sparse_rank": 6,
+          "rrf_score": 0.09600150308968436,
+          "rerank_score": null,
+          "relevance_grade": 1,
+          "relevance_reason": "This provision amends the Consumer Protection (E-Commerce) Rules, 2020, specifically regarding the appointment of a nodal officer for compliance. While it provides important context, it is not directly relevant to the specific issue of a consumer seeking a refund due to receiving the wrong product.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "background",
+          "rejection_reason": "relevance grade 1 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) (Amendment) Rules, 2021, provision 2"
+        },
+        {
+          "chunk_id": "ECR_2020_P007_SR04::c0",
+          "provision_id": "ECR_2020_P007_SR04",
+          "source_id": "ECR_2020",
+          "dense_rank": 1,
+          "sparse_rank": 2,
+          "rrf_score": 0.15959578790091747,
+          "rerank_score": null,
+          "relevance_grade": 3,
+          "relevance_reason": "The provision directly addresses the seller's duty to accept returns and provide refunds when goods do not match the advertised characteristics or features.",
+          "applicability": "not_applicable",
+          "applicability_reasons": [
+            "refund_status is 'not_received', not in ['denied', 'partial']"
+          ],
+          "source_validity": "current_for_date",
+          "role": "rejected",
+          "rejection_reason": "conditions not met: refund_status is 'not_received', not in ['denied', 'partial']",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 7, sub-rule (4)"
+        },
+        {
+          "chunk_id": "ECR_2020_P006_SR03::c0",
+          "provision_id": "ECR_2020_P006_SR03",
+          "source_id": "ECR_2020",
+          "dense_rank": 2,
+          "sparse_rank": 3,
+          "rrf_score": 0.15632375814517882,
+          "rerank_score": null,
+          "relevance_grade": 3,
+          "relevance_reason": "This provision directly applies to sellers on marketplace e-commerce platforms and requires them to accept returns and provide refunds when goods do not match the advertised characteristics or features.",
+          "applicability": "not_applicable",
+          "applicability_reasons": [
+            "refund_status is 'not_received', not in ['denied', 'partial']"
+          ],
+          "source_validity": "current_for_date",
+          "role": "rejected",
+          "rejection_reason": "conditions not met: refund_status is 'not_received', not in ['denied', 'partial']",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 6, sub-rule (3)"
+        },
+        {
+          "chunk_id": "ECR_2020_P006_SR04::c0",
+          "provision_id": "ECR_2020_P006_SR04",
+          "source_id": "ECR_2020",
+          "dense_rank": 6,
+          "sparse_rank": 8,
+          "rrf_score": 0.09992156761455417,
+          "rerank_score": null,
+          "relevance_grade": 0,
+          "relevance_reason": "grader_failed",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "rejected",
+          "rejection_reason": "relevance grade 0 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 6, sub-rule (4)"
+        }
+      ],
+      "retrieval_summary": {
+        "corpus_version": "0381858588e1a7be",
+        "candidate_count": 10,
+        "accepted_count": 3,
+        "rejected_count": 7,
+        "retry_count": 0
+      },
+      "verification": {
+        "overall": "verified",
+        "blocked_claims": [],
+        "note": "deterministic citation/date/phrase guards only; claim-level entailment is DESIGN_ONLY"
+      },
+      "assessment": {
+        "outcome": "needs_more_information",
+        "reasons": [
+          "The case contains conflicting dates or values that must be resolved first."
+        ],
+        "facts_used": [
+          "fact_8d478406-da31-4ee0-8601-08abdf7786c2",
+          "fact_f856ed87-9420-481a-bb69-3c1147d91eb0",
+          "fact_fcccc6fa-fef3-4b2c-b542-9190d72fe040",
+          "fact_e4ea0fb4-a615-4087-b9c2-377868ed0619",
+          "fact_0985c114-6ced-484b-b5c4-39129b7bc1bb",
+          "fact_ef5432d9-f421-4131-b1c0-7cc3d51022ae",
+          "fact_1e6d73c7-ecd5-4d3c-90e8-3f30971e89c9",
+          "fact_43ce6a2b-cdd5-4692-9449-e7a1f73bd38e",
+          "fact_3aea0329-2424-478b-ae3d-47c4d1d9ffde",
+          "fact_25ca4331-3864-48c8-a89b-7a912a47f495",
+          "fact_b71f0d68-0152-4b0b-b100-dce5719bb3b3"
+        ],
+        "provision_ids_used": [
+          "ECR_2020_P007_SR01",
+          "ECR_2020_P006_SR05",
+          "ECR_2020_P002"
+        ],
+        "missing_information": [
+          "I have different dates or values that do not agree (purchase date = December 26, 2023; purchase date = December 27, 2023). Which one is correct?",
+          "Have you contacted the platform's grievance officer, and on what date?"
+        ],
+        "uncertainties": [
+          "relevance grade 1 below 2",
+          "relevance grade 1 below 2",
+          "relevance grade 1 below 2",
+          "relevance grade 1 below 2",
+          "conditions not met: refund_status is 'not_received', not in ['denied', 'partial']"
+        ],
+        "urgency": "unknown",
+        "next_steps": [
+          "Answer the follow-up question so the refund timeline can be assessed."
+        ],
+        "lawyer_needed": false,
+        "lawyer_reason": null,
+        "rule_trace": [
+          "R2-conflict: The case contains conflicting dates or values that must be resolved first."
+        ],
+        "llm_proposed_outcome": "needs_more_information"
+      },
+      "missing_information": [
+        "I have different dates or values that do not agree (purchase date = December 26, 2023; purchase date = December 27, 2023). Which one is correct?",
+        "Have you contacted the platform's grievance officer, and on what date?"
+      ],
+      "next_steps": [
+        "Answer the follow-up question so the refund timeline can be assessed."
+      ],
+      "document_draft": null
+    }
+  ],
+  "case_status_final": "open",
+  "event_types": [
+    "case_created",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "assessment_completed"
+  ],
+  "checks_failed": [
+    "outcome 'needs_more_information' != 'formal_grievance_recommended'"
+  ],
+  "observed": {
+    "outcome": "needs_more_information"
+  },
+  "data_origin": "public_commission_order",
+  "split": "test",
+  "result": "FAIL"
+}

@@ -1,0 +1,40 @@
+{
+  "label": "REAL CORPUS, VERIFIED SUBSET (30 usable)",
+  "generated_at": "2026-11-08T22:09:44.925139+00:00",
+  "mode": "real",
+  "data_origin": "public_commission_order",
+  "data_note": "real stories",
+  "cases": 4,
+  "checks": 4,
+  "passed": 3,
+  "failed": 1,
+  "recorded_without_pass_fail": 0,
+  "per_split": {
+    "holdout": {
+      "PASS": 3,
+      "FAIL": 1,
+      "RECORDED": 0
+    }
+  },
+  "embedder_model_hash": "66fb4645018b1085d2643add159e00b6",
+  "trust_level": "machine",
+  "raw_sha256": {
+    "H01.json": "a193630c951513f019f3e67984b0b10fe58dd6fcb3b28ca75ef69942fabfa02b",
+    "H02.json": "410a1040bbb8c0cb62fdeb295b4c8f068ba75f8654004c254f624da1208eb07c",
+    "H03.json": "ffc308340bceaa636fee7857608228373e67ce0f5ed44cbe2ebf579d1314d497",
+    "H04.json": "a97cf2c3d4fdfc8626625dd14d2e734138def8b980022950c6bfa55fb870a69f"
+  },
+  "derived_checks": [],
+  "corpus_mode": "real",
+  "corpus_version": "0381858588e1a7be",
+  "corpus_usable": 30,
+  "embedder": "BAAI/bge-large-en-v1.5",
+  "llm": "openai_compatible:refund-llm",
+  "llm_provider": "openai_compatible",
+  "llm_model": "refund-llm",
+  "vllm_version": "0.33.0",
+  "quantization": "fp16",
+  "gpu_type": "Tesla_T4_x2_Kaggle",
+  "as_of_policy": "each case uses its own now date",
+  "unverified_section_numbers": []
+}

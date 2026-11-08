@@ -89,11 +89,23 @@ def main() -> int:
 
     from ai_lawyer.backend.main import create_app
 
+    import tempfile
+
+    from ai_lawyer.config.settings import get_settings
+
     RESULTS.mkdir(parents=True, exist_ok=True)
     md = [f"# End-to-end demo through the real API ({datetime.now(timezone.utc).isoformat()})", ""]
     hashes: dict[str, str] = {}
+    # Own temporary index, database and upload folders: the demo never touches local data,
+    # and a locked ai_lawyer/vectorstore (OneDrive sync) cannot block it.
+    tmp = Path(tempfile.mkdtemp(prefix="ai_lawyer_demo_"))
+    settings = get_settings().model_copy(update={
+        "vectorstore_dir": str(tmp / "vectorstore"),
+        "sqlite_path": str(tmp / "lawyer.db"),
+        "evidence_dir": str(tmp / "evidence"),
+    })
     try:
-        with TestClient(create_app()) as client:
+        with TestClient(create_app(settings=settings)) as client:
             health = client.get("/health").json()
             (RESULTS / "0_health.json").write_text(json.dumps(health, indent=2), encoding="utf-8")
             md += ["## Health", "",

@@ -1,0 +1,24 @@
+# run 4: commit 4f28ea5 (run-3 fixes); Kaggle session 2, same model hash 66fb4645
+Sun Nov  8 21:39:49 UTC 2026
+summary: C:\Users\Lenovo\OneDrive\Documents\Default Project\ai_lawyer\evaluation\results\real_behavior\summary.md
+R01: PASS (formal_grievance_recommended)
+R02: PASS (needs_more_information)
+R03: PASS (formal_grievance_recommended)
+R04: PASS (needs_more_information)
+R05: FAIL (formal_grievance_recommended) — outcome 'formal_grievance_recommended' != 'informal_resolution_recommended'
+R06: PASS (needs_more_information)
+R07: PASS (formal_grievance_recommended)
+R08: PASS (needs_more_information)
+R09: PASS (needs_more_information)
+R10: RECORDED (needs_more_information)
+R11: PASS (formal_grievance_recommended)
+R12: FAIL (needs_more_information) — outcome 'needs_more_information' != 'formal_grievance_recommended'
+R13: RECORDED (needs_more_information)
+R14: PASS (formal_grievance_recommended)
+R15: PASS (needs_more_information)
+R16: FAIL (needs_more_information) — outcome 'needs_more_information' != 'formal_grievance_recommended'
+R17: PASS (needs_more_information)
+REAL: 12/17 checks PASS (17 core cases)
+summary: C:\Users\Lenovo\OneDrive\Documents\Default Project\ai_lawyer\evaluation\results\real_behavior\behavior_summary.csv
+exit=1
+Sun Nov  8 22:05:07 UTC 2026

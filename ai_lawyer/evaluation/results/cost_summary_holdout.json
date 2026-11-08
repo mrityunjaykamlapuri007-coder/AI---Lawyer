@@ -1,0 +1,119 @@
+{
+  "since": "2026-11-08T22:05:07",
+  "until": "2026-11-08T22:09:46",
+  "calls": 15,
+  "ok_calls": 15,
+  "cases_estimated_from_scope_calls": 3,
+  "per_case": {
+    "llm_calls": 5.0,
+    "prompt_tokens": 6567,
+    "completion_tokens": 1901,
+    "llm_seconds": 75.7
+  },
+  "steps": {
+    "fact_extractor": {
+      "calls": 3,
+      "ok": 3,
+      "seconds": {
+        "n": 3,
+        "mean": 11.7,
+        "median": 13.32,
+        "max": 14.11,
+        "total": 35.1
+      },
+      "prompt_tokens": {
+        "n": 3,
+        "mean": 432.0,
+        "median": 425.0,
+        "max": 462.0,
+        "total": 1296.0
+      },
+      "completion_tokens": {
+        "n": 3,
+        "mean": 323.33,
+        "median": 355.0,
+        "max": 408.0,
+        "total": 970.0
+      }
+    },
+    "reasoning": {
+      "calls": 3,
+      "ok": 3,
+      "seconds": {
+        "n": 3,
+        "mean": 29.82,
+        "median": 29.58,
+        "max": 43.71,
+        "total": 89.45
+      },
+      "prompt_tokens": {
+        "n": 3,
+        "mean": 2543.0,
+        "median": 2115.0,
+        "max": 3806.0,
+        "total": 7629.0
+      },
+      "completion_tokens": {
+        "n": 3,
+        "mean": 780.33,
+        "median": 816.0,
+        "max": 1096.0,
+        "total": 2341.0
+      }
+    },
+    "relevance_grader": {
+      "calls": 6,
+      "ok": 6,
+      "seconds": {
+        "n": 6,
+        "mean": 15.97,
+        "median": 14.33,
+        "max": 26.7,
+        "total": 95.82
+      },
+      "prompt_tokens": {
+        "n": 6,
+        "mean": 1642.67,
+        "median": 1643.5,
+        "max": 2410.0,
+        "total": 9856.0
+      },
+      "completion_tokens": {
+        "n": 6,
+        "mean": 378.17,
+        "median": 339.0,
+        "max": 666.0,
+        "total": 2269.0
+      }
+    },
+    "scope_classifier": {
+      "calls": 3,
+      "ok": 3,
+      "seconds": {
+        "n": 3,
+        "mean": 2.22,
+        "median": 2.28,
+        "max": 2.61,
+        "total": 6.65
+      },
+      "prompt_tokens": {
+        "n": 3,
+        "mean": 307.0,
+        "median": 300.0,
+        "max": 337.0,
+        "total": 921.0
+      },
+      "completion_tokens": {
+        "n": 3,
+        "mean": 40.67,
+        "median": 39.0,
+        "max": 46.0,
+        "total": 122.0
+      }
+    }
+  },
+  "models": [
+    "refund-llm"
+  ],
+  "note": "Tokens and seconds measured on Kaggle 2x T4 (fp16, vLLM). Money cost = tokens x the provider's own price; not estimated here. Embedding calls are not in this log."
+}

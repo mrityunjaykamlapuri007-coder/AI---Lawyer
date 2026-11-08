@@ -1,0 +1,490 @@
+{
+  "label": "REAL CORPUS, VERIFIED SUBSET (30 usable)",
+  "test_id": "R06",
+  "category": "unilateral_cancellation",
+  "notes": null,
+  "now": "2026-11-08",
+  "turns": [
+    {
+      "message": "On July 20, 2022 I ordered Adidas Runstunner running shoes on the Flipkart app. They were listed at a discounted price of Rs 975, down from Rs 4,999. The very next day Flipkart cancelled my order without any valid reason and without my consent. I tried Flipkart's customer care to ask why and to get the seller's details, but they did not help and would not address the cancellation. I then went to the National Consumer Helpline."
+    }
+  ],
+  "expected": {
+    "outcome": "needs_more_information",
+    "rule": "R2",
+    "rationale": "The refund status is not stated (no payment or refund is described)."
+  },
+  "corpus": {
+    "mode": "real",
+    "version": "0381858588e1a7be",
+    "usable_count": 30,
+    "usable_ids": [
+      "ECR_2020_P001",
+      "ECR_2020_P002",
+      "ECR_2020_P004_SR02",
+      "ECR_2020_P004_SR03",
+      "ECR_2020_P004_SR04",
+      "ECR_2020_P004_SR05",
+      "ECR_2020_P004_SR06",
+      "ECR_2020_P004_SR07",
+      "ECR_2020_P004_SR08",
+      "ECR_2020_P004_SR09",
+      "ECR_2020_P004_SR10",
+      "ECR_2020_P004_SR11",
+      "ECR_2020_P005_SR01",
+      "ECR_2020_P005_SR02",
+      "ECR_2020_P005_SR03",
+      "ECR_2020_P005_SR04",
+      "ECR_2020_P005_SR05",
+      "ECR_2020_P006_SR01",
+      "ECR_2020_P006_SR02",
+      "ECR_2020_P006_SR03",
+      "ECR_2020_P006_SR04",
+      "ECR_2020_P006_SR05",
+      "ECR_2020_P007_SR01",
+      "ECR_2020_P007_SR02",
+      "ECR_2020_P007_SR03",
+      "ECR_2020_P007_SR04",
+      "ECR_2020_P007_SR05",
+      "ECR_2020_P008",
+      "ECR_2021_AMENDMENT_P001",
+      "ECR_2021_AMENDMENT_P002"
+    ]
+  },
+  "responses": [
+    {
+      "conversation_id": "conv_b6958036-c410-488c-b2fa-1ab4b4311853",
+      "message_id": "msg_4fa1c5b1-114a-480c-a63c-5f522bb47b27",
+      "assistant_message_id": "msg_dda2d589-cef5-49a3-a6b4-afdbcadabcc4",
+      "case_id": "case_3b5aa7cf-adbd-4500-8393-a127a169de8a",
+      "processing_status": "needs_clarification",
+      "assistant_message": "## What I understood\n\nThe user reported that their order was canceled by Flipkart without valid reasons and without providing the seller's details.\n\n## Facts\n\nFacts you reported:\n- Purchase date: July 20, 2022\n- Platform name: Flipkart app\n- Merchant name: Adidas\n- Support contact made: I tried Flipkart's customer care\n- Grievance officer contacted: I then went to the National Consumer Helpline\n\n## Legal sources that may apply\n\n- **Consumer Protection (E-Commerce) Rules, 2020, provision 5, sub-rule (3)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"(3)  Every marketplace e-commerce entity shall provide the following information in a clear and accessible manner,\ndisplayed prominently to its users at the appropriate place on its platform:\n(a)  details about the sellers offering goods and services, including the name of their business, whether registered\nor not, their geographic address,customer care number, any rating or other aggregated feedb\"\n- **Consumer Protection (E-Commerce) Rules, 2020, provision 6, sub-rule (4)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"(4) Any seller offering goods or services through a marketplace e-commerce entity shall:\n(a) have a prior written contract with the respective e-commerce entity in order to undertake or solicit\nsuch sale or offer;\nappoint a grievance officer for consumer grievance redressal and ensure that the grievance officer\nacknowledges the receipt of any consumer complaint within  forty-eight hours and redres\"\n- **Consumer Protection (E-Commerce) Rules, 2020, provision 6, sub-rule (5)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"(5)\nAny seller offering goods or services through a marketplace e-commerce entity shall provide the\nfollowing information to the e-commerce entity to be displayed on its platform or website:\n(a)  all contractual information required to be disclosed by law;\ntotal price in single figure of any good or service, along with the breakup price for the good or\nservice, showing all the compulsory and volun\"\n- **Consumer Protection (E-Commerce) Rules, 2020, provision 7, sub-rule (4)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"(4)\nNo inventory e-commerce entity shall refuse to take back goods, or withdraw or discontinue services\npurchased or agreed to be purchased, or refuse to refund consideration, if paid, if such goods or services\nare defective, deficient spurious, or if the goods or services are not of the characteristics or features as\nadvertised or as agreed to, or if such goods or services are delivered late from\"\n\n## How this may relate to your case\n\n- Flipkart may apply if it failed to provide the user with the seller's details upon request.\n- Adidas may apply if it failed to appoint a grievance officer and ensure timely redressal of complaints.\n- Adidas may apply if it failed to provide accurate information regarding returns, refunds, and exchanges.\n- Flipkart may apply if it refused to refund the user without valid reasons.\n\n## Assessment\n\n**I need more information before assessing the next step.**\n\n- An essential fact is missing: the refund status.\n\nSuggested next steps:\n1. Answer the follow-up question so the refund timeline can be assessed.\n\nAssessment date: 2026-11-08.\n\n## Missing information\n- What is the current refund status shown by the merchant, platform or your bank?\n\n## Limitations\n\n- This is general information and a draft for your review, not legal advice. I cannot guarantee any outcome.\n",
+      "case_summary": {
+        "identifiers": [],
+        "merchant": "Adidas",
+        "platform": "Flipkart",
+        "amount_minor": null,
+        "currency": "INR",
+        "refund_status": null
+      },
+      "extracted_facts": [
+        {
+          "fact_id": "fact_e1a21cc6-ba55-4012-b616-b3e50cf03ea7",
+          "case_id": "case_3b5aa7cf-adbd-4500-8393-a127a169de8a",
+          "fact_type": "purchase_date",
+          "raw_value": "July 20, 2022",
+          "normalised_value": "2022-07-20",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T21:48:33.702036Z"
+        },
+        {
+          "fact_id": "fact_5ce7beae-9c69-451e-9c38-e179174f57fb",
+          "case_id": "case_3b5aa7cf-adbd-4500-8393-a127a169de8a",
+          "fact_type": "platform_name",
+          "raw_value": "Flipkart app",
+          "normalised_value": "Flipkart",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T21:48:33.726042Z"
+        },
+        {
+          "fact_id": "fact_d5875489-1525-4b81-baff-b3c4046c83f7",
+          "case_id": "case_3b5aa7cf-adbd-4500-8393-a127a169de8a",
+          "fact_type": "merchant_name",
+          "raw_value": "Adidas",
+          "normalised_value": "Adidas",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T21:48:33.754033Z"
+        },
+        {
+          "fact_id": "fact_90c53551-55d3-453c-8999-bc4a8b9541dc",
+          "case_id": "case_3b5aa7cf-adbd-4500-8393-a127a169de8a",
+          "fact_type": "support_contact_made",
+          "raw_value": "I tried Flipkart's customer care",
+          "normalised_value": true,
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T21:48:33.782061Z"
+        },
+        {
+          "fact_id": "fact_dac6b964-d691-4d49-b309-6652fe718740",
+          "case_id": "case_3b5aa7cf-adbd-4500-8393-a127a169de8a",
+          "fact_type": "grievance_officer_contacted",
+          "raw_value": "I then went to the National Consumer Helpline",
+          "normalised_value": true,
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T21:48:33.809241Z"
+        }
+      ],
+      "evidence_processing": [],
+      "legal_sources": [
+        {
+          "provision_id": "ECR_2020_P005_SR03",
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 5, sub-rule (3)",
+          "excerpt": "(3)  Every marketplace e-commerce entity shall provide the following information in a clear and accessible manner,\ndisplayed prominently to its users at the appropriate place on its platform:\n(a)  details about the sellers offering goods and services, including the name of their business, whether registered\nor not, their geographic address,customer care number, any rating or other aggregated feedback about such\nseller, and any other information necessary for enabling consumers to make informed decisions at the pre-\npurchase stage:\nProvided that a marketplace e-commerce entity shall, on a reque",
+          "role": "supporting",
+          "applicability": "unknown",
+          "source_validity": "current_for_date",
+          "official_url": "https://consumeraffairs.gov.in/public/upload/files/E%20commerce%20rules_1732703966.pdf"
+        },
+        {
+          "provision_id": "ECR_2020_P006_SR04",
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 6, sub-rule (4)",
+          "excerpt": "(4) Any seller offering goods or services through a marketplace e-commerce entity shall:\n(a) have a prior written contract with the respective e-commerce entity in order to undertake or solicit\nsuch sale or offer;\nappoint a grievance officer for consumer grievance redressal and ensure that the grievance officer\nacknowledges the receipt of any consumer complaint within  forty-eight hours and redresses the\ncomplaint within one month from the date of receipt of the complaint;\nensure that the advertisements for marketing of goods or services are consistent with the actual\ncharacteristics, access a",
+          "role": "supporting",
+          "applicability": "unknown",
+          "source_validity": "current_for_date",
+          "official_url": "https://consumeraffairs.gov.in/public/upload/files/E%20commerce%20rules_1732703966.pdf"
+        },
+        {
+          "provision_id": "ECR_2020_P006_SR05",
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 6, sub-rule (5)",
+          "excerpt": "(5)\nAny seller offering goods or services through a marketplace e-commerce entity shall provide the\nfollowing information to the e-commerce entity to be displayed on its platform or website:\n(a)  all contractual information required to be disclosed by law;\ntotal price in single figure of any good or service, along with the breakup price for the good or\nservice, showing all the compulsory and voluntary charges such as delivery charges, postage and\nhandling charges, conveyance charges and the applicable tax, as applicable;\nall mandatory notices and information provided by applicable laws, and th",
+          "role": "supporting",
+          "applicability": "unknown",
+          "source_validity": "current_for_date",
+          "official_url": "https://consumeraffairs.gov.in/public/upload/files/E%20commerce%20rules_1732703966.pdf"
+        },
+        {
+          "provision_id": "ECR_2020_P007_SR04",
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 7, sub-rule (4)",
+          "excerpt": "(4)\nNo inventory e-commerce entity shall refuse to take back goods, or withdraw or discontinue services\npurchased or agreed to be purchased, or refuse to refund consideration, if paid, if such goods or services\nare defective, deficient spurious, or if the goods or services are not of the characteristics or features as\nadvertised or as agreed to, or if such goods or services are delivered late from the stated delivery\nschedule:\n   Provided that in the case of late delivery, this sub rule shall not apply if such late delivery was due to\nforce majeure.",
+          "role": "supporting",
+          "applicability": "unknown",
+          "source_validity": "current_for_date",
+          "official_url": "https://consumeraffairs.gov.in/public/upload/files/E%20commerce%20rules_1732703966.pdf"
+        }
+      ],
+      "retrieval_candidates": [
+        {
+          "chunk_id": "ECR_2020_P005_SR03::c0",
+          "provision_id": "ECR_2020_P005_SR03",
+          "source_id": "ECR_2020",
+          "dense_rank": 1,
+          "sparse_rank": 1,
+          "rrf_score": 0.15750210342289855,
+          "rerank_score": null,
+          "relevance_grade": 2,
+          "relevance_reason": "This provision requires marketplace e-commerce entities to provide information regarding the seller, including contact details, after a purchase is made. This is relevant to the case as it pertains to obtaining seller details.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "supporting",
+          "rejection_reason": null,
+          "added_because": null,
+          "accepted": true,
+          "conditional": true,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 5, sub-rule (3)"
+        },
+        {
+          "chunk_id": "ECR_2020_P006_SR04::c0",
+          "provision_id": "ECR_2020_P006_SR04",
+          "source_id": "ECR_2020",
+          "dense_rank": 3,
+          "sparse_rank": 1,
+          "rrf_score": 0.15695049981307252,
+          "rerank_score": null,
+          "relevance_grade": 2,
+          "relevance_reason": "This provision mandates that sellers provide information about themselves, including contact details, which is relevant to the case as it pertains to obtaining seller details.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "supporting",
+          "rejection_reason": null,
+          "added_because": null,
+          "accepted": true,
+          "conditional": true,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 6, sub-rule (4)"
+        },
+        {
+          "chunk_id": "ECR_2020_P006_SR05::c0",
+          "provision_id": "ECR_2020_P006_SR05",
+          "source_id": "ECR_2020",
+          "dense_rank": 7,
+          "sparse_rank": 2,
+          "rrf_score": 0.10640752066885338,
+          "rerank_score": null,
+          "relevance_grade": 2,
+          "relevance_reason": "This provision requires sellers to provide information about themselves, including contact details, which is relevant to the case as it pertains to obtaining seller details.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "supporting",
+          "rejection_reason": null,
+          "added_because": null,
+          "accepted": true,
+          "conditional": true,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 6, sub-rule (5)"
+        },
+        {
+          "chunk_id": "ECR_2020_P007_SR04::c0",
+          "provision_id": "ECR_2020_P007_SR04",
+          "source_id": "ECR_2020",
+          "dense_rank": 5,
+          "sparse_rank": 10,
+          "rrf_score": 0.09863952257787874,
+          "rerank_score": null,
+          "relevance_grade": 2,
+          "relevance_reason": "This provision addresses the situation where goods are not as advertised or are defective, which could be relevant if the shoes were not as described.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "condition ECR_2020_P007_SR04_C1 is manual and always UNKNOWN; no fact of type refund_status; condition ECR_2020_P007_SR04_C3 is manual and always UNKNOWN"
+          ],
+          "source_validity": "current_for_date",
+          "role": "supporting",
+          "rejection_reason": null,
+          "added_because": null,
+          "accepted": true,
+          "conditional": true,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 7, sub-rule (4)"
+        },
+        {
+          "chunk_id": "ECR_2020_P004_SR05::c0",
+          "provision_id": "ECR_2020_P004_SR05",
+          "source_id": "ECR_2020",
+          "dense_rank": 1,
+          "sparse_rank": 1,
+          "rrf_score": 0.14028121358634316,
+          "rerank_score": null,
+          "relevance_grade": 1,
+          "relevance_reason": "This provision requires e-commerce entities to acknowledge and redress complaints within a specified timeframe, which is related to grievance redressal but not directly relevant to the order cancellation issue.",
+          "applicability": "applicable",
+          "applicability_reasons": [
+            "fact fact_5ce7beae-9c69-451e-9c38-e179174f57fb records platform_name; fact fact_dac6b964-d691-4d49-b309-6652fe718740 records grievance_officer_contacted"
+          ],
+          "source_validity": "current_for_date",
+          "role": "background",
+          "rejection_reason": "relevance grade 1 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (5)"
+        },
+        {
+          "chunk_id": "ECR_2020_P007_SR01::c0",
+          "provision_id": "ECR_2020_P007_SR01",
+          "source_id": "ECR_2020",
+          "dense_rank": 5,
+          "sparse_rank": 4,
+          "rrf_score": 0.13340854777689115,
+          "rerank_score": null,
+          "relevance_grade": 1,
+          "relevance_reason": "This provision requires inventory e-commerce entities to provide information about refunds and exchanges, which is somewhat relevant but not directly applicable to the cancellation of an order.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "background",
+          "rejection_reason": "relevance grade 1 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 7, sub-rule (1)"
+        },
+        {
+          "chunk_id": "ECR_2020_P004_SR04::c0",
+          "provision_id": "ECR_2020_P004_SR04",
+          "source_id": "ECR_2020",
+          "dense_rank": 2,
+          "sparse_rank": 1,
+          "rrf_score": 0.1220376495845462,
+          "rerank_score": null,
+          "relevance_grade": 1,
+          "relevance_reason": "This provision requires e-commerce entities to appoint a grievance officer and display contact details. While it is related to grievance redressal, it does not directly address the issue of order cancellation.",
+          "applicability": "applicable",
+          "applicability_reasons": [
+            "fact fact_5ce7beae-9c69-451e-9c38-e179174f57fb records platform_name"
+          ],
+          "source_validity": "current_for_date",
+          "role": "background",
+          "rejection_reason": "relevance grade 1 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (4)"
+        },
+        {
+          "chunk_id": "ECR_2020_P004_SR02::c0",
+          "provision_id": "ECR_2020_P004_SR02",
+          "source_id": "ECR_2020",
+          "dense_rank": 2,
+          "sparse_rank": 1,
+          "rrf_score": 0.12183636854971432,
+          "rerank_score": null,
+          "relevance_grade": 1,
+          "relevance_reason": "This provision requires e-commerce entities to display contact details prominently, which is related to grievance redressal but not directly relevant to the order cancellation issue.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "background",
+          "rejection_reason": "relevance grade 1 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (2)"
+        },
+        {
+          "chunk_id": "ECR_2021_AMENDMENT_P002::c0",
+          "provision_id": "ECR_2021_AMENDMENT_P002",
+          "source_id": "ECR_2021_AMENDMENT",
+          "dense_rank": 6,
+          "sparse_rank": 6,
+          "rrf_score": 0.09977385798281321,
+          "rerank_score": null,
+          "relevance_grade": 0,
+          "relevance_reason": "This amendment specifies the appointment of a nodal officer for compliance with the Act, which is not directly relevant to the order cancellation issue.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "rejected",
+          "rejection_reason": "relevance grade 0 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) (Amendment) Rules, 2021, provision 2"
+        },
+        {
+          "chunk_id": "ECR_2020_P004_SR10::c0",
+          "provision_id": "ECR_2020_P004_SR10",
+          "source_id": "ECR_2020",
+          "dense_rank": 1,
+          "sparse_rank": 7,
+          "rrf_score": 0.0868575291329248,
+          "rerank_score": null,
+          "relevance_grade": 0,
+          "relevance_reason": "grader_failed: reason did not reference the provision text",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no fact of type refund_initiated_date"
+          ],
+          "source_validity": "current_for_date",
+          "role": "rejected",
+          "rejection_reason": "relevance grade 0 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (10)"
+        }
+      ],
+      "retrieval_summary": {
+        "corpus_version": "0381858588e1a7be",
+        "candidate_count": 10,
+        "accepted_count": 4,
+        "rejected_count": 6,
+        "retry_count": 0
+      },
+      "verification": {
+        "overall": "verified",
+        "blocked_claims": [],
+        "note": "deterministic citation/date/phrase guards only; claim-level entailment is DESIGN_ONLY"
+      },
+      "assessment": {
+        "outcome": "needs_more_information",
+        "reasons": [
+          "An essential fact is missing: the refund status."
+        ],
+        "facts_used": [
+          "fact_e1a21cc6-ba55-4012-b616-b3e50cf03ea7",
+          "fact_5ce7beae-9c69-451e-9c38-e179174f57fb",
+          "fact_d5875489-1525-4b81-baff-b3c4046c83f7",
+          "fact_90c53551-55d3-453c-8999-bc4a8b9541dc",
+          "fact_dac6b964-d691-4d49-b309-6652fe718740"
+        ],
+        "provision_ids_used": [
+          "ECR_2020_P005_SR03",
+          "ECR_2020_P006_SR04",
+          "ECR_2020_P006_SR05",
+          "ECR_2020_P007_SR04"
+        ],
+        "missing_information": [
+          "What is the current refund status shown by the merchant, platform or your bank?"
+        ],
+        "uncertainties": [
+          "relevance grade 1 below 2",
+          "relevance grade 1 below 2",
+          "relevance grade 1 below 2",
+          "relevance grade 1 below 2",
+          "relevance grade 0 below 2"
+        ],
+        "urgency": "unknown",
+        "next_steps": [
+          "Answer the follow-up question so the refund timeline can be assessed."
+        ],
+        "lawyer_needed": false,
+        "lawyer_reason": null,
+        "rule_trace": [
+          "R2: An essential fact is missing: the refund status."
+        ],
+        "llm_proposed_outcome": "needs_more_information"
+      },
+      "missing_information": [
+        "What is the current refund status shown by the merchant, platform or your bank?"
+      ],
+      "next_steps": [
+        "Answer the follow-up question so the refund timeline can be assessed."
+      ],
+      "document_draft": null
+    }
+  ],
+  "case_status_final": "open",
+  "event_types": [
+    "case_created",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "assessment_completed"
+  ],
+  "checks_failed": [],
+  "observed": {
+    "outcome": "needs_more_information"
+  },
+  "data_origin": "public_commission_order",
+  "split": "test",
+  "result": "PASS"
+}

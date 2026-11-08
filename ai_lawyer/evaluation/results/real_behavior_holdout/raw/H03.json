@@ -1,0 +1,112 @@
+{
+  "label": "REAL CORPUS, VERIFIED SUBSET (30 usable)",
+  "test_id": "H03",
+  "category": "wrong_item_return_refused",
+  "notes": null,
+  "now": "2026-11-08",
+  "turns": [
+    {
+      "message": "I bought a Realme Narzo 50A phone on Flipkart for Rs 10,574, sold by Luminary Lifestyle; the invoice is dated October 24, 2021. The package delivered on October 25, 2021 contained a Lifebuoy soap instead of the phone. I wrote to Flipkart with my documents but no action was taken. On November 17, 2021 Flipkart told me the seller could not process my return request because no image had been shared, although I had taken screenshots. I also filed a police complaint, and I have a video of the parcel being opened."
+    }
+  ],
+  "expected": {
+    "outcome": "formal_grievance_recommended",
+    "rule": "R5",
+    "rationale": "Return/refund refused, exact purchase date (invoice), wrote to Flipkart (contact made), grievance officer not mentioned."
+  },
+  "corpus": {
+    "mode": "real",
+    "version": "0381858588e1a7be",
+    "usable_count": 30,
+    "usable_ids": [
+      "ECR_2020_P001",
+      "ECR_2020_P002",
+      "ECR_2020_P004_SR02",
+      "ECR_2020_P004_SR03",
+      "ECR_2020_P004_SR04",
+      "ECR_2020_P004_SR05",
+      "ECR_2020_P004_SR06",
+      "ECR_2020_P004_SR07",
+      "ECR_2020_P004_SR08",
+      "ECR_2020_P004_SR09",
+      "ECR_2020_P004_SR10",
+      "ECR_2020_P004_SR11",
+      "ECR_2020_P005_SR01",
+      "ECR_2020_P005_SR02",
+      "ECR_2020_P005_SR03",
+      "ECR_2020_P005_SR04",
+      "ECR_2020_P005_SR05",
+      "ECR_2020_P006_SR01",
+      "ECR_2020_P006_SR02",
+      "ECR_2020_P006_SR03",
+      "ECR_2020_P006_SR04",
+      "ECR_2020_P006_SR05",
+      "ECR_2020_P007_SR01",
+      "ECR_2020_P007_SR02",
+      "ECR_2020_P007_SR03",
+      "ECR_2020_P007_SR04",
+      "ECR_2020_P007_SR05",
+      "ECR_2020_P008",
+      "ECR_2021_AMENDMENT_P001",
+      "ECR_2021_AMENDMENT_P002"
+    ]
+  },
+  "responses": [
+    {
+      "conversation_id": "conv_a0e6becb-81a7-4ac6-9d38-0d2ff3f5e456",
+      "message_id": "msg_03282794-c7be-46b3-adcc-a4c8a5cf34d0",
+      "assistant_message_id": "msg_3fad4eea-337e-478b-95eb-01b8e2ba5b7e",
+      "case_id": null,
+      "processing_status": "out_of_scope",
+      "assistant_message": "## Scope\n\nThis assistant only handles unresolved e-commerce refund disputes in India: cancelled or returned orders, delayed, denied, partial or incorrect refunds. It does not cover criminal matters, and I cannot prepare documents or represent you.\n\nPlease speak to a qualified lawyer or the appropriate authority for this issue.",
+      "case_summary": {},
+      "extracted_facts": [],
+      "evidence_processing": [],
+      "legal_sources": [],
+      "retrieval_candidates": [],
+      "retrieval_summary": {
+        "corpus_version": "",
+        "candidate_count": 0,
+        "accepted_count": 0,
+        "rejected_count": 0,
+        "retry_count": 0
+      },
+      "verification": {
+        "overall": "unverified",
+        "blocked_claims": []
+      },
+      "assessment": {
+        "outcome": "out_of_scope",
+        "reasons": [
+          "deterministic keyword match for criminal"
+        ],
+        "facts_used": [],
+        "provision_ids_used": [],
+        "missing_information": [],
+        "uncertainties": [],
+        "urgency": "unknown",
+        "next_steps": [
+          "This assistant cannot help with this issue. Please speak to a qualified lawyer."
+        ],
+        "lawyer_needed": false,
+        "lawyer_reason": null,
+        "rule_trace": [],
+        "llm_proposed_outcome": null
+      },
+      "missing_information": [],
+      "next_steps": [],
+      "document_draft": null
+    }
+  ],
+  "case_status_final": null,
+  "event_types": [],
+  "checks_failed": [
+    "outcome 'out_of_scope' != 'formal_grievance_recommended'"
+  ],
+  "observed": {
+    "outcome": "out_of_scope"
+  },
+  "data_origin": "public_commission_order",
+  "split": "holdout",
+  "result": "FAIL"
+}

@@ -1,0 +1,5 @@
+label,test_id,split,category,result,observed_outcome,expected_outcome,case_status_final,checks_failed
+"REAL CORPUS, VERIFIED SUBSET (30 usable)",H01,holdout,seller_cancelled_amount_withheld,PASS,formal_grievance_recommended,formal_grievance_recommended,open,
+"REAL CORPUS, VERIFIED SUBSET (30 usable)",H02,holdout,late_delivery_cancelled_refund_not_received,PASS,formal_grievance_recommended,formal_grievance_recommended,open,
+"REAL CORPUS, VERIFIED SUBSET (30 usable)",H03,holdout,wrong_item_return_refused,FAIL,out_of_scope,formal_grievance_recommended,,outcome 'out_of_scope' != 'formal_grievance_recommended'
+"REAL CORPUS, VERIFIED SUBSET (30 usable)",H04,holdout,cancelled_refunded_as_store_credit,PASS,needs_more_information,needs_more_information,open,

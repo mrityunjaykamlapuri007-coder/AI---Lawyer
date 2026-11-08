@@ -1,0 +1,18 @@
+label,test_id,split,category,result,observed_outcome,expected_outcome,case_status_final,checks_failed
+"REAL CORPUS, VERIFIED SUBSET (30 usable)",R01,test,cancelled_order_refund_not_received,PASS,formal_grievance_recommended,formal_grievance_recommended,open,
+"REAL CORPUS, VERIFIED SUBSET (30 usable)",R02,development,delivery_failed_refund_after_delay,PASS,needs_more_information,needs_more_information,open,
+"REAL CORPUS, VERIFIED SUBSET (30 usable)",R03,development,partial_delivery_cancelled_refund_not_received,PASS,formal_grievance_recommended,formal_grievance_recommended,open,
+"REAL CORPUS, VERIFIED SUBSET (30 usable)",R04,test,return_refund_cancelled_wrong_item_claim,PASS,needs_more_information,needs_more_information,open,
+"REAL CORPUS, VERIFIED SUBSET (30 usable)",R05,development,order_cancelled_twice_refund_not_received,FAIL,formal_grievance_recommended,informal_resolution_recommended,open,outcome 'formal_grievance_recommended' != 'informal_resolution_recommended'
+"REAL CORPUS, VERIFIED SUBSET (30 usable)",R06,test,unilateral_cancellation,PASS,needs_more_information,needs_more_information,open,
+"REAL CORPUS, VERIFIED SUBSET (30 usable)",R07,test,returned_product_refund_not_received,PASS,formal_grievance_recommended,formal_grievance_recommended,open,
+"REAL CORPUS, VERIFIED SUBSET (30 usable)",R08,test,seller_cancelled_refund_not_received,PASS,needs_more_information,needs_more_information,open,
+"REAL CORPUS, VERIFIED SUBSET (30 usable)",R09,development,empty_package_refund_rejected,PASS,needs_more_information,needs_more_information,open,
+"REAL CORPUS, VERIFIED SUBSET (30 usable)",R10,development,refund_claimed_by_seller_disputed,RECORDED,needs_more_information,undetermined,open,
+"REAL CORPUS, VERIFIED SUBSET (30 usable)",R11,test,expired_product_refund_rejected,PASS,formal_grievance_recommended,formal_grievance_recommended,open,
+"REAL CORPUS, VERIFIED SUBSET (30 usable)",R12,test,wrong_product_return_refund_refused,FAIL,needs_more_information,formal_grievance_recommended,open,outcome 'needs_more_information' != 'formal_grievance_recommended'
+"REAL CORPUS, VERIFIED SUBSET (30 usable)",R13,development,laptop_replaced_with_waste_refund_refused,RECORDED,needs_more_information,undetermined,open,
+"REAL CORPUS, VERIFIED SUBSET (30 usable)",R14,test,wrong_product_refund_rejected,PASS,formal_grievance_recommended,formal_grievance_recommended,open,
+"REAL CORPUS, VERIFIED SUBSET (30 usable)",R15,test,wrong_item_refund_cancelled_after_grievance,PASS,needs_more_information,needs_more_information,open,
+"REAL CORPUS, VERIFIED SUBSET (30 usable)",R16,test,wrong_laptop_return_refund_rejected,FAIL,needs_more_information,formal_grievance_recommended,open,outcome 'needs_more_information' != 'formal_grievance_recommended'
+"REAL CORPUS, VERIFIED SUBSET (30 usable)",R17,development,wrong_brand_no_response,PASS,needs_more_information,needs_more_information,open,
