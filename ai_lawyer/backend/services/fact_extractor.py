@@ -677,7 +677,10 @@ def _coerce_llm_fact(item: dict[str, Any], text: str, default_year: int | None =
         if normalised is None:
             return None
     elif fact_type in {"support_contact_made", "grievance_officer_contacted", "bank_credit_confirmed"}:
-        normalised = bool(normalised)
+        # A yes/no fact must agree with its own quote: "I have not contacted them yet"
+        # is False even if the LLM says True (demo defect, 2026-11-09).
+        negated = re.search(r"\b(?:not|never|no|haven't|hasn't|didn't|don't|without)\b", raw.lower())
+        normalised = False if negated else bool(normalised)
     elif fact_type == "merchant_promised_timeline_days":
         try:
             normalised = int(normalised)

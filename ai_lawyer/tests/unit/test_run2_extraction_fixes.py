@@ -133,3 +133,11 @@ def test_llm_contact_with_an_outside_body_is_dropped():
     assert _coerce_llm_fact(item, text) is None
     ok = {"fact_type": "support_contact_made", "raw_value": "I emailed their support", "normalised_value": True}
     assert _coerce_llm_fact(ok, "I emailed their support twice.")["normalised_value"] is True
+
+
+def test_yes_no_fact_follows_its_own_quote():  # demo defect
+    text = "It has been 12 days and nothing has come. I have not contacted them yet."
+    item = {"fact_type": "support_contact_made", "raw_value": "I have not contacted them yet", "normalised_value": True}
+    assert _coerce_llm_fact(item, text)["normalised_value"] is False
+    yes = {"fact_type": "support_contact_made", "raw_value": "I emailed their support", "normalised_value": True}
+    assert _coerce_llm_fact(yes, "I emailed their support on Monday.")["normalised_value"] is True

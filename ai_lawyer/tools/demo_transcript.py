@@ -24,7 +24,8 @@ from pathlib import Path
 
 RESULTS = Path(__file__).resolve().parents[1] / "evaluation" / "results" / "demo"
 STORIES = Path(__file__).resolve().parents[1] / "evaluation" / "dataset" / "real_stories.jsonl"
-USER = {"X-User-Id": "demo-user"}
+# One user per conversation, so open cases from other demo chats never interfere.
+
 
 
 def _screenshot() -> bytes:
@@ -114,9 +115,10 @@ def main() -> int:
                    f"- LLM: {health['llm'].get('model')} ({health['llm'].get('provider')})",
                    f"- embedder: {health['index'].get('embedder')} (hash {health['index'].get('embedder_model_hash')})", ""]
             for conv in _conversations():
-                cid = client.post("/conversations", headers=USER).json()["conversation_id"]
+                user = {"X-User-Id": f"demo-{conv['id']}"}
+                cid = client.post("/conversations", headers=user).json()["conversation_id"]
                 files = [("files", (name, data, mime)) for name, data, mime in conv["files"]]
-                resp = client.post(f"/conversations/{cid}/messages", headers=USER,
+                resp = client.post(f"/conversations/{cid}/messages", headers=user,
                                    data={"message": conv["message"], "as_of_date": conv["as_of"]},
                                    files=files or None)
                 payload = resp.json()

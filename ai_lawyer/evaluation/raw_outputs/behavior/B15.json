@@ -41,9 +41,9 @@
   },
   "responses": [
     {
-      "conversation_id": "conv_d89e0e44-f168-4d56-90e0-d497e9659dd9",
-      "message_id": "msg_482c977e-df62-4164-81b7-0fcd629b4f13",
-      "assistant_message_id": "msg_550c2e70-0b51-4cb6-a37f-f1fb48a09b3e",
+      "conversation_id": "conv_5c2c6bbe-c57c-4632-9c98-342e4797a9b1",
+      "message_id": "msg_adce38a1-4a04-4818-9d21-1408f5beb87c",
+      "assistant_message_id": "msg_4b776533-8908-4b42-9043-9ae1ac2eed26",
       "case_id": null,
       "processing_status": "needs_clarification",
       "assistant_message": "## What I understood\n\nYou are describing an unresolved e-commerce refund. I will assess it only from the facts and legal sources available here.\n\n## Facts\n\nNo facts were extracted yet.\n\n## Legal sources that may apply\n\nNo provision in the supported corpus was established for this issue. I am therefore not giving a legal conclusion.\n\n## How this may relate to your case\n\n- No application analysis was produced, so no legal conclusion can be drawn.\n\n## Assessment\n\n**I need more information before assessing the next step.**\n\n- I found two different order references in one message (FM-1501, SE-1502). Please send one message per order so the facts are not mixed. Which order would you like to discuss first?\n\nSuggested next steps:\n1. Send one message per order, with the order id.\n\n## Missing information\n- I found two different order references in one message (FM-1501, SE-1502). Please send one message per order so the facts are not mixed. Which order would you like to discuss first?\n\n## Limitations\n\n- This is general information and a draft for your review, not legal advice. I cannot guarantee any outcome.\n- FIXTURE DATA, NOT REAL LAW: the citations above come from a synthetic test corpus and must not be relied on as legal authority.\n",
