@@ -473,11 +473,11 @@ No stretch item was allowed to delay evaluation, the README, or the report.
 
 ### Merge log
 
-A local git repository was initialized at the workspace root on 2026-11-08. One
-commit exists: `6355475 Initial commit: AI consumer refund dispute assistant MVP`.
-There is no remote, branch, merge, push, or deployment log. `reference/` and the
-user's original `ai-lawyer/` are gitignored and unmodified. The logical change
-set is:
+A local git repository was initialized at the workspace root on 2026-11-08. It
+has an initial commit `6355475` plus a documentation-refresh commit; run
+`git log --oneline` for the full local history. There is no remote, branch,
+merge, push, or deployment log. `reference/` and the user's original
+`ai-lawyer/` are gitignored and unmodified. The logical change set is:
 
 | Area | Change |
 |---|---|
