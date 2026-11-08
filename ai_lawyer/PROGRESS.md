@@ -176,3 +176,40 @@ Dry-run evidence (temp copy, not the real staging files):
 
 Blockers: the real staging corpus is still 0/149 approved. Only Mri can approve;
 the tooling does not write legal text, conditions, or metadata from memory.
+
+### R3 - build runtime corpus from approved rows
+
+| Field | Value |
+|---|---|
+| Status | IMPLEMENTED_AND_TESTED |
+| Test command | `pytest -q` |
+| Result | 206 passed, 1 warning in 15.35s |
+| Focused tests | `pytest ai_lawyer/tests/unit/test_build_runtime_corpus.py -q` |
+| Result | 5 passed |
+| Dry run | temp copy of `official/draft_curated` |
+
+What changed:
+- `python -m ai_lawyer.legal_rag.build_runtime_corpus` reads the staging
+  corpus, includes only `human_verified` provisions with a reviewer whose
+  source is approved with complete provenance, writes `legal_corpus/sources.json`
+  and `provisions.json`, and prints per-source counts plus every exclusion
+  reason.
+- Refuses to write when zero provisions qualify or when the acceptance gate
+  fails. The gate runs before writing.
+- `review_tool` gained `condition-add` (operators `exists`, `equals`, `in`,
+  `date_before`, `date_after`, `manual`; values validated and stored as typed,
+  condition starts `unreviewed`) and `condition-review` (marks one condition
+  reviewed). Conditions live in staging and flow into the runtime build.
+- Provisions with no conditions already evaluate to `unknown` applicability
+  (`evaluate_provision` returns `None`); covered by
+  `tests/unit/test_engine.py::test_applicability_is_three_valued`.
+
+Dry-run evidence (temp copy, fake test metadata, not real law):
+- 0 approved -> `acceptance gate: FAIL`, `nothing written`, exit 2, no files.
+- source-approve one source + approve 2 provisions -> `included 2`,
+  `acceptance gate: PASS (usable total: 2)`, files written, exit 0.
+- `load_corpus("real")` on the built files:
+  `CORPUS_MODE=real version=b89a1fcfee9921b2 sources=1 provisions=2 usable=2 unusable=0`.
+
+Blockers: the real runtime files are still absent because 0/149 real
+provisions are approved. Only Mri can approve.

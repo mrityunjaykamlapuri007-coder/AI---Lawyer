@@ -21,6 +21,12 @@ Commands
 ``source-approve <source_id> --reviewer NAME``
     Approve a source, but only when its provenance fields are complete and its
     version status is not ``uncertain``.  Missing fields are printed exactly.
+``condition-add <provision_id> ...``
+    Store a structured condition exactly as the reviewer typed it.  The
+    condition starts ``unreviewed`` and is not used for applicability until
+    ``condition-review`` marks it reviewed.
+``condition-review <provision_id> <condition_id>``
+    Mark one stored condition human-reviewed.
 
 Exit codes: 0 success, 2 refusal (nothing written).
 """
@@ -36,7 +42,7 @@ from typing import Any
 
 from pydantic import ValidationError
 
-from ai_lawyer.contracts.models import Provision, Source
+from ai_lawyer.contracts.models import Condition, Provision, Source
 
 PACKAGE_DIR = Path(__file__).resolve().parents[1]
 DEFAULT_STAGING = PACKAGE_DIR / "legal_corpus" / "official" / "draft_curated"
@@ -409,6 +415,86 @@ def cmd_source_approve(args: argparse.Namespace) -> int:
     return 0
 
 
+def _parse_condition_value(operator: str, raw: str | None) -> Any:
+    if operator in {"exists", "manual"}:
+        return None
+    if raw is None or not raw.strip():
+        raise Refusal(f"--value is required for operator {operator!r}")
+    text = raw.strip()
+    if operator == "in":
+        if text.startswith("["):
+            try:
+                value = json.loads(text)
+            except json.JSONDecodeError as exc:
+                raise Refusal(f"--value is not valid JSON: {exc}") from exc
+            if not isinstance(value, list) or not value:
+                raise Refusal("--value for 'in' must be a non-empty list")
+            return value
+        values = [part.strip() for part in text.split(",") if part.strip()]
+        if not values:
+            raise Refusal("--value for 'in' must list at least one value")
+        return values
+    if operator in {"date_before", "date_after"}:
+        try:
+            return date.fromisoformat(text).isoformat()
+        except ValueError as exc:
+            raise Refusal(f"--value must be an ISO date: {exc}") from exc
+    return text
+
+
+def cmd_condition_add(args: argparse.Namespace) -> int:
+    sources = load_sources(args.staging)
+    provisions = load_provisions(args.staging)
+    row = _find_provision(provisions, args.provision_id)
+
+    existing = {c.get("condition_id") for c in row.get("conditions", [])}
+    if args.condition_id in existing:
+        raise Refusal(
+            f"{args.provision_id} already has a condition {args.condition_id}; "
+            "choose a new id or edit the staging row directly"
+        )
+
+    payload = {
+        "condition_id": args.condition_id,
+        "description": args.description.strip(),
+        "fact_type": args.fact_type.strip(),
+        "operator": args.operator,
+        "expected_value": _parse_condition_value(args.operator, args.value),
+        "human_review_status": "unreviewed",
+    }
+    if not payload["description"]:
+        raise Refusal("--description must not be empty")
+    if not payload["fact_type"]:
+        raise Refusal("--fact-type must not be empty")
+    condition = Condition.model_validate(payload)
+
+    row.setdefault("conditions", []).append(condition.model_dump(mode="json"))
+    save(args.staging, sources, provisions)
+    print(
+        f"added condition {args.condition_id} to {args.provision_id} "
+        "(unreviewed; run condition-review to use it)"
+    )
+    return 0
+
+
+def cmd_condition_review(args: argparse.Namespace) -> int:
+    sources = load_sources(args.staging)
+    provisions = load_provisions(args.staging)
+    row = _find_provision(provisions, args.provision_id)
+
+    for condition in row.get("conditions", []):
+        if condition.get("condition_id") == args.condition_id:
+            condition["human_review_status"] = "reviewed"
+            save(args.staging, sources, provisions)
+            print(
+                f"condition {args.condition_id} on {args.provision_id} is now reviewed"
+            )
+            return 0
+    raise Refusal(
+        f"{args.provision_id} has no condition {args.condition_id}"
+    )
+
+
 # ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
@@ -469,6 +555,28 @@ def build_parser() -> argparse.ArgumentParser:
     p_source.add_argument("--effective-from", help="ISO date")
     p_source.add_argument("--effective-to", help="ISO date")
     p_source.set_defaults(func=cmd_source_approve)
+
+    p_cond_add = sub.add_parser(
+        "condition-add", help="store a structured condition (starts unreviewed)"
+    )
+    p_cond_add.add_argument("provision_id")
+    p_cond_add.add_argument("--condition-id", required=True)
+    p_cond_add.add_argument("--description", required=True)
+    p_cond_add.add_argument("--fact-type", required=True)
+    p_cond_add.add_argument(
+        "--operator",
+        required=True,
+        choices=["exists", "equals", "in", "date_before", "date_after", "manual"],
+    )
+    p_cond_add.add_argument("--value", help="scalar, comma list, JSON list, or ISO date")
+    p_cond_add.set_defaults(func=cmd_condition_add)
+
+    p_cond_review = sub.add_parser(
+        "condition-review", help="mark one stored condition human-reviewed"
+    )
+    p_cond_review.add_argument("provision_id")
+    p_cond_review.add_argument("condition_id")
+    p_cond_review.set_defaults(func=cmd_condition_review)
     return parser
 
 

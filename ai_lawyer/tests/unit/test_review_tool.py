@@ -311,6 +311,111 @@ def test_list_filters_by_source_and_status(tmp_path, capsys):
     assert "SRC_A_P2" not in output
 
 
+def test_condition_add_validates_and_stores_a_list(tmp_path):
+    staging = _staging(tmp_path)
+
+    code = main(
+        [
+            "--staging-dir",
+            str(staging),
+            "condition-add",
+            "SRC_A_P1",
+            "--condition-id",
+            "C1",
+            "--description",
+            "refund is still outstanding",
+            "--fact-type",
+            "refund_status",
+            "--operator",
+            "in",
+            "--value",
+            "pending, not_received",
+        ]
+    )
+
+    condition = _rows(tmp_path)["SRC_A_P1"]["conditions"][0]
+    assert code == 0
+    assert condition["expected_value"] == ["pending", "not_received"]
+    assert condition["human_review_status"] == "unreviewed"
+
+
+def test_condition_review_marks_one_condition_reviewed(tmp_path):
+    staging = _staging(tmp_path)
+    main(
+        [
+            "--staging-dir",
+            str(staging),
+            "condition-add",
+            "SRC_A_P1",
+            "--condition-id",
+            "C1",
+            "--description",
+            "refund is still outstanding",
+            "--fact-type",
+            "refund_status",
+            "--operator",
+            "exists",
+        ]
+    )
+
+    code = main(
+        ["--staging-dir", str(staging), "condition-review", "SRC_A_P1", "C1"]
+    )
+
+    condition = _rows(tmp_path)["SRC_A_P1"]["conditions"][0]
+    assert code == 0
+    assert condition["human_review_status"] == "reviewed"
+    assert condition["expected_value"] is None
+
+
+def test_condition_add_refuses_a_duplicate_id(tmp_path):
+    staging = _staging(tmp_path)
+    args = [
+        "--staging-dir",
+        str(staging),
+        "condition-add",
+        "SRC_A_P1",
+        "--condition-id",
+        "C1",
+        "--description",
+        "refund is still outstanding",
+        "--fact-type",
+        "refund_status",
+        "--operator",
+        "exists",
+    ]
+    assert main(args) == 0
+
+    assert main(args) == 2
+    assert len(_rows(tmp_path)["SRC_A_P1"]["conditions"]) == 1
+
+
+def test_condition_add_requires_iso_dates(tmp_path):
+    staging = _staging(tmp_path)
+
+    code = main(
+        [
+            "--staging-dir",
+            str(staging),
+            "condition-add",
+            "SRC_A_P1",
+            "--condition-id",
+            "C1",
+            "--description",
+            "purchase was before the cut-off",
+            "--fact-type",
+            "purchase_date",
+            "--operator",
+            "date_before",
+            "--value",
+            "20 July 2020",
+        ]
+    )
+
+    assert code == 2
+    assert _rows(tmp_path)["SRC_A_P1"]["conditions"] == []
+
+
 def test_worksheets_are_refreshed_after_approval(tmp_path):
     staging = _staging(tmp_path)
     (staging / "provisions_review.csv").write_text(
