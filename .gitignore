@@ -14,6 +14,10 @@ ai_lawyer/data/
 ai_lawyer/vectorstore/
 ai_lawyer/legal_corpus/originals/
 ai_lawyer/legal_corpus/draft/
+ai_lawyer/legal_corpus/corpus_manifest.json
+ai_lawyer/legal_corpus/official/originals/
+ai_lawyer/legal_corpus/official/_search/
+ai_lawyer/legal_corpus/official/draft/
 *.db
 *.sqlite
 *.sqlite3
