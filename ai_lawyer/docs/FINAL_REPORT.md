@@ -473,15 +473,17 @@ No stretch item was allowed to delay evaluation, the README, or the report.
 
 ### Merge log
 
-There is **no git repository** in this workspace, so there is no commit, branch,
-merge, or push log to report. All work exists as uncommitted files. The
-reference project was not modified. The logical change set is:
+A local git repository was initialized at the workspace root on 2026-11-08. One
+commit exists: `6355475 Initial commit: AI consumer refund dispute assistant MVP`.
+There is no remote, branch, merge, push, or deployment log. `reference/` and the
+user's original `ai-lawyer/` are gitignored and unmodified. The logical change
+set is:
 
 | Area | Change |
 |---|---|
 | Reference project | Untouched |
 | New package | `ai_lawyer/` added (config, contracts, corpus fixtures, RAG, engine, backend, documents, frontend, evaluation, tests, docs) |
-| Draft corpus tooling | `legal_rag/draft_ingest.py` + `tests/unit/test_draft_ingest.py`; generated `legal_corpus/draft/` (gitignored) |
+| Draft corpus tooling | `legal_rag/english_extract.py` + `legal_rag/draft_ingest.py` and their tests; generated `legal_corpus/extracted_en/` and `legal_corpus/draft/` (draft dir gitignored) |
 | Corpus loader | `validate_and_build` gained `warn_unusable` (default unchanged) so draft validation stays quiet |
 | Root config | `.env.example`, `.gitignore`, `requirements.txt`, `pytest.ini` |
 | Requirements | Pins corrected to the installed `.venv` versions on 2026-11-08 |

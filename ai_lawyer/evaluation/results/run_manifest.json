@@ -1,6 +1,6 @@
 {
   "label": "FIXTURE DATA, NOT REAL LAW",
-  "generated_at": "2026-11-08T00:59:50.249903+00:00",
+  "generated_at": "2026-11-08T01:30:27.471733+00:00",
   "experiments": {
     "E1_dense_faiss": "RUN",
     "E2_sparse_bm25": "RUN",

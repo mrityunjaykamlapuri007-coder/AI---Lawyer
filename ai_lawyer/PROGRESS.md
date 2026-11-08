@@ -66,8 +66,8 @@ Observed results:
 
 ## Deviations and open issues
 
-1. **Local VCS only.** A local git repository and initial commit exist. No remote,
-   push, merge, deploy, or branch was created.
+1. **Local VCS only.** A local git repository and initial commit exist
+   (`6355475`). No remote, push, branch, merge, or deploy was made.
 2. **Real corpus blocked.** `ai_lawyer/legal_corpus/sources.json` and
    `provisions.json` are absent. English-only extracts exist in
    `legal_corpus/extracted_en/` (6 parts, 100% Latin), and
