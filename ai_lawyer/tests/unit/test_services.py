@@ -290,8 +290,11 @@ def test_evidence_rejects_signature_spoof_and_bad_type(settings):
         store.save("fake.pdf", b"not a pdf")
     assert exc.value.error_code == "signature_mismatch"
     with pytest.raises(UserSafeError) as exc2:
-        store.save("image.png", b"\x89PNG")
-    assert exc2.value.error_code == "unsupported_file_type"
+        store.save("image.png", b"\x89PNG")  # images are accepted, but this header is truncated
+    assert exc2.value.error_code == "signature_mismatch"
+    with pytest.raises(UserSafeError) as exc3:
+        store.save("tool.exe", b"MZ\x90\x00")
+    assert exc3.value.error_code == "unsupported_file_type"
 
 
 def test_evidence_rejects_oversize_and_reports_corrupt_pdf(settings):

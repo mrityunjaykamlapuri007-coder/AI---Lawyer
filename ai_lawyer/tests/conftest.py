@@ -36,6 +36,7 @@ def settings(tmp_path: Path) -> Settings:
         llm_provider="fake",
         reranker_enabled=False,
         max_upload_mb=1,
+        ocr_enabled=False,  # tests inject a fake OCR where they need one
         max_message_chars=4000,
         request_timeout_s=60,
         allowed_origins="http://localhost:8501",

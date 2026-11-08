@@ -30,6 +30,11 @@ Owner key: **YOU** = Mri, **AGENT** = coding agent.
 | Repo not on GitHub | Link must open for anyone | 7 |
 | Solution doc, video | Required / recommended | 6, 8 |
 
+### Added after the first guide: image input - DONE
+Screenshots/photos (PNG/JPG) and scanned PDF pages are read by local Tesseract OCR;
+facts stay traceable (substring guard, page, `method: ocr`). 332 tests pass; live
+Tesseract check read order id, amount and date exactly.
+
 ### Lacking (do NOT build; state as limits in the doc)
 Voice input, other Indian languages, "play the other side" practice, other problem types
 (deposit, salary, notices), Consumer Protection Act and Jurisdiction Rules provisions,

@@ -504,3 +504,22 @@ Result per source:
 Needs the user: run `serve_all.ipynb` on Kaggle (Internet on, GPU T4x2, Llama
 license, Secrets `API_KEY` and `HF_TOKEN`), paste the printed lines into `.env`,
 then `python -m ai_lawyer.tools.check_remote`.
+
+### Image input (screenshots, photos, scanned PDFs) via local OCR
+
+| Field | Value |
+|---|---|
+| Status | IMPLEMENTED_AND_TESTED (unit tests with fake OCR; live check with real Tesseract) |
+| Test command | `pytest -q` -> 332 passed (`test_image_evidence.py`: 14) |
+| Live check | generated refund screenshot -> Tesseract -> status completed, method ocr; order id, amount and date read exactly |
+
+- Decision (user, 2026-11-08): inputs are **text and images**; voice is out of
+  scope and stated as a limit. Earlier specs had excluded both; images are now in.
+- Uploads accept PNG/JPG (file signature checked, not just extension), PDF,
+  .txt, .md. Images are normalised to PNG and read by local Tesseract; PDF pages
+  without a text layer fall back to OCR page by page. No remote OCR.
+- Empty or garbled OCR text fails that file (`ocr_no_text` / `ocr_low_quality`);
+  missing Tesseract fails it with `ocr_unavailable`; other uploads continue.
+- OCR text goes through the same fact substring guard; facts are
+  `document_supported` with the page; the response lists `methods: ["ocr"]` and
+  the UI tells the user to check amounts and dates against the image.

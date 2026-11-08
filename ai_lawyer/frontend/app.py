@@ -172,8 +172,18 @@ def render_facts(response: dict) -> None:
                 use_container_width=True,
                 hide_index=True,
             )
+            ocr_files = [
+                e.get("filename", "")
+                for e in response.get("evidence_processing") or []
+                if "ocr" in (e.get("methods") or [])
+            ]
+            if ocr_files:
+                st.caption(
+                    "Read by OCR from: " + ", ".join(escape(name) for name in ocr_files)
+                    + ". OCR can misread digits; check amounts and dates against the image."
+                )
         else:
-            st.caption("No document-supported facts yet. Upload a text PDF or .txt file.")
+            st.caption("No document-supported facts yet. Upload a screenshot, PDF or .txt file.")
 
     if disputed:
         st.warning("Facts with a conflict or unknown status:")
@@ -293,8 +303,9 @@ def main() -> None:
                 st.markdown(safe_markdown(entry["content"]))
 
     uploads = st.file_uploader(
-        "Optional evidence (text PDF, .txt or .md; scanned images are not supported)",
-        type=["pdf", "txt", "md"],
+        "Optional evidence: screenshot or photo (PNG/JPG), PDF, .txt or .md. "
+        "Text in images and scanned pages is read by OCR on this machine; check the facts it finds.",
+        type=["pdf", "txt", "md", "png", "jpg", "jpeg"],
         accept_multiple_files=True,
     )
     message = st.chat_input("Describe the refund problem, or answer the question above")

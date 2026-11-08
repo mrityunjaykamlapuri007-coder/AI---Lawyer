@@ -403,6 +403,7 @@ class Orchestrator:
                         filename=evidence.original_filename,
                         status=evidence.extraction_status,
                         error_code=evidence.error_code,
+                        methods=sorted({p.method for p in evidence.pages if p.text}),
                     )
                 )
                 notes.append(

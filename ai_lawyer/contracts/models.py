@@ -446,6 +446,8 @@ class EvidenceProcessing(StrictModel):
     filename: str
     status: Literal["completed", "partial", "failed"]
     error_code: str | None = None
+    # How each page's text was obtained, e.g. ["ocr"]: OCR text must be checked by the user.
+    methods: list[str] = Field(default_factory=list)
 
 
 class MessageResponse(StrictModel):

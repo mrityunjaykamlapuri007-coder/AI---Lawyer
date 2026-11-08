@@ -82,6 +82,8 @@ class Settings(BaseSettings):
     llm_failure_log: str = "ai_lawyer/evaluation/results/llm_failures.jsonl"
 
     max_upload_mb: int = 5
+    # Local Tesseract OCR for image uploads and scanned PDF pages.
+    ocr_enabled: bool = True
     max_message_chars: int = 4000
     request_timeout_s: int = 120
     allowed_origins: str = "http://localhost:8501"

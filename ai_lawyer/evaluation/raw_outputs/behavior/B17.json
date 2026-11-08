@@ -55,10 +55,10 @@
   },
   "responses": [
     {
-      "conversation_id": "conv_3a63cf9a-9052-4c48-bbfa-d54785e92990",
-      "message_id": "msg_4a5b536c-13ee-4d67-8206-ff899fda3be6",
-      "assistant_message_id": "msg_029ea724-4c1e-47ca-8694-21b9f26a7496",
-      "case_id": "case_f65cf169-ee85-4e36-ba90-77657f8355e4",
+      "conversation_id": "conv_6c78aca2-06fd-4d84-9fb0-ab25fa3a5e52",
+      "message_id": "msg_17ad8e4b-1f28-45ab-b3dd-2871de8a2196",
+      "assistant_message_id": "msg_3ae93b09-3435-4c9f-acb5-001ae24010a9",
+      "case_id": "case_97df3f59-6462-4f53-a6e3-9cd41219a9f0",
       "processing_status": "completed",
       "assistant_message": "## What I understood\n\nA consumer says an e-commerce refund is outstanding.\n\n## Facts\n\nFacts you reported:\n- Order id: FM-1717\n- Merchant name: FakeMart\n- Refund status: never came\n- Support contact made: i emailed\n- Return requested: 1 October 2026\n- Support contacted: 15 October\n\n## Legal sources that may apply\n\n- **TEST_ACT Article A1 (FIXTURE)** — role: supporting; applicability: applicable; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: Where a consumer cancels an order or returns goods, the seller must process a refund within a reasonable period after the cancellation or return.\"\n- **TEST_ACT Article A6 (FIXTURE definition)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: 'refund' means the return of money paid for goods or services.\"\n- **TEST_ACT Article A7 (FIXTURE)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: A seller must respond to a refund request within a period set by the platform.\"\n- **TEST_ACT Article A3 (FIXTURE)** — role: supporting; applicability: applicable; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: An e-commerce platform must provide a grievance officer to receive consumer complaints about refunds and returns.\"\n- **TEST_ACT Article A1 Proviso (FIXTURE)** — role: mandatory_qualifier; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: Provided that the seller may first require the consumer to return the goods.\"\n\n## How this may relate to your case\n\n- This provision may apply if the facts described are established.\n\n## Assessment\n\n**A formal grievance is recommended.**\n\n- Support was contacted, the issue remains unresolved, and the grievance officer has not been contacted.\n\nSuggested next steps:\n1. Send a formal written grievance to the platform's grievance officer.\n2. Attach the order, payment, return and support messages.\n3. Keep proof of delivery and ask for a written response.\n\nAssessment date: 2026-11-08.\n\n## Draft document\nA **formal grievance** draft is included below for your review. It has not been sent or filed.\n\n## Limitations\n\n- This is general information and a draft for your review, not legal advice. I cannot guarantee any outcome.\n- FIXTURE DATA, NOT REAL LAW: the citations above come from a synthetic test corpus and must not be relied on as legal authority.\n",
       "case_summary": {
@@ -73,8 +73,8 @@
       },
       "extracted_facts": [
         {
-          "fact_id": "fact_4932d2e7-5ae6-4868-9c56-53d97b70ffeb",
-          "case_id": "case_f65cf169-ee85-4e36-ba90-77657f8355e4",
+          "fact_id": "fact_e93daab0-d953-4584-a797-c038e3944986",
+          "case_id": "case_97df3f59-6462-4f53-a6e3-9cd41219a9f0",
           "fact_type": "order_id",
           "raw_value": "FM-1717",
           "normalised_value": "FM-1717",
@@ -86,11 +86,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T16:28:15.713572Z"
+          "created_at": "2026-11-08T16:43:30.699227Z"
         },
         {
-          "fact_id": "fact_70d279cd-0159-41dd-bd08-875dda57819b",
-          "case_id": "case_f65cf169-ee85-4e36-ba90-77657f8355e4",
+          "fact_id": "fact_bf2a3871-dbc0-4a23-b0ff-33401b0c852e",
+          "case_id": "case_97df3f59-6462-4f53-a6e3-9cd41219a9f0",
           "fact_type": "merchant_name",
           "raw_value": "FakeMart",
           "normalised_value": "FakeMart",
@@ -102,11 +102,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T16:28:15.728617Z"
+          "created_at": "2026-11-08T16:43:30.719372Z"
         },
         {
-          "fact_id": "fact_1150b636-a89e-4034-8d06-3a5f6def38e5",
-          "case_id": "case_f65cf169-ee85-4e36-ba90-77657f8355e4",
+          "fact_id": "fact_291a5a26-f73b-4448-92ef-590012af69ed",
+          "case_id": "case_97df3f59-6462-4f53-a6e3-9cd41219a9f0",
           "fact_type": "refund_status",
           "raw_value": "never came",
           "normalised_value": "not_received",
@@ -118,11 +118,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T16:28:15.746010Z"
+          "created_at": "2026-11-08T16:43:30.741377Z"
         },
         {
-          "fact_id": "fact_3648ee62-aa11-406e-a8f3-8383a1b21526",
-          "case_id": "case_f65cf169-ee85-4e36-ba90-77657f8355e4",
+          "fact_id": "fact_59aefca3-6dd6-409f-9021-4355031f19a2",
+          "case_id": "case_97df3f59-6462-4f53-a6e3-9cd41219a9f0",
           "fact_type": "support_contact_made",
           "raw_value": "i emailed",
           "normalised_value": true,
@@ -134,11 +134,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T16:28:15.764657Z"
+          "created_at": "2026-11-08T16:43:30.763371Z"
         },
         {
-          "fact_id": "fact_fb6e0c40-78e4-4e7f-bfd4-5fe7d0729ef6",
-          "case_id": "case_f65cf169-ee85-4e36-ba90-77657f8355e4",
+          "fact_id": "fact_9695c738-345a-4398-bbda-c9d243f6470a",
+          "case_id": "case_97df3f59-6462-4f53-a6e3-9cd41219a9f0",
           "fact_type": "return_requested_date",
           "raw_value": "1 October 2026",
           "normalised_value": "2026-10-01",
@@ -150,11 +150,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T16:28:15.782750Z"
+          "created_at": "2026-11-08T16:43:30.784375Z"
         },
         {
-          "fact_id": "fact_3895d3e4-9b35-479c-8ede-0b72dd76e38d",
-          "case_id": "case_f65cf169-ee85-4e36-ba90-77657f8355e4",
+          "fact_id": "fact_482b1e14-537f-43c2-ad12-988761f31f1e",
+          "case_id": "case_97df3f59-6462-4f53-a6e3-9cd41219a9f0",
           "fact_type": "support_contact_date",
           "raw_value": "15 October",
           "normalised_value": "2026-10-15",
@@ -166,7 +166,7 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T16:28:15.799677Z"
+          "created_at": "2026-11-08T16:43:30.804892Z"
         }
       ],
       "evidence_processing": [],
@@ -457,12 +457,12 @@
           "Support was contacted, the issue remains unresolved, and the grievance officer has not been contacted."
         ],
         "facts_used": [
-          "fact_4932d2e7-5ae6-4868-9c56-53d97b70ffeb",
-          "fact_70d279cd-0159-41dd-bd08-875dda57819b",
-          "fact_1150b636-a89e-4034-8d06-3a5f6def38e5",
-          "fact_3648ee62-aa11-406e-a8f3-8383a1b21526",
-          "fact_fb6e0c40-78e4-4e7f-bfd4-5fe7d0729ef6",
-          "fact_3895d3e4-9b35-479c-8ede-0b72dd76e38d"
+          "fact_e93daab0-d953-4584-a797-c038e3944986",
+          "fact_bf2a3871-dbc0-4a23-b0ff-33401b0c852e",
+          "fact_291a5a26-f73b-4448-92ef-590012af69ed",
+          "fact_59aefca3-6dd6-409f-9021-4355031f19a2",
+          "fact_9695c738-345a-4398-bbda-c9d243f6470a",
+          "fact_482b1e14-537f-43c2-ad12-988761f31f1e"
         ],
         "provision_ids_used": [
           "TEST_ACT_A1",
@@ -500,22 +500,22 @@
         "Keep proof of delivery and ask for a written response."
       ],
       "document_draft": {
-        "draft_id": "doc_eca81d03-f51a-48a2-9ceb-34be64aa47cc",
-        "case_id": "case_f65cf169-ee85-4e36-ba90-77657f8355e4",
+        "draft_id": "doc_bd986512-ed0f-4e72-a4e9-58412e2aaf84",
+        "case_id": "case_97df3f59-6462-4f53-a6e3-9cd41219a9f0",
         "draft_type": "formal_grievance",
         "content": "# DRAFT: prepared for your review. Not sent or filed.\n\nTo: The Grievance Officer\n\nSubject: Formal grievance — unresolved refund for order FM-1717\n\n**Complainant**\n\n- Name: [TO BE FILLED BY USER]\n- Address: [TO BE FILLED BY USER]\n- Order id: FM-1717\n- Merchant / platform: FakeMart\n- Refund amount: [TO BE FILLED BY USER]\n\n**Facts**\n\n- refund status: not_received (reported by you)\n- support contact made: True (reported by you)\n- return requested date: 2026-10-01 (reported by you)\n- support contact date: 2026-10-15 (reported by you)\n\n- Relevant dates: return requested: 1 October 2026; support contacted: 15 October\n- Current refund status: not_received\n- Support contact: yes\n\n**Requested resolution**\n\nPlease review the unresolved refund and confirm in writing what action will be taken. Please treat this as a formal grievance.\n\n**Legal grounds (only provisions supplied in the verified corpus)**\n\n- TEST_ACT Article A1 (FIXTURE): \"FAKE TEST TEXT: Where a consumer cancels an order or returns goods, the seller must process a refund within a reasonable period after the cancellation or return.\"\n- TEST_ACT Article A6 (FIXTURE definition): \"FAKE TEST TEXT: 'refund' means the return of money paid for goods or services.\"\n- TEST_ACT Article A7 (FIXTURE): \"FAKE TEST TEXT: A seller must respond to a refund request within a period set by the platform.\"\n- TEST_ACT Article A3 (FIXTURE): \"FAKE TEST TEXT: An e-commerce platform must provide a grievance officer to receive consumer complaints about refunds and returns.\"\n- TEST_ACT Article A1 Proviso (FIXTURE): \"FAKE TEST TEXT: Provided that the seller may first require the consumer to return the goods.\"\n\nYours sincerely,\n\n[TO BE FILLED BY USER]\n[TO BE FILLED BY USER]\n\n---\n\nThis is a draft prepared by an AI assistant for your review. It has not been sent or filed. Check every fact before using it.",
         "status": "needs_review",
         "missing_fields": [
           "[TO BE FILLED BY USER]"
         ],
-        "created_at": "2026-11-08T16:28:15.830943Z"
+        "created_at": "2026-11-08T16:43:30.851008Z"
       }
     },
     {
-      "conversation_id": "conv_3a63cf9a-9052-4c48-bbfa-d54785e92990",
-      "message_id": "msg_8b2db27a-7043-4d05-a4f9-ecea71d1bb7e",
-      "assistant_message_id": "msg_7987b104-2643-413d-89b1-3ee69b3223dc",
-      "case_id": "case_f65cf169-ee85-4e36-ba90-77657f8355e4",
+      "conversation_id": "conv_6c78aca2-06fd-4d84-9fb0-ab25fa3a5e52",
+      "message_id": "msg_30edc219-82f7-4c6c-bc5c-0376ddd1f6b8",
+      "assistant_message_id": "msg_adeb9567-030f-4de0-a050-b2f052f20fce",
+      "case_id": "case_97df3f59-6462-4f53-a6e3-9cd41219a9f0",
       "processing_status": "needs_clarification",
       "assistant_message": "## What I understood\n\nA consumer says an e-commerce refund is outstanding.\n\n## Facts\n\nFacts you reported:\n- Order id: FM-1717\n- Merchant name: FakeMart\n- Support contact made: i emailed\n- Return requested: 1 October 2026\n- Support contacted: 15 October\n- Refund status: rupees arrived\n- Bank credit confirmed: arrived in my account\n\n## Legal sources that may apply\n\n- **TEST_ACT Article A3 (FIXTURE)** — role: supporting; applicability: applicable; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: An e-commerce platform must provide a grievance officer to receive consumer complaints about refunds and returns.\"\n- **TEST_ACT Article A7 (FIXTURE)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: A seller must respond to a refund request within a period set by the platform.\"\n- **TEST_ACT Article A1 Proviso (FIXTURE)** — role: mandatory_qualifier; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: Provided that the seller may first require the consumer to return the goods.\"\n\n## How this may relate to your case\n\n- This provision may apply if the facts described are established.\n\n## Assessment\n\n**I need more information before assessing the next step.**\n\n- The available facts do not yet support a clear next step.\n\nSuggested next steps:\n1. Answer the follow-up question so the refund timeline can be assessed.\n\nAssessment date: 2026-11-08.\n\n## Missing information\n- Have you contacted the platform's grievance officer, and on what date?\n\n## Limitations\n\n- This is general information and a draft for your review, not legal advice. I cannot guarantee any outcome.\n- FIXTURE DATA, NOT REAL LAW: the citations above come from a synthetic test corpus and must not be relied on as legal authority.\n",
       "case_summary": {
@@ -528,8 +528,8 @@
       },
       "extracted_facts": [
         {
-          "fact_id": "fact_4932d2e7-5ae6-4868-9c56-53d97b70ffeb",
-          "case_id": "case_f65cf169-ee85-4e36-ba90-77657f8355e4",
+          "fact_id": "fact_e93daab0-d953-4584-a797-c038e3944986",
+          "case_id": "case_97df3f59-6462-4f53-a6e3-9cd41219a9f0",
           "fact_type": "order_id",
           "raw_value": "FM-1717",
           "normalised_value": "FM-1717",
@@ -541,11 +541,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T16:28:15.713572Z"
+          "created_at": "2026-11-08T16:43:30.699227Z"
         },
         {
-          "fact_id": "fact_70d279cd-0159-41dd-bd08-875dda57819b",
-          "case_id": "case_f65cf169-ee85-4e36-ba90-77657f8355e4",
+          "fact_id": "fact_bf2a3871-dbc0-4a23-b0ff-33401b0c852e",
+          "case_id": "case_97df3f59-6462-4f53-a6e3-9cd41219a9f0",
           "fact_type": "merchant_name",
           "raw_value": "FakeMart",
           "normalised_value": "FakeMart",
@@ -557,11 +557,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T16:28:15.728617Z"
+          "created_at": "2026-11-08T16:43:30.719372Z"
         },
         {
-          "fact_id": "fact_1150b636-a89e-4034-8d06-3a5f6def38e5",
-          "case_id": "case_f65cf169-ee85-4e36-ba90-77657f8355e4",
+          "fact_id": "fact_291a5a26-f73b-4448-92ef-590012af69ed",
+          "case_id": "case_97df3f59-6462-4f53-a6e3-9cd41219a9f0",
           "fact_type": "refund_status",
           "raw_value": "never came",
           "normalised_value": "not_received",
@@ -573,11 +573,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T16:28:15.746010Z"
+          "created_at": "2026-11-08T16:43:30.741377Z"
         },
         {
-          "fact_id": "fact_3648ee62-aa11-406e-a8f3-8383a1b21526",
-          "case_id": "case_f65cf169-ee85-4e36-ba90-77657f8355e4",
+          "fact_id": "fact_59aefca3-6dd6-409f-9021-4355031f19a2",
+          "case_id": "case_97df3f59-6462-4f53-a6e3-9cd41219a9f0",
           "fact_type": "support_contact_made",
           "raw_value": "i emailed",
           "normalised_value": true,
@@ -589,11 +589,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T16:28:15.764657Z"
+          "created_at": "2026-11-08T16:43:30.763371Z"
         },
         {
-          "fact_id": "fact_fb6e0c40-78e4-4e7f-bfd4-5fe7d0729ef6",
-          "case_id": "case_f65cf169-ee85-4e36-ba90-77657f8355e4",
+          "fact_id": "fact_9695c738-345a-4398-bbda-c9d243f6470a",
+          "case_id": "case_97df3f59-6462-4f53-a6e3-9cd41219a9f0",
           "fact_type": "return_requested_date",
           "raw_value": "1 October 2026",
           "normalised_value": "2026-10-01",
@@ -605,11 +605,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T16:28:15.782750Z"
+          "created_at": "2026-11-08T16:43:30.784375Z"
         },
         {
-          "fact_id": "fact_3895d3e4-9b35-479c-8ede-0b72dd76e38d",
-          "case_id": "case_f65cf169-ee85-4e36-ba90-77657f8355e4",
+          "fact_id": "fact_482b1e14-537f-43c2-ad12-988761f31f1e",
+          "case_id": "case_97df3f59-6462-4f53-a6e3-9cd41219a9f0",
           "fact_type": "support_contact_date",
           "raw_value": "15 October",
           "normalised_value": "2026-10-15",
@@ -621,11 +621,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T16:28:15.799677Z"
+          "created_at": "2026-11-08T16:43:30.804892Z"
         },
         {
-          "fact_id": "fact_334e0b01-bd91-49b1-aec2-0733cc158fb6",
-          "case_id": "case_f65cf169-ee85-4e36-ba90-77657f8355e4",
+          "fact_id": "fact_eae5c842-ee5e-4f39-bc40-1d557318aae5",
+          "case_id": "case_97df3f59-6462-4f53-a6e3-9cd41219a9f0",
           "fact_type": "refund_status",
           "raw_value": "rupees arrived",
           "normalised_value": "received",
@@ -636,12 +636,12 @@
           "status": "user_reported",
           "inferred": false,
           "ambiguity_flag": false,
-          "supersedes_fact_id": "fact_1150b636-a89e-4034-8d06-3a5f6def38e5",
-          "created_at": "2026-11-08T16:28:15.887743Z"
+          "supersedes_fact_id": "fact_291a5a26-f73b-4448-92ef-590012af69ed",
+          "created_at": "2026-11-08T16:43:30.923997Z"
         },
         {
-          "fact_id": "fact_41dd76f0-743b-4473-af3a-f691ce40b54d",
-          "case_id": "case_f65cf169-ee85-4e36-ba90-77657f8355e4",
+          "fact_id": "fact_78ba5205-6351-4605-9b6a-3eba699da268",
+          "case_id": "case_97df3f59-6462-4f53-a6e3-9cd41219a9f0",
           "fact_type": "bank_credit_confirmed",
           "raw_value": "arrived in my account",
           "normalised_value": true,
@@ -653,7 +653,7 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T16:28:15.905784Z"
+          "created_at": "2026-11-08T16:43:30.943893Z"
         }
       ],
       "evidence_processing": [],
@@ -926,13 +926,13 @@
           "The available facts do not yet support a clear next step."
         ],
         "facts_used": [
-          "fact_4932d2e7-5ae6-4868-9c56-53d97b70ffeb",
-          "fact_70d279cd-0159-41dd-bd08-875dda57819b",
-          "fact_3648ee62-aa11-406e-a8f3-8383a1b21526",
-          "fact_fb6e0c40-78e4-4e7f-bfd4-5fe7d0729ef6",
-          "fact_3895d3e4-9b35-479c-8ede-0b72dd76e38d",
-          "fact_334e0b01-bd91-49b1-aec2-0733cc158fb6",
-          "fact_41dd76f0-743b-4473-af3a-f691ce40b54d"
+          "fact_e93daab0-d953-4584-a797-c038e3944986",
+          "fact_bf2a3871-dbc0-4a23-b0ff-33401b0c852e",
+          "fact_59aefca3-6dd6-409f-9021-4355031f19a2",
+          "fact_9695c738-345a-4398-bbda-c9d243f6470a",
+          "fact_482b1e14-537f-43c2-ad12-988761f31f1e",
+          "fact_eae5c842-ee5e-4f39-bc40-1d557318aae5",
+          "fact_78ba5205-6351-4605-9b6a-3eba699da268"
         ],
         "provision_ids_used": [
           "TEST_ACT_A3",
@@ -969,10 +969,10 @@
       "document_draft": null
     },
     {
-      "conversation_id": "conv_3a63cf9a-9052-4c48-bbfa-d54785e92990",
-      "message_id": "msg_2dcba6e8-6b89-44a9-9e1a-e7811bd791a0",
-      "assistant_message_id": "msg_112955a4-d44c-4772-8015-d41980e022e2",
-      "case_id": "case_f65cf169-ee85-4e36-ba90-77657f8355e4",
+      "conversation_id": "conv_6c78aca2-06fd-4d84-9fb0-ab25fa3a5e52",
+      "message_id": "msg_22ddeeee-c4f8-486f-a59b-53a9eadf554a",
+      "assistant_message_id": "msg_d939916c-c184-4b75-bf90-1ef28165aa15",
+      "case_id": "case_97df3f59-6462-4f53-a6e3-9cd41219a9f0",
       "processing_status": "completed",
       "assistant_message": "## What I understood\n\nA consumer says an e-commerce refund is outstanding.\n\n## Facts\n\nFacts supported by a document:\n- Order id: FM-1717 (page 1)\n- Transaction id: FM-1717 (page 1)\n- Refund status: reversed (page 1)\n\nFacts you reported:\n- Merchant name: FakeMart\n- Support contact made: i emailed\n- Return requested: 1 October 2026\n- Support contacted: 15 October\n- Bank credit confirmed: arrived in my account\n\nEvidence files:\n- B17-attachment.txt: completed\n\n## Legal sources that may apply\n\n- **TEST_ACT Article A3 (FIXTURE)** — role: supporting; applicability: applicable; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: An e-commerce platform must provide a grievance officer to receive consumer complaints about refunds and returns.\"\n- **TEST_ACT Article A7 (FIXTURE)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: A seller must respond to a refund request within a period set by the platform.\"\n- **TEST_ACT Article A1 Proviso (FIXTURE)** — role: mandatory_qualifier; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: Provided that the seller may first require the consumer to return the goods.\"\n\n## How this may relate to your case\n\n- This provision may apply if the facts described are established.\n\n## Assessment\n\n**A formal grievance is recommended.**\n\n- Support was contacted, the issue remains unresolved, and the grievance officer has not been contacted.\n\nSuggested next steps:\n1. Send a formal written grievance to the platform's grievance officer.\n2. Attach the order, payment, return and support messages.\n3. Keep proof of delivery and ask for a written response.\n\nAssessment date: 2026-11-08.\n\n## Draft document\nA **formal grievance** draft is included below for your review. It has not been sent or filed.\n\n## Limitations\n\n- This is general information and a draft for your review, not legal advice. I cannot guarantee any outcome.\n- FIXTURE DATA, NOT REAL LAW: the citations above come from a synthetic test corpus and must not be relied on as legal authority.\n",
       "case_summary": {
@@ -987,8 +987,8 @@
       },
       "extracted_facts": [
         {
-          "fact_id": "fact_4932d2e7-5ae6-4868-9c56-53d97b70ffeb",
-          "case_id": "case_f65cf169-ee85-4e36-ba90-77657f8355e4",
+          "fact_id": "fact_e93daab0-d953-4584-a797-c038e3944986",
+          "case_id": "case_97df3f59-6462-4f53-a6e3-9cd41219a9f0",
           "fact_type": "order_id",
           "raw_value": "FM-1717",
           "normalised_value": "FM-1717",
@@ -1000,11 +1000,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T16:28:15.713572Z"
+          "created_at": "2026-11-08T16:43:30.699227Z"
         },
         {
-          "fact_id": "fact_70d279cd-0159-41dd-bd08-875dda57819b",
-          "case_id": "case_f65cf169-ee85-4e36-ba90-77657f8355e4",
+          "fact_id": "fact_bf2a3871-dbc0-4a23-b0ff-33401b0c852e",
+          "case_id": "case_97df3f59-6462-4f53-a6e3-9cd41219a9f0",
           "fact_type": "merchant_name",
           "raw_value": "FakeMart",
           "normalised_value": "FakeMart",
@@ -1016,11 +1016,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T16:28:15.728617Z"
+          "created_at": "2026-11-08T16:43:30.719372Z"
         },
         {
-          "fact_id": "fact_1150b636-a89e-4034-8d06-3a5f6def38e5",
-          "case_id": "case_f65cf169-ee85-4e36-ba90-77657f8355e4",
+          "fact_id": "fact_291a5a26-f73b-4448-92ef-590012af69ed",
+          "case_id": "case_97df3f59-6462-4f53-a6e3-9cd41219a9f0",
           "fact_type": "refund_status",
           "raw_value": "never came",
           "normalised_value": "not_received",
@@ -1032,11 +1032,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T16:28:15.746010Z"
+          "created_at": "2026-11-08T16:43:30.741377Z"
         },
         {
-          "fact_id": "fact_3648ee62-aa11-406e-a8f3-8383a1b21526",
-          "case_id": "case_f65cf169-ee85-4e36-ba90-77657f8355e4",
+          "fact_id": "fact_59aefca3-6dd6-409f-9021-4355031f19a2",
+          "case_id": "case_97df3f59-6462-4f53-a6e3-9cd41219a9f0",
           "fact_type": "support_contact_made",
           "raw_value": "i emailed",
           "normalised_value": true,
@@ -1048,11 +1048,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T16:28:15.764657Z"
+          "created_at": "2026-11-08T16:43:30.763371Z"
         },
         {
-          "fact_id": "fact_fb6e0c40-78e4-4e7f-bfd4-5fe7d0729ef6",
-          "case_id": "case_f65cf169-ee85-4e36-ba90-77657f8355e4",
+          "fact_id": "fact_9695c738-345a-4398-bbda-c9d243f6470a",
+          "case_id": "case_97df3f59-6462-4f53-a6e3-9cd41219a9f0",
           "fact_type": "return_requested_date",
           "raw_value": "1 October 2026",
           "normalised_value": "2026-10-01",
@@ -1064,11 +1064,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T16:28:15.782750Z"
+          "created_at": "2026-11-08T16:43:30.784375Z"
         },
         {
-          "fact_id": "fact_3895d3e4-9b35-479c-8ede-0b72dd76e38d",
-          "case_id": "case_f65cf169-ee85-4e36-ba90-77657f8355e4",
+          "fact_id": "fact_482b1e14-537f-43c2-ad12-988761f31f1e",
+          "case_id": "case_97df3f59-6462-4f53-a6e3-9cd41219a9f0",
           "fact_type": "support_contact_date",
           "raw_value": "15 October",
           "normalised_value": "2026-10-15",
@@ -1080,11 +1080,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T16:28:15.799677Z"
+          "created_at": "2026-11-08T16:43:30.804892Z"
         },
         {
-          "fact_id": "fact_334e0b01-bd91-49b1-aec2-0733cc158fb6",
-          "case_id": "case_f65cf169-ee85-4e36-ba90-77657f8355e4",
+          "fact_id": "fact_eae5c842-ee5e-4f39-bc40-1d557318aae5",
+          "case_id": "case_97df3f59-6462-4f53-a6e3-9cd41219a9f0",
           "fact_type": "refund_status",
           "raw_value": "rupees arrived",
           "normalised_value": "received",
@@ -1095,12 +1095,12 @@
           "status": "user_reported",
           "inferred": false,
           "ambiguity_flag": false,
-          "supersedes_fact_id": "fact_1150b636-a89e-4034-8d06-3a5f6def38e5",
-          "created_at": "2026-11-08T16:28:15.887743Z"
+          "supersedes_fact_id": "fact_291a5a26-f73b-4448-92ef-590012af69ed",
+          "created_at": "2026-11-08T16:43:30.923997Z"
         },
         {
-          "fact_id": "fact_41dd76f0-743b-4473-af3a-f691ce40b54d",
-          "case_id": "case_f65cf169-ee85-4e36-ba90-77657f8355e4",
+          "fact_id": "fact_78ba5205-6351-4605-9b6a-3eba699da268",
+          "case_id": "case_97df3f59-6462-4f53-a6e3-9cd41219a9f0",
           "fact_type": "bank_credit_confirmed",
           "raw_value": "arrived in my account",
           "normalised_value": true,
@@ -1112,11 +1112,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T16:28:15.905784Z"
+          "created_at": "2026-11-08T16:43:30.943893Z"
         },
         {
-          "fact_id": "fact_c2bcdf8f-1001-426c-a3af-0d87a13c345c",
-          "case_id": "case_f65cf169-ee85-4e36-ba90-77657f8355e4",
+          "fact_id": "fact_1df1a9d2-91a0-4464-bd6d-0709c1c81973",
+          "case_id": "case_97df3f59-6462-4f53-a6e3-9cd41219a9f0",
           "fact_type": "order_id",
           "raw_value": "FM-1717",
           "normalised_value": "FM-1717",
@@ -1127,12 +1127,12 @@
           "status": "user_reported",
           "inferred": false,
           "ambiguity_flag": false,
-          "supersedes_fact_id": "fact_4932d2e7-5ae6-4868-9c56-53d97b70ffeb",
-          "created_at": "2026-11-08T16:28:16.031589Z"
+          "supersedes_fact_id": "fact_e93daab0-d953-4584-a797-c038e3944986",
+          "created_at": "2026-11-08T16:43:31.103688Z"
         },
         {
-          "fact_id": "fact_1fa5ad66-c34f-42b9-9b71-90caf3f1c268",
-          "case_id": "case_f65cf169-ee85-4e36-ba90-77657f8355e4",
+          "fact_id": "fact_7b62e0df-0e8d-4b46-8b44-af2123f8f31e",
+          "case_id": "case_97df3f59-6462-4f53-a6e3-9cd41219a9f0",
           "fact_type": "refund_status",
           "raw_value": "reversed",
           "normalised_value": "reversed",
@@ -1143,63 +1143,66 @@
           "status": "user_reported",
           "inferred": false,
           "ambiguity_flag": false,
-          "supersedes_fact_id": "fact_334e0b01-bd91-49b1-aec2-0733cc158fb6",
-          "created_at": "2026-11-08T16:28:16.048041Z"
+          "supersedes_fact_id": "fact_eae5c842-ee5e-4f39-bc40-1d557318aae5",
+          "created_at": "2026-11-08T16:43:31.129753Z"
         },
         {
-          "fact_id": "fact_e5b5a7d1-59dd-401f-9ced-2691c87af188",
-          "case_id": "case_f65cf169-ee85-4e36-ba90-77657f8355e4",
+          "fact_id": "fact_c0e66c86-743a-4920-aa5c-b333ab7216f3",
+          "case_id": "case_97df3f59-6462-4f53-a6e3-9cd41219a9f0",
           "fact_type": "order_id",
           "raw_value": "FM-1717",
           "normalised_value": "FM-1717",
           "source_type": "evidence",
-          "source_id": "ev_05f4e963-f203-4ba2-8684-9fcc5dcc6782",
-          "evidence_id": "ev_05f4e963-f203-4ba2-8684-9fcc5dcc6782",
+          "source_id": "ev_2533efe8-06ef-4c99-89ae-54889bd5f983",
+          "evidence_id": "ev_2533efe8-06ef-4c99-89ae-54889bd5f983",
           "page_number": 1,
           "status": "document_supported",
           "inferred": false,
           "ambiguity_flag": false,
-          "supersedes_fact_id": "fact_c2bcdf8f-1001-426c-a3af-0d87a13c345c",
-          "created_at": "2026-11-08T16:28:16.064457Z"
+          "supersedes_fact_id": "fact_1df1a9d2-91a0-4464-bd6d-0709c1c81973",
+          "created_at": "2026-11-08T16:43:31.157307Z"
         },
         {
-          "fact_id": "fact_b123d8d0-b8ac-4a7e-a04c-360b06c6cb72",
-          "case_id": "case_f65cf169-ee85-4e36-ba90-77657f8355e4",
+          "fact_id": "fact_c39a9df9-cc6e-43f3-9a09-2f9a1a206346",
+          "case_id": "case_97df3f59-6462-4f53-a6e3-9cd41219a9f0",
           "fact_type": "transaction_id",
           "raw_value": "FM-1717",
           "normalised_value": "FM-1717",
           "source_type": "evidence",
-          "source_id": "ev_05f4e963-f203-4ba2-8684-9fcc5dcc6782",
-          "evidence_id": "ev_05f4e963-f203-4ba2-8684-9fcc5dcc6782",
+          "source_id": "ev_2533efe8-06ef-4c99-89ae-54889bd5f983",
+          "evidence_id": "ev_2533efe8-06ef-4c99-89ae-54889bd5f983",
           "page_number": 1,
           "status": "document_supported",
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T16:28:16.082086Z"
+          "created_at": "2026-11-08T16:43:31.187575Z"
         },
         {
-          "fact_id": "fact_9dc44139-89ed-4262-a095-6796b3c3fa43",
-          "case_id": "case_f65cf169-ee85-4e36-ba90-77657f8355e4",
+          "fact_id": "fact_bea80112-9740-410d-8300-e034bc07d414",
+          "case_id": "case_97df3f59-6462-4f53-a6e3-9cd41219a9f0",
           "fact_type": "refund_status",
           "raw_value": "reversed",
           "normalised_value": "reversed",
           "source_type": "evidence",
-          "source_id": "ev_05f4e963-f203-4ba2-8684-9fcc5dcc6782",
-          "evidence_id": "ev_05f4e963-f203-4ba2-8684-9fcc5dcc6782",
+          "source_id": "ev_2533efe8-06ef-4c99-89ae-54889bd5f983",
+          "evidence_id": "ev_2533efe8-06ef-4c99-89ae-54889bd5f983",
           "page_number": 1,
           "status": "document_supported",
           "inferred": false,
           "ambiguity_flag": false,
-          "supersedes_fact_id": "fact_1fa5ad66-c34f-42b9-9b71-90caf3f1c268",
-          "created_at": "2026-11-08T16:28:16.098349Z"
+          "supersedes_fact_id": "fact_7b62e0df-0e8d-4b46-8b44-af2123f8f31e",
+          "created_at": "2026-11-08T16:43:31.214666Z"
         }
       ],
       "evidence_processing": [
         {
           "filename": "B17-attachment.txt",
           "status": "completed",
-          "error_code": null
+          "error_code": null,
+          "methods": [
+            "pasted_text"
+          ]
         }
       ],
       "legal_sources": [
@@ -1471,14 +1474,14 @@
           "Support was contacted, the issue remains unresolved, and the grievance officer has not been contacted."
         ],
         "facts_used": [
-          "fact_70d279cd-0159-41dd-bd08-875dda57819b",
-          "fact_3648ee62-aa11-406e-a8f3-8383a1b21526",
-          "fact_fb6e0c40-78e4-4e7f-bfd4-5fe7d0729ef6",
-          "fact_3895d3e4-9b35-479c-8ede-0b72dd76e38d",
-          "fact_41dd76f0-743b-4473-af3a-f691ce40b54d",
-          "fact_e5b5a7d1-59dd-401f-9ced-2691c87af188",
-          "fact_b123d8d0-b8ac-4a7e-a04c-360b06c6cb72",
-          "fact_9dc44139-89ed-4262-a095-6796b3c3fa43"
+          "fact_bf2a3871-dbc0-4a23-b0ff-33401b0c852e",
+          "fact_59aefca3-6dd6-409f-9021-4355031f19a2",
+          "fact_9695c738-345a-4398-bbda-c9d243f6470a",
+          "fact_482b1e14-537f-43c2-ad12-988761f31f1e",
+          "fact_78ba5205-6351-4605-9b6a-3eba699da268",
+          "fact_c0e66c86-743a-4920-aa5c-b333ab7216f3",
+          "fact_c39a9df9-cc6e-43f3-9a09-2f9a1a206346",
+          "fact_bea80112-9740-410d-8300-e034bc07d414"
         ],
         "provision_ids_used": [
           "TEST_ACT_A3",
@@ -1514,15 +1517,15 @@
         "Keep proof of delivery and ask for a written response."
       ],
       "document_draft": {
-        "draft_id": "doc_301afd94-f04a-4f90-80bb-02ece0c90532",
-        "case_id": "case_f65cf169-ee85-4e36-ba90-77657f8355e4",
+        "draft_id": "doc_9793a9b6-83b8-4273-9f54-7ccaab25c6f8",
+        "case_id": "case_97df3f59-6462-4f53-a6e3-9cd41219a9f0",
         "draft_type": "formal_grievance",
         "content": "# DRAFT: prepared for your review. Not sent or filed.\n\nTo: The Grievance Officer\n\nSubject: Formal grievance — unresolved refund for order FM-1717\n\n**Complainant**\n\n- Name: [TO BE FILLED BY USER]\n- Address: [TO BE FILLED BY USER]\n- Order id: FM-1717\n- Merchant / platform: FakeMart\n- Refund amount: [TO BE FILLED BY USER]\n\n**Facts**\n\n- support contact made: True (reported by you)\n- return requested date: 2026-10-01 (reported by you)\n- support contact date: 2026-10-15 (reported by you)\n- bank credit confirmed: True (reported by you)\n- refund status: reversed (reported by document, page 1)\n\n- Relevant dates: return requested: 1 October 2026; support contacted: 15 October\n- Current refund status: reversed\n- Support contact: yes\n\n**Requested resolution**\n\nPlease review the unresolved refund and confirm in writing what action will be taken. Please treat this as a formal grievance.\n\n**Legal grounds (only provisions supplied in the verified corpus)**\n\n- TEST_ACT Article A3 (FIXTURE): \"FAKE TEST TEXT: An e-commerce platform must provide a grievance officer to receive consumer complaints about refunds and returns.\"\n- TEST_ACT Article A7 (FIXTURE): \"FAKE TEST TEXT: A seller must respond to a refund request within a period set by the platform.\"\n- TEST_ACT Article A1 Proviso (FIXTURE): \"FAKE TEST TEXT: Provided that the seller may first require the consumer to return the goods.\"\n\nYours sincerely,\n\n[TO BE FILLED BY USER]\n[TO BE FILLED BY USER]\n\n---\n\nThis is a draft prepared by an AI assistant for your review. It has not been sent or filed. Check every fact before using it.",
         "status": "needs_review",
         "missing_fields": [
           "[TO BE FILLED BY USER]"
         ],
-        "created_at": "2026-11-08T16:28:16.135059Z"
+        "created_at": "2026-11-08T16:43:31.254477Z"
       }
     }
   ],
