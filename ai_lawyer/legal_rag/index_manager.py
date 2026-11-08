@@ -81,9 +81,17 @@ class IndexBundle:
         return [(self.chunk_ids[i], float(scores[i])) for i in order[:top_k] if scores[i] > 0]
 
 
+def _clear_readonly_and_retry(func, path, _exc) -> None:
+    """Windows refuses to delete read-only files and folders (OneDrive sets the flag)."""
+    import stat
+
+    os.chmod(path, stat.S_IWRITE | stat.S_IREAD | stat.S_IEXEC)
+    func(path)
+
+
 def _atomic_replace_dir(target: Path, source: Path) -> None:
     if target.exists():
-        shutil.rmtree(target)
+        shutil.rmtree(target, onexc=_clear_readonly_and_retry)
     os.replace(source, target)
 
 

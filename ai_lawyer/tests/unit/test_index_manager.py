@@ -58,3 +58,25 @@ def test_stale_corpus_version_is_rejected(corpus, settings):
 def test_missing_manifest_is_rejected(corpus, tmp_path):
     with pytest.raises(IndexStale):
         load_index(corpus, embedder=HashEmbedder(), index_dir=tmp_path / "empty")
+
+
+def test_index_rebuild_replaces_a_read_only_folder(tmp_path):
+    """OneDrive marks folders read-only; the rebuild must still replace them."""
+    import os
+    import stat
+
+    from ai_lawyer.legal_rag.index_manager import _atomic_replace_dir
+
+    target = tmp_path / "vectorstore"
+    target.mkdir()
+    (target / "old.txt").write_text("old")
+    os.chmod(target / "old.txt", stat.S_IREAD)
+    os.chmod(target, stat.S_IREAD | stat.S_IEXEC)
+    source = tmp_path / "new"
+    source.mkdir()
+    (source / "new.txt").write_text("new")
+
+    _atomic_replace_dir(target, source)
+
+    assert (target / "new.txt").read_text() == "new"
+    assert not (target / "old.txt").exists()
