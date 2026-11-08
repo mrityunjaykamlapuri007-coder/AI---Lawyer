@@ -1,0 +1,59 @@
+{
+  "label": "FIXTURE DATA, NOT REAL LAW",
+  "generated_at": "2026-11-08T00:59:50.249903+00:00",
+  "experiments": {
+    "E1_dense_faiss": "RUN",
+    "E2_sparse_bm25": "RUN",
+    "E3_hybrid_rrf": "RUN",
+    "E4_reranker": "NOT RUN (RERANKER_ENABLED=false; optional model not installed)",
+    "E5_verification": "RUN (deterministic guards + FakeLLM relevance grading)"
+  },
+  "corpus": {
+    "mode": "fixture",
+    "version": "d269bfc2722114f8",
+    "sources": 4,
+    "provisions": 11,
+    "usable": 10,
+    "unusable": 1
+  },
+  "embedder": "hash-embedder-v1",
+  "llm": "fake (deterministic, offline)",
+  "k_values": [
+    5,
+    10,
+    20
+  ],
+  "dataset": {
+    "rows": 8,
+    "development": 4,
+    "test": 4,
+    "sha256": {
+      "development.jsonl": "a0443f8c47c33aeb87e4881570c9ae714eda326c54dcb34e157eb283f647124b",
+      "test.jsonl": "f13f5c001a27e1d9d9594c588d70c871f8326f7e9b08c752adf41cbc981c5c2d"
+    }
+  },
+  "packages": {
+    "fastapi": "0.162.2",
+    "pydantic": "2.14.3",
+    "numpy": "2.5.4",
+    "pandas": "3.1.1",
+    "faiss-cpu": "1.15.1",
+    "rank-bm25": "0.2.2",
+    "pymupdf": "2.1",
+    "jinja2": "3.1.6",
+    "streamlit": "1.67.0"
+  },
+  "settings": {
+    "rrf_k": 60,
+    "dense_top_k": 20,
+    "sparse_top_k": 20,
+    "fused_top_k_for_eval": 20,
+    "max_retrieval_retries": 2,
+    "relevance_min_grade": 2
+  },
+  "notes": [
+    "All metrics are for a synthetic 11-provision fixture corpus.",
+    "FakeLLM is a deterministic lexical grader, not a semantic model.",
+    "Do not report these numbers as real legal retrieval quality."
+  ]
+}

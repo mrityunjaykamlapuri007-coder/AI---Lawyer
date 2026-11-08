@@ -1,0 +1,34 @@
+# secrets
+.env
+.env.*
+!.env.example
+
+# python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+
+# local data and generated artefacts
+ai_lawyer/data/
+ai_lawyer/vectorstore/
+ai_lawyer/legal_corpus/originals/
+ai_lawyer/legal_corpus/draft/
+*.db
+*.sqlite
+*.sqlite3
+
+# models / caches
+models/
+.cache/
+huggingface/
+
+# reference research project is preserved but not part of this repo
+reference/
+
+# the user's original project copy is preserved but not part of this repo
+ai-lawyer/
+
+# OS
+.DS_Store
+Thumbs.db

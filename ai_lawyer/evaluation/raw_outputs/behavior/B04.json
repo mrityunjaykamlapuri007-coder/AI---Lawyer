@@ -1,0 +1,201 @@
+{
+  "label": "FIXTURE DATA, NOT REAL LAW",
+  "test_id": "B04",
+  "category": "approved_not_received_no_dates_no_evidence",
+  "notes": "Rule R2. Must not claim any deadline has passed. Ask only the one or two most decision-relevant questions.",
+  "turns": [
+    {
+      "message": "The seller says my refund is processed but the money is not in my account."
+    }
+  ],
+  "expected": {
+    "outcome": "needs_more_information",
+    "must_ask_question": true,
+    "must_refuse": false,
+    "case_behavior": "new_case",
+    "max_questions": 2,
+    "must_not_contain": [
+      "violated",
+      "broke the law",
+      "illegal",
+      "deadline has passed",
+      "you will win",
+      "guaranteed"
+    ]
+  },
+  "responses": [
+    {
+      "conversation_id": "conv_af8d2944-6afd-47b2-9c01-248b45ed77a2",
+      "message_id": "msg_6d5e6879-6382-460a-b849-75bafa82fa85",
+      "assistant_message_id": "msg_2ddea644-9a48-4321-b738-0bb26e052709",
+      "case_id": "case_7dd2dd33-2c9d-4ca7-a6b0-dcd8197b3ec4",
+      "processing_status": "needs_clarification",
+      "assistant_message": "## What I understood\n\nA consumer says an e-commerce refund is outstanding.\n\n## Facts\n\nFacts you reported:\n- Refund status: processed\n- Bank credit confirmed: not in my account\n\n## Legal sources that may apply\n\n- **TEST_ACT Article A1 (FIXTURE)** — role: supporting; applicability: applicable; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: Where a consumer cancels an order or returns goods, the seller must process a refund within a reasonable period after the cancellation or return.\"\n- **TEST_ACT Article A6 (FIXTURE definition)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: 'refund' means the return of money paid for goods or services.\"\n- **TEST_ACT Article A7 (FIXTURE)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: A seller must respond to a refund request within a period set by the platform.\"\n- **TEST_ACT Article A3 (FIXTURE)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: An e-commerce platform must provide a grievance officer to receive consumer complaints about refunds and returns.\"\n- **TEST_ACT Article A1 Proviso (FIXTURE)** — role: mandatory_qualifier; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: Provided that the seller may first require the consumer to return the goods.\"\n\n## How this may relate to your case\n\n- This provision may apply if the facts described are established.\n\n## Assessment\n\n**I need more information before assessing the next step.**\n\n- An essential fact is missing: an exact cancellation/return date.\n\nSuggested next steps:\n1. Answer the follow-up question so the refund timeline can be assessed.\n\nAssessment date: 2026-11-08.\n\n## Missing information\n- When did you cancel or return the order? Please give the exact date.\n- Have you contacted the seller or platform support in writing, and on what date?\n\n## Limitations\n\n- This is general information and a draft for your review, not legal advice. I cannot guarantee any outcome.\n- FIXTURE DATA, NOT REAL LAW: the citations above come from a synthetic test corpus and must not be relied on as legal authority.\n",
+      "case_summary": {
+        "identifiers": [],
+        "merchant": null,
+        "platform": null,
+        "amount_minor": null,
+        "currency": "INR",
+        "refund_status": "processed"
+      },
+      "extracted_facts": [
+        {
+          "fact_id": "fact_9f7c58a7-6eb1-4d4d-9b16-e1a21bc288a0",
+          "case_id": "case_7dd2dd33-2c9d-4ca7-a6b0-dcd8197b3ec4",
+          "fact_type": "refund_status",
+          "raw_value": "processed",
+          "normalised_value": "processed",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T00:59:51.138743Z"
+        },
+        {
+          "fact_id": "fact_9eed82cc-1e6b-4e50-85ca-86e1b4b89e9e",
+          "case_id": "case_7dd2dd33-2c9d-4ca7-a6b0-dcd8197b3ec4",
+          "fact_type": "bank_credit_confirmed",
+          "raw_value": "not in my account",
+          "normalised_value": false,
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T00:59:51.153624Z"
+        }
+      ],
+      "evidence_processing": [],
+      "legal_sources": [
+        {
+          "provision_id": "TEST_ACT_A1",
+          "citation": "TEST_ACT Article A1 (FIXTURE)",
+          "excerpt": "FAKE TEST TEXT: Where a consumer cancels an order or returns goods, the seller must process a refund within a reasonable period after the cancellation or return.",
+          "role": "supporting",
+          "applicability": "applicable",
+          "source_validity": "current_for_date",
+          "official_url": ""
+        },
+        {
+          "provision_id": "TEST_ACT_A6",
+          "citation": "TEST_ACT Article A6 (FIXTURE definition)",
+          "excerpt": "FAKE TEST TEXT: 'refund' means the return of money paid for goods or services.",
+          "role": "supporting",
+          "applicability": "unknown",
+          "source_validity": "current_for_date",
+          "official_url": ""
+        },
+        {
+          "provision_id": "TEST_ACT_A7",
+          "citation": "TEST_ACT Article A7 (FIXTURE)",
+          "excerpt": "FAKE TEST TEXT: A seller must respond to a refund request within a period set by the platform.",
+          "role": "supporting",
+          "applicability": "unknown",
+          "source_validity": "current_for_date",
+          "official_url": ""
+        },
+        {
+          "provision_id": "TEST_ACT_A3",
+          "citation": "TEST_ACT Article A3 (FIXTURE)",
+          "excerpt": "FAKE TEST TEXT: An e-commerce platform must provide a grievance officer to receive consumer complaints about refunds and returns.",
+          "role": "supporting",
+          "applicability": "unknown",
+          "source_validity": "current_for_date",
+          "official_url": ""
+        },
+        {
+          "provision_id": "TEST_ACT_A1_P1",
+          "citation": "TEST_ACT Article A1 Proviso (FIXTURE)",
+          "excerpt": "FAKE TEST TEXT: Provided that the seller may first require the consumer to return the goods.",
+          "role": "mandatory_qualifier",
+          "applicability": "unknown",
+          "source_validity": "current_for_date",
+          "official_url": ""
+        }
+      ],
+      "retrieval_summary": {
+        "corpus_version": "d269bfc2722114f8",
+        "candidate_count": 10,
+        "accepted_count": 5,
+        "rejected_count": 5,
+        "retry_count": 0
+      },
+      "verification": {
+        "overall": "verified",
+        "blocked_claims": [],
+        "note": "deterministic citation/date/phrase guards only; claim-level entailment is DESIGN_ONLY"
+      },
+      "assessment": {
+        "outcome": "needs_more_information",
+        "reasons": [
+          "An essential fact is missing: an exact cancellation/return date."
+        ],
+        "facts_used": [
+          "fact_9f7c58a7-6eb1-4d4d-9b16-e1a21bc288a0",
+          "fact_9eed82cc-1e6b-4e50-85ca-86e1b4b89e9e"
+        ],
+        "provision_ids_used": [
+          "TEST_ACT_A1",
+          "TEST_ACT_A6",
+          "TEST_ACT_A7",
+          "TEST_ACT_A3",
+          "TEST_ACT_A1_P1"
+        ],
+        "missing_information": [
+          "When did you cancel or return the order? Please give the exact date.",
+          "Have you contacted the seller or platform support in writing, and on what date?"
+        ],
+        "uncertainties": [
+          "relevance grade 1 below 2",
+          "relevance grade 0 below 2",
+          "source not current for date: not_yet_effective (effective from 2030-01-01, after 2026-11-08)",
+          "source is not human_verified; not citable",
+          "source not current for date: superseded (effective to 2021-01-01, before 2026-11-08)"
+        ],
+        "urgency": "unknown",
+        "next_steps": [
+          "Answer the follow-up question so the refund timeline can be assessed."
+        ],
+        "lawyer_needed": false,
+        "lawyer_reason": null,
+        "rule_trace": [
+          "R2: An essential fact is missing: an exact cancellation/return date."
+        ],
+        "llm_proposed_outcome": "needs_more_information"
+      },
+      "missing_information": [
+        "When did you cancel or return the order? Please give the exact date.",
+        "Have you contacted the seller or platform support in writing, and on what date?"
+      ],
+      "next_steps": [
+        "Answer the follow-up question so the refund timeline can be assessed."
+      ],
+      "document_draft": null
+    }
+  ],
+  "case_status_final": "open",
+  "event_types": [
+    "case_created",
+    "fact_added",
+    "fact_added",
+    "assessment_completed"
+  ],
+  "checks_failed": [],
+  "observed": {
+    "outcome": "needs_more_information",
+    "asked_question": true,
+    "refused": false,
+    "question_count": 2,
+    "case_behavior": "new_case",
+    "must_not_contain_hits": []
+  },
+  "result": "PASS"
+}

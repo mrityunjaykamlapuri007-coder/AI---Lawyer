@@ -1,0 +1,280 @@
+{
+  "label": "FIXTURE DATA, NOT REAL LAW",
+  "test_id": "B03",
+  "category": "within_promised_timeline",
+  "notes": "Rule R4: elapsed 3 calendar days <= promised 7 days (user-reported promise). Elapsed days must come from Python, not the model.",
+  "turns": [
+    {
+      "message": "The seller initiated the refund for my order QB-3003 (899 rupees, paid by card) on 5 November 2026. Their page says refunds reach the card within 7 days. Today is 8 November. Should I complain?"
+    }
+  ],
+  "expected": {
+    "outcome": "no_legal_action_currently_required",
+    "must_ask_question": false,
+    "must_refuse": false,
+    "case_behavior": "new_case",
+    "must_contain_any": [
+      "monitor",
+      "wait",
+      "follow up",
+      "7 days"
+    ],
+    "must_not_contain": [
+      "violated",
+      "broke the law",
+      "illegal",
+      "you will win",
+      "guaranteed"
+    ]
+  },
+  "responses": [
+    {
+      "conversation_id": "conv_a077b0f0-41ca-44f8-b8e2-ee6f589caef5",
+      "message_id": "msg_8b632d8b-0e61-4ae4-b365-bc83d4401edd",
+      "assistant_message_id": "msg_9d7914b9-9558-4595-9ddf-06624aac1e1b",
+      "case_id": "case_42f62077-dd4c-4fa0-8d6c-90346ba4a098",
+      "processing_status": "completed",
+      "assistant_message": "## What I understood\n\nA consumer says an e-commerce refund is outstanding.\n\n## Facts\n\nFacts you reported:\n- Order id: QB-3003\n- Payment method: card\n- Refund status: initiated\n- Refund amount: INR 899.00\n- Merchant promised timeline days: within 7 days\n- Refund initiated: 5 November 2026\n\n## Legal sources that may apply\n\n- **TEST_ACT Article A1 (FIXTURE)** — role: supporting; applicability: applicable; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: Where a consumer cancels an order or returns goods, the seller must process a refund within a reasonable period after the cancellation or return.\"\n- **TEST_ACT Article A6 (FIXTURE definition)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: 'refund' means the return of money paid for goods or services.\"\n- **TEST_ACT Article A7 (FIXTURE)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: A seller must respond to a refund request within a period set by the platform.\"\n- **TEST_ACT Article A3 (FIXTURE)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: An e-commerce platform must provide a grievance officer to receive consumer complaints about refunds and returns.\"\n- **TEST_ACT Article A1 Proviso (FIXTURE)** — role: mandatory_qualifier; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: Provided that the seller may first require the consumer to return the goods.\"\n\n## How this may relate to your case\n\n- This provision may apply if the facts described are established.\n\n## Assessment\n\n**No legal action is currently required.**\n\n- Elapsed 3 calendar days from the refund initiated date (2026-11-05), which is within the merchant's own 7-day timeline (trigger date excluded). A delay alone is not a violation.\n\nSuggested next steps:\n1. Keep a written record and monitor the refund. Follow up after the merchant's own timeline of 7 days (calendar days, counting from refund_initiated_date, trigger date excluded).\n2. Save the order, payment and refund messages.\n\nAssessment date: 2026-11-08.\n\n## Limitations\n\n- This is general information and a draft for your review, not legal advice. I cannot guarantee any outcome.\n- FIXTURE DATA, NOT REAL LAW: the citations above come from a synthetic test corpus and must not be relied on as legal authority.\n",
+      "case_summary": {
+        "identifiers": [
+          "QB-3003"
+        ],
+        "merchant": null,
+        "platform": null,
+        "amount_minor": 89900,
+        "currency": "INR",
+        "refund_status": "initiated"
+      },
+      "extracted_facts": [
+        {
+          "fact_id": "fact_699108d8-9ef5-42a6-a11b-295af6176805",
+          "case_id": "case_42f62077-dd4c-4fa0-8d6c-90346ba4a098",
+          "fact_type": "order_id",
+          "raw_value": "QB-3003",
+          "normalised_value": "QB-3003",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T00:59:50.908555Z"
+        },
+        {
+          "fact_id": "fact_daf29d74-fe57-47f2-8454-187e9ddc6125",
+          "case_id": "case_42f62077-dd4c-4fa0-8d6c-90346ba4a098",
+          "fact_type": "payment_method",
+          "raw_value": "card",
+          "normalised_value": "card",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T00:59:50.922692Z"
+        },
+        {
+          "fact_id": "fact_4d64b625-77b0-4380-80a3-134199490446",
+          "case_id": "case_42f62077-dd4c-4fa0-8d6c-90346ba4a098",
+          "fact_type": "refund_status",
+          "raw_value": "initiated",
+          "normalised_value": "initiated",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T00:59:50.938054Z"
+        },
+        {
+          "fact_id": "fact_f3f7ac13-63a0-409a-8265-9c397591fedd",
+          "case_id": "case_42f62077-dd4c-4fa0-8d6c-90346ba4a098",
+          "fact_type": "refund_amount",
+          "raw_value": "899 rupees",
+          "normalised_value": 89900,
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T00:59:50.954075Z"
+        },
+        {
+          "fact_id": "fact_1b6aae61-2676-44b0-91aa-54f4aa542f60",
+          "case_id": "case_42f62077-dd4c-4fa0-8d6c-90346ba4a098",
+          "fact_type": "merchant_promised_timeline_days",
+          "raw_value": "within 7 days",
+          "normalised_value": 7,
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T00:59:50.970280Z"
+        },
+        {
+          "fact_id": "fact_6f78308f-b82f-488f-b261-c185a99799cc",
+          "case_id": "case_42f62077-dd4c-4fa0-8d6c-90346ba4a098",
+          "fact_type": "refund_initiated_date",
+          "raw_value": "5 November 2026",
+          "normalised_value": "2026-11-05",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T00:59:50.984280Z"
+        }
+      ],
+      "evidence_processing": [],
+      "legal_sources": [
+        {
+          "provision_id": "TEST_ACT_A1",
+          "citation": "TEST_ACT Article A1 (FIXTURE)",
+          "excerpt": "FAKE TEST TEXT: Where a consumer cancels an order or returns goods, the seller must process a refund within a reasonable period after the cancellation or return.",
+          "role": "supporting",
+          "applicability": "applicable",
+          "source_validity": "current_for_date",
+          "official_url": ""
+        },
+        {
+          "provision_id": "TEST_ACT_A6",
+          "citation": "TEST_ACT Article A6 (FIXTURE definition)",
+          "excerpt": "FAKE TEST TEXT: 'refund' means the return of money paid for goods or services.",
+          "role": "supporting",
+          "applicability": "unknown",
+          "source_validity": "current_for_date",
+          "official_url": ""
+        },
+        {
+          "provision_id": "TEST_ACT_A7",
+          "citation": "TEST_ACT Article A7 (FIXTURE)",
+          "excerpt": "FAKE TEST TEXT: A seller must respond to a refund request within a period set by the platform.",
+          "role": "supporting",
+          "applicability": "unknown",
+          "source_validity": "current_for_date",
+          "official_url": ""
+        },
+        {
+          "provision_id": "TEST_ACT_A3",
+          "citation": "TEST_ACT Article A3 (FIXTURE)",
+          "excerpt": "FAKE TEST TEXT: An e-commerce platform must provide a grievance officer to receive consumer complaints about refunds and returns.",
+          "role": "supporting",
+          "applicability": "unknown",
+          "source_validity": "current_for_date",
+          "official_url": ""
+        },
+        {
+          "provision_id": "TEST_ACT_A1_P1",
+          "citation": "TEST_ACT Article A1 Proviso (FIXTURE)",
+          "excerpt": "FAKE TEST TEXT: Provided that the seller may first require the consumer to return the goods.",
+          "role": "mandatory_qualifier",
+          "applicability": "unknown",
+          "source_validity": "current_for_date",
+          "official_url": ""
+        }
+      ],
+      "retrieval_summary": {
+        "corpus_version": "d269bfc2722114f8",
+        "candidate_count": 10,
+        "accepted_count": 5,
+        "rejected_count": 5,
+        "retry_count": 0
+      },
+      "verification": {
+        "overall": "verified",
+        "blocked_claims": [],
+        "note": "deterministic citation/date/phrase guards only; claim-level entailment is DESIGN_ONLY"
+      },
+      "assessment": {
+        "outcome": "no_legal_action_currently_required",
+        "reasons": [
+          "Elapsed 3 calendar days from the refund initiated date (2026-11-05), which is within the merchant's own 7-day timeline (trigger date excluded). A delay alone is not a violation."
+        ],
+        "facts_used": [
+          "fact_699108d8-9ef5-42a6-a11b-295af6176805",
+          "fact_daf29d74-fe57-47f2-8454-187e9ddc6125",
+          "fact_4d64b625-77b0-4380-80a3-134199490446",
+          "fact_f3f7ac13-63a0-409a-8265-9c397591fedd",
+          "fact_1b6aae61-2676-44b0-91aa-54f4aa542f60",
+          "fact_6f78308f-b82f-488f-b261-c185a99799cc"
+        ],
+        "provision_ids_used": [
+          "TEST_ACT_A1",
+          "TEST_ACT_A6",
+          "TEST_ACT_A7",
+          "TEST_ACT_A3",
+          "TEST_ACT_A1_P1"
+        ],
+        "missing_information": [],
+        "uncertainties": [
+          "relevance grade 1 below 2",
+          "relevance grade 0 below 2",
+          "source not current for date: superseded (effective to 2021-01-01, before 2026-11-08)",
+          "source not current for date: not_yet_effective (effective from 2030-01-01, after 2026-11-08)",
+          "source is not human_verified; not citable"
+        ],
+        "urgency": "unknown",
+        "next_steps": [
+          "Keep a written record and monitor the refund. Follow up after the merchant's own timeline of 7 days (calendar days, counting from refund_initiated_date, trigger date excluded).",
+          "Save the order, payment and refund messages."
+        ],
+        "lawyer_needed": false,
+        "lawyer_reason": null,
+        "rule_trace": [
+          "R4: Elapsed 3 calendar days from the refund initiated date (2026-11-05), which is within the merchant's own 7-day timeline (trigger date excluded). A delay alone is not a violation.",
+          "decision_controller: LLM proposed needs_more_information; Python outcome no_legal_action_currently_required wins"
+        ],
+        "llm_proposed_outcome": "needs_more_information"
+      },
+      "missing_information": [],
+      "next_steps": [
+        "Keep a written record and monitor the refund. Follow up after the merchant's own timeline of 7 days (calendar days, counting from refund_initiated_date, trigger date excluded).",
+        "Save the order, payment and refund messages."
+      ],
+      "document_draft": null
+    }
+  ],
+  "case_status_final": "open",
+  "event_types": [
+    "case_created",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "assessment_completed"
+  ],
+  "checks_failed": [],
+  "observed": {
+    "outcome": "no_legal_action_currently_required",
+    "asked_question": false,
+    "refused": false,
+    "case_behavior": "new_case",
+    "must_contain_any_hits": [
+      "monitor",
+      "follow up",
+      "7 days"
+    ],
+    "must_not_contain_hits": []
+  },
+  "result": "PASS"
+}

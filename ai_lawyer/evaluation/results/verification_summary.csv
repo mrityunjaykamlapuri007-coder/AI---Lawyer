@@ -1,0 +1,3 @@
+label,split,n,mean_accepted,precision,recall,mrr,ndcg,applicability_precision,applicability_recall,false_acceptance_rate,abstentions
+"FIXTURE DATA, NOT REAL LAW",development,4,3.0,0.375,1.0,1.0,1.0,1.0,1.0,0.0,0
+"FIXTURE DATA, NOT REAL LAW",test,4,5.25,0.21458333333333335,1.0,0.78125,0.8288662191964322,1.0,1.0,0.0,0

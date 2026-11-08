@@ -1,0 +1,16 @@
+{
+  "label": "FIXTURE DATA, NOT REAL LAW",
+  "generated_at": "2026-11-08T00:59:54.534982+00:00",
+  "cases": 17,
+  "checks": 18,
+  "passed": 18,
+  "failed": 0,
+  "derived_checks": [
+    "B09_missing_corpus"
+  ],
+  "corpus_mode": "fixture",
+  "corpus_version": "d269bfc2722114f8",
+  "embedder": "hash-embedder-v1",
+  "llm": "fake (deterministic, offline)",
+  "as_of_policy": "each case uses its own now date"
+}

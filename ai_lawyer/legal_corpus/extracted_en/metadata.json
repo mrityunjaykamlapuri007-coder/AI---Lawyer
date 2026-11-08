@@ -1,0 +1,183 @@
+{
+  "generated_at": "2026-11-08",
+  "review_status": "unverified",
+  "source": "English lines extracted from bilingual gazette PDFs; review only, not citation-ready",
+  "documents": [
+    {
+      "filename": "consumer_commission_rules_2020_1.txt",
+      "pdf_name": "consumer_commission_rules_2020.pdf",
+      "pdf_sha256": "65b360f6a62bb219ad35742adc48ee669ecda1dd3e28de7cd05f309f9f6f39da",
+      "source_id": "CCR_2020",
+      "source_type": "rule",
+      "hierarchy_type": "rule",
+      "pages": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "candidate_title": "Consumer Protection (Consumer Disputes Redressal Commissions) Rules, 2020",
+      "candidate_dates": [],
+      "candidate_gazette_ids": [
+        "3146 GI/2020"
+      ],
+      "candidate_departments": [
+        "MINISTRY OF CONSUMER AFFAIRS, FOOD AND PUBLIC DISTRIBUTION"
+      ]
+    },
+    {
+      "filename": "consumer_commission_rules_2020_2.txt",
+      "pdf_name": "consumer_commission_rules_2020.pdf",
+      "pdf_sha256": "65b360f6a62bb219ad35742adc48ee669ecda1dd3e28de7cd05f309f9f6f39da",
+      "source_id": "CCR_2020_2",
+      "source_type": "rule",
+      "hierarchy_type": "rule",
+      "pages": [
+        17,
+        18
+      ],
+      "candidate_title": "Consumer Protection (General) Rules, 2020",
+      "candidate_dates": [],
+      "candidate_gazette_ids": [
+        "3146 GI/2020"
+      ],
+      "candidate_departments": [
+        "MINISTRY OF CONSUMER AFFAIRS, FOOD AND PUBLIC DISTRIBUTION"
+      ]
+    },
+    {
+      "filename": "consumer_protection_act_2019_1.txt",
+      "pdf_name": "consumer_protection_act_2019.pdf",
+      "pdf_sha256": "0ae7f82ab5b77d50087cd4cd2dd2dbc12755c0bdb31371fdefd042b020d50756",
+      "source_id": "CPA_2019",
+      "source_type": "act",
+      "hierarchy_type": "section",
+      "pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40
+      ],
+      "candidate_title": "Consumer Protection Act, 2019",
+      "candidate_dates": [
+        "9th August, 2019",
+        "AUGUST 9, 2019"
+      ],
+      "candidate_gazette_ids": [],
+      "candidate_departments": [
+        "MINISTRY OF LAW AND JUSTICE"
+      ]
+    },
+    {
+      "filename": "ecommerce_amendment_2021_1.txt",
+      "pdf_name": "ecommerce_amendment_2021.pdf",
+      "pdf_sha256": "a7db1f7a8c900e0bc9c7fcb1f2921130ff85e6fac517fb5222efcf76cf559654",
+      "source_id": "ECR_AMEND_2021",
+      "source_type": "notification",
+      "hierarchy_type": "clause",
+      "pages": [
+        2
+      ],
+      "candidate_title": "Consumer Protection (E-Commerce) (Amendment) Rules, 2021",
+      "candidate_dates": [
+        "17th  May, 2021",
+        "23rd July, 2020",
+        "MAY 17, 2021"
+      ],
+      "candidate_gazette_ids": [
+        "2624 GI/2021"
+      ],
+      "candidate_departments": [
+        "MINISTRY OF CONSUMER AFFAIRS, FOOD AND PUBLIC DISTRIBUTION"
+      ]
+    },
+    {
+      "filename": "ecommerce_rules_2020_1.txt",
+      "pdf_name": "ecommerce_rules_2020.pdf",
+      "pdf_sha256": "3012b37f6f6dba2d29523abf10f43fbb3a503768e578ef0fa02e4b9e4593bd0c",
+      "source_id": "ECR_2020",
+      "source_type": "rule",
+      "hierarchy_type": "rule",
+      "pages": [
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "candidate_title": "Consumer Protection (E-Commerce) Rules, 2020",
+      "candidate_dates": [
+        "23rd July, 2020",
+        "JULY 23, 2020"
+      ],
+      "candidate_gazette_ids": [
+        "3261 GI/2020"
+      ],
+      "candidate_departments": [
+        "MINISTRY OF CONSUMER AFFAIRS, FOOD AND PUBLIC DISTRIBUTION"
+      ]
+    },
+    {
+      "filename": "jurisdiction_rules_2021_1.txt",
+      "pdf_name": "jurisdiction_rules_2021.pdf",
+      "pdf_sha256": "dd22dbfa7ac8bc0ef968765d6cd521ad7a29742afb071b9a919c164f83b765b7",
+      "source_id": "JUR_2021",
+      "source_type": "rule",
+      "hierarchy_type": "rule",
+      "pages": [
+        2
+      ],
+      "candidate_title": "Consumer Protection (Jurisdiction of the District Commission, the State Commission and the National Commission) Rules, 2021",
+      "candidate_dates": [
+        "30th December, 2021",
+        "DECEMBER 30, 2021"
+      ],
+      "candidate_gazette_ids": [
+        "7647 GI/2021"
+      ],
+      "candidate_departments": [
+        "MINISTRY OF CONSUMER AFFAIRS, FOOD AND PUBLIC DISTRIBUTION"
+      ]
+    }
+  ]
+}

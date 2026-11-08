@@ -1,0 +1,42 @@
+# DRAFT: prepared for your review. Not sent or filed.
+
+To: The Grievance Officer
+{{ platform_line }}
+Subject: Formal grievance — unresolved refund for order {{ order_id }}
+
+**Complainant**
+
+- Name: {{ user_name }}
+- Address: {{ address }}
+- Order id: {{ order_id }}
+- Merchant / platform: {{ merchant }}
+- Refund amount: {{ amount }}
+
+**Facts**
+
+{{ summary }}
+
+- Relevant dates: {{ dates }}
+- Current refund status: {{ refund_status }}
+- Support contact: {{ support_contact }}
+
+**Requested resolution**
+
+Please review the unresolved refund and confirm in writing what action will be taken. Please treat this as a formal grievance.
+
+{% if legal_grounds %}
+**Legal grounds (only provisions supplied in the verified corpus)**
+
+{% for item in legal_grounds %}
+- {{ item.citation }}: "{{ item.excerpt }}"
+{% endfor %}
+{% endif %}
+
+Yours sincerely,
+
+{{ user_name }}
+{{ address }}
+
+---
+
+This is a draft prepared by an AI assistant for your review. It has not been sent or filed. Check every fact before using it.
