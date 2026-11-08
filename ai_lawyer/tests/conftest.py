@@ -18,6 +18,30 @@ from ai_lawyer.legal_rag.retriever import Retriever
 
 FIXTURE_DIR = PROJECT_ROOT / "ai_lawyer" / "legal_corpus" / "fixture"
 
+# Unit tests never touch the network, even when a developer's .env points at
+# live Kaggle services.  Environment variables override .env values.
+_OFFLINE_ENV = {
+    "CORPUS_MODE": "fixture",
+    "LLM_PROVIDER": "fake",
+    "LLM_BASE_URL": "",
+    "LLM_API_KEY": "",
+    "LLM_MODEL": "",
+    "EMBEDDING_BACKEND": "hash",
+    "EMBEDDER_BASE_URL": "",
+    "EMBEDDER_API_KEY": "",
+}
+
+
+@pytest.fixture(autouse=True)
+def _offline_settings(monkeypatch):
+    from ai_lawyer.config.settings import get_settings
+
+    for key, value in _OFFLINE_ENV.items():
+        monkeypatch.setenv(key, value)
+    get_settings.cache_clear()
+    yield
+    get_settings.cache_clear()
+
 
 @pytest.fixture()
 def settings(tmp_path: Path) -> Settings:
