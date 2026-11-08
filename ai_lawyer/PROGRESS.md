@@ -111,3 +111,25 @@ Observed results:
 
 If the count differs, rerun the command and trust the terminal output over this
 log.
+
+---
+
+## Real-mode runbook (2026-11-08, evening)
+
+| Task | Status | Command | Result |
+|---|---|---|---|
+| R1 | IMPLEMENTED_AND_TESTED | `pytest -q` | 181 passed, 1 warning in 12.73s |
+| R1 | commit | `git status --porcelain` | clean on branch `ai-lawyer-mvp` |
+
+R1 notes:
+- Branch `ai-lawyer-mvp` created from `11f5bd9`.
+- Work committed in four groups: repo baseline, official corpus pipeline,
+  acceptance gate, RAG parity + docs.
+- `corpus_manifest.json` is generated on every load and is now git-ignored, so
+  test runs no longer dirty the tree.
+- `AGENTS.md` copied into the repo root; `IMPLEMENTATION_PLAN.md` into
+  `docs/agent/`. `AGENT_EXECUTION_SPEC.md` and the v4 spec were not present on
+  disk and were not used for this runbook.
+- PDFs under `legal_corpus/official/originals/` and scratch `_search/` are
+  git-ignored (17.8 MB / 5.3 MB); the provenance manifest and hashes are
+  committed instead.
