@@ -17,7 +17,6 @@ from pydantic import BaseModel
 
 from ai_lawyer.config.settings import PROJECT_ROOT, Settings, get_settings
 from ai_lawyer.contracts.errors import LLMUnavailable, ModelOutputInvalid, NotConfigured
-from ai_lawyer.contracts.fakes import FakeLLM
 
 logger = logging.getLogger(__name__)
 
@@ -356,6 +355,8 @@ def get_llm(settings: Settings | None = None):
     settings = settings or get_settings()
     ensure_real_mode_has_real_llm(settings)
     if settings.llm_provider == "fake":
+        from ai_lawyer.tests.fakes import FakeLLM  # test/fixture mode only
+
         return FakeLLM()
     if settings.llm_provider == "openai_compatible":
         return OpenAICompatibleLLM(settings)

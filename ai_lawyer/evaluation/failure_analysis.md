@@ -116,7 +116,7 @@ assert (1 == 1 and 1 == 1 and 1 == 1 and 0 == 1)
 
 - **Code:** `LEXICAL_GRADER_SYNONYM_MISS`
 - **Where:** `evaluation/dataset/` rows D-F05/T-F05 and T-F07, graded by
-  `contracts/fakes.py::FakeLLM`
+  `contracts/fakes.py::FakeLLM` (moved to `tests/fakes.py` on 2026-11-08)
 - **Observed:** the correct provision was retrieved, but the offline lexical
   grader scored it below the acceptance threshold because the query used
   "definition" while the provision said "means", and the query used "sent"

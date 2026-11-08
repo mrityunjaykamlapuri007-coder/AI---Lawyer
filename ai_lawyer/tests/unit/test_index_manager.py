@@ -5,7 +5,7 @@ from dataclasses import replace
 import pytest
 
 from ai_lawyer.contracts.errors import IndexStale
-from ai_lawyer.contracts.fakes import HashEmbedder
+from ai_lawyer.tests.fakes import HashEmbedder
 from ai_lawyer.legal_rag.index_manager import bm25_tokens, load_index
 
 

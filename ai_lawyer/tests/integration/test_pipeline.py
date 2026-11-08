@@ -9,7 +9,7 @@ from ai_lawyer.backend.services.llm_providers import get_llm
 from ai_lawyer.backend.services.orchestrator import Orchestrator, Upload
 from ai_lawyer.config.settings import Settings
 from ai_lawyer.contracts.errors import NotConfigured
-from ai_lawyer.contracts.fakes import FakeLLM
+from ai_lawyer.tests.fakes import FakeLLM
 from ai_lawyer.contracts.models import Outcome, RetrievalRun
 from ai_lawyer.legal_rag.retriever import RetrievalResult
 

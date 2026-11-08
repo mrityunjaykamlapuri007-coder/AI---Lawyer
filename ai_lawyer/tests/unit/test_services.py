@@ -18,7 +18,7 @@ from ai_lawyer.backend.services.fact_extractor import (
     mark_conflicts,
 )
 from ai_lawyer.contracts.errors import UserSafeError
-from ai_lawyer.contracts.fakes import FakeLLM
+from ai_lawyer.tests.fakes import FakeLLM
 from ai_lawyer.contracts.models import Fact
 from ai_lawyer.legal_engine.applicability import active_facts
 

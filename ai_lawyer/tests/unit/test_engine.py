@@ -3,7 +3,7 @@ from __future__ import annotations
 from datetime import date, datetime
 
 from ai_lawyer.backend.services.context_assembler import assemble_context
-from ai_lawyer.contracts.fakes import FakeLLM
+from ai_lawyer.tests.fakes import FakeLLM
 from ai_lawyer.contracts.models import (
     ApplicationAnalysis,
     Assessment,

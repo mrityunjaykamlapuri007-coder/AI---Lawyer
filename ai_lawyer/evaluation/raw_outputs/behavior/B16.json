@@ -33,7 +33,7 @@
   },
   "corpus": {
     "mode": "fixture",
-    "version": "f594de8fa9673ef7",
+    "version": "17ed71f51cae526f",
     "usable_count": 10,
     "usable_ids": [
       "TEST_ACT_A1",
@@ -50,10 +50,10 @@
   },
   "responses": [
     {
-      "conversation_id": "conv_e52843b3-4fbb-4741-81c1-69976f91d8fd",
-      "message_id": "msg_b182d5e0-0fec-4303-807b-c2d7f36813cb",
-      "assistant_message_id": "msg_898ce04a-c8bc-4405-af19-11b29d1c47cb",
-      "case_id": "case_4c50b7e8-fcc2-4600-861d-7f894120330f",
+      "conversation_id": "conv_114931b1-20a5-4cb9-9ae3-add80778075b",
+      "message_id": "msg_895e6855-5d25-4ca6-8730-1fbe8b582003",
+      "assistant_message_id": "msg_56d9614f-b808-4dd3-be4d-8a3a32f34196",
+      "case_id": "case_58381263-4232-407f-9aed-5a152fe11af6",
       "processing_status": "needs_clarification",
       "assistant_message": "## What I understood\n\nA consumer says an e-commerce refund is outstanding.\n\n## Facts\n\nFacts supported by a document:\n- Order id: FM-1616 (page 1)\n- Pickup date: 20-10-2026 (page 1)\n\nFacts you reported:\n- Order id: FM-1616\n- Return requested: 10 October 2026\n\nEvidence files:\n- B16-attachment.txt: completed\n\n## Legal sources that may apply\n\n- **TEST_ACT Article A1 (FIXTURE)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: Where a consumer cancels an order or returns goods, the seller must process a refund within a reasonable period after the cancellation or return.\"\n- **TEST_ACT Article A6 (FIXTURE definition)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: 'refund' means the return of money paid for goods or services.\"\n- **TEST_ACT Article A3 (FIXTURE)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: An e-commerce platform must provide a grievance officer to receive consumer complaints about refunds and returns.\"\n- **TEST_ACT Article A7 (FIXTURE)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: A seller must respond to a refund request within a period set by the platform.\"\n- **TEST_ACT Article A1 Proviso (FIXTURE)** — role: mandatory_qualifier; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: Provided that the seller may first require the consumer to return the goods.\"\n\n## How this may relate to your case\n\n- This provision may apply if the facts described are established.\n\n## Assessment\n\n**I need more information before assessing the next step.**\n\n- The case contains conflicting dates or values that must be resolved first.\n\nSuggested next steps:\n1. Answer the follow-up question so the refund timeline can be assessed.\n\nAssessment date: 2026-11-08.\n\n## Missing information\n- I have different dates that do not agree (return requested: 10 October 2026; pickup date: 20-10-2026). These dates conflict. Which one is correct?\n\n## Limitations\n\n- This is general information and a draft for your review, not legal advice. I cannot guarantee any outcome.\n- FIXTURE DATA, NOT REAL LAW: the citations above come from a synthetic test corpus and must not be relied on as legal authority.\n",
       "case_summary": {
@@ -68,8 +68,8 @@
       },
       "extracted_facts": [
         {
-          "fact_id": "fact_a3c22767-9e14-4436-8bc8-34927fadd89e",
-          "case_id": "case_4c50b7e8-fcc2-4600-861d-7f894120330f",
+          "fact_id": "fact_eed3cedb-b0d3-43c0-9f84-cf107fb46bd6",
+          "case_id": "case_58381263-4232-407f-9aed-5a152fe11af6",
           "fact_type": "order_id",
           "raw_value": "FM-1616",
           "normalised_value": "FM-1616",
@@ -81,11 +81,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T11:16:34.729812Z"
+          "created_at": "2026-11-08T11:54:43.748046Z"
         },
         {
-          "fact_id": "fact_77452afd-88c1-4a2f-adbd-bd2db0546d72",
-          "case_id": "case_4c50b7e8-fcc2-4600-861d-7f894120330f",
+          "fact_id": "fact_2e262755-6f94-45fd-aa2f-27bacc51bb29",
+          "case_id": "case_58381263-4232-407f-9aed-5a152fe11af6",
           "fact_type": "return_requested_date",
           "raw_value": "10 October 2026",
           "normalised_value": "2026-10-10",
@@ -97,39 +97,39 @@
           "inferred": false,
           "ambiguity_flag": true,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T11:16:34.748828Z"
+          "created_at": "2026-11-08T11:54:43.778903Z"
         },
         {
-          "fact_id": "fact_4e0e6d48-e145-4739-abc9-7d5d301b5bc0",
-          "case_id": "case_4c50b7e8-fcc2-4600-861d-7f894120330f",
+          "fact_id": "fact_2a3668a7-1742-45cc-865a-11582cdda0a7",
+          "case_id": "case_58381263-4232-407f-9aed-5a152fe11af6",
           "fact_type": "order_id",
           "raw_value": "FM-1616",
           "normalised_value": "FM-1616",
           "source_type": "evidence",
-          "source_id": "ev_c4bb968e-157e-49ee-aabf-2e8894b37e8f",
-          "evidence_id": "ev_c4bb968e-157e-49ee-aabf-2e8894b37e8f",
+          "source_id": "ev_29321f50-c08b-4428-8f63-c1ac73304b8e",
+          "evidence_id": "ev_29321f50-c08b-4428-8f63-c1ac73304b8e",
           "page_number": 1,
           "status": "document_supported",
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T11:16:34.769261Z"
+          "created_at": "2026-11-08T11:54:43.808106Z"
         },
         {
-          "fact_id": "fact_a78b0b5f-e5a0-4a91-a669-91d17585ad31",
-          "case_id": "case_4c50b7e8-fcc2-4600-861d-7f894120330f",
+          "fact_id": "fact_02802d57-943c-41dc-a44f-b25b9b55ee11",
+          "case_id": "case_58381263-4232-407f-9aed-5a152fe11af6",
           "fact_type": "pickup_date",
           "raw_value": "20-10-2026",
           "normalised_value": "2026-10-20",
           "source_type": "evidence",
-          "source_id": "ev_c4bb968e-157e-49ee-aabf-2e8894b37e8f",
-          "evidence_id": "ev_c4bb968e-157e-49ee-aabf-2e8894b37e8f",
+          "source_id": "ev_29321f50-c08b-4428-8f63-c1ac73304b8e",
+          "evidence_id": "ev_29321f50-c08b-4428-8f63-c1ac73304b8e",
           "page_number": 1,
           "status": "document_supported",
           "inferred": false,
           "ambiguity_flag": true,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T11:16:34.792509Z"
+          "created_at": "2026-11-08T11:54:43.836684Z"
         }
       ],
       "evidence_processing": [
@@ -409,7 +409,7 @@
         }
       ],
       "retrieval_summary": {
-        "corpus_version": "f594de8fa9673ef7",
+        "corpus_version": "17ed71f51cae526f",
         "candidate_count": 10,
         "accepted_count": 5,
         "rejected_count": 5,
@@ -426,10 +426,10 @@
           "The case contains conflicting dates or values that must be resolved first."
         ],
         "facts_used": [
-          "fact_a3c22767-9e14-4436-8bc8-34927fadd89e",
-          "fact_77452afd-88c1-4a2f-adbd-bd2db0546d72",
-          "fact_4e0e6d48-e145-4739-abc9-7d5d301b5bc0",
-          "fact_a78b0b5f-e5a0-4a91-a669-91d17585ad31"
+          "fact_eed3cedb-b0d3-43c0-9f84-cf107fb46bd6",
+          "fact_2e262755-6f94-45fd-aa2f-27bacc51bb29",
+          "fact_2a3668a7-1742-45cc-865a-11582cdda0a7",
+          "fact_02802d57-943c-41dc-a44f-b25b9b55ee11"
         ],
         "provision_ids_used": [
           "TEST_ACT_A1",

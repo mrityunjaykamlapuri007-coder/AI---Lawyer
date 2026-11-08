@@ -24,7 +24,7 @@
   },
   "corpus": {
     "mode": "fixture",
-    "version": "f594de8fa9673ef7",
+    "version": "17ed71f51cae526f",
     "usable_count": 10,
     "usable_ids": [
       "TEST_ACT_A1",
@@ -41,9 +41,9 @@
   },
   "responses": [
     {
-      "conversation_id": "conv_fb0bb5c6-b14e-48e1-bbeb-6ebc64f934ef",
-      "message_id": "msg_f7892803-6d22-4499-96fb-6b59850759de",
-      "assistant_message_id": "msg_35f1e4ff-fce9-402f-9864-49992d9c9ad9",
+      "conversation_id": "conv_9de21658-4fd9-4d8c-bb35-a5a7bbbe3cbe",
+      "message_id": "msg_ea71eae4-44dc-46a1-aefa-20da525cc603",
+      "assistant_message_id": "msg_bcb4d9bc-9bab-4e2d-9fbd-858c75208428",
       "case_id": null,
       "processing_status": "needs_clarification",
       "assistant_message": "## What I understood\n\nYou are describing an unresolved e-commerce refund. I will assess it only from the facts and legal sources available here.\n\n## Facts\n\nNo facts were extracted yet.\n\n## Legal sources that may apply\n\nNo provision in the supported corpus was established for this issue. I am therefore not giving a legal conclusion.\n\n## How this may relate to your case\n\n- No application analysis was produced, so no legal conclusion can be drawn.\n\n## Assessment\n\n**I need more information before assessing the next step.**\n\n- I found two different order references in one message (FM-1501, SE-1502). Please send one message per order so the facts are not mixed. Which order would you like to discuss first?\n\nSuggested next steps:\n1. Send one message per order, with the order id.\n\n## Missing information\n- I found two different order references in one message (FM-1501, SE-1502). Please send one message per order so the facts are not mixed. Which order would you like to discuss first?\n\n## Limitations\n\n- This is general information and a draft for your review, not legal advice. I cannot guarantee any outcome.\n- FIXTURE DATA, NOT REAL LAW: the citations above come from a synthetic test corpus and must not be relied on as legal authority.\n",

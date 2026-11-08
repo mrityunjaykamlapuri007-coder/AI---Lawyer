@@ -27,7 +27,7 @@ from ai_lawyer.backend.services.llm_providers import get_llm
 from ai_lawyer.backend.services.orchestrator import Orchestrator, Upload
 from ai_lawyer.config.settings import PROJECT_ROOT, Settings
 from ai_lawyer.contracts.errors import CorpusValidationError
-from ai_lawyer.contracts.fakes import FakeLLM, HashEmbedder
+from ai_lawyer.tests.fakes import FakeLLM, HashEmbedder
 from ai_lawyer.legal_rag.corpus_loader import load_corpus
 from ai_lawyer.legal_rag.embedders import get_embedder
 from ai_lawyer.legal_rag.index_manager import build_index
@@ -56,9 +56,19 @@ def _settings(tmp: Path, mode: str = "fixture", corpus_dir: Path | None = None) 
     return Settings(**values)
 
 
-def _load_cases() -> list[dict[str, Any]]:
-    with DATASET.open(encoding="utf-8") as fh:
+def _load_cases(path: Path = DATASET) -> list[dict[str, Any]]:
+    with path.open(encoding="utf-8") as fh:
         return [json.loads(line) for line in fh if line.strip()]
+
+
+def dataset_origin(cases: list[dict[str, Any]]) -> tuple[str | None, str | None]:
+    """Return (origin, problem).  Purge rule: one origin per run, every row tagged."""
+    origins = {str(c.get("data_origin") or "") for c in cases}
+    if "" in origins:
+        return None, "some rows have no data_origin tag"
+    if len(origins) > 1:
+        return None, f"rows mix data origins {sorted(origins)}; run them as separate tables"
+    return origins.pop() if origins else None, None
 
 
 def _lower(text: Any) -> str:
@@ -317,6 +327,8 @@ def _write_real_summary(
     lines = [
         "# Real-corpus behaviour run",
         "",
+        f"**Data origin: `{manifest.get('data_origin')}`. {manifest.get('data_note', '')}**",
+        "",
         f"- generated: {manifest['generated_at']}",
         f"- corpus: `{manifest['corpus_version']}` "
         f"(mode={manifest['corpus_mode']}, usable={manifest['corpus_usable']})",
@@ -378,18 +390,36 @@ def main(argv: list[str] | None = None) -> int:
         default=None,
         help="real-mode corpus directory (default: ai_lawyer/legal_corpus)",
     )
+    parser.add_argument("--dataset", type=Path, default=DATASET)
+    parser.add_argument(
+        "--synthetic-table",
+        action="store_true",
+        help="real mode only: allow synthetic stories, reported in a separate labeled table",
+    )
     args = parser.parse_args(argv)
 
     real = args.mode == "real"
+    cases = _load_cases(args.dataset)
+    origin, origin_problem = dataset_origin(cases)
+    synthetic = bool(origin and origin.startswith("synthetic"))
+    if real and origin_problem:
+        print(f"BLOCKED: {origin_problem}.")
+        return 2
+    if real and synthetic and not args.synthetic_table:
+        print(
+            f"BLOCKED: dataset rows are data_origin={origin}. Real-mode results on "
+            "synthetic stories are only written to a separate table; pass --synthetic-table."
+        )
+        return 2
     if real:
-        raw_dir = RESULT_DIR / "real_behavior" / "raw"
-        result_dir = RESULT_DIR / "real_behavior"
+        table = "real_behavior_synthetic" if synthetic else "real_behavior"
+        raw_dir = RESULT_DIR / table / "raw"
+        result_dir = RESULT_DIR / table
     else:
         raw_dir = RAW_DIR
         result_dir = RESULT_DIR
     raw_dir.mkdir(parents=True, exist_ok=True)
     result_dir.mkdir(parents=True, exist_ok=True)
-    cases = _load_cases()
     summary: list[dict[str, Any]] = []
     section_defects: list[str] = []
 
@@ -618,6 +648,12 @@ def main(argv: list[str] | None = None) -> int:
         "label": label,
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "mode": args.mode,
+        "data_origin": origin,
+        "data_note": (
+            "SYNTHETIC STORIES, NOT REAL DATA: written for testing; do not present as results on real disputes"
+            if synthetic
+            else "real stories"
+        ),
         "cases": len(cases),
         "checks": len(summary),
         "passed": passed,

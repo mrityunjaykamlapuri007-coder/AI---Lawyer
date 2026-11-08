@@ -1,6 +1,6 @@
 {
   "label": "FIXTURE DATA, NOT REAL LAW",
-  "generated_at": "2026-11-08T02:33:59.195311+00:00",
+  "generated_at": "2026-11-08T11:53:40.711785+00:00",
   "experiments": {
     "E1_dense_faiss": "RUN",
     "E2_sparse_bm25": "RUN",
@@ -10,7 +10,7 @@
   },
   "corpus": {
     "mode": "fixture",
-    "version": "d269bfc2722114f8",
+    "version": "17ed71f51cae526f",
     "sources": 4,
     "provisions": 11,
     "usable": 10,
@@ -28,8 +28,8 @@
     "development": 8,
     "test": 8,
     "sha256": {
-      "development.jsonl": "6007a0f9f94d89f4abfb227437690592a90bcdce8e13cebb2908bf792212884c",
-      "test.jsonl": "22611ac8e0597f3ae0980b53cd6f4af37801f7bc20aa83b6df41225f5a1b544c"
+      "development.jsonl": "1142afb4402e7d098b69c6b0ccd5a67f5a93d807c1e2e3c9942b7063cbbd0cc7",
+      "test.jsonl": "cd1ed029e190de889ea3a0b893a1f550a01432097ad53476813fe20ba2da80d3"
     }
   },
   "packages": {

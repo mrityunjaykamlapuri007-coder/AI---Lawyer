@@ -19,7 +19,7 @@ from pathlib import Path
 from typing import Any
 
 from ai_lawyer.config.settings import PROJECT_ROOT, Settings
-from ai_lawyer.contracts.fakes import FakeLLM, HashEmbedder
+from ai_lawyer.tests.fakes import FakeLLM, HashEmbedder
 from ai_lawyer.contracts.models import Fact
 from ai_lawyer.evaluation.dataset_loader import load_dataset
 from ai_lawyer.evaluation.metrics import (

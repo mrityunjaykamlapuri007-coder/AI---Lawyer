@@ -13,8 +13,8 @@ from typing import Any, Callable, Sequence
 import numpy as np
 from pydantic import BaseModel
 
-from .errors import ModelOutputInvalid
-from .models import Candidate, Evidence, Fact, LegalDraft, PageExtraction
+from ai_lawyer.contracts.errors import ModelOutputInvalid
+from ai_lawyer.contracts.models import Candidate, Evidence, Fact, LegalDraft, PageExtraction
 
 _TOKEN_RE = re.compile(r"[a-z0-9]+")
 _STOP = {

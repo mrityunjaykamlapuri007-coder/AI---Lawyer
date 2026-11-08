@@ -149,8 +149,9 @@ def load_corpus(
     directory = Path(corpus_dir or settings.corpus_path)
 
     if mode == "fixture":
-        sources_path = directory / "fixture_sources.json"
-        provisions_path = directory / "fixture_provisions.json"
+        # Synthetic test corpus.  Real mode never reads this folder.
+        sources_path = directory / "fixture" / "sources.json"
+        provisions_path = directory / "fixture" / "provisions.json"
     elif mode == "real":
         sources_path = directory / "sources.json"
         provisions_path = directory / "provisions.json"

@@ -6,7 +6,11 @@ from typing import Sequence
 import numpy as np
 
 from ai_lawyer.config.settings import Settings, get_settings
-from ai_lawyer.contracts.fakes import HashEmbedder
+from ai_lawyer.contracts.errors import NotConfigured
+
+
+class RealModeEmbedderRefused(NotConfigured):
+    pass
 
 
 class SentenceTransformerEmbedder:
@@ -30,4 +34,12 @@ def get_embedder(settings: Settings | None = None):
     settings = settings or get_settings()
     if settings.embedding_backend == "sentence_transformers":
         return SentenceTransformerEmbedder(settings.embedding_model_id)
+    if settings.corpus_mode == "real":
+        # R-2 / C7.2: a hashed embedder is never a stand-in for a real one.
+        raise RealModeEmbedderRefused(
+            "BLOCKED: CORPUS_MODE=real needs a real embedder; the hashed test "
+            "embedder is refused"
+        )
+    from ai_lawyer.tests.fakes import HashEmbedder  # test/fixture mode only
+
     return HashEmbedder()

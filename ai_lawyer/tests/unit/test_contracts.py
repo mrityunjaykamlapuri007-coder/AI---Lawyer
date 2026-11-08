@@ -4,7 +4,7 @@ import numpy as np
 import pytest
 
 from ai_lawyer.contracts.errors import ModelOutputInvalid
-from ai_lawyer.contracts.fakes import FakeLLM, HashEmbedder
+from ai_lawyer.tests.fakes import FakeLLM, HashEmbedder
 from ai_lawyer.contracts.ids import make_provision_id
 from ai_lawyer.contracts.models import (
     Fact,

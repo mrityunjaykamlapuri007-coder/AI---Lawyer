@@ -11,20 +11,20 @@ from ai_lawyer.backend.db.repo import Database
 from ai_lawyer.backend.services.evidence_store import EvidenceStore
 from ai_lawyer.backend.services.orchestrator import Orchestrator
 from ai_lawyer.config.settings import PROJECT_ROOT, Settings
-from ai_lawyer.contracts.fakes import FakeLLM, HashEmbedder
+from ai_lawyer.tests.fakes import FakeLLM, HashEmbedder
 from ai_lawyer.legal_rag.corpus_loader import load_corpus
 from ai_lawyer.legal_rag.index_manager import build_index
 from ai_lawyer.legal_rag.retriever import Retriever
 
-FIXTURE_DIR = PROJECT_ROOT / "ai_lawyer" / "legal_corpus"
+FIXTURE_DIR = PROJECT_ROOT / "ai_lawyer" / "legal_corpus" / "fixture"
 
 
 @pytest.fixture()
 def settings(tmp_path: Path) -> Settings:
     corpus_dir = tmp_path / "corpus"
-    corpus_dir.mkdir()
-    for name in ("fixture_sources.json", "fixture_provisions.json"):
-        shutil.copy2(FIXTURE_DIR / name, corpus_dir / name)
+    (corpus_dir / "fixture").mkdir(parents=True)
+    for name in ("sources.json", "provisions.json"):
+        shutil.copy2(FIXTURE_DIR / name, corpus_dir / "fixture" / name)
     return Settings(
         app_env="test",
         corpus_mode="fixture",

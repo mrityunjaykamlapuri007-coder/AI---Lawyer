@@ -17,6 +17,9 @@ is pure; the caller decides whether to raise.
 """
 from __future__ import annotations
 
+import json
+from pathlib import Path
+
 from ai_lawyer.contracts.errors import CorpusValidationError
 from ai_lawyer.legal_rag.corpus_loader import Corpus, citable_statuses
 from ai_lawyer.legal_rag.official_copy import official_copy_problems
@@ -100,10 +103,40 @@ def _machine_provision_problems(provision) -> list[str]:
     return problems
 
 
+FIXTURE_DIR = Path(__file__).resolve().parents[1] / "legal_corpus" / "fixture"
+FIXTURE_MARKERS = ("TEST_ACT", "FIXTURE DATA", "FAKE TEST TEXT")
+
+
+def _fixture_ids() -> set[str]:
+    ids: set[str] = set()
+    for name, key in (("sources.json", "source_id"), ("provisions.json", "provision_id")):
+        path = FIXTURE_DIR / name
+        if path.exists():
+            ids.update(str(row.get(key)) for row in json.loads(path.read_text(encoding="utf-8")))
+    return ids
+
+
+def fixture_leak_problems(corpus: Corpus) -> list[str]:
+    """Purge rule: a real corpus must contain no synthetic fixture data."""
+    problems: list[str] = []
+    fixture_ids = _fixture_ids()
+    for source_id in sorted(set(corpus.sources) & fixture_ids):
+        problems.append(f"fixture source id {source_id} found in the real corpus")
+    for provision_id in sorted(set(corpus.provisions) & fixture_ids):
+        problems.append(f"fixture provision id {provision_id} found in the real corpus")
+    for item in [*corpus.sources.values(), *corpus.provisions.values()]:
+        blob = json.dumps(item.model_dump(mode="json"), ensure_ascii=False)
+        for marker in FIXTURE_MARKERS:
+            if marker in blob:
+                key = getattr(item, "provision_id", None) or item.source_id
+                problems.append(f"fixture marker {marker!r} found in {key}")
+    return problems
+
+
 def real_corpus_problems(corpus: Corpus) -> list[str]:
     """Return every reason this real corpus must not be used."""
     statuses = citable_statuses()
-    problems: list[str] = []
+    problems: list[str] = fixture_leak_problems(corpus)
 
     verified_sources = [
         source

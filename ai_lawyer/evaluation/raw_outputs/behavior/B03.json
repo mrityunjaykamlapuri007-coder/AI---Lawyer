@@ -30,7 +30,7 @@
   },
   "corpus": {
     "mode": "fixture",
-    "version": "f594de8fa9673ef7",
+    "version": "17ed71f51cae526f",
     "usable_count": 10,
     "usable_ids": [
       "TEST_ACT_A1",
@@ -47,10 +47,10 @@
   },
   "responses": [
     {
-      "conversation_id": "conv_4670b59b-ed8b-4dbe-81e6-3ca8780fce3c",
-      "message_id": "msg_6cc9df0f-4f23-498d-8f24-c7b9f2818527",
-      "assistant_message_id": "msg_047264d6-26d3-4ac2-b73c-5c6df3bc5a49",
-      "case_id": "case_e05544b2-6758-4bb3-80da-79ed137f5e82",
+      "conversation_id": "conv_d3fe25a2-6351-45d4-89fd-5df52baa9d0b",
+      "message_id": "msg_09e8853d-16a0-4925-9c18-c4122e6e78ce",
+      "assistant_message_id": "msg_9a52a549-83f2-4900-9076-b97602249e61",
+      "case_id": "case_495d730c-d471-4663-9125-36fa6d464e04",
       "processing_status": "completed",
       "assistant_message": "## What I understood\n\nA consumer says an e-commerce refund is outstanding.\n\n## Facts\n\nFacts you reported:\n- Order id: QB-3003\n- Payment method: card\n- Refund status: initiated\n- Refund amount: INR 899.00\n- Merchant promised timeline days: within 7 days\n- Refund initiated: 5 November 2026\n\n## Legal sources that may apply\n\n- **TEST_ACT Article A1 (FIXTURE)** — role: supporting; applicability: applicable; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: Where a consumer cancels an order or returns goods, the seller must process a refund within a reasonable period after the cancellation or return.\"\n- **TEST_ACT Article A6 (FIXTURE definition)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: 'refund' means the return of money paid for goods or services.\"\n- **TEST_ACT Article A7 (FIXTURE)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: A seller must respond to a refund request within a period set by the platform.\"\n- **TEST_ACT Article A3 (FIXTURE)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: An e-commerce platform must provide a grievance officer to receive consumer complaints about refunds and returns.\"\n- **TEST_ACT Article A1 Proviso (FIXTURE)** — role: mandatory_qualifier; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: Provided that the seller may first require the consumer to return the goods.\"\n\n## How this may relate to your case\n\n- This provision may apply if the facts described are established.\n\n## Assessment\n\n**No legal action is currently required.**\n\n- Elapsed 3 calendar days from the refund initiated date (2026-11-05), which is within the merchant's own 7-day timeline (trigger date excluded). A delay alone is not a violation.\n\nSuggested next steps:\n1. Keep a written record and monitor the refund. Follow up after the merchant's own timeline of 7 days (calendar days, counting from refund_initiated_date, trigger date excluded).\n2. Save the order, payment and refund messages.\n\nAssessment date: 2026-11-08.\n\n## Limitations\n\n- This is general information and a draft for your review, not legal advice. I cannot guarantee any outcome.\n- FIXTURE DATA, NOT REAL LAW: the citations above come from a synthetic test corpus and must not be relied on as legal authority.\n",
       "case_summary": {
@@ -65,8 +65,8 @@
       },
       "extracted_facts": [
         {
-          "fact_id": "fact_311c311a-8a5c-4ad2-a58e-623d0cfc8e21",
-          "case_id": "case_e05544b2-6758-4bb3-80da-79ed137f5e82",
+          "fact_id": "fact_ff7e29ca-2224-4598-a6cb-8d5e868c3bd5",
+          "case_id": "case_495d730c-d471-4663-9125-36fa6d464e04",
           "fact_type": "order_id",
           "raw_value": "QB-3003",
           "normalised_value": "QB-3003",
@@ -78,11 +78,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T11:16:30.866475Z"
+          "created_at": "2026-11-08T11:54:38.355502Z"
         },
         {
-          "fact_id": "fact_15c4a864-5151-43ae-8068-c91ed9d74c7e",
-          "case_id": "case_e05544b2-6758-4bb3-80da-79ed137f5e82",
+          "fact_id": "fact_5c910e54-1405-48e6-9e4e-8b4b9136a9d5",
+          "case_id": "case_495d730c-d471-4663-9125-36fa6d464e04",
           "fact_type": "payment_method",
           "raw_value": "card",
           "normalised_value": "card",
@@ -94,11 +94,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T11:16:30.887501Z"
+          "created_at": "2026-11-08T11:54:38.383792Z"
         },
         {
-          "fact_id": "fact_5361b075-7bd7-4f86-ac45-6a7cf68614ab",
-          "case_id": "case_e05544b2-6758-4bb3-80da-79ed137f5e82",
+          "fact_id": "fact_d18b0def-4b93-4952-badd-2e0f24758e9b",
+          "case_id": "case_495d730c-d471-4663-9125-36fa6d464e04",
           "fact_type": "refund_status",
           "raw_value": "initiated",
           "normalised_value": "initiated",
@@ -110,11 +110,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T11:16:30.910368Z"
+          "created_at": "2026-11-08T11:54:38.414673Z"
         },
         {
-          "fact_id": "fact_37bcfa78-d9ad-42d3-b2a1-9b25c083e829",
-          "case_id": "case_e05544b2-6758-4bb3-80da-79ed137f5e82",
+          "fact_id": "fact_e3e9bc74-780f-47e5-a565-344f97ae386c",
+          "case_id": "case_495d730c-d471-4663-9125-36fa6d464e04",
           "fact_type": "refund_amount",
           "raw_value": "899 rupees",
           "normalised_value": 89900,
@@ -126,11 +126,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T11:16:30.930783Z"
+          "created_at": "2026-11-08T11:54:38.445253Z"
         },
         {
-          "fact_id": "fact_07df8545-d880-430d-8367-8177b7d73e18",
-          "case_id": "case_e05544b2-6758-4bb3-80da-79ed137f5e82",
+          "fact_id": "fact_f421fae4-3fd4-4849-9181-8872bd07760d",
+          "case_id": "case_495d730c-d471-4663-9125-36fa6d464e04",
           "fact_type": "merchant_promised_timeline_days",
           "raw_value": "within 7 days",
           "normalised_value": 7,
@@ -142,11 +142,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T11:16:30.951597Z"
+          "created_at": "2026-11-08T11:54:38.477253Z"
         },
         {
-          "fact_id": "fact_5be5e96c-84c0-4096-84b5-bb35687b7042",
-          "case_id": "case_e05544b2-6758-4bb3-80da-79ed137f5e82",
+          "fact_id": "fact_b991d3dc-c036-4504-87f9-dd99a49e7688",
+          "case_id": "case_495d730c-d471-4663-9125-36fa6d464e04",
           "fact_type": "refund_initiated_date",
           "raw_value": "5 November 2026",
           "normalised_value": "2026-11-05",
@@ -158,7 +158,7 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T11:16:30.972797Z"
+          "created_at": "2026-11-08T11:54:38.511871Z"
         }
       ],
       "evidence_processing": [],
@@ -432,7 +432,7 @@
         }
       ],
       "retrieval_summary": {
-        "corpus_version": "f594de8fa9673ef7",
+        "corpus_version": "17ed71f51cae526f",
         "candidate_count": 10,
         "accepted_count": 5,
         "rejected_count": 5,
@@ -449,12 +449,12 @@
           "Elapsed 3 calendar days from the refund initiated date (2026-11-05), which is within the merchant's own 7-day timeline (trigger date excluded). A delay alone is not a violation."
         ],
         "facts_used": [
-          "fact_311c311a-8a5c-4ad2-a58e-623d0cfc8e21",
-          "fact_15c4a864-5151-43ae-8068-c91ed9d74c7e",
-          "fact_5361b075-7bd7-4f86-ac45-6a7cf68614ab",
-          "fact_37bcfa78-d9ad-42d3-b2a1-9b25c083e829",
-          "fact_07df8545-d880-430d-8367-8177b7d73e18",
-          "fact_5be5e96c-84c0-4096-84b5-bb35687b7042"
+          "fact_ff7e29ca-2224-4598-a6cb-8d5e868c3bd5",
+          "fact_5c910e54-1405-48e6-9e4e-8b4b9136a9d5",
+          "fact_d18b0def-4b93-4952-badd-2e0f24758e9b",
+          "fact_e3e9bc74-780f-47e5-a565-344f97ae386c",
+          "fact_f421fae4-3fd4-4849-9181-8872bd07760d",
+          "fact_b991d3dc-c036-4504-87f9-dd99a49e7688"
         ],
         "provision_ids_used": [
           "TEST_ACT_A1",

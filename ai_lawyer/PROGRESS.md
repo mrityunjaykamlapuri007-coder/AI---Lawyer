@@ -388,3 +388,52 @@ Result per source:
   These 3 provisions were in the previous runtime corpus and are now out.
 - CPA_2019: not attempted; stays uncitable until the 2026 Jan Vishwas schedule
   check is recorded (user).
+
+### Stage 1.6 - conditions, trust level, rules 5-7 split
+
+| Field | Value |
+|---|---|
+| Status | IMPLEMENTED_AND_TESTED |
+| Test command | `pytest -q` -> 277 passed |
+| Conditions | `python -m ai_lawyer.legal_rag.machine_conditions --apply` -> 13/13 machine_verified |
+| Rebuild | 30 included (ECR_2020 28, ECR_2021_AMENDMENT 2), gate PASS |
+
+- `legal_corpus/official/conditions/agent_conditions.json`: agent-drafted
+  conditions on 7 provisions (scope 2, rule 4(4), 4(5), 4(8), 4(10), 6(3),
+  7(4)). Each quotes the exact provision phrase. Facts no extractor produces
+  (marketplace vs inventory model, defective goods, charges imposed) are
+  `manual` and always UNKNOWN, so those provisions can be "may apply if" but
+  never TRUE.
+- `machine_conditions`: quote must be in the provision text, fact type and
+  values must be in the extractor's vocabulary, 3-case test table (applicable /
+  not applicable / unknown) derived from the operator rule.
+- `CORPUS_TRUST_LEVEL` enforced: `human` makes machine rows uncitable (gate
+  refuses with zero) and machine conditions UNKNOWN. Gate also rejects a machine
+  condition whose quote is not in the provision.
+- Spot check (real corpus): "refund initiated, not received" -> 4(10)
+  applicable, 6(3)/7(4) not_applicable (delay is not refusal); "refund denied"
+  -> 6(3)/7(4) unknown; "grievance officer contacted" -> 4(5) applicable.
+
+### Purge rules
+
+| Field | Value |
+|---|---|
+| Status | IMPLEMENTED_AND_TESTED |
+| Test command | `pytest -q` -> 287 passed (`test_purge_rules.py`: 10) |
+| Fixture eval | `run_behavior_eval` -> FIXTURE 18/18 PASS (rerun after the move) |
+| Real load | `load_corpus('real')` -> usable 30 |
+
+- Fixture corpus moved to `legal_corpus/fixture/`; fakes moved to
+  `tests/fakes.py`; runtime factories import them lazily in fake/fixture mode
+  only (test enforces no module-level import from runtime packages).
+- Real mode refuses a corpus containing any fixture id or the markers
+  `TEST_ACT`, `FIXTURE DATA`, `FAKE TEST TEXT`.
+- Defect fixed: real mode silently fell back to the hashed embedder. It now
+  raises `BLOCKED` (R-2 / C7.2). Real-mode runs are blocked until the remote
+  embedder (Stage 2) exists.
+- Every dataset row tagged: `behavior_cases.jsonl` and
+  `retrieval_stories_to_label.jsonl` = `synthetic_written`;
+  `development.jsonl`/`test.jsonl` = `synthetic_fixture`. Real-mode behaviour
+  runs refuse untagged or mixed rows; synthetic stories need
+  `--synthetic-table` and go to `results/real_behavior_synthetic/` with a
+  "SYNTHETIC STORIES, NOT REAL DATA" banner.
