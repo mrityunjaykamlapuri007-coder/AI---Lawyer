@@ -96,6 +96,10 @@ until a human checks them against an official copy. Nothing is copied to
   cases, events, drafts, and retrieval logs.
 - FAISS dense index + BM25 sparse index + reciprocal rank fusion, provision
   expansion, optional reranker (disabled by default).
+- Reference-stack parity stages, opt-in: explicit-reference boosting
+  (`BOOST_ENABLED`) and verbatim prompt compression (`COMPRESSION_ENABLED`).
+  Both are off by default so the fixture results stay reproducible. See
+  `docs/RAG_PARITY.md`.
 - Deterministic verification: corpus validity, source currency, applicability,
   relevance, acceptance, retries, abstention, citation/phrase/date guards.
 - Fact extraction with provenance, date normalisation, conflict flags, case
@@ -109,10 +113,10 @@ until a human checks them against an official copy. Nothing is copied to
 
 ## What is not implemented
 
-- Real legal corpus ingestion, source verification, or real-law citations.
-  **BLOCKED** until the user reviews the generated draft corpus and supplies
-  `ai_lawyer/legal_corpus/sources.json` and `provisions.json`. The English
-  extracts are complete; the draft still needs human legal review.
+- Real-law citations. 13 official documents are downloaded and ingested into a
+  review-only staging corpus (8 sources / 149 provisions), but **0 provisions
+  are human-verified** and `sources.json` / `provisions.json` do not exist yet.
+  Real mode fails closed by design. See `docs/PROJECT_STATUS.md`.
 - Cross-encoder reranking and E4 (optional model not installed).
 - Claim-level LLM entailment, National Consumer Helpline / Consumer Commission
   draft templates, corpus snapshots/archive checks, OCR, RAGAS, and Jev.
@@ -136,11 +140,15 @@ ai_lawyer/
   documents/         draft generator, validator, Jinja templates
   frontend/          Streamlit demo client
   evaluation/        metrics, datasets, harnesses, raw outputs, failure analysis
-  tests/             141 unit/integration tests (offline)
-  docs/              reuse notes and final report
+  tests/             181 unit/integration tests (offline)
+  docs/              decisions, RAG parity, current status, reuse notes, final report
 ```
 
 ## Honest status
+
+**Current, verified status: `docs/PROJECT_STATUS.md`.** The table below is a
+short summary; the status document is authoritative and includes the exact
+measurements and remaining blockers.
 
 | Area | Status |
 |---|---|
