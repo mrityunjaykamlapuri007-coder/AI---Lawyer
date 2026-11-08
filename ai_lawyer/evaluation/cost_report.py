@@ -71,12 +71,16 @@ def summarise(rows: list[dict[str, Any]]) -> dict[str, Any]:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="python -m ai_lawyer.evaluation.cost_report")
     parser.add_argument("--since", default="", help="only calls logged at or after this ISO time")
+    parser.add_argument("--until", default="", help="only calls logged before this ISO time")
+    parser.add_argument("--out", default="cost_summary.json", help="file name inside results/")
     args = parser.parse_args(argv)
     rows = [json.loads(l) for l in CALLS.read_text(encoding="utf-8").splitlines() if l.strip()]
     if args.since:
         rows = [r for r in rows if str(r.get("logged_at", "")) >= args.since]
-    summary = {"since": args.since or "all", **summarise(rows)}
-    (RESULTS / "cost_summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
+    if args.until:
+        rows = [r for r in rows if str(r.get("logged_at", "")) < args.until]
+    summary = {"since": args.since or "all", "until": args.until or "end", **summarise(rows)}
+    (RESULTS / args.out).write_text(json.dumps(summary, indent=2), encoding="utf-8")
     print(json.dumps({k: summary[k] for k in ("since", "calls", "ok_calls", "per_case", "models")}, indent=2))
     return 0
 

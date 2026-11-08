@@ -1,0 +1,601 @@
+{
+  "label": "REAL CORPUS, VERIFIED SUBSET (30 usable)",
+  "test_id": "R02",
+  "category": "delivery_failed_refund_after_delay",
+  "notes": null,
+  "now": "2026-11-08",
+  "turns": [
+    {
+      "message": "On October 5, 2025 I ordered a 5-gram 24K gold coin on Myntra for ₹59,750, paid by UPI, plus a ₹20 platform fee. The expected delivery date was October 22, 2025. The coin never arrived. I contacted Myntra again and again by email, WhatsApp and its support channels and kept asking for delivery. On November 15, 2025 Myntra cancelled the order itself and refunded ₹59,730, which reached my account the same day. Gold prices went up in the meantime, so I can no longer buy the same coin at that price. What can I do?"
+    }
+  ],
+  "expected": {
+    "outcome": "needs_more_information",
+    "rule": "R7",
+    "rationale": "The refund was credited, so the refund is not pending or unresolved; no rule from R3-R6 applies."
+  },
+  "corpus": {
+    "mode": "real",
+    "version": "0381858588e1a7be",
+    "usable_count": 30,
+    "usable_ids": [
+      "ECR_2020_P001",
+      "ECR_2020_P002",
+      "ECR_2020_P004_SR02",
+      "ECR_2020_P004_SR03",
+      "ECR_2020_P004_SR04",
+      "ECR_2020_P004_SR05",
+      "ECR_2020_P004_SR06",
+      "ECR_2020_P004_SR07",
+      "ECR_2020_P004_SR08",
+      "ECR_2020_P004_SR09",
+      "ECR_2020_P004_SR10",
+      "ECR_2020_P004_SR11",
+      "ECR_2020_P005_SR01",
+      "ECR_2020_P005_SR02",
+      "ECR_2020_P005_SR03",
+      "ECR_2020_P005_SR04",
+      "ECR_2020_P005_SR05",
+      "ECR_2020_P006_SR01",
+      "ECR_2020_P006_SR02",
+      "ECR_2020_P006_SR03",
+      "ECR_2020_P006_SR04",
+      "ECR_2020_P006_SR05",
+      "ECR_2020_P007_SR01",
+      "ECR_2020_P007_SR02",
+      "ECR_2020_P007_SR03",
+      "ECR_2020_P007_SR04",
+      "ECR_2020_P007_SR05",
+      "ECR_2020_P008",
+      "ECR_2021_AMENDMENT_P001",
+      "ECR_2021_AMENDMENT_P002"
+    ]
+  },
+  "responses": [
+    {
+      "conversation_id": "conv_1c791f3c-6397-4c58-83cb-a2f52c2e86a1",
+      "message_id": "msg_925754e4-7414-4e46-ad21-2d8c57b08692",
+      "assistant_message_id": "msg_707efefd-6e85-4d4e-81f2-6889312c9577",
+      "case_id": "case_0801b985-45e0-43d9-969e-26591cf256ab",
+      "processing_status": "completed",
+      "assistant_message": "## What I understood\n\nThe user purchased a 5-gram 24K gold coin from Myntra but did not receive the item. The order was canceled and refunded, but the user is concerned about the loss due to the increase in gold prices.\n\n## Facts\n\nFacts you reported:\n- Platform name: platform\n- Payment method: UPI\n- Refund amount: INR 59,730.00\n- Support contact made: i contacted\n- Merchant name: Myntra\n- Platform name: Myntra\n- Purchase date: October 5, 2025\n- Cancellation date: November 15, 2025\n- Refund initiated: November 15, 2025\n- Refund amount: INR 59,730.00\n- Refund status: refunded ₹59,730, which reached my account the same day\n\n## Legal sources that may apply\n\n- **Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (10)** — role: supporting; applicability: applicable; source validity: current_for_date. Excerpt: \"(10)\nEvery e-commerce entity shall effect all payments towards accepted refund requests of the consumers\nas prescribed by the Reserve Bank of India or any other competent authority under any law for the time\nbeing in force, within a reasonable period of time, or as prescribed under applicable laws.\"\n- **Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (8)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"(8)\nNo e-commerce entity shall impose cancellation charges on consumers cancelling after confirming\npurchase unless similar charges are also borne by the e- commerce entity, if they cancel the purchase\norder unilaterally for any reason.\"\n- **Consumer Protection (E-Commerce) Rules, 2020, provision 6, sub-rule (4)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"(4) Any seller offering goods or services through a marketplace e-commerce entity shall:\n(a) have a prior written contract with the respective e-commerce entity in order to undertake or solicit\nsuch sale or offer;\nappoint a grievance officer for consumer grievance redressal and ensure that the grievance officer\nacknowledges the receipt of any consumer complaint within  forty-eight hours and redres\"\n\n## How this may relate to your case\n\n- The e-commerce entity, Myntra, may apply if it has not effected the payment towards the accepted refund request within a reasonable period of time.\n- The e-commerce entity, Myntra, may apply if it imposes cancellation charges on the user without similar charges being borne by Myntra.\n- The seller, Myntra, may apply if it does not have a prior written contract with the e-commerce entity, does not appoint a grievance officer, does not acknowledge complaints within 48 hours, or does not redress complaints within one month.\n\n## Assessment\n\n**A formal grievance is recommended.**\n\n- Support was contacted, the issue remains unresolved, and the grievance officer has not been contacted.\n\nSuggested next steps:\n1. Send a formal written grievance to the platform's grievance officer.\n2. Attach the order, payment, return and support messages.\n3. Keep proof of delivery and ask for a written response.\n\nAssessment date: 2026-11-08.\n\n## Draft document\nA **formal grievance** draft is included below for your review. It has not been sent or filed.\n\n## Limitations\n\n- This is general information and a draft for your review, not legal advice. I cannot guarantee any outcome.\n",
+      "case_summary": {
+        "identifiers": [],
+        "merchant": "Myntra",
+        "platform": "Myntra",
+        "amount_minor": 5973000,
+        "currency": "INR",
+        "refund_status": "processed"
+      },
+      "extracted_facts": [
+        {
+          "fact_id": "fact_413a5c06-0a23-499d-99a7-8fae21a13fc2",
+          "case_id": "case_0801b985-45e0-43d9-969e-26591cf256ab",
+          "fact_type": "platform_name",
+          "raw_value": "platform",
+          "normalised_value": "platform",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T18:42:34.676722Z"
+        },
+        {
+          "fact_id": "fact_c643dd49-7c7d-452f-8e0c-195dba62ad98",
+          "case_id": "case_0801b985-45e0-43d9-969e-26591cf256ab",
+          "fact_type": "payment_method",
+          "raw_value": "UPI",
+          "normalised_value": "upi",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T18:42:34.691610Z"
+        },
+        {
+          "fact_id": "fact_52a29384-248f-4393-853f-4221a0f042ac",
+          "case_id": "case_0801b985-45e0-43d9-969e-26591cf256ab",
+          "fact_type": "refund_amount",
+          "raw_value": "₹59,730,",
+          "normalised_value": 5973000,
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T18:42:34.711217Z"
+        },
+        {
+          "fact_id": "fact_0ae6e406-9cf2-40d5-b60c-c6861b0b70ba",
+          "case_id": "case_0801b985-45e0-43d9-969e-26591cf256ab",
+          "fact_type": "support_contact_made",
+          "raw_value": "i contacted",
+          "normalised_value": true,
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T18:42:34.728190Z"
+        },
+        {
+          "fact_id": "fact_5883ea80-32c5-47d4-a25c-f310ab421dbe",
+          "case_id": "case_0801b985-45e0-43d9-969e-26591cf256ab",
+          "fact_type": "merchant_name",
+          "raw_value": "Myntra",
+          "normalised_value": "Myntra",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T18:42:34.744270Z"
+        },
+        {
+          "fact_id": "fact_0500d68c-e7ba-44f8-9f8f-89203bf4e7ed",
+          "case_id": "case_0801b985-45e0-43d9-969e-26591cf256ab",
+          "fact_type": "platform_name",
+          "raw_value": "Myntra",
+          "normalised_value": "Myntra",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T18:42:34.759324Z"
+        },
+        {
+          "fact_id": "fact_81a11bec-ba8a-48be-a732-4bbdd0fac262",
+          "case_id": "case_0801b985-45e0-43d9-969e-26591cf256ab",
+          "fact_type": "purchase_date",
+          "raw_value": "October 5, 2025",
+          "normalised_value": "2025-10-05",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T18:42:34.774596Z"
+        },
+        {
+          "fact_id": "fact_d21a880d-55b5-4639-86e4-81972ea47bbd",
+          "case_id": "case_0801b985-45e0-43d9-969e-26591cf256ab",
+          "fact_type": "cancellation_date",
+          "raw_value": "November 15, 2025",
+          "normalised_value": "2025-11-15",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T18:42:34.790318Z"
+        },
+        {
+          "fact_id": "fact_71d384d0-bce3-4df3-9b4d-361e1e767907",
+          "case_id": "case_0801b985-45e0-43d9-969e-26591cf256ab",
+          "fact_type": "refund_initiated_date",
+          "raw_value": "November 15, 2025",
+          "normalised_value": "2025-11-15",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T18:42:34.805324Z"
+        },
+        {
+          "fact_id": "fact_8ef86a79-691c-4873-b832-26d7115793ab",
+          "case_id": "case_0801b985-45e0-43d9-969e-26591cf256ab",
+          "fact_type": "refund_amount",
+          "raw_value": "₹59,730",
+          "normalised_value": 5973000,
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T18:42:34.819844Z"
+        },
+        {
+          "fact_id": "fact_3db6fc50-aaca-4f85-8ac5-4eb4eb133111",
+          "case_id": "case_0801b985-45e0-43d9-969e-26591cf256ab",
+          "fact_type": "refund_status",
+          "raw_value": "refunded ₹59,730, which reached my account the same day",
+          "normalised_value": "processed",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T18:42:34.835549Z"
+        }
+      ],
+      "evidence_processing": [],
+      "legal_sources": [
+        {
+          "provision_id": "ECR_2020_P004_SR10",
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (10)",
+          "excerpt": "(10)\nEvery e-commerce entity shall effect all payments towards accepted refund requests of the consumers\nas prescribed by the Reserve Bank of India or any other competent authority under any law for the time\nbeing in force, within a reasonable period of time, or as prescribed under applicable laws.",
+          "role": "supporting",
+          "applicability": "applicable",
+          "source_validity": "current_for_date",
+          "official_url": "https://consumeraffairs.gov.in/public/upload/files/E%20commerce%20rules_1732703966.pdf"
+        },
+        {
+          "provision_id": "ECR_2020_P004_SR08",
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (8)",
+          "excerpt": "(8)\nNo e-commerce entity shall impose cancellation charges on consumers cancelling after confirming\npurchase unless similar charges are also borne by the e- commerce entity, if they cancel the purchase\norder unilaterally for any reason.",
+          "role": "supporting",
+          "applicability": "unknown",
+          "source_validity": "current_for_date",
+          "official_url": "https://consumeraffairs.gov.in/public/upload/files/E%20commerce%20rules_1732703966.pdf"
+        },
+        {
+          "provision_id": "ECR_2020_P006_SR04",
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 6, sub-rule (4)",
+          "excerpt": "(4) Any seller offering goods or services through a marketplace e-commerce entity shall:\n(a) have a prior written contract with the respective e-commerce entity in order to undertake or solicit\nsuch sale or offer;\nappoint a grievance officer for consumer grievance redressal and ensure that the grievance officer\nacknowledges the receipt of any consumer complaint within  forty-eight hours and redresses the\ncomplaint within one month from the date of receipt of the complaint;\nensure that the advertisements for marketing of goods or services are consistent with the actual\ncharacteristics, access a",
+          "role": "supporting",
+          "applicability": "unknown",
+          "source_validity": "current_for_date",
+          "official_url": "https://consumeraffairs.gov.in/public/upload/files/E%20commerce%20rules_1732703966.pdf"
+        }
+      ],
+      "retrieval_candidates": [
+        {
+          "chunk_id": "ECR_2020_P004_SR10::c0",
+          "provision_id": "ECR_2020_P004_SR10",
+          "source_id": "ECR_2020",
+          "dense_rank": 1,
+          "sparse_rank": 1,
+          "rrf_score": 0.1273653803918925,
+          "rerank_score": null,
+          "relevance_grade": 2,
+          "relevance_reason": "This provision ensures that refunds are processed within a reasonable period, but it does not address the scenario where goods are not delivered.",
+          "applicability": "applicable",
+          "applicability_reasons": [
+            "fact fact_71d384d0-bce3-4df3-9b4d-361e1e767907 records refund_initiated_date"
+          ],
+          "source_validity": "current_for_date",
+          "role": "supporting",
+          "rejection_reason": null,
+          "added_because": null,
+          "accepted": true,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (10)"
+        },
+        {
+          "chunk_id": "ECR_2020_P004_SR08::c0",
+          "provision_id": "ECR_2020_P004_SR08",
+          "source_id": "ECR_2020",
+          "dense_rank": 5,
+          "sparse_rank": 8,
+          "rrf_score": 0.10167726619998195,
+          "rerank_score": null,
+          "relevance_grade": 2,
+          "relevance_reason": "This provision discusses the cancellation charges imposed by e-commerce entities, but it does not directly address the issue of non-delivery or the right to a refund.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "condition ECR_2020_P004_SR08_C2 is manual and always UNKNOWN"
+          ],
+          "source_validity": "current_for_date",
+          "role": "supporting",
+          "rejection_reason": null,
+          "added_because": null,
+          "accepted": true,
+          "conditional": true,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (8)"
+        },
+        {
+          "chunk_id": "ECR_2020_P006_SR04::c0",
+          "provision_id": "ECR_2020_P006_SR04",
+          "source_id": "ECR_2020",
+          "dense_rank": 6,
+          "sparse_rank": 6,
+          "rrf_score": 0.10093819394186816,
+          "rerank_score": null,
+          "relevance_grade": 2,
+          "relevance_reason": "This provision outlines the responsibilities of sellers on an e-commerce platform, including grievance redressal and advertising consistency, but it does not specifically address the right to a full refund in case of non-delivery.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "supporting",
+          "rejection_reason": null,
+          "added_because": null,
+          "accepted": true,
+          "conditional": true,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 6, sub-rule (4)"
+        },
+        {
+          "chunk_id": "ECR_2020_P005_SR03::c0",
+          "provision_id": "ECR_2020_P005_SR03",
+          "source_id": "ECR_2020",
+          "dense_rank": 1,
+          "sparse_rank": 2,
+          "rrf_score": 0.1568616997242724,
+          "rerank_score": null,
+          "relevance_grade": 1,
+          "relevance_reason": "This provision covers the information that marketplace e-commerce entities must provide to consumers, but it does not address the scenario where goods are not delivered.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "background",
+          "rejection_reason": "relevance grade 1 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 5, sub-rule (3)"
+        },
+        {
+          "chunk_id": "ECR_2020_P007_SR01::c0",
+          "provision_id": "ECR_2020_P007_SR01",
+          "source_id": "ECR_2020",
+          "dense_rank": 5,
+          "sparse_rank": 3,
+          "rrf_score": 0.13677366373261896,
+          "rerank_score": null,
+          "relevance_grade": 1,
+          "relevance_reason": "This provision provides general information requirements for inventory e-commerce entities but does not specifically address the scenario where goods are not delivered.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "background",
+          "rejection_reason": "relevance grade 1 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 7, sub-rule (1)"
+        },
+        {
+          "chunk_id": "ECR_2020_P006_SR05::c0",
+          "provision_id": "ECR_2020_P006_SR05",
+          "source_id": "ECR_2020",
+          "dense_rank": 6,
+          "sparse_rank": 1,
+          "rrf_score": 0.13610852732448436,
+          "rerank_score": null,
+          "relevance_grade": 1,
+          "relevance_reason": "This provision requires sellers to provide specific information to the e-commerce entity, but it does not address the scenario where goods are not delivered.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "background",
+          "rejection_reason": "relevance grade 1 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 6, sub-rule (5)"
+        },
+        {
+          "chunk_id": "ECR_2020_P004_SR04::c0",
+          "provision_id": "ECR_2020_P004_SR04",
+          "source_id": "ECR_2020",
+          "dense_rank": 8,
+          "sparse_rank": 1,
+          "rrf_score": 0.11345691141889344,
+          "rerank_score": null,
+          "relevance_grade": 1,
+          "relevance_reason": "This provision mandates the establishment of a grievance redressal mechanism, but it does not address the scenario where goods are not delivered.",
+          "applicability": "applicable",
+          "applicability_reasons": [
+            "fact fact_0500d68c-e7ba-44f8-9f8f-89203bf4e7ed records platform_name"
+          ],
+          "source_validity": "current_for_date",
+          "role": "background",
+          "rejection_reason": "relevance grade 1 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (4)"
+        },
+        {
+          "chunk_id": "ECR_2020_P004_SR05::c0",
+          "provision_id": "ECR_2020_P004_SR05",
+          "source_id": "ECR_2020",
+          "dense_rank": 2,
+          "sparse_rank": 9,
+          "rrf_score": 0.10513509399556722,
+          "rerank_score": null,
+          "relevance_grade": 1,
+          "relevance_reason": "This provision requires the acknowledgment and resolution of complaints within a specified timeframe, but it does not address the scenario where goods are not delivered.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no fact of type grievance_officer_contacted"
+          ],
+          "source_validity": "current_for_date",
+          "role": "background",
+          "rejection_reason": "relevance grade 1 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (5)"
+        },
+        {
+          "chunk_id": "ECR_2020_P007_SR04::c0",
+          "provision_id": "ECR_2020_P007_SR04",
+          "source_id": "ECR_2020",
+          "dense_rank": 1,
+          "sparse_rank": 1,
+          "rrf_score": 0.15943121001226618,
+          "rerank_score": null,
+          "relevance_grade": 2,
+          "relevance_reason": "This provision states that inventory e-commerce entities should not refuse to refund consideration if the goods are not of the characteristics or features as advertised or if they are delivered late, but it does not cover the scenario where the goods are not delivered at all.",
+          "applicability": "not_applicable",
+          "applicability_reasons": [
+            "refund_status is 'processed', not in ['denied', 'partial']"
+          ],
+          "source_validity": "current_for_date",
+          "role": "rejected",
+          "rejection_reason": "conditions not met: refund_status is 'processed', not in ['denied', 'partial']",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 7, sub-rule (4)"
+        },
+        {
+          "chunk_id": "ECR_2020_P006_SR03::c0",
+          "provision_id": "ECR_2020_P006_SR03",
+          "source_id": "ECR_2020",
+          "dense_rank": 1,
+          "sparse_rank": 2,
+          "rrf_score": 0.15647117486124118,
+          "rerank_score": null,
+          "relevance_grade": 2,
+          "relevance_reason": "This provision is similar to ECR_2020_P007_SR04 but applies to sellers rather than inventory e-commerce entities. It does not cover the scenario where the goods are not delivered at all.",
+          "applicability": "not_applicable",
+          "applicability_reasons": [
+            "refund_status is 'processed', not in ['denied', 'partial']"
+          ],
+          "source_validity": "current_for_date",
+          "role": "rejected",
+          "rejection_reason": "conditions not met: refund_status is 'processed', not in ['denied', 'partial']",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 6, sub-rule (3)"
+        }
+      ],
+      "retrieval_summary": {
+        "corpus_version": "0381858588e1a7be",
+        "candidate_count": 10,
+        "accepted_count": 3,
+        "rejected_count": 7,
+        "retry_count": 0
+      },
+      "verification": {
+        "overall": "verified",
+        "blocked_claims": [],
+        "note": "deterministic citation/date/phrase guards only; claim-level entailment is DESIGN_ONLY"
+      },
+      "assessment": {
+        "outcome": "formal_grievance_recommended",
+        "reasons": [
+          "Support was contacted, the issue remains unresolved, and the grievance officer has not been contacted."
+        ],
+        "facts_used": [
+          "fact_413a5c06-0a23-499d-99a7-8fae21a13fc2",
+          "fact_c643dd49-7c7d-452f-8e0c-195dba62ad98",
+          "fact_52a29384-248f-4393-853f-4221a0f042ac",
+          "fact_0ae6e406-9cf2-40d5-b60c-c6861b0b70ba",
+          "fact_5883ea80-32c5-47d4-a25c-f310ab421dbe",
+          "fact_0500d68c-e7ba-44f8-9f8f-89203bf4e7ed",
+          "fact_81a11bec-ba8a-48be-a732-4bbdd0fac262",
+          "fact_d21a880d-55b5-4639-86e4-81972ea47bbd",
+          "fact_71d384d0-bce3-4df3-9b4d-361e1e767907",
+          "fact_8ef86a79-691c-4873-b832-26d7115793ab",
+          "fact_3db6fc50-aaca-4f85-8ac5-4eb4eb133111"
+        ],
+        "provision_ids_used": [
+          "ECR_2020_P004_SR10",
+          "ECR_2020_P004_SR08",
+          "ECR_2020_P006_SR04"
+        ],
+        "missing_information": [],
+        "uncertainties": [
+          "relevance grade 1 below 2",
+          "relevance grade 1 below 2",
+          "relevance grade 1 below 2",
+          "relevance grade 1 below 2",
+          "relevance grade 1 below 2"
+        ],
+        "urgency": "unknown",
+        "next_steps": [
+          "Send a formal written grievance to the platform's grievance officer.",
+          "Attach the order, payment, return and support messages.",
+          "Keep proof of delivery and ask for a written response."
+        ],
+        "lawyer_needed": false,
+        "lawyer_reason": null,
+        "rule_trace": [
+          "R5: Support was contacted, the issue remains unresolved, and the grievance officer has not been contacted.",
+          "decision_controller: LLM proposed needs_more_information; Python outcome formal_grievance_recommended wins"
+        ],
+        "llm_proposed_outcome": "needs_more_information"
+      },
+      "missing_information": [],
+      "next_steps": [
+        "Send a formal written grievance to the platform's grievance officer.",
+        "Attach the order, payment, return and support messages.",
+        "Keep proof of delivery and ask for a written response."
+      ],
+      "document_draft": {
+        "draft_id": "doc_fccac05c-dd4b-4260-9ab4-c18eea860a80",
+        "case_id": "case_0801b985-45e0-43d9-969e-26591cf256ab",
+        "draft_type": "formal_grievance",
+        "content": "# DRAFT: prepared for your review. Not sent or filed.\n\nTo: The Grievance Officer\nPlatform: Myntra\nSubject: Formal grievance — unresolved refund for order [TO BE FILLED BY USER]\n\n**Complainant**\n\n- Name: [TO BE FILLED BY USER]\n- Address: [TO BE FILLED BY USER]\n- Order id: [TO BE FILLED BY USER]\n- Merchant / platform: Myntra\n- Refund amount: INR 59,730.00\n\n**Facts**\n\n- payment method: upi (reported by you)\n- refund amount: 5973000 (reported by you)\n- support contact made: True (reported by you)\n- purchase date: 2025-10-05 (reported by you)\n- cancellation date: 2025-11-15 (reported by you)\n- refund initiated date: 2025-11-15 (reported by you)\n- refund amount: 5973000 (reported by you)\n- refund status: processed (reported by you)\n\n- Relevant dates: purchase: October 5, 2025; cancellation: November 15, 2025; refund initiated: November 15, 2025\n- Current refund status: processed\n- Support contact: yes\n\n**Requested resolution**\n\nPlease review the unresolved refund and confirm in writing what action will be taken. Please treat this as a formal grievance.\n\n**Legal grounds (only provisions supplied in the verified corpus)**\n\n- Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (10): \"(10)\nEvery e-commerce entity shall effect all payments towards accepted refund requests of the consumers\nas prescribed by the Reserve Bank of India or any other competent authority under any law for the time\nbeing in force, within a reasonable period of time, or as prescribed under applicable laws.\"\n- Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (8): \"(8)\nNo e-commerce entity shall impose cancellation charges on consumers cancelling after confirming\npurchase unless similar charges are also borne by the e- commerce entity, if they cancel the purchase\norder unilaterally for any reason.\"\n- Consumer Protection (E-Commerce) Rules, 2020, provision 6, sub-rule (4): \"(4) Any seller offering goods or services through a marketplace e-commerce entity shall:\n(a) have a prior written contract with the respective e-commerce entity in order to undertake or solicit\nsuch sale or offer;\nappoint a grievance officer for consumer grievance redressal and ensure that the grievance officer\nacknowledges the receipt of any consumer complaint within  forty-eight hours and redresses the\ncomplaint within one month from the date of receipt of the complaint;\nensure that the advertisements for marketing of goods or services are consistent with the actual\ncharacteristics, access a\"\n\nYours sincerely,\n\n[TO BE FILLED BY USER]\n[TO BE FILLED BY USER]\n\n---\n\nThis is a draft prepared by an AI assistant for your review. It has not been sent or filed. Check every fact before using it.",
+        "status": "needs_review",
+        "missing_fields": [
+          "[TO BE FILLED BY USER]"
+        ],
+        "created_at": "2026-11-08T18:44:06.692991Z"
+      }
+    }
+  ],
+  "case_status_final": "open",
+  "event_types": [
+    "case_created",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "assessment_completed"
+  ],
+  "checks_failed": [
+    "outcome 'formal_grievance_recommended' != 'needs_more_information'"
+  ],
+  "observed": {
+    "outcome": "formal_grievance_recommended"
+  },
+  "data_origin": "public_commission_order",
+  "split": "development",
+  "result": "FAIL"
+}

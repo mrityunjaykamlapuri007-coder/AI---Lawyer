@@ -1,0 +1,58 @@
+{
+  "label": "REAL CORPUS, VERIFIED SUBSET (30 usable)",
+  "generated_at": "2026-11-08T19:26:42.022236+00:00",
+  "mode": "real",
+  "data_origin": "public_commission_order",
+  "data_note": "real stories",
+  "cases": 17,
+  "checks": 17,
+  "passed": 10,
+  "failed": 5,
+  "recorded_without_pass_fail": 2,
+  "per_split": {
+    "development": {
+      "PASS": 2,
+      "FAIL": 3,
+      "RECORDED": 2
+    },
+    "test": {
+      "PASS": 8,
+      "FAIL": 2,
+      "RECORDED": 0
+    }
+  },
+  "embedder_model_hash": "66fb4645018b1085d2643add159e00b6",
+  "trust_level": "machine",
+  "raw_sha256": {
+    "R01.json": "c32f38fb64b8da156d87dedb8012e8a353d8b349472461e97f03d50f8da7c8cd",
+    "R02.json": "09f5e30b7b047067ff9933d63f951bbf4bfd928361a9e3bfd233f2f7c05d4f3f",
+    "R03.json": "d952260e1bb91a7689459edc341cbf9d5c10269c03806b6c28045abab5b214d1",
+    "R04.json": "b10a4ec80c42e2b77ecc1e5cfee1d1c1fa72a406544927c2ccc4a5947fe2aa73",
+    "R05.json": "d6d92997d01aa78a527a6438e7dd53e698a21cc1338d4dfe68f210d8c1cbcf2a",
+    "R06.json": "4836e9779ffff0fbbd27399275de0eb0007178c8d770a1936510ca35a0472309",
+    "R07.json": "02ddeb7e8d8808cd16a3626bd9aade176a483e2ee069dbb55cc58cbfb574498b",
+    "R08.json": "aad5abd51b4ca82eef4beb8a2ebc5ec869f644a11f3db16cb9a8e8a117a95564",
+    "R09.json": "4232038248ef7d80fcdd54591d535616694b676beef1bae2d74f6d10e31f23e6",
+    "R10.json": "066ce5cfb656564716575f225d21f7941b438ce7cc5745236bcc9a7a8567c39f",
+    "R11.json": "8ab7ad053496242c6d6abd35b64779f854c530319db950e88106473cb8ad7dc6",
+    "R12.json": "2a2887c700fd9b00571180883d49303397d4bd4cb0711b4da446c9341940ad33",
+    "R13.json": "df0094c70e4a96d613dec080c893278ffd270cf7ca1a5c159fc394d5da7c74c4",
+    "R14.json": "d23e89beabbcc607653049dd315c946a396c16b0da3335ff3f80d61bbe981ff9",
+    "R15.json": "bf56ed8a331fd24ef9f2416dbc94889329505b21d618b3a96a78a6fe5b9c40c9",
+    "R16.json": "a258a332b11c8beaf14a8101496406642cf3027a608909883543b09ffa56caca",
+    "R17.json": "a247899f09f311c3d0c3dd73f979926cdd1ccef04e1db3ce9cb3138153ee3300"
+  },
+  "derived_checks": [],
+  "corpus_mode": "real",
+  "corpus_version": "0381858588e1a7be",
+  "corpus_usable": 30,
+  "embedder": "BAAI/bge-large-en-v1.5",
+  "llm": "openai_compatible:refund-llm",
+  "llm_provider": "openai_compatible",
+  "llm_model": "refund-llm",
+  "vllm_version": "0.33.0",
+  "quantization": "fp16",
+  "gpu_type": "Tesla T4 x2 (Kaggle)",
+  "as_of_policy": "each case uses its own now date",
+  "unverified_section_numbers": []
+}

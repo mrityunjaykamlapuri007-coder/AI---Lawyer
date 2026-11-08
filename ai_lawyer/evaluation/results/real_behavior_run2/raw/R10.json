@@ -1,0 +1,499 @@
+{
+  "label": "REAL CORPUS, VERIFIED SUBSET (30 usable)",
+  "test_id": "R10",
+  "category": "refund_claimed_by_seller_disputed",
+  "notes": null,
+  "now": "2026-11-08",
+  "turns": [
+    {
+      "message": "On 20.06.2021 I ordered a Caran D'Ache ball pen for ₹1,611 on Flipkart, supplied by the seller William Penn. It was delivered on 26.06.2021 in a different colour from the one I ordered, so I asked for a replacement. The first replacement request was cancelled on 30.06.2021. A second replacement was accepted, but the pen delivered on 06.07.2021 again differed in colour and refill from my order. The seller now says it issued me a refund on July 9, 2021, and the refund is in dispute."
+    }
+  ],
+  "expected": {
+    "outcome": "undetermined",
+    "rule": null,
+    "rationale": "Whether support was contacted about the refund, and whether the refund was credited, is not stated clearly enough for R3/R5."
+  },
+  "corpus": {
+    "mode": "real",
+    "version": "0381858588e1a7be",
+    "usable_count": 30,
+    "usable_ids": [
+      "ECR_2020_P001",
+      "ECR_2020_P002",
+      "ECR_2020_P004_SR02",
+      "ECR_2020_P004_SR03",
+      "ECR_2020_P004_SR04",
+      "ECR_2020_P004_SR05",
+      "ECR_2020_P004_SR06",
+      "ECR_2020_P004_SR07",
+      "ECR_2020_P004_SR08",
+      "ECR_2020_P004_SR09",
+      "ECR_2020_P004_SR10",
+      "ECR_2020_P004_SR11",
+      "ECR_2020_P005_SR01",
+      "ECR_2020_P005_SR02",
+      "ECR_2020_P005_SR03",
+      "ECR_2020_P005_SR04",
+      "ECR_2020_P005_SR05",
+      "ECR_2020_P006_SR01",
+      "ECR_2020_P006_SR02",
+      "ECR_2020_P006_SR03",
+      "ECR_2020_P006_SR04",
+      "ECR_2020_P006_SR05",
+      "ECR_2020_P007_SR01",
+      "ECR_2020_P007_SR02",
+      "ECR_2020_P007_SR03",
+      "ECR_2020_P007_SR04",
+      "ECR_2020_P007_SR05",
+      "ECR_2020_P008",
+      "ECR_2021_AMENDMENT_P001",
+      "ECR_2021_AMENDMENT_P002"
+    ]
+  },
+  "responses": [
+    {
+      "conversation_id": "conv_17fbc025-0fe0-41c9-a2a1-5846d96558e8",
+      "message_id": "msg_c34b7b38-06f9-4abf-b1bb-f80f17a8c11c",
+      "assistant_message_id": "msg_d743cffe-aff8-4cb3-b3b0-6b88401a500d",
+      "case_id": "case_b07f7ce7-be72-41b3-ab1f-9ff372ad84d6",
+      "processing_status": "needs_clarification",
+      "assistant_message": "## What I understood\n\nThe user ordered a Caran D'Ache ball pen from William Penn through Flipkart, but received a pen with a different color and refill than ordered. The user requested a replacement, which was initially cancelled and then accepted, but the replacement pen also did not match the order. The seller claims a refund was issued, but the refund status is disputed.\n\n## Facts\n\nFacts you reported:\n- Merchant name: William Penn\n- Platform name: Flipkart\n- Purchase date: 20.06.2021\n- Cancellation date: 30.06.2021\n- Return requested: 20.06.2021\n- Refund status: The seller now says it issued me a refund on July 9, 2021, and the refund is in dispute.\n\n## Legal sources that may apply\n\n- **Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (10)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"(10)\nEvery e-commerce entity shall effect all payments towards accepted refund requests of the consumers\nas prescribed by the Reserve Bank of India or any other competent authority under any law for the time\nbeing in force, within a reasonable period of time, or as prescribed under applicable laws.\"\n- **Consumer Protection (E-Commerce) Rules, 2020, provision 2** — role: supporting; applicability: applicable; source validity: current_for_date. Excerpt: \"2. Scope and Applicability. – (1) Save as otherwise expressly provided by the Central Government by\nnotification, these rules shall apply to:\n(a) all goods and services bought or sold over digital or electronic network including digital products;\n(b) all models of e-commerce, including marketplace and inventory models of e-commerce;\n(c) all e-commerce retail, including multi-channel single brand r\"\n\n## How this may relate to your case\n\n- These rules apply to all goods and services bought or sold over digital or electronic networks, including marketplace models like Flipkart.\n- The e-commerce entity must effect all payments towards accepted refund requests within a reasonable period of time.\n\n## Assessment\n\n**I need more information before assessing the next step.**\n\n- An essential fact is missing: an exact cancellation/return date.\n\nSuggested next steps:\n1. Answer the follow-up question so the refund timeline can be assessed.\n\nAssessment date: 2026-11-08.\n\n## Missing information\n- When did you cancel or return the order? Please give the exact date.\n- Have you contacted the seller or platform support in writing, and on what date?\n\n## Limitations\n\n- This is general information and a draft for your review, not legal advice. I cannot guarantee any outcome.\n- You may want to speak to a qualified lawyer about your options (the user is considering formal proceedings).\n",
+      "case_summary": {
+        "identifiers": [],
+        "merchant": "William Penn",
+        "platform": "Flipkart",
+        "amount_minor": null,
+        "currency": "INR",
+        "refund_status": "pending"
+      },
+      "extracted_facts": [
+        {
+          "fact_id": "fact_35e8fc2a-060e-47de-ab30-fb73ad8cb220",
+          "case_id": "case_b07f7ce7-be72-41b3-ab1f-9ff372ad84d6",
+          "fact_type": "merchant_name",
+          "raw_value": "William Penn",
+          "normalised_value": "William Penn",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T19:10:52.305991Z"
+        },
+        {
+          "fact_id": "fact_aafa0e77-652d-4bec-ac29-2a7f2187ed3b",
+          "case_id": "case_b07f7ce7-be72-41b3-ab1f-9ff372ad84d6",
+          "fact_type": "platform_name",
+          "raw_value": "Flipkart",
+          "normalised_value": "Flipkart",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T19:10:52.327550Z"
+        },
+        {
+          "fact_id": "fact_f5ec6760-20c3-4404-8771-6fa1f479ad21",
+          "case_id": "case_b07f7ce7-be72-41b3-ab1f-9ff372ad84d6",
+          "fact_type": "purchase_date",
+          "raw_value": "20.06.2021",
+          "normalised_value": null,
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T19:10:52.345639Z"
+        },
+        {
+          "fact_id": "fact_00da7479-834a-4170-afd6-302cf1dbb85a",
+          "case_id": "case_b07f7ce7-be72-41b3-ab1f-9ff372ad84d6",
+          "fact_type": "cancellation_date",
+          "raw_value": "30.06.2021",
+          "normalised_value": null,
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T19:10:52.357960Z"
+        },
+        {
+          "fact_id": "fact_5b3002d9-568f-49a0-ac08-827a81dabb99",
+          "case_id": "case_b07f7ce7-be72-41b3-ab1f-9ff372ad84d6",
+          "fact_type": "return_requested_date",
+          "raw_value": "20.06.2021",
+          "normalised_value": null,
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T19:10:52.383539Z"
+        },
+        {
+          "fact_id": "fact_66e40b25-9884-42a2-a5e0-d4225571f2c0",
+          "case_id": "case_b07f7ce7-be72-41b3-ab1f-9ff372ad84d6",
+          "fact_type": "refund_status",
+          "raw_value": "The seller now says it issued me a refund on July 9, 2021, and the refund is in dispute.",
+          "normalised_value": "pending",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T19:10:52.403872Z"
+        }
+      ],
+      "evidence_processing": [],
+      "legal_sources": [
+        {
+          "provision_id": "ECR_2020_P004_SR10",
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (10)",
+          "excerpt": "(10)\nEvery e-commerce entity shall effect all payments towards accepted refund requests of the consumers\nas prescribed by the Reserve Bank of India or any other competent authority under any law for the time\nbeing in force, within a reasonable period of time, or as prescribed under applicable laws.",
+          "role": "supporting",
+          "applicability": "unknown",
+          "source_validity": "current_for_date",
+          "official_url": "https://consumeraffairs.gov.in/public/upload/files/E%20commerce%20rules_1732703966.pdf"
+        },
+        {
+          "provision_id": "ECR_2020_P002",
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 2",
+          "excerpt": "2. Scope and Applicability. – (1) Save as otherwise expressly provided by the Central Government by\nnotification, these rules shall apply to:\n(a) all goods and services bought or sold over digital or electronic network including digital products;\n(b) all models of e-commerce, including marketplace and inventory models of e-commerce;\n(c) all e-commerce retail, including multi-channel single brand retailers and single brand retailers in single or\nmultiple formats; and\n(d) all forms of unfair trade practices across all models of e-commerce:\n             Provided that these rules shall not apply t",
+          "role": "supporting",
+          "applicability": "applicable",
+          "source_validity": "current_for_date",
+          "official_url": "https://consumeraffairs.gov.in/public/upload/files/E%20commerce%20rules_1732703966.pdf"
+        }
+      ],
+      "retrieval_candidates": [
+        {
+          "chunk_id": "ECR_2020_P004_SR10::c0",
+          "provision_id": "ECR_2020_P004_SR10",
+          "source_id": "ECR_2020",
+          "dense_rank": 1,
+          "sparse_rank": 1,
+          "rrf_score": 0.14167838272544778,
+          "rerank_score": null,
+          "relevance_grade": 2,
+          "relevance_reason": "This provision requires e-commerce entities to effect payments towards accepted refund requests within a reasonable period. This is relevant as the case involves a pending refund.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no fact of type refund_initiated_date"
+          ],
+          "source_validity": "current_for_date",
+          "role": "supporting",
+          "rejection_reason": null,
+          "added_because": null,
+          "accepted": true,
+          "conditional": true,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (10)"
+        },
+        {
+          "chunk_id": "ECR_2020_P002::c0",
+          "provision_id": "ECR_2020_P002",
+          "source_id": "ECR_2020",
+          "dense_rank": 10,
+          "sparse_rank": 2,
+          "rrf_score": 0.09859417719113754,
+          "rerank_score": null,
+          "relevance_grade": 2,
+          "relevance_reason": "This provision applies to all goods and services bought or sold over digital or electronic networks, including e-commerce platforms like Flipkart, where the case involves an online purchase.",
+          "applicability": "applicable",
+          "applicability_reasons": [
+            "fact fact_aafa0e77-652d-4bec-ac29-2a7f2187ed3b records platform_name"
+          ],
+          "source_validity": "current_for_date",
+          "role": "supporting",
+          "rejection_reason": null,
+          "added_because": null,
+          "accepted": true,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 2"
+        },
+        {
+          "chunk_id": "ECR_2020_P005_SR03::c0",
+          "provision_id": "ECR_2020_P005_SR03",
+          "source_id": "ECR_2020",
+          "dense_rank": 1,
+          "sparse_rank": 1,
+          "rrf_score": 0.15763014234722325,
+          "rerank_score": null,
+          "relevance_grade": 1,
+          "relevance_reason": "This provision deals with the information that marketplace e-commerce entities must provide to consumers, including details about the sellers and information regarding returns, refunds, exchanges, and warranty. While it is important for consumer protection, it is more of background information for this specific case.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "background",
+          "rejection_reason": "relevance grade 1 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 5, sub-rule (3)"
+        },
+        {
+          "chunk_id": "ECR_2020_P007_SR01::c0",
+          "provision_id": "ECR_2020_P007_SR01",
+          "source_id": "ECR_2020",
+          "dense_rank": 5,
+          "sparse_rank": 3,
+          "rrf_score": 0.13675287308748524,
+          "rerank_score": null,
+          "relevance_grade": 1,
+          "relevance_reason": "This provision outlines the information that inventory e-commerce entities must provide, including details about returns, refunds, and exchanges. While it is important for consumer protection, it is more of background information for this specific case.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "background",
+          "rejection_reason": "relevance grade 1 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 7, sub-rule (1)"
+        },
+        {
+          "chunk_id": "ECR_2020_P006_SR05::c0",
+          "provision_id": "ECR_2020_P006_SR05",
+          "source_id": "ECR_2020",
+          "dense_rank": 8,
+          "sparse_rank": 3,
+          "rrf_score": 0.13403111523316127,
+          "rerank_score": null,
+          "relevance_grade": 1,
+          "relevance_reason": "This provision requires sellers to provide information to the e-commerce entity, including details about returns, refunds, and exchanges. While it is important for consumer protection, it is more of background information for this specific case.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "background",
+          "rejection_reason": "relevance grade 1 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 6, sub-rule (5)"
+        },
+        {
+          "chunk_id": "ECR_2020_P004_SR04::c0",
+          "provision_id": "ECR_2020_P004_SR04",
+          "source_id": "ECR_2020",
+          "dense_rank": 4,
+          "sparse_rank": 1,
+          "rrf_score": 0.11563182709234934,
+          "rerank_score": null,
+          "relevance_grade": 1,
+          "relevance_reason": "This provision requires e-commerce entities to establish a grievance redressal mechanism and appoint a grievance officer. While it is important for consumer protection, it is more of background information for this specific case.",
+          "applicability": "applicable",
+          "applicability_reasons": [
+            "fact fact_aafa0e77-652d-4bec-ac29-2a7f2187ed3b records platform_name"
+          ],
+          "source_validity": "current_for_date",
+          "role": "background",
+          "rejection_reason": "relevance grade 1 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (4)"
+        },
+        {
+          "chunk_id": "ECR_2020_P007_SR04::c0",
+          "provision_id": "ECR_2020_P007_SR04",
+          "source_id": "ECR_2020",
+          "dense_rank": 1,
+          "sparse_rank": 2,
+          "rrf_score": 0.15959357054015966,
+          "rerank_score": null,
+          "relevance_grade": 2,
+          "relevance_reason": "The provision states that no inventory e-commerce entity shall refuse to take back goods or services that are defective, deficient, spurious, or do not match the advertised characteristics or features. This is directly relevant to the case where the consumer received a pen of a different color and refill than ordered.",
+          "applicability": "not_applicable",
+          "applicability_reasons": [
+            "refund_status is 'pending', not in ['denied', 'partial']"
+          ],
+          "source_validity": "current_for_date",
+          "role": "rejected",
+          "rejection_reason": "conditions not met: refund_status is 'pending', not in ['denied', 'partial']",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 7, sub-rule (4)"
+        },
+        {
+          "chunk_id": "ECR_2020_P006_SR03::c0",
+          "provision_id": "ECR_2020_P006_SR03",
+          "source_id": "ECR_2020",
+          "dense_rank": 2,
+          "sparse_rank": 2,
+          "rrf_score": 0.15754425905635583,
+          "rerank_score": null,
+          "relevance_grade": 2,
+          "relevance_reason": "This provision is similar to ECR_2020_P007_SR04 and also states that no seller shall refuse to take back goods or services that are defective, deficient, or spurious, or do not match the advertised characteristics or features. This is directly relevant to the case where the consumer received a pen of a different color and refill than ordered.",
+          "applicability": "not_applicable",
+          "applicability_reasons": [
+            "refund_status is 'pending', not in ['denied', 'partial']"
+          ],
+          "source_validity": "current_for_date",
+          "role": "rejected",
+          "rejection_reason": "conditions not met: refund_status is 'pending', not in ['denied', 'partial']",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 6, sub-rule (3)"
+        },
+        {
+          "chunk_id": "ECR_2021_AMENDMENT_P002::c0",
+          "provision_id": "ECR_2021_AMENDMENT_P002",
+          "source_id": "ECR_2021_AMENDMENT",
+          "dense_rank": 9,
+          "sparse_rank": 4,
+          "rrf_score": 0.10094969945513424,
+          "rerank_score": null,
+          "relevance_grade": 0,
+          "relevance_reason": "This amendment does not directly relate to the specific issue of a defective product or refund in the case. It is more about the appointment of a nodal officer for compliance with the Act or rules made thereunder.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "rejected",
+          "rejection_reason": "relevance grade 0 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) (Amendment) Rules, 2021, provision 2"
+        },
+        {
+          "chunk_id": "ECR_2020_P005_SR05::c0",
+          "provision_id": "ECR_2020_P005_SR05",
+          "source_id": "ECR_2020",
+          "dense_rank": 11,
+          "sparse_rank": 13,
+          "rrf_score": 0.09558031437251965,
+          "rerank_score": null,
+          "relevance_grade": 0,
+          "relevance_reason": "This provision pertains to maintaining records of sellers who have repeatedly offered goods or services that have been removed due to copyright, trademark, or IT issues, which is not relevant to the case involving a color mismatch and refund dispute.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "rejected",
+          "rejection_reason": "relevance grade 0 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 5, sub-rule (5)"
+        }
+      ],
+      "retrieval_summary": {
+        "corpus_version": "0381858588e1a7be",
+        "candidate_count": 10,
+        "accepted_count": 2,
+        "rejected_count": 8,
+        "retry_count": 0
+      },
+      "verification": {
+        "overall": "partially_verified",
+        "blocked_claims": [
+          {
+            "type": "unbacked_date",
+            "detail": "removed unbacked date 'July 9, 2021'"
+          },
+          {
+            "type": "unbacked_date",
+            "detail": "removed unbacked date 'July 9, 2021'"
+          }
+        ],
+        "note": "deterministic citation/date/phrase guards only; claim-level entailment is DESIGN_ONLY"
+      },
+      "assessment": {
+        "outcome": "needs_more_information",
+        "reasons": [
+          "An essential fact is missing: an exact cancellation/return date."
+        ],
+        "facts_used": [
+          "fact_35e8fc2a-060e-47de-ab30-fb73ad8cb220",
+          "fact_aafa0e77-652d-4bec-ac29-2a7f2187ed3b",
+          "fact_f5ec6760-20c3-4404-8771-6fa1f479ad21",
+          "fact_00da7479-834a-4170-afd6-302cf1dbb85a",
+          "fact_5b3002d9-568f-49a0-ac08-827a81dabb99",
+          "fact_66e40b25-9884-42a2-a5e0-d4225571f2c0"
+        ],
+        "provision_ids_used": [
+          "ECR_2020_P004_SR10",
+          "ECR_2020_P002"
+        ],
+        "missing_information": [
+          "When did you cancel or return the order? Please give the exact date.",
+          "Have you contacted the seller or platform support in writing, and on what date?"
+        ],
+        "uncertainties": [
+          "relevance grade 1 below 2",
+          "relevance grade 1 below 2",
+          "relevance grade 1 below 2",
+          "relevance grade 1 below 2",
+          "conditions not met: refund_status is 'pending', not in ['denied', 'partial']"
+        ],
+        "urgency": "unknown",
+        "next_steps": [
+          "Answer the follow-up question so the refund timeline can be assessed."
+        ],
+        "lawyer_needed": true,
+        "lawyer_reason": "the user is considering formal proceedings",
+        "rule_trace": [
+          "R2: An essential fact is missing: an exact cancellation/return date."
+        ],
+        "llm_proposed_outcome": "needs_more_information"
+      },
+      "missing_information": [
+        "When did you cancel or return the order? Please give the exact date.",
+        "Have you contacted the seller or platform support in writing, and on what date?"
+      ],
+      "next_steps": [
+        "Answer the follow-up question so the refund timeline can be assessed."
+      ],
+      "document_draft": null
+    }
+  ],
+  "case_status_final": "open",
+  "event_types": [
+    "case_created",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "assessment_completed"
+  ],
+  "checks_failed": [],
+  "observed": {
+    "outcome": "needs_more_information"
+  },
+  "data_origin": "public_commission_order",
+  "split": "development",
+  "result": "RECORDED"
+}

@@ -1,0 +1,22 @@
+# run 2: after fixing the run-1 defects (commit 284171a); same model, corpus and stories
+summary: C:\Users\Lenovo\OneDrive\Documents\Default Project\ai_lawyer\evaluation\results\real_behavior\summary.md
+R01: PASS (formal_grievance_recommended)
+R02: FAIL (formal_grievance_recommended) — outcome 'formal_grievance_recommended' != 'needs_more_information'
+R03: FAIL (needs_more_information) — outcome 'needs_more_information' != 'formal_grievance_recommended'
+R04: FAIL (informal_resolution_recommended) — outcome 'informal_resolution_recommended' != 'needs_more_information'
+R05: PASS (informal_resolution_recommended)
+R06: PASS (needs_more_information)
+R07: PASS (formal_grievance_recommended)
+R08: PASS (needs_more_information)
+R09: FAIL (informal_resolution_recommended) — outcome 'informal_resolution_recommended' != 'needs_more_information'
+R10: RECORDED (needs_more_information)
+R11: PASS (formal_grievance_recommended)
+R12: FAIL (needs_more_information) — outcome 'needs_more_information' != 'formal_grievance_recommended'
+R13: RECORDED (informal_resolution_recommended)
+R14: PASS (formal_grievance_recommended)
+R15: PASS (needs_more_information)
+R16: PASS (formal_grievance_recommended)
+R17: PASS (needs_more_information)
+REAL: 10/17 checks PASS (17 core cases)
+summary: C:\Users\Lenovo\OneDrive\Documents\Default Project\ai_lawyer\evaluation\results\real_behavior\behavior_summary.csv
+exit=1

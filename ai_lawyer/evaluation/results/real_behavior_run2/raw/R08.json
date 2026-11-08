@@ -1,0 +1,480 @@
+{
+  "label": "REAL CORPUS, VERIFIED SUBSET (30 usable)",
+  "test_id": "R08",
+  "category": "seller_cancelled_refund_not_received",
+  "notes": null,
+  "now": "2026-11-08",
+  "turns": [
+    {
+      "message": "I ordered a Toshiba 1 TB external hard disk on Flipkart and paid INR 3,907 using the EMI option on my Citi Bank credit card. It was never shipped or delivered. Flipkart customer care confirmed by email that the seller, MPDSLE Retail, cancelled the order because of extended delivery delays. I tried many times through chats and calls to sort it out, and I could not cancel the order myself because of a portal error. No refund of INR 3,907 has been issued."
+    }
+  ],
+  "expected": {
+    "outcome": "needs_more_information",
+    "rule": "R2",
+    "rationale": "No exact purchase, cancellation or return date is stated."
+  },
+  "corpus": {
+    "mode": "real",
+    "version": "0381858588e1a7be",
+    "usable_count": 30,
+    "usable_ids": [
+      "ECR_2020_P001",
+      "ECR_2020_P002",
+      "ECR_2020_P004_SR02",
+      "ECR_2020_P004_SR03",
+      "ECR_2020_P004_SR04",
+      "ECR_2020_P004_SR05",
+      "ECR_2020_P004_SR06",
+      "ECR_2020_P004_SR07",
+      "ECR_2020_P004_SR08",
+      "ECR_2020_P004_SR09",
+      "ECR_2020_P004_SR10",
+      "ECR_2020_P004_SR11",
+      "ECR_2020_P005_SR01",
+      "ECR_2020_P005_SR02",
+      "ECR_2020_P005_SR03",
+      "ECR_2020_P005_SR04",
+      "ECR_2020_P005_SR05",
+      "ECR_2020_P006_SR01",
+      "ECR_2020_P006_SR02",
+      "ECR_2020_P006_SR03",
+      "ECR_2020_P006_SR04",
+      "ECR_2020_P006_SR05",
+      "ECR_2020_P007_SR01",
+      "ECR_2020_P007_SR02",
+      "ECR_2020_P007_SR03",
+      "ECR_2020_P007_SR04",
+      "ECR_2020_P007_SR05",
+      "ECR_2020_P008",
+      "ECR_2021_AMENDMENT_P001",
+      "ECR_2021_AMENDMENT_P002"
+    ]
+  },
+  "responses": [
+    {
+      "conversation_id": "conv_2a297d1b-87cc-446c-813f-bd4ec23452c5",
+      "message_id": "msg_525b426c-0c1e-4267-bbd3-3048ed34a991",
+      "assistant_message_id": "msg_075510a2-a6e9-4401-96cc-f907fc293d81",
+      "case_id": "case_bbdaf775-4220-416c-923f-531a145d5c4b",
+      "processing_status": "needs_clarification",
+      "assistant_message": "## What I understood\n\nThe user made a payment for an external hard disk via credit card but did not receive the product or a refund.\n\n## Facts\n\nFacts you reported:\n- Payment method: credit card\n- Refund status: No refund\n- Merchant name: MPDSLE Retail\n- Platform name: Flipkart\n- Payment method: Citi Bank credit card\n- Refund status: No refund of INR 3,907 has been issued.\n\n## Legal sources that may apply\n\n- **Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (10)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"(10)\nEvery e-commerce entity shall effect all payments towards accepted refund requests of the consumers\nas prescribed by the Reserve Bank of India or any other competent authority under any law for the time\nbeing in force, within a reasonable period of time, or as prescribed under applicable laws.\"\n\n## How this may relate to your case\n\n- Every e-commerce entity shall effect all payments towards accepted refund requests of the consumers as prescribed by the Reserve Bank of India or any other competent authority under any law for the time being in force, within a reasonable period of time, or as prescribed under applicable laws.\n\n## Assessment\n\n**I need more information before assessing the next step.**\n\n- An essential fact is missing: an exact cancellation/return date.\n\nSuggested next steps:\n1. Answer the follow-up question so the refund timeline can be assessed.\n\nAssessment date: 2026-11-08.\n\n## Missing information\n- When did you cancel or return the order? Please give the exact date.\n- Have you contacted the seller or platform support in writing, and on what date?\n\n## Limitations\n\n- This is general information and a draft for your review, not legal advice. I cannot guarantee any outcome.\n- You may want to speak to a qualified lawyer about your options (the user is considering formal proceedings).\n",
+      "case_summary": {
+        "identifiers": [],
+        "merchant": "MPDSLE Retail",
+        "platform": "Flipkart",
+        "amount_minor": null,
+        "currency": "INR",
+        "refund_status": "not_received"
+      },
+      "extracted_facts": [
+        {
+          "fact_id": "fact_4ee9c8e5-d4c1-4a22-bb4e-ed507b672508",
+          "case_id": "case_bbdaf775-4220-416c-923f-531a145d5c4b",
+          "fact_type": "payment_method",
+          "raw_value": "credit card",
+          "normalised_value": "card",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T18:55:11.251788Z"
+        },
+        {
+          "fact_id": "fact_039e06ed-a37f-4c53-a6e1-c9ee7ca3d770",
+          "case_id": "case_bbdaf775-4220-416c-923f-531a145d5c4b",
+          "fact_type": "refund_status",
+          "raw_value": "No refund",
+          "normalised_value": "not_received",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T18:55:11.265858Z"
+        },
+        {
+          "fact_id": "fact_cb05ba8f-a50e-45f9-9e2d-f875afb1253c",
+          "case_id": "case_bbdaf775-4220-416c-923f-531a145d5c4b",
+          "fact_type": "merchant_name",
+          "raw_value": "MPDSLE Retail",
+          "normalised_value": "MPDSLE Retail",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T18:55:11.283703Z"
+        },
+        {
+          "fact_id": "fact_464edd0c-cc78-419a-952d-d6637c556f53",
+          "case_id": "case_bbdaf775-4220-416c-923f-531a145d5c4b",
+          "fact_type": "platform_name",
+          "raw_value": "Flipkart",
+          "normalised_value": "Flipkart",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T18:55:11.299884Z"
+        },
+        {
+          "fact_id": "fact_02549fee-b3a3-400c-9e50-a2840833a365",
+          "case_id": "case_bbdaf775-4220-416c-923f-531a145d5c4b",
+          "fact_type": "payment_method",
+          "raw_value": "Citi Bank credit card",
+          "normalised_value": "card",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T18:55:11.316690Z"
+        },
+        {
+          "fact_id": "fact_d4802737-eaa7-48f2-b76f-560137027379",
+          "case_id": "case_bbdaf775-4220-416c-923f-531a145d5c4b",
+          "fact_type": "refund_status",
+          "raw_value": "No refund of INR 3,907 has been issued.",
+          "normalised_value": "not_received",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T18:55:11.332201Z"
+        }
+      ],
+      "evidence_processing": [],
+      "legal_sources": [
+        {
+          "provision_id": "ECR_2020_P004_SR10",
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (10)",
+          "excerpt": "(10)\nEvery e-commerce entity shall effect all payments towards accepted refund requests of the consumers\nas prescribed by the Reserve Bank of India or any other competent authority under any law for the time\nbeing in force, within a reasonable period of time, or as prescribed under applicable laws.",
+          "role": "supporting",
+          "applicability": "unknown",
+          "source_validity": "current_for_date",
+          "official_url": "https://consumeraffairs.gov.in/public/upload/files/E%20commerce%20rules_1732703966.pdf"
+        }
+      ],
+      "retrieval_candidates": [
+        {
+          "chunk_id": "ECR_2020_P004_SR10::c0",
+          "provision_id": "ECR_2020_P004_SR10",
+          "source_id": "ECR_2020",
+          "dense_rank": 1,
+          "sparse_rank": 1,
+          "rrf_score": 0.14124366185560033,
+          "rerank_score": null,
+          "relevance_grade": 2,
+          "relevance_reason": "Every e-commerce entity shall effect all payments towards accepted refund requests of the consumers as prescribed by the Reserve Bank of India or any other competent authority under any law for the time being in force, within a reasonable period of time, or as prescribed under applicable laws.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no fact of type refund_initiated_date"
+          ],
+          "source_validity": "current_for_date",
+          "role": "supporting",
+          "rejection_reason": null,
+          "added_because": null,
+          "accepted": true,
+          "conditional": true,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (10)"
+        },
+        {
+          "chunk_id": "ECR_2020_P007_SR01::c0",
+          "provision_id": "ECR_2020_P007_SR01",
+          "source_id": "ECR_2020",
+          "dense_rank": 5,
+          "sparse_rank": 4,
+          "rrf_score": 0.138031107574018,
+          "rerank_score": null,
+          "relevance_grade": 1,
+          "relevance_reason": "Every inventory e-commerce entity shall provide the following information in a clear and accessible manner, displayed prominently to its users:",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "background",
+          "rejection_reason": "relevance grade 1 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 7, sub-rule (1)"
+        },
+        {
+          "chunk_id": "ECR_2020_P006_SR05::c0",
+          "provision_id": "ECR_2020_P006_SR05",
+          "source_id": "ECR_2020",
+          "dense_rank": 8,
+          "sparse_rank": 3,
+          "rrf_score": 0.1338179865034085,
+          "rerank_score": null,
+          "relevance_grade": 1,
+          "relevance_reason": "Any seller offering goods or services through a marketplace e-commerce entity shall provide the following information to the e-commerce entity to be displayed on its platform or website:",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "background",
+          "rejection_reason": "relevance grade 1 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 6, sub-rule (5)"
+        },
+        {
+          "chunk_id": "ECR_2021_AMENDMENT_P002::c0",
+          "provision_id": "ECR_2021_AMENDMENT_P002",
+          "source_id": "ECR_2021_AMENDMENT",
+          "dense_rank": 9,
+          "sparse_rank": 5,
+          "rrf_score": 0.0988650721259417,
+          "rerank_score": null,
+          "relevance_grade": 1,
+          "relevance_reason": "This provision discusses the appointment of a nodal officer or an alternate senior designated functionary for e-commerce entities, which is background information for the case.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "background",
+          "rejection_reason": "relevance grade 1 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) (Amendment) Rules, 2021, provision 2"
+        },
+        {
+          "chunk_id": "ECR_2020_P007_SR04::c0",
+          "provision_id": "ECR_2020_P007_SR04",
+          "source_id": "ECR_2020",
+          "dense_rank": 1,
+          "sparse_rank": 2,
+          "rrf_score": 0.1593604703070594,
+          "rerank_score": null,
+          "relevance_grade": 3,
+          "relevance_reason": "No inventory e-commerce entity shall refuse to take back goods, or withdraw or discontinue services purchased or agreed to be purchased, or refuse to refund consideration, if paid, if such goods or services are defective, deficient spurious, or if the goods or services are not of the characteristics or features as advertised or as agreed to, or if such goods or services are delivered late from the stated delivery schedule.",
+          "applicability": "not_applicable",
+          "applicability_reasons": [
+            "refund_status is 'not_received', not in ['denied', 'partial']"
+          ],
+          "source_validity": "current_for_date",
+          "role": "rejected",
+          "rejection_reason": "conditions not met: refund_status is 'not_received', not in ['denied', 'partial']",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 7, sub-rule (4)"
+        },
+        {
+          "chunk_id": "ECR_2020_P005_SR03::c0",
+          "provision_id": "ECR_2020_P005_SR03",
+          "source_id": "ECR_2020",
+          "dense_rank": 1,
+          "sparse_rank": 1,
+          "rrf_score": 0.15763014234722325,
+          "rerank_score": null,
+          "relevance_grade": 0,
+          "relevance_reason": "grader_failed",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "rejected",
+          "rejection_reason": "relevance grade 0 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 5, sub-rule (3)"
+        },
+        {
+          "chunk_id": "ECR_2020_P006_SR03::c0",
+          "provision_id": "ECR_2020_P006_SR03",
+          "source_id": "ECR_2020",
+          "dense_rank": 2,
+          "sparse_rank": 2,
+          "rrf_score": 0.15755850165455365,
+          "rerank_score": null,
+          "relevance_grade": 3,
+          "relevance_reason": "No seller offering goods or services through a marketplace e-commerce entity shall refuse to take back goods, or withdraw or discontinue services purchased or agreed to be purchased, or refuse to refund consideration, if paid, if such goods or services are defective, deficient or spurious, or if the goods or services are not of the characteristics or features as advertised or as agreed to, or if such goods or services are delivered late from the stated delivery schedule.",
+          "applicability": "not_applicable",
+          "applicability_reasons": [
+            "refund_status is 'not_received', not in ['denied', 'partial']"
+          ],
+          "source_validity": "current_for_date",
+          "role": "rejected",
+          "rejection_reason": "conditions not met: refund_status is 'not_received', not in ['denied', 'partial']",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 6, sub-rule (3)"
+        },
+        {
+          "chunk_id": "ECR_2020_P002::c0",
+          "provision_id": "ECR_2020_P002",
+          "source_id": "ECR_2020",
+          "dense_rank": 6,
+          "sparse_rank": 2,
+          "rrf_score": 0.10278000749774181,
+          "rerank_score": null,
+          "relevance_grade": 0,
+          "relevance_reason": "Save as otherwise expressly provided by the Central Government by notification, these rules shall apply to:",
+          "applicability": "applicable",
+          "applicability_reasons": [
+            "fact fact_464edd0c-cc78-419a-952d-d6637c556f53 records platform_name"
+          ],
+          "source_validity": "current_for_date",
+          "role": "rejected",
+          "rejection_reason": "relevance grade 0 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 2"
+        },
+        {
+          "chunk_id": "ECR_2020_P004_SR04::c0",
+          "provision_id": "ECR_2020_P004_SR04",
+          "source_id": "ECR_2020",
+          "dense_rank": 7,
+          "sparse_rank": 1,
+          "rrf_score": 0.10117014090272199,
+          "rerank_score": null,
+          "relevance_grade": 0,
+          "relevance_reason": "Every e-commerce entity shall establish an adequate grievance redressal mechanism having regard to the number of grievances ordinarily received by such entity from India, and shall appoint a grievance officer for consumer grievance redressal, and shall display the name, contact details, and designation of such officer on its platform.",
+          "applicability": "applicable",
+          "applicability_reasons": [
+            "fact fact_464edd0c-cc78-419a-952d-d6637c556f53 records platform_name"
+          ],
+          "source_validity": "current_for_date",
+          "role": "rejected",
+          "rejection_reason": "relevance grade 0 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (4)"
+        },
+        {
+          "chunk_id": "ECR_2020_P005_SR05::c0",
+          "provision_id": "ECR_2020_P005_SR05",
+          "source_id": "ECR_2020",
+          "dense_rank": 11,
+          "sparse_rank": 8,
+          "rrf_score": 0.09640244996500175,
+          "rerank_score": null,
+          "relevance_grade": 0,
+          "relevance_reason": "This provision pertains to maintaining records of sellers who have repeatedly offered goods or services that have been removed due to copyright, trademark, or IT issues, which is not relevant to the case of an undelivered product.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "rejected",
+          "rejection_reason": "relevance grade 0 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 5, sub-rule (5)"
+        }
+      ],
+      "retrieval_summary": {
+        "corpus_version": "0381858588e1a7be",
+        "candidate_count": 10,
+        "accepted_count": 1,
+        "rejected_count": 9,
+        "retry_count": 0
+      },
+      "verification": {
+        "overall": "verified",
+        "blocked_claims": [],
+        "note": "deterministic citation/date/phrase guards only; claim-level entailment is DESIGN_ONLY"
+      },
+      "assessment": {
+        "outcome": "needs_more_information",
+        "reasons": [
+          "An essential fact is missing: an exact cancellation/return date."
+        ],
+        "facts_used": [
+          "fact_4ee9c8e5-d4c1-4a22-bb4e-ed507b672508",
+          "fact_039e06ed-a37f-4c53-a6e1-c9ee7ca3d770",
+          "fact_cb05ba8f-a50e-45f9-9e2d-f875afb1253c",
+          "fact_464edd0c-cc78-419a-952d-d6637c556f53",
+          "fact_02549fee-b3a3-400c-9e50-a2840833a365",
+          "fact_d4802737-eaa7-48f2-b76f-560137027379"
+        ],
+        "provision_ids_used": [
+          "ECR_2020_P004_SR10"
+        ],
+        "missing_information": [
+          "When did you cancel or return the order? Please give the exact date.",
+          "Have you contacted the seller or platform support in writing, and on what date?"
+        ],
+        "uncertainties": [
+          "relevance grade 1 below 2",
+          "relevance grade 1 below 2",
+          "relevance grade 1 below 2",
+          "conditions not met: refund_status is 'not_received', not in ['denied', 'partial']",
+          "relevance grade 0 below 2"
+        ],
+        "urgency": "unknown",
+        "next_steps": [
+          "Answer the follow-up question so the refund timeline can be assessed."
+        ],
+        "lawyer_needed": true,
+        "lawyer_reason": "the user is considering formal proceedings",
+        "rule_trace": [
+          "R2: An essential fact is missing: an exact cancellation/return date."
+        ],
+        "llm_proposed_outcome": "needs_more_information"
+      },
+      "missing_information": [
+        "When did you cancel or return the order? Please give the exact date.",
+        "Have you contacted the seller or platform support in writing, and on what date?"
+      ],
+      "next_steps": [
+        "Answer the follow-up question so the refund timeline can be assessed."
+      ],
+      "document_draft": null
+    }
+  ],
+  "case_status_final": "open",
+  "event_types": [
+    "case_created",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "assessment_completed"
+  ],
+  "checks_failed": [],
+  "observed": {
+    "outcome": "needs_more_information"
+  },
+  "data_origin": "public_commission_order",
+  "split": "test",
+  "result": "PASS"
+}
