@@ -437,3 +437,38 @@ Result per source:
   runs refuse untagged or mixed rows; synthetic stories need
   `--synthetic-table` and go to `results/real_behavior_synthetic/` with a
   "SYNTHETIC STORIES, NOT REAL DATA" banner.
+
+### Stage 3 - real evaluation data
+
+| Field | Value |
+|---|---|
+| Status | IMPLEMENTED_AND_TESTED (dataset + labels); not yet run through real models |
+| Test command | `pytest -q` -> 292 passed (`test_real_stories.py`: 6) |
+| Stories | `evaluation/dataset/real_stories.jsonl`: 17 (7 development / 10 test) |
+| Labels | `python -m ai_lawyer.evaluation.derive_labels` -> 17 machine_derived, 0 excluded |
+
+- Source: 20 public news reports (LiveLaw, Business Today, Outlook Money,
+  Storyboard18, a law-firm blog) of Indian district consumer-commission orders
+  on e-commerce refunds, found by web search on 2026-11-08. 1 page was an empty
+  stub (dropped); 3 reports covered the same Delhi case (one story, two kept as
+  corroborating sources) -> 17 unique cases.
+- Each story restates only the facts the report describes, first person, up to
+  the point before the commission; no outcome or reasoning. Personal names
+  removed; company names kept. URL, SHA-256, retrieval date and the redacted
+  fact passage are in `real_stories_sources.json`. Pages themselves are not
+  committed.
+- Builder (`dataset/real_stories_build/`) aborts unless every number in a story
+  appears in its source text, no redacted name appears, and hashes match.
+  First build passed all checks.
+- Split fixed before any run: sorted by SHA-256 of the primary URL, first 7 =
+  development.
+- Expected outcomes assigned by applying R0-R7 to stated facts: 7
+  formal_grievance, 7 needs_more_information (5 R2 missing date/status, 1 R7
+  refund already credited, 1 R7 grievance attempted but no verified Consumer
+  Commission route provision), 1 informal_resolution, 2 undetermined. These
+  assume retrieval accepts at least one provision (otherwise R1).
+- Gold labels are machine-derived from conditions. Limitation: every story is
+  labelled with the same two provisions (rule 2 scope, rule 4(4) grievance
+  mechanism; R15 also 4(5)), because only those have fully extractable
+  conditions met by the stated facts. Unlabelled provisions are not known to
+  be irrelevant, so precision on these labels is a lower bound.

@@ -1,0 +1,260 @@
+{
+  "about": "Sources for real_stories.jsonl: public news reports of Indian consumer-commission orders. Stories restate only the facts the report describes, in the first person, with personal names removed. Commission reasoning and outcomes are not part of the stories.",
+  "split_rule": "sorted by sha256(primary url); first 7 = development, rest = test; fixed before any run",
+  "stories": {
+    "R01": [
+      {
+        "url": "https://www.livelaw.in/consumer-cases/failing-to-refund-returned-mattress-kangra-consumer-commission-holds-amazon-liable-545235",
+        "sha256": "9af6588ff46bd980047c643330abcd3e5920f590bea6c075267be547c3931774",
+        "bytes": 1016222,
+        "retrieved_at": "2026-11-08",
+        "role": "primary",
+        "passage_used": "The complainant, [complainant], placed a prepaid order on Amazon on September 26, 2024, for a Wakefit Shape Sense Orthopedic Classic Mattress. Although the listed price of the mattress was ₹9,799, he paid ₹8,819.10 after availing a bank discount through an online Visa card transaction. When the shipment was not delivered within the stipulated time, the complainant contacted Delhivery Company Pvt. Ltd., the logistics partner responsible for delivery.\nThe complainant alleged that Delhivery suggested cancelling the order through an OTP. Consequently, the order was cancelled on October 7, 2024. Tracking records later confirmed that the consignment had been returned to the seller and reached the consignor at Faridabad on October 16, 2024. However, despite Amazon assuring that the refund would be processed, the application reflected a \"Total expected refund\" of ₹0.00, and no refund was credited despite repeated follow-ups through emails and telephone calls.",
+        "passage_lines": [
+          7,
+          9
+        ]
+      }
+    ],
+    "R02": [
+      {
+        "url": "https://www.livelaw.in/consumer-cases/gold-coin-not-delivered-order-cancelled-after-23-days-kurnool-consumer-commission-holds-myntra-liable-545600",
+        "sha256": "54d4bd9e3d2b9258d123f89cbf236f9799ec4ff6988f783a137c22a7474f2ac2",
+        "bytes": 1018855,
+        "retrieved_at": "2026-11-08",
+        "role": "primary",
+        "passage_used": "The complainant, [complainant], placed an online order on Myntra's platform on October 5, 2025 for a 5-gram Kalyan Jewellers 24K (999) Purity Ayodhya Gold Coin for ₹59,750. The amount was paid through UPI, and the order confirmation indicated October 22, 2025 as the expected delivery date. The complainant also paid a ₹20 platform fee to Myntra.\nThe gold coin was not delivered within the assured time. The complainant repeatedly contacted Myntra through emails, WhatsApp and its support channels, seeking delivery of the product. The records showed that he continued to insist on delivery of the gold coin.\nOn November 15, 2025, Myntra cancelled the order and processed a refund of ₹59,730, which was credited to the complainant's account on the same day. The complainant thereafter approached the Consumer Commission seeking compensation for the mental agony, inconvenience and financial loss allegedly caused by the delayed delivery and refund.",
+        "passage_lines": [
+          7,
+          9,
+          11
+        ]
+      }
+    ],
+    "R03": [
+      {
+        "url": "https://livelaw.in/consumer-cases/failure-to-refund-pre-paid-amount-despite-order-cancellation-cooch-behar-consumer-commission-holds-amazon-india-liable-orders-refund-and-compensation-243015",
+        "sha256": "43162e4b1e26811982973efdb8a69321c679f5d9cfd7a927317042dddf9733c1",
+        "bytes": 1019678,
+        "retrieved_at": "2026-11-08",
+        "role": "primary",
+        "passage_used": "Mr. [complainant] and Mrs. [complainant] (Complainants) placed an order for \"30 Daffodils Mosquito Bug Bird Net Transparent White Barriers\" from Amazon on 23rd November 2021, paying Rs. 17,970/- in advance via a Bajaj EMI card. Despite the prepayment, they only received one item out of the 30 ordered. Disappointed, they canceled the entire order through Amazon's platform on 29th November 2021 and promptly returned the one received item as per Amazon's instructions on 8th December 2021.\nEven after sending notices to Amazon and Shiv Enterprises (Opposite Parties), they did not get their refund. Bajaj Fiserv deducted three EMIs from Mrs. [complainant]'s bank account, causing significant loss. Consequently, they filed a consumer complaint seeking a refund and compensation for their losses.",
+        "passage_lines": [
+          9,
+          11
+        ]
+      }
+    ],
+    "R04": [
+      {
+        "url": "https://livelaw.in/consumer-cases/bangalore-district-commission-amazon-refund-returned-items-265538",
+        "sha256": "8c9c2489838ac84558d71f95a3a3ef6f07263464da06f9feea0b3b32002ed31f",
+        "bytes": 1015751,
+        "retrieved_at": "2026-11-08",
+        "role": "primary",
+        "passage_used": "The Complainant placed an order for a riding jacket and a mosquito mesh on Amazon, priced at Rs. 7350/- and Rs. 799/- respectively. Dissatisfied with the products, the Complainant initiated a return request, but the Amazon pickup agent marked the product as not ready for pickup without calling. The Complainant contacted Amazon customer service which rescheduled the pickup for three days later. Subsequently, the riding jacket was marked as picked up, but the mosquito mesh was not. The Complainant repeatedly contacted Amazon's customer care team, who filed an investigation and later informed the Complainant that the riding jacket was picked up but when it reached the hub a mosquito mesh was found instead of the jacket. The Complainant was perplexed, as Amazon pickup agents typically verify the product before pickup. Amazon customer support assured the Complainant that the refund would be processed by August 16th, but on that date, they stated that an update would be provided by August 19th. When the Complainant called again on August 19th, she was told the refund was cancelled because the wrong item was sent. Feeling aggrieved, the Complainant filed a consumer complaint in the Additional District Consumer Disputes Redressal Commission-I, Bangalore (“District Commission”) against Amazon.",
+        "passage_lines": [
+          7
+        ]
+      }
+    ],
+    "R05": [
+      {
+        "url": "https://www.livelaw.in/consumer-cases/bangalore-commission-holds-flipkart-liable-for-failure-to-return-after-cancellation-of-order-twice-orders-refund-and-compensation-243014",
+        "sha256": "dd4779127290148bec706ddf003f50b767710edf1b14d05b426c7924e2e93498",
+        "bytes": 1018308,
+        "retrieved_at": "2026-11-08",
+        "role": "primary",
+        "passage_used": "[complainant] S (“Complainant”) purchased a Casio analogue men's watch, worth Rs. 2,995/-, from the online shopping website, Flipkart on October 14, 2021. After the item was shipped, he received a message stating that the order was cancelled due to a product price error. Subsequently, the Complainant placed the same order for the second time, which was also cancelled and he was informed that a refund would be processed. Meanwhile, the Complainant filed a complaint on the National Consumer Helpline. As a resolution, a new order, showing an exceeded amount of Rs 15,000/-, was placed by Flipkart itself. However, the Complainant did not receive this order and neither his initial payment was refunded. Feeling aggrieved, he filed a consumer complaint in the Additional District Consumer Disputes Redressal Commission-I, Bangalore (“District Commission”). Flipkart failed to file a version in response to the allegations made by the Complainant.",
+        "passage_lines": [
+          7
+        ]
+      }
+    ],
+    "R06": [
+      {
+        "url": "https://livelaw.in/consumer-cases/unilateral-cancellation-of-online-order-amounts-to-unfair-trade-practice-ganjam-district-commission-holds-flipkart-liable-239156",
+        "sha256": "96aa489c5affa878d64bf31d9ebed16c048b454f4007647b13bc744eb5107c54",
+        "bytes": 1021904,
+        "retrieved_at": "2026-11-08",
+        "role": "primary",
+        "passage_used": "Mr [complainant], a resident of [complainant], Ganjam, ordered a pair of Adidas Runstunner M running shoes through the Flipkart mobile app on July 20, 2022. The shoes were initially priced at Rs 4,999 but were listed at a discounted rate of Rs 975. Mr. [complainant] placed the order with the expectation of receiving the product at the stated price. However, to his disappointment, Flipkart cancelled his order the very next day without providing any valid reasons or obtaining his consent. This cancellation left Mr. [complainant] frustrated and inconvenienced.\nIn response to the cancellation, Mr. [complainant] attempted to reach out to Flipkart's customer care to seek clarification and obtain details of the seller. Unfortunately, his efforts proved futile, as the customer support team offered no assistance and refused to address his concerns regarding the abrupt order cancellation. Feeling aggrieved and facing a lack of resolution from Flipkart's end, Mr [complainant] decided to escalate the matter.\nHe sought assistance from the National Consumer Helpline, which advised him to file a formal complaint with the local consumer court. Acting upon this guidance, Mr [complainant] approached the Ganjam District Consumer Court and initiated proceedings against Flipkart, accusing the e-commerce company of unfair and deceptive trade practices, including misleading offers and unauthorized order cancellations. He alleged that Flipkart had caused him mental distress due to its actions.",
+        "passage_lines": [
+          7,
+          9,
+          11
+        ]
+      }
+    ],
+    "R07": [
+      {
+        "url": "https://livelaw.in/consumer-cases/malappuram-district-commission-amazon-seller-promised-refund-unsatisfactory-product-261677",
+        "sha256": "74097f940bc58b8c3871ec6cdb6d39ad65930efd53880682492b4edf8295f426",
+        "bytes": 1015690,
+        "retrieved_at": "2026-11-08",
+        "role": "primary",
+        "passage_used": "The Complainant ordered a Juke bar sound bar with a sub-woofer from Appario Retail (“Seller”) through Amazon's website, using the credit card of his friend. The product was delivered on 15/07/2023 around 4:50 PM, and installation was scheduled for five days later. However, upon installation, the Complainant found the sound clarity unsatisfactory which prompted him to return the product. The product was collected on 24/07/2023 with assurances of a refund within five days.\nSubsequently, after two weeks passed without any refund, the Complainant contacted Amazon customer service, only to be informed that the product was not received back. Feeling aggrieved, the Complainant filed a consumer complaint in the District Consumer Disputes Redressal, Malappuram, Kerala (“District Commission”) against Amazon and the Seller.",
+        "passage_lines": [
+          7,
+          9
+        ]
+      }
+    ],
+    "R08": [
+      {
+        "url": "https://livelaw.in/consumer-cases/bangalore-district-commission-flipkart-failure-ship-deliver-product-payment-262451",
+        "sha256": "ea3f4a47baa8461511d12c0d17b691fe68272100f78d2351da9b3bbaeaa26cdc",
+        "bytes": 1014766,
+        "retrieved_at": "2026-11-08",
+        "role": "primary",
+        "passage_used": "The Complainant placed an order on Flipkart for a \"Toshiba Canvio Partner 1 TB External Hard disk drive (HDD)”. The purchase was made by the Complainant using the EMI option of a Citi Bank Credit Card, amounting to INR 3,907/-. Despite the payment, the product was never shipped or delivered to the Complainant. Flipkart's Customer Care confirmed via email that the Seller, identified as 'MPDSLE Retail' on the Flipkart App, cancelled the order due to extended delivery delays.\nFollowing the cancellation confirmation, the Complainant made several attempts to resolve the issue through Flipkart's customer service channels, including chats and calls. However, despite assurances and attempts to cancel the order manually due to a portal error preventing self-cancellation, no refund of INR 3,907/- was issued by Flipkart. Feeling aggrieved, the Complainant filed a consumer complaint in the Additional District Consumer Disputes Redressal Commission-I, Bangalore, Karnataka (“District Commission”) against Flipkart.",
+        "passage_lines": [
+          7,
+          9
+        ]
+      }
+    ],
+    "R09": [
+      {
+        "url": "https://livelaw.in/consumer-cases/gurdaspur-consumer-commission-holds-flipkart-liable-delivering-empty-package-ordered-refund-compensation-242880",
+        "sha256": "368d6f869a32bb2b4fad95d1080996ac47da5edce5e1e998f7283260f43707bd",
+        "bytes": 1018308,
+        "retrieved_at": "2026-11-08",
+        "role": "primary",
+        "passage_used": "[complainant] (Complainant) ordered an 'Okami wolf Nomad laptop backpack' via Flipkart's mobile app. When it arrived on July 4, 2022, the packaging was empty, missing the backpack, bill, and warranty card. Immediately after, [complainant] reported this incident through Flipkart's app, seeking a refund. Flipkart (Opposite Party) requested [complainant]'s ID and consent for information usage. Despite complying, refund requests were rejected three times without explanation. The complainant claimed financial loss, mental distress, and inconvenience due to the rejected refund requests. Consequently, he alleged service deficiency and unfair trade practices, seeking a refund of Rs.3,194/- along with compensation.",
+        "passage_lines": [
+          7
+        ]
+      }
+    ],
+    "R10": [
+      {
+        "url": "https://www.livelaw.in/amp/consumer-cases/no-proof-of-refund-seller-liable-chandigarh-consumer-commission-516737",
+        "sha256": "0960eb218e7a06fada3b8b5b033422bdec063463e9bbb97e50d1ec69be55c802",
+        "bytes": 94605,
+        "retrieved_at": "2026-11-08",
+        "role": "primary",
+        "passage_used": "The complainant, [complainant], placed an order on 20.06.2021 for a Caran D'Ache 849 Ball Pen for a sum of ₹1,611/- through the Flipkart platform. The product was to be supplied by Opposite Party No. 2, William Penn Pvt. Ltd.\nUpon delivery on 26.06.2021, the complainant received a pen of a different colour than the one ordered, following which he sought a replacement. The first replacement request was cancelled on 30.06.2021. Although a second replacement request was accepted, the product delivered on 06.07.2021 again differed in colour and refill specification from what had been ordered.\nAggrieved by the repeated delivery of a product allegedly not conforming to his order and the subsequent dispute regarding refund, the complainant approached the Consumer Commission seeking appropriate relief.\nWilliam Penn Pvt. Ltd., on the other hand, admitted the deliveries but maintained that the pen supplied was the exact model ordered. It attributed the alleged colour variation to differences in screen resolution. Crucially, it asserted that the complainant had already been issued a refund on July 9, 2021, and therefore was no longer entitled to any relief.",
+        "passage_lines": [
+          5,
+          7,
+          9,
+          13
+        ]
+      }
+    ],
+    "R11": [
+      {
+        "url": "https://www.livelaw.in/consumer-cases/expired-product-sold-online-thrissur-commission-holds-e-commerce-platform-seller-liable-orders-refund-compensation-530942",
+        "sha256": "283d296e21286c6ab0ea7a5da1701dffa1f5b04dc0807663c9c44b8c25f49e9a",
+        "bytes": 1017943,
+        "retrieved_at": "2026-11-08",
+        "role": "primary",
+        "passage_used": "The complainant, an IT professional, purchased “hair gummies” for ₹799 on 14 March 2024 through the e-commerce platform Amazon Seller Services Pvt. Ltd. from seller Mosaic Wellness Pvt. Ltd. The product was delivered on 17 March 2024, after which he consumed one gummy daily for six days. During this period, he alleged that he suffered stomach pain, vomiting and dizziness. On closely examining the product packaging, he found that the product had already expired in February 2024.\nAggrieved, the complainant contacted the e-commerce platform on 23 March 2024 seeking a refund and return of the product. However, his request was rejected on the ground that the item was “non-returnable” and beyond the prescribed return window. He alleged that selling an expired product amounted to deficiency in service and unfair trade practice and that the opposite parties failed to comply with the Consumer Protection (E-commerce) Rules, 2020.",
+        "passage_lines": [
+          7,
+          9
+        ]
+      }
+    ],
+    "R12": [
+      {
+        "url": "https://www.livelaw.in/amp/consumer-cases/darjeeling-consumer-commission-holds-amazon-seller-liable-delivering-wrong-product-refusing-refund-539055",
+        "sha256": "872e6e07d16bcde270d131a39ed1c99baf076ff7cee8903dd079ed56ebcb4347",
+        "bytes": 96340,
+        "retrieved_at": "2026-11-08",
+        "role": "primary",
+        "passage_used": "The complainant, [complainant], ordered a Fujifilm X-T5 40 MP APS-C X-Trans sensor mirrorless camera worth Rs. 1,43,000/- through Amazon Seller Service Private Limited (OP No. 1) from the registered seller, Clicktech Retail Private Ltd. (OP No. 2). The camera was delivered on 10-02-2025. However, upon opening the package, the complainant discovered that, instead of the ordered Fujifilm X-T5, a Fujifilm X-T50 CS WW2 camera had been delivered. The complainant also found that the package bore two conflicting labels, one label identifying the product as an X-T50 and another, smaller sticker describing it as an X-T5.\nThe complainant immediately informed the Opposite Parties of the incorrect delivery. They agreed to accept the return and process a refund. Accordingly, the camera was collected from the complainant's residence and was received by the seller on 20-02-2025. However, despite receiving the returned product, the Opposite Parties refused to refund Rs. 1,43,000/-.\nThe complainant again contacted customer support and was falsely informed that an investigation had cleared the Opposite Parties of any fault, even though no genuine investigation appeared to have been conducted. Instead, the Opposite Parties alleged that the complainant had returned the wrong product.\nOn 21-02-2025, OP No. 1 sent an email stating that the returned item was \"used and damaged\" instead of acknowledging that the wrong product had been delivered. Although the complainant subsequently submitted photographs showing the conflicting labels on the package, the refund request was rejected without assigning any valid reason.",
+        "passage_lines": [
+          5,
+          7,
+          9,
+          11
+        ]
+      }
+    ],
+    "R13": [
+      {
+        "url": "https://www.livelaw.in/consumer-cases/e-waste-delivered-instead-of-laptop-bhopal-consumer-commission-directs-amazon-to-refund-129-lakh-with-interest-555769",
+        "sha256": "7d02ec800cfc01a1c807199ec28982f39251ee50625c28138c984e02effb1cf4",
+        "bytes": 1019267,
+        "retrieved_at": "2026-11-08",
+        "role": "primary",
+        "passage_used": "The complainant, Shri [complainant], purchased a Samsung Galaxy Book 2 Pro 360 laptop worth ₹1,29,990 through Amazon on May 29, 2023. The laptop was delivered on June 2, 2023, but upon opening the sealed package, he allegedly found that the laptop was missing and that the package contained electronic waste instead.\nThe complainant raised a grievance with Amazon on June 12, 2023. Amazon, however, denied the claim, stating that the product had been sold by a third-party seller, Appario Retail Private Limited, and that its records showed the item had been delivered. The complainant alleged that despite repeated efforts, neither the laptop nor a refund was provided.",
+        "passage_lines": [
+          7,
+          9
+        ]
+      }
+    ],
+    "R14": [
+      {
+        "url": "https://www.livelaw.in/amp/consumer-cases/consumer-commission-holds-myntra-liable-for-wrong-product-delivery-orders-refund-and-compensation-309594",
+        "sha256": "337754c737dd138448b31849551616fbf259aad5fb56678f3a5227ea6c89f220",
+        "bytes": 95465,
+        "retrieved_at": "2026-11-08",
+        "role": "primary",
+        "passage_used": "The complainant, [complainant], ordered a BAESD Women Black Flared High-Rise Jeans from Myntra (Opposite Parties 1 and 2) on 22 December 2024 for ₹495. The product delivered on 28 December by Navya Hosiery was different — instead of the BAESD jeans, she received a SKIIE Street Jeans Wear item. Her refund/exchange request dated 4 January 2025 was rejected without any valid reason. Despite contacting Myntra's customer care and sending a legal notice on 17 February 2025, no corrective action was taken. She then filed a complaint seeking a refund of ₹495, compensation of ₹80,000 for mental agony, and ₹20,000 towards litigation expenses.",
+        "passage_lines": [
+          5
+        ]
+      }
+    ],
+    "R15": [
+      {
+        "url": "https://www.livelaw.in/amp/consumer-cases/ernakulum-district-commission-holds-paytm-and-its-officials-liable-for-delivering-low-value-t-shirt-instead-of-laptop-299878",
+        "sha256": "84a0ecc78dd29abd0db5d0cda92be19c853a08f69b0c73a319d33ac4f7de24ea",
+        "bytes": 98249,
+        "retrieved_at": "2026-11-08",
+        "role": "primary",
+        "passage_used": "The complainant purchased a Lenovo IdeaPad Slim 3 Laptop for Rs. 28,990 through the PayTM Mall Application on 17.06.2021. The complainant gave her niece's address for delivery sine the laptop was meant to support her online classes and learning. Although the delivery date was 24.06.2021, the parcel was delivered on 03.07.2021. Upon opening the parcel in the presence of the delivery personnel, it was discovered that instead of a laptop, it contained a T-Shirt with a price tag of Rs. 349/-. The niece of the complainant raised the issue with the PayTM customer care and also submitted the photographs as proof.\nThe company acknowledged the grievance and assured of refund initiation and pickup on 10.07.2021. However, the return request was unreasonably cancelled without any explanation. The complainant made multiple attempts to resolve the matter through PayTM's grievance redressal system. As there was no proper response, the complainant further escalated the matter to the National Consumer Helpline on 15.07.2021. The complainant even visited the PayTM office in Chennai. However, the issue remained unresolved. A legal notice dated 17.09.2021 was issued by the complainant but it was ignored by the company. Hence, a complaint was filed by the complainant against PayTM, its grievance nodal officer, general manager and customer care centre ('Opposite Parties'). The complainant prayed for a refund along with Rs. 25,000 for mental agony and Rs. 12,500 towards legal expenses.",
+        "passage_lines": [
+          5,
+          7
+        ]
+      }
+    ],
+    "R16": [
+      {
+        "url": "https://www.outlookmoney.com/news/consumer-court-orders-amazon-and-seller-to-pay-customer-refund-rejects-use-policy-defence",
+        "sha256": "354d855d5a2ede187ff1c9d2100ea892cbd3b1b49b04c709ed5855f90e28221e",
+        "bytes": 140146,
+        "retrieved_at": "2026-11-08",
+        "role": "primary",
+        "passage_used": "The matter pertained to [complainant], the complainant. He ordered an HP Pavilion Laptop online on the Amazon on December 26, 2023, and paid Rs 61,990. The product was delivered to him on December 27, 2023, but it was an IBM ThinkPad, not the one he had ordered. He immediately contacted customer care, who asked the complainant to click the product's photograph and upload it to the link shared along with his name and date, which he did.\nOn December 31, 2023, he was told the disputed item would be picked up on January 1, 2024, but his refund did not come for the next week. On January 7, 2024, he received a message, 'lost in transit- return not received: your return is likely lost in transit. Do not worry, our Customer Care can help you regarding the refund.\nOn January 19, 2024, he received an email from the e-commerce company stating that a refund cannot be issued because the returned item is different from what he ordered, and the number of refunds exceeds the expectations, and also alleged misuse of its \"Use Policy\". The complainant replied that he returned the item because it was different from what he ordered.",
+        "passage_lines": [
+          7,
+          9,
+          11
+        ]
+      },
+      {
+        "url": "https://www.indialaw.in/blog/consumer/delhi-consumer-court-orders-amazon-refund-for-wrong-laptop/",
+        "sha256": "67837b52e50e9d0082b893f8b1399f86f590399f468588353c830d1ab108f44c",
+        "bytes": 158151,
+        "retrieved_at": "2026-11-08",
+        "role": "corroborating"
+      },
+      {
+        "url": "https://www.storyboard18.com/how-it-works/consumer-court-pulls-up-amazon-for-delivering-wrong-item-and-refusing-refund-suggests-videographing-future-deliveries-82460.htm",
+        "sha256": "331950eef390940019216bf61fee6347023887120af71e71768a439003a53a48",
+        "bytes": 360223,
+        "retrieved_at": "2026-11-08",
+        "role": "corroborating"
+      }
+    ],
+    "R17": [
+      {
+        "url": "https://businesstoday.in/latest/trends/story/online-shopping-gone-wrong-kerala-consumer-court-orders-refund-rs8000-compensation-in-key-ruling-546218-2026-07-30",
+        "sha256": "23dd321aab77f6d24b63199afb2620de3c61e87ab07a2fc57044a620c0972006",
+        "bytes": 769973,
+        "retrieved_at": "2026-11-08",
+        "role": "primary",
+        "passage_used": "According to the complaint, [complainant] placed the order on April 14, 2025, paying ₹359 for the WeCool earbuds. However, when the package was delivered on April 30, 2025, he allegedly received a pair of boAt earbuds instead of the product he had ordered. He immediately contacted the platform and was reportedly asked to email photographs of the incorrect product. Despite sending the requested details and making repeated follow-up attempts, he claimed that he received no response and that the wrong product was never taken back.",
+        "passage_lines": [
+          7
+        ]
+      }
+    ]
+  }
+}
