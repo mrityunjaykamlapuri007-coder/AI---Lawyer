@@ -34,8 +34,14 @@ class Settings(BaseSettings):
     sqlite_path: str = "ai_lawyer/data/lawyer.db"
     evidence_dir: str = "ai_lawyer/data/evidence"
 
-    embedding_backend: Literal["hash", "sentence_transformers"] = "hash"
+    # ``remote_http`` = the BGE service in the Kaggle notebook (kaggle/embed_server.py).
+    # ``hash`` is a test embedder and is refused in real mode.
+    embedding_backend: Literal["hash", "sentence_transformers", "remote_http"] = "hash"
     embedding_model_id: str = "BAAI/bge-large-en-v1.5"
+    embedder_base_url: str = ""
+    embedder_api_key: str = ""
+    embedder_timeout_s: int = 60
+    embedder_batch_size: int = 32
 
     reranker_enabled: bool = False
     reranker_model_id: str = "BAAI/bge-reranker-large"

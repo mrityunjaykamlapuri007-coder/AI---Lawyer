@@ -32,6 +32,15 @@ class SentenceTransformerEmbedder:
 
 def get_embedder(settings: Settings | None = None):
     settings = settings or get_settings()
+    if settings.embedding_backend == "remote_http":
+        from ai_lawyer.legal_rag.remote_embedder import RemoteHTTPEmbedder
+
+        return RemoteHTTPEmbedder(
+            settings.embedder_base_url,
+            settings.embedder_api_key,
+            timeout_s=settings.embedder_timeout_s,
+            batch_size=settings.embedder_batch_size,
+        )
     if settings.embedding_backend == "sentence_transformers":
         return SentenceTransformerEmbedder(settings.embedding_model_id)
     if settings.corpus_mode == "real":

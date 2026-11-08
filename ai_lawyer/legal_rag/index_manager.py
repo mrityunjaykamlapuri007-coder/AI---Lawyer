@@ -58,7 +58,10 @@ class IndexBundle:
     def dense_search(self, query: str, top_k: int = 20) -> list[tuple[str, float]]:
         if not query.strip() or not self.chunk_ids:
             return []
-        vec = np.asarray(self.embedder.embed([query]), dtype="float32")
+        if hasattr(self.embedder, "embed_query"):
+            vec = np.asarray(self.embedder.embed_query(query), dtype="float32")
+        else:
+            vec = np.asarray(self.embedder.embed([query]), dtype="float32")
         scores, positions = self.faiss_index.search(vec, min(top_k, len(self.chunk_ids)))
         out: list[tuple[str, float]] = []
         for pos, score in zip(positions[0], scores[0]):
@@ -113,11 +116,14 @@ def build_index(
         "corpus_version": corpus.corpus_version,
         "corpus_mode": corpus.mode,
         "embedder_id": embedder.model_id,
+        "embedder_model_hash": getattr(embedder, "model_hash", None),
         "dimension": int(vectors.shape[1]),
         "chunk_count": len(chunks),
         "provision_count": len(corpus.provisions),
         "built_at": built_at,
     }
+    if corpus.mode == "real" and not manifest["embedder_model_hash"]:
+        raise IndexStale("real-mode index needs an embedder with a model_hash (remote_http)")
 
     temp.mkdir(parents=True, exist_ok=True)
     try:
@@ -130,6 +136,8 @@ def build_index(
         (temp / "index_manifest.json").write_text(
             json.dumps(manifest, indent=2), encoding="utf-8"
         )
+        # Same record under the name the spec uses (G2 / REAL_RAG_BUILD Stage 2).
+        (temp / "index_meta.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
         _atomic_replace_dir(out, temp)
     finally:
         if temp.exists():
@@ -170,6 +178,9 @@ def load_index(
             f"!= current {corpus.corpus_version}"
         )
 
+    embedder = embedder or get_embedder(settings)
+    check_embedder_matches(manifest, embedder)
+
     chunks = json.loads((directory / "chunks.json").read_text(encoding="utf-8"))
     chunk_ids = json.loads((directory / "chunk_ids.json").read_text(encoding="utf-8"))
     tokenised = json.loads((directory / "bm25_tokens.json").read_text(encoding="utf-8"))
@@ -181,8 +192,23 @@ def load_index(
         bm25=BM25Okapi(tokenised) if tokenised else None,
         bm25_tokens=tokenised,
         manifest=manifest,
-        embedder=embedder or get_embedder(settings),
+        embedder=embedder,
     )
+
+
+def check_embedder_matches(manifest: dict[str, Any], embedder: Any) -> None:
+    """Refuse an index built by a different embedder (id or model hash)."""
+    if manifest.get("embedder_id") != getattr(embedder, "model_id", None):
+        raise IndexStale(
+            f"index embedder {manifest.get('embedder_id')!r} != live embedder "
+            f"{getattr(embedder, 'model_id', None)!r}"
+        )
+    built_hash = manifest.get("embedder_model_hash")
+    live_hash = getattr(embedder, "model_hash", None)
+    if (built_hash or live_hash) and built_hash != live_hash:
+        raise IndexStale(
+            f"index embedder model_hash {built_hash!r} != live model_hash {live_hash!r}"
+        )
 
 
 def build_or_load(
