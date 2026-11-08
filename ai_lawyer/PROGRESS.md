@@ -341,3 +341,50 @@ Changes:
 Limits: amendment completeness after the recorded chain rests on web search of
 secondary sources (no queryable e-Gazette index). Not reviewed by a human or a
 lawyer.
+
+---
+
+## REAL_RAG_BUILD.md (governing spec from 2026-11-08 ~17:00 IST)
+
+### Stage 1.1 - verify state, commit
+
+| Field | Value |
+|---|---|
+| Status | IMPLEMENTED_AND_TESTED |
+| Commands | hash check vs `manifest.json`; `pytest -q`; commits e754130, fcef166, 15c91c2 |
+| Result | 14/14 files match (13 documents + duplicate link); 250 passed |
+
+### Stage 1.2/1.3 - machine verification on Tesseract, corpus expansion (machine-verify-1.3)
+
+| Field | Value |
+|---|---|
+| Status | IMPLEMENTED_AND_TESTED |
+| Test command | `pytest -q` -> 266 passed |
+| OCR | Tesseract v5.4.0.20240606 (`winget install UB-Mannheim.TesseractOCR`), eng, psm 4, 300 dpi; engine recorded in every report and provision evidence |
+| Rebuild | `build_runtime_corpus` -> 18 included (ECR_2020 16, ECR_2021_AMENDMENT 2), gate PASS |
+
+What changed and why:
+- RapidOCR silently dropped whole lines and misread "(iii)" as "(ii)", which
+  rejected provisions for OCR reasons. The spec requires Tesseract; it is now
+  the V1 engine. The check itself is unchanged (every stored word in order,
+  zero tolerance on numbers). OCR cache files are keyed by engine.
+- `legal_rag/boundary_fix.py`: ends a staged provision before a trailing
+  non-law block only when every removed line is itself non-law (file number,
+  signatory, stamp name, timestamp, chapter heading). Kept text is an exact
+  prefix; removed text stored verbatim in `boundary_adjustment`; the row is reset
+  to unverified. Applied to 11 rows; 3 rows with mixed content were left alone.
+- `legal_rag/subrule_split.py`: splits ECR rule 4 into 11 sub-rules (exact
+  contiguous slices, recorded offsets, parent kept). V6 now reads the
+  amendment's sub-rule scope ("in rule 4, for sub-rule (1)"): only sub-rule (1)
+  and the whole-rule row are blocked; unknown scope still blocks the whole rule.
+
+Result per source:
+- ECR_2020: 16 pass. Rejected: P003 definitions (text layer "(l)" vs OCR "(1)";
+  not equated, spec allows whitespace/ligature differences only), P004 whole
+  rule and P004_SR01 (substituted by G.S.R. 328(E)).
+- ECR_2021_AMENDMENT: 2/2 pass (includes the substituted rule 4(1)).
+- JURISDICTION_RULES_2021: 0/5. V4 fails: Tesseract reads the gazette number as
+  "7647 GV/2021" where the text layer reads "GI". Fails closed; not loosened.
+  These 3 provisions were in the previous runtime corpus and are now out.
+- CPA_2019: not attempted; stays uncitable until the 2026 Jan Vishwas schedule
+  check is recorded (user).

@@ -171,6 +171,9 @@ class Provision(StrictModel):
     verification_method_count: int = 0
     verification_evidence: dict[str, Any] = Field(default_factory=dict)
     pipeline_version: str = ""
+    # Recorded by legal_rag.boundary_fix when a trailing signature/footer block
+    # was cut at ingestion.  Holds the removed text verbatim.
+    boundary_adjustment: dict[str, Any] = Field(default_factory=dict)
     # Risk controls.  Flags are written by the independent extraction check;
     # they can only be cleared by a human who compared the rendered page.
     integrity_flags: list[str] = Field(default_factory=list)

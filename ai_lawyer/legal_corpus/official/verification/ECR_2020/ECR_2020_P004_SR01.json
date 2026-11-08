@@ -1,0 +1,51 @@
+{
+  "provision_id": "ECR_2020_P004_SR01",
+  "passed": false,
+  "flags": [
+    "V6_amendment_text_changed"
+  ],
+  "evidence": {
+    "pipeline_version": "machine-verify-1.3",
+    "pages": [
+      8,
+      9
+    ],
+    "V1_independent_extraction": "pass",
+    "V1_detail": {
+      "stored_tokens": 122,
+      "matched": 122
+    },
+    "V2_number_inventory": "pass",
+    "V3_document_integrity": "pass",
+    "V5_boundary": "pass",
+    "V4_metadata_evidence": "pass",
+    "V4_detail": {
+      "metadata": {
+        "published_date": {
+          "status": "quoted",
+          "quote": "JULY 23, 2020",
+          "page": 1
+        },
+        "effective_from": {
+          "status": "quoted",
+          "quote": "JULY 23, 2020",
+          "page": 1
+        },
+        "gazette_id": {
+          "status": "quoted",
+          "quote": "3261 GI/2020",
+          "page": 1
+        }
+      },
+      "amendment_chain_clean": true,
+      "known_gaps": []
+    },
+    "V6_amendment_effect": "fail",
+    "V6_detail": {
+      "reason": "this rule is substituted by an amending instrument; the consolidated text was not rebuilt",
+      "instruments": [
+        "Amendment Rules 2021, G.S.R. 328(E) (2021-05-17)."
+      ]
+    }
+  }
+}

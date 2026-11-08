@@ -1,0 +1,71 @@
+8 THE GAZETTE OF INDIA : EXTRAORDINARY [PART II—SEC. 3(i)]
+
+(b) “e-commerce entity” means any person who owns, operates or manages digital or electronic facility
+or platform for electronic commerce, but does not include a seller offering his goods or services for
+sale on a marketplace e-commerce entity;
+
+(c) “grievance” includes any complaints to an e-commerce entity regarding violations of the
+provisions of the Act and the rules made thereunder;
+
+(d) “GSTIN” means the Goods and Services Tax Identification Number as under the Central Goods and
+Services Tax Act, 2017 (12 of 2017);
+
+(e) “information” shall have the same meaning as to it clause (v) of sub-section (1) of section 2 of the
+Information Technology Act, 2000 (21 of 2000);
+
+(f) “inventory e-commerce entity” means an e-commerce entity which owns the inventory of goods or
+services and sells such goods or services directly to the consumers and shall include single brand
+retailers and multi-channel single brand retailers;
+
+(g) “marketplace e-commerce entity” means an e-commerce entity which provides an information
+technology platform on a digital or electronic network to facilitate transactions between buyers and
+sellers;
+
+(h) “PAN” means Permanent Account Number as under section 139A of the Income Tax Act, 1961 (43
+of 1961);
+
+(i) “platform” means an online interface in the form of any software including a website or a part
+thereof and applications including mobile applications;
+
+(j) “ranking” means the relative prominence or relevance given to the goods or services offered
+through a marketplace e-commerce entity as presented, organised or communicated by such entity,
+irrespective of the technological means used for such presentation, organisation or communication;
+
+(k) “seller” means the product seller as defined in clause (37) of section 2 of the Act and shall include
+any service provider;
+
+(1) “user” means any person who accesses or avails any computer resource of an e-commerce entity.
+
+(2) The words and expressions used herein and not defined, but defined in the Act or in the Information
+Technology Act, 2000 (21 of 2000) or the rules made thereunder shall have the same meaning as respectively
+assigned to them in those Acts or rules.
+
+4. Duties of e-commerce entities. ---
+(1) An e-commerce entity shall:
+
+(a) be a company incorporated under the Companies Act, 1956 (1 of 1956) or the Companies Act, 2013 (18
+of 2013) or a foreign company covered under clause (42) of section 2 of the Companies Act, 2013 (18
+of 2013) or an office, branch or agency outside India owned or controlled by a person resident in India
+as provided in sub-clause (iii) of clause (v) of section 2 of the Foreign Exchange Management Act,
+1999 (42 of 1999); and
+
+(a) appoint a nodal person of contact or an alternate senior designated functionary who is resident in India,
+to ensure compliance with the provisions of the Act or the rules made thereunder.
+
+(2) Every e-commerce entity shall provide the following information in a clear and accessible manner on its
+platform, displayed prominently to its users, namely:--
+
+(%) legal name of the e-commerce entity;
+(@) principal geographic address of its headquarters and all branches;
+(71) name and details of its website; and
+
+(4) contact details like e-mail address, fax, landline and mobile numbers of customer care as well as of
+grievance officer.
+
+(3) | No e-commerce entity shall adopt any unfair trade practice, whether in the course of business on its
+platform or otherwise.
+
+(4) | Every e-commerce entity shall establish an adequate grievance redressal mechanism having regard to
+the number of grievances ordinarily received by such entity from India, and shall appoint a grievance
+officer for consumer grievance redressal, and shall display the name, contact details, and designation of
+such officer on its platform.

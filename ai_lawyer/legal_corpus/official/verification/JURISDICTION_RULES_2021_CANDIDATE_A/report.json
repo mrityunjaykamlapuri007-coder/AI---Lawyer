@@ -2,14 +2,18 @@
   "source_id": "JURISDICTION_RULES_2021_CANDIDATE_A",
   "pdf": "jurisdiction_rules_2021_candidate_a.pdf",
   "pdf_sha256": "dd22dbfa7ac8bc0ef968765d6cd521ad7a29742afb071b9a919c164f83b765b7",
-  "pipeline_version": "machine-verify-1.2",
+  "pipeline_version": "machine-verify-1.3",
+  "ocr_engine": "tesseract v5.4.0.20240606",
+  "ocr_dpi": 300,
   "provisions": [
     {
       "provision_id": "JURISDICTION_RULES_2021_CANDIDATE_A_P001",
-      "passed": true,
-      "flags": [],
+      "passed": false,
+      "flags": [
+        "V4_metadata_unquoted"
+      ],
       "evidence": {
-        "pipeline_version": "machine-verify-1.2",
+        "pipeline_version": "machine-verify-1.3",
         "pages": [
           2
         ],
@@ -21,23 +25,22 @@
         "V2_number_inventory": "pass",
         "V3_document_integrity": "pass",
         "V5_boundary": "pass",
-        "V4_metadata_evidence": "pass",
+        "V4_metadata_evidence": "fail",
         "V4_detail": {
           "metadata": {
             "published_date": {
               "status": "quoted",
-              "quote": "30th December, 2021",
-              "page": 2
+              "quote": "DECEMBER 30, 2021",
+              "page": 1
             },
             "effective_from": {
               "status": "quoted",
-              "quote": "30th December, 2021",
-              "page": 2
+              "quote": "DECEMBER 30, 2021",
+              "page": 1
             },
             "gazette_id": {
-              "status": "quoted",
-              "quote": "7647 GI/2021",
-              "page": 1
+              "status": "not_stated",
+              "value_checked": "7647 GI/2021"
             }
           },
           "amendment_chain_clean": true,
@@ -54,45 +57,37 @@
       "provision_id": "JURISDICTION_RULES_2021_CANDIDATE_A_P002",
       "passed": false,
       "flags": [
-        "V1_word_mismatch",
-        "V5_not_contiguous"
+        "V4_metadata_unquoted"
       ],
       "evidence": {
-        "pipeline_version": "machine-verify-1.2",
+        "pipeline_version": "machine-verify-1.3",
         "pages": [
           2
         ],
-        "V1_independent_extraction": "fail",
+        "V1_independent_extraction": "pass",
         "V1_detail": {
           "stored_tokens": 66,
-          "matched_in_order": 13,
-          "sample_missing": [
-            "means"
-          ]
+          "matched": 66
         },
         "V2_number_inventory": "pass",
         "V3_document_integrity": "pass",
-        "V5_boundary": "fail",
-        "V5_detail": {
-          "reason": "stored_text_not_a_contiguous_span_of_ocr"
-        },
-        "V4_metadata_evidence": "pass",
+        "V5_boundary": "pass",
+        "V4_metadata_evidence": "fail",
         "V4_detail": {
           "metadata": {
             "published_date": {
               "status": "quoted",
-              "quote": "30th December, 2021",
-              "page": 2
+              "quote": "DECEMBER 30, 2021",
+              "page": 1
             },
             "effective_from": {
               "status": "quoted",
-              "quote": "30th December, 2021",
-              "page": 2
+              "quote": "DECEMBER 30, 2021",
+              "page": 1
             },
             "gazette_id": {
-              "status": "quoted",
-              "quote": "7647 GI/2021",
-              "page": 1
+              "status": "not_stated",
+              "value_checked": "7647 GI/2021"
             }
           },
           "amendment_chain_clean": true,
@@ -107,10 +102,12 @@
     },
     {
       "provision_id": "JURISDICTION_RULES_2021_CANDIDATE_A_P003",
-      "passed": true,
-      "flags": [],
+      "passed": false,
+      "flags": [
+        "V4_metadata_unquoted"
+      ],
       "evidence": {
-        "pipeline_version": "machine-verify-1.2",
+        "pipeline_version": "machine-verify-1.3",
         "pages": [
           2
         ],
@@ -125,23 +122,22 @@
         "V5_detail": {
           "contains_proviso_marker": true
         },
-        "V4_metadata_evidence": "pass",
+        "V4_metadata_evidence": "fail",
         "V4_detail": {
           "metadata": {
             "published_date": {
               "status": "quoted",
-              "quote": "30th December, 2021",
-              "page": 2
+              "quote": "DECEMBER 30, 2021",
+              "page": 1
             },
             "effective_from": {
               "status": "quoted",
-              "quote": "30th December, 2021",
-              "page": 2
+              "quote": "DECEMBER 30, 2021",
+              "page": 1
             },
             "gazette_id": {
-              "status": "quoted",
-              "quote": "7647 GI/2021",
-              "page": 1
+              "status": "not_stated",
+              "value_checked": "7647 GI/2021"
             }
           },
           "amendment_chain_clean": true,
@@ -156,10 +152,12 @@
     },
     {
       "provision_id": "JURISDICTION_RULES_2021_CANDIDATE_A_P004",
-      "passed": true,
-      "flags": [],
+      "passed": false,
+      "flags": [
+        "V4_metadata_unquoted"
+      ],
       "evidence": {
-        "pipeline_version": "machine-verify-1.2",
+        "pipeline_version": "machine-verify-1.3",
         "pages": [
           2
         ],
@@ -174,23 +172,22 @@
         "V5_detail": {
           "contains_proviso_marker": true
         },
-        "V4_metadata_evidence": "pass",
+        "V4_metadata_evidence": "fail",
         "V4_detail": {
           "metadata": {
             "published_date": {
               "status": "quoted",
-              "quote": "30th December, 2021",
-              "page": 2
+              "quote": "DECEMBER 30, 2021",
+              "page": 1
             },
             "effective_from": {
               "status": "quoted",
-              "quote": "30th December, 2021",
-              "page": 2
+              "quote": "DECEMBER 30, 2021",
+              "page": 1
             },
             "gazette_id": {
-              "status": "quoted",
-              "quote": "7647 GI/2021",
-              "page": 1
+              "status": "not_stated",
+              "value_checked": "7647 GI/2021"
             }
           },
           "amendment_chain_clean": true,
@@ -207,47 +204,40 @@
       "provision_id": "JURISDICTION_RULES_2021_CANDIDATE_A_P005",
       "passed": false,
       "flags": [
-        "V5_non_law_text"
+        "V4_metadata_unquoted"
       ],
       "evidence": {
-        "pipeline_version": "machine-verify-1.2",
+        "pipeline_version": "machine-verify-1.3",
         "pages": [
           2
         ],
         "V1_independent_extraction": "pass",
         "V1_detail": {
-          "stored_tokens": 63,
-          "matched": 63
+          "stored_tokens": 56,
+          "matched": 56
         },
         "V2_number_inventory": "pass",
         "V3_document_integrity": "pass",
-        "V5_boundary": "fail",
+        "V5_boundary": "pass",
         "V5_detail": {
-          "reason_non_law": "stored text contains non-law text",
-          "non_law_markers": [
-            "signatory_designation",
-            "signatory_name_line",
-            "trailing_uppercase_name_line"
-          ],
           "contains_proviso_marker": true
         },
-        "V4_metadata_evidence": "pass",
+        "V4_metadata_evidence": "fail",
         "V4_detail": {
           "metadata": {
             "published_date": {
               "status": "quoted",
-              "quote": "30th December, 2021",
-              "page": 2
+              "quote": "DECEMBER 30, 2021",
+              "page": 1
             },
             "effective_from": {
               "status": "quoted",
-              "quote": "30th December, 2021",
-              "page": 2
+              "quote": "DECEMBER 30, 2021",
+              "page": 1
             },
             "gazette_id": {
-              "status": "quoted",
-              "quote": "7647 GI/2021",
-              "page": 1
+              "status": "not_stated",
+              "value_checked": "7647 GI/2021"
             }
           },
           "amendment_chain_clean": true,
@@ -264,18 +254,17 @@
   "metadata_evidence": {
     "published_date": {
       "status": "quoted",
-      "quote": "30th December, 2021",
-      "page": 2
+      "quote": "DECEMBER 30, 2021",
+      "page": 1
     },
     "effective_from": {
       "status": "quoted",
-      "quote": "30th December, 2021",
-      "page": 2
+      "quote": "DECEMBER 30, 2021",
+      "page": 1
     },
     "gazette_id": {
-      "status": "quoted",
-      "quote": "7647 GI/2021",
-      "page": 1
+      "status": "not_stated",
+      "value_checked": "7647 GI/2021"
     }
   },
   "amendment_chain": [],
@@ -285,5 +274,5 @@
     "url": "https://egazette.gov.in/WriteReadData/2021/232278.pdf",
     "problems": []
   },
-  "source_passed": true
+  "source_passed": false
 }

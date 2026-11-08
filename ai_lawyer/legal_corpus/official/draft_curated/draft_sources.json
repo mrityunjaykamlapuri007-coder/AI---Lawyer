@@ -99,23 +99,23 @@
     "retrieved_at": "2026-11-08",
     "document_sha256": "3012b37f6f6dba2d29523abf10f43fbb3a503768e578ef0fa02e4b9e4593bd0c",
     "review_status": "machine_verified",
-    "version_label": "machine-verified-machine-verify-1.2",
+    "version_label": "machine-verified-machine-verify-1.3",
     "effective_from": "2020-07-23",
     "effective_to": null,
     "version_status": "current",
     "reviewed_by": null,
     "reviewed_at": null,
-    "notes": "DRAFT generated mechanically from ecr_2020_1.txt on 2026-11-08; text_sha256=cbddd979579b3dd57a91925fc22b89f65aa27fee9cdb741c2c1b0060a00d8e49; pdf_sha256=3012b37f6f6dba2d29523abf10f43fbb3a503768e578ef0fa02e4b9e4593bd0c; ascii_ratio=0.998; letter_ratio=0.788; latin_letter_share=1.000; ocr_risk=low. Not reviewed. Usable only after a human sets review_status=human_verified. Machine-verified by the automated pipeline; NOT reviewed by a lawyer or a human. Machine-verified by the automated pipeline; NOT reviewed by a lawyer or a human.",
+    "notes": "DRAFT generated mechanically from ecr_2020_1.txt on 2026-11-08; text_sha256=cbddd979579b3dd57a91925fc22b89f65aa27fee9cdb741c2c1b0060a00d8e49; pdf_sha256=3012b37f6f6dba2d29523abf10f43fbb3a503768e578ef0fa02e4b9e4593bd0c; ascii_ratio=0.998; letter_ratio=0.788; latin_letter_share=1.000; ocr_risk=low. Not reviewed. Usable only after a human sets review_status=human_verified. Machine-verified by the automated pipeline; NOT reviewed by a lawyer or a human. Machine-verified by the automated pipeline; NOT reviewed by a lawyer or a human. Machine-verified by the automated pipeline; NOT reviewed by a lawyer or a human. Machine-verified by the automated pipeline; NOT reviewed by a lawyer or a human. Machine-verified by the automated pipeline; NOT reviewed by a lawyer or a human.",
     "verification_evidence": {
       "metadata": {
         "published_date": {
           "status": "quoted",
-          "quote": "July 23, 2020",
+          "quote": "JULY 23, 2020",
           "page": 1
         },
         "effective_from": {
           "status": "quoted",
-          "quote": "July 23, 2020",
+          "quote": "JULY 23, 2020",
           "page": 1
         },
         "gazette_id": {
@@ -129,6 +129,7 @@
           "status": "checked",
           "document_id": "ECR_2020_CORRIGENDUM",
           "affected_rules": [],
+          "affected_sub_rules": {},
           "effective_from": "2020-08-04",
           "version_status": "current",
           "effect": "label_correction",
@@ -141,6 +142,11 @@
           "affected_rules": [
             4
           ],
+          "affected_sub_rules": {
+            "4": [
+              1
+            ]
+          },
           "effective_from": "2021-05-17",
           "version_status": "current",
           "effect": "substitution",
@@ -156,6 +162,7 @@
             5,
             7
           ],
+          "affected_sub_rules": {},
           "effective_from": "2027-01-01",
           "version_status": "future",
           "effect": "future",
@@ -164,18 +171,19 @@
         }
       ],
       "known_gaps": [],
-      "pipeline_version": "machine-verify-1.2",
+      "pipeline_version": "machine-verify-1.3",
       "pdf_sha256": "3012b37f6f6dba2d29523abf10f43fbb3a503768e578ef0fa02e4b9e4593bd0c",
-      "provisions_passed": 3,
-      "provisions_checked": 8
+      "provisions_passed": 16,
+      "provisions_checked": 19
     },
-    "pipeline_version": "machine-verify-1.2",
-    "verified_at": "2026-11-08T11:15:28.149216+00:00",
+    "pipeline_version": "machine-verify-1.3",
+    "verified_at": "2026-11-08T11:35:38.512419+00:00",
     "amendment_chain": [
       {
         "status": "checked",
         "document_id": "ECR_2020_CORRIGENDUM",
         "affected_rules": [],
+        "affected_sub_rules": {},
         "effective_from": "2020-08-04",
         "version_status": "current",
         "effect": "label_correction",
@@ -188,6 +196,11 @@
         "affected_rules": [
           4
         ],
+        "affected_sub_rules": {
+          "4": [
+            1
+          ]
+        },
         "effective_from": "2021-05-17",
         "version_status": "current",
         "effect": "substitution",
@@ -203,6 +216,7 @@
           5,
           7
         ],
+        "affected_sub_rules": {},
         "effective_from": "2027-01-01",
         "version_status": "future",
         "effect": "future",
@@ -214,8 +228,8 @@
     "amendment_chain_checked": true,
     "verified_by": "machine",
     "metadata_quotes": {
-      "published_date": "July 23, 2020",
-      "effective_from": "July 23, 2020",
+      "published_date": "JULY 23, 2020",
+      "effective_from": "JULY 23, 2020",
       "gazette_id": "3261 GI/2020"
     },
     "metadata_quote_pages": {
@@ -247,23 +261,23 @@
     "retrieved_at": "2026-11-08",
     "document_sha256": "a7db1f7a8c900e0bc9c7fcb1f2921130ff85e6fac517fb5222efcf76cf559654",
     "review_status": "machine_verified",
-    "version_label": "machine-verified-machine-verify-1.2",
+    "version_label": "machine-verified-machine-verify-1.3",
     "effective_from": "2021-05-17",
     "effective_to": null,
     "version_status": "current",
     "reviewed_by": null,
     "reviewed_at": null,
-    "notes": "DRAFT generated mechanically from ecr_2021_amendment_1.txt on 2026-11-08; text_sha256=663920a2bb6c1c5ea245813ab478e71e60a1f4e7a8351664c742ed5d5cbf0961; pdf_sha256=a7db1f7a8c900e0bc9c7fcb1f2921130ff85e6fac517fb5222efcf76cf559654; ascii_ratio=0.998; letter_ratio=0.705; latin_letter_share=1.000; ocr_risk=low. Not reviewed. Usable only after a human sets review_status=human_verified. Machine-verified by the automated pipeline; NOT reviewed by a lawyer or a human. Machine-verified by the automated pipeline; NOT reviewed by a lawyer or a human.",
+    "notes": "DRAFT generated mechanically from ecr_2021_amendment_1.txt on 2026-11-08; text_sha256=663920a2bb6c1c5ea245813ab478e71e60a1f4e7a8351664c742ed5d5cbf0961; pdf_sha256=a7db1f7a8c900e0bc9c7fcb1f2921130ff85e6fac517fb5222efcf76cf559654; ascii_ratio=0.998; letter_ratio=0.705; latin_letter_share=1.000; ocr_risk=low. Not reviewed. Usable only after a human sets review_status=human_verified. Machine-verified by the automated pipeline; NOT reviewed by a lawyer or a human. Machine-verified by the automated pipeline; NOT reviewed by a lawyer or a human. Machine-verified by the automated pipeline; NOT reviewed by a lawyer or a human. Machine-verified by the automated pipeline; NOT reviewed by a lawyer or a human.",
     "verification_evidence": {
       "metadata": {
         "published_date": {
           "status": "quoted",
-          "quote": "May 17, 2021",
+          "quote": "MAY 17, 2021",
           "page": 1
         },
         "effective_from": {
           "status": "quoted",
-          "quote": "May 17, 2021",
+          "quote": "MAY 17, 2021",
           "page": 1
         },
         "gazette_id": {
@@ -274,20 +288,20 @@
       },
       "amendment_chain": [],
       "known_gaps": [],
-      "pipeline_version": "machine-verify-1.2",
+      "pipeline_version": "machine-verify-1.3",
       "pdf_sha256": "a7db1f7a8c900e0bc9c7fcb1f2921130ff85e6fac517fb5222efcf76cf559654",
-      "provisions_passed": 1,
+      "provisions_passed": 2,
       "provisions_checked": 2
     },
-    "pipeline_version": "machine-verify-1.2",
-    "verified_at": "2026-11-08T11:15:29.757630+00:00",
+    "pipeline_version": "machine-verify-1.3",
+    "verified_at": "2026-11-08T11:33:00.273801+00:00",
     "amendment_chain": [],
     "known_gaps": [],
     "amendment_chain_checked": true,
     "verified_by": "machine",
     "metadata_quotes": {
-      "published_date": "May 17, 2021",
-      "effective_from": "May 17, 2021",
+      "published_date": "MAY 17, 2021",
+      "effective_from": "MAY 17, 2021",
       "gazette_id": "2624 GI/2021"
     },
     "metadata_quote_pages": {
@@ -318,7 +332,7 @@
     "published_date": "2021-12-30",
     "retrieved_at": "2026-11-08",
     "document_sha256": "dd22dbfa7ac8bc0ef968765d6cd521ad7a29742afb071b9a919c164f83b765b7",
-    "review_status": "machine_verified",
+    "review_status": "unverified",
     "version_label": "machine-verified-machine-verify-1.2",
     "effective_from": "2021-12-30",
     "effective_to": null,
@@ -330,33 +344,32 @@
       "metadata": {
         "published_date": {
           "status": "quoted",
-          "quote": "30th December, 2021",
-          "page": 2
+          "quote": "DECEMBER 30, 2021",
+          "page": 1
         },
         "effective_from": {
           "status": "quoted",
-          "quote": "30th December, 2021",
-          "page": 2
+          "quote": "DECEMBER 30, 2021",
+          "page": 1
         },
         "gazette_id": {
-          "status": "quoted",
-          "quote": "7647 GI/2021",
-          "page": 1
+          "status": "not_stated",
+          "value_checked": "7647 GI/2021"
         }
       },
       "amendment_chain": [],
       "known_gaps": [],
-      "pipeline_version": "machine-verify-1.2",
+      "pipeline_version": "machine-verify-1.3",
       "pdf_sha256": "dd22dbfa7ac8bc0ef968765d6cd521ad7a29742afb071b9a919c164f83b765b7",
-      "provisions_passed": 3,
+      "provisions_passed": 0,
       "provisions_checked": 5
     },
-    "pipeline_version": "machine-verify-1.2",
-    "verified_at": "2026-11-08T11:15:31.193160+00:00",
+    "pipeline_version": "machine-verify-1.3",
+    "verified_at": "2026-11-08T11:33:01.285245+00:00",
     "amendment_chain": [],
     "known_gaps": [],
     "amendment_chain_checked": true,
-    "verified_by": "machine",
+    "verified_by": null,
     "metadata_quotes": {
       "published_date": "30th December, 2021",
       "effective_from": "30th December, 2021",

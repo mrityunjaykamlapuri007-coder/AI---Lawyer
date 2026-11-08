@@ -1,9 +1,11 @@
 {
   "provision_id": "JURISDICTION_RULES_2021_CANDIDATE_A_P001",
-  "passed": true,
-  "flags": [],
+  "passed": false,
+  "flags": [
+    "V4_metadata_unquoted"
+  ],
   "evidence": {
-    "pipeline_version": "machine-verify-1.2",
+    "pipeline_version": "machine-verify-1.3",
     "pages": [
       2
     ],
@@ -15,23 +17,22 @@
     "V2_number_inventory": "pass",
     "V3_document_integrity": "pass",
     "V5_boundary": "pass",
-    "V4_metadata_evidence": "pass",
+    "V4_metadata_evidence": "fail",
     "V4_detail": {
       "metadata": {
         "published_date": {
           "status": "quoted",
-          "quote": "30th December, 2021",
-          "page": 2
+          "quote": "DECEMBER 30, 2021",
+          "page": 1
         },
         "effective_from": {
           "status": "quoted",
-          "quote": "30th December, 2021",
-          "page": 2
+          "quote": "DECEMBER 30, 2021",
+          "page": 1
         },
         "gazette_id": {
-          "status": "quoted",
-          "quote": "7647 GI/2021",
-          "page": 1
+          "status": "not_stated",
+          "value_checked": "7647 GI/2021"
         }
       },
       "amendment_chain_clean": true,

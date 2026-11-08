@@ -423,7 +423,7 @@
     "citation": "Consumer Protection (General) Rules, 2020, provision 5",
     "hierarchy_type": "clause",
     "parent_provision_id": null,
-    "original_text": "5. Manner of issuing invoice or bill or cash memo or receipt for goods sold or services rendered.– (1) Every\ninvoice, bill, cash memo or receipt for goods sold or services rendered, issued by a seller shall have the following\nminimum particulars, namely:-\nThe name and address of the seller;\na consecutive serial number not exceeding sixteen characters, in one or multiple series,\ncontaining letters or numerals or special characters (hyphen or dash, and slash, symbolised\nas “-” and “/” respectively) and any combination thereof, unique for a financial year;\nthe date of its issue;\nthe name of the consumer;\nthe description of goods or services;\nthe quantity, in case of goods;\nthe shipping address, where applicable;\nthe taxable value and discounts;\nthe rate of tax;\nthe signature of the seller or his authorised representative;\nthe customer care number or e-mail ID, where available, and\nthe total price in single figure, along with the breakup price showing all the compulsory\nand voluntary charges, such as delivery charges, postage and handling charges, conveyance\ncharges and the applicable tax:\nProvided that where such invoice, bill, cash memo or receipt is issued by a seller in electronic form,\nthe signature of the seller is not required.\n(2)   The serial number on the invoice, bill, cash memo or receipt to be issued by a seller shall not be altered,\nremoved, replaced, or erased under any circumstances.\nAMIT MEHTA, Jt. Secy.\nKUMAR VERMA\nMANOJ KUMAR VERMA\n20:50:14 +05'30'",
+    "original_text": "5. Manner of issuing invoice or bill or cash memo or receipt for goods sold or services rendered.– (1) Every\ninvoice, bill, cash memo or receipt for goods sold or services rendered, issued by a seller shall have the following\nminimum particulars, namely:-\nThe name and address of the seller;\na consecutive serial number not exceeding sixteen characters, in one or multiple series,\ncontaining letters or numerals or special characters (hyphen or dash, and slash, symbolised\nas “-” and “/” respectively) and any combination thereof, unique for a financial year;\nthe date of its issue;\nthe name of the consumer;\nthe description of goods or services;\nthe quantity, in case of goods;\nthe shipping address, where applicable;\nthe taxable value and discounts;\nthe rate of tax;\nthe signature of the seller or his authorised representative;\nthe customer care number or e-mail ID, where available, and\nthe total price in single figure, along with the breakup price showing all the compulsory\nand voluntary charges, such as delivery charges, postage and handling charges, conveyance\ncharges and the applicable tax:\nProvided that where such invoice, bill, cash memo or receipt is issued by a seller in electronic form,\nthe signature of the seller is not required.\n(2)   The serial number on the invoice, bill, cash memo or receipt to be issued by a seller shall not be altered,\nremoved, replaced, or erased under any circumstances.",
     "search_text": "",
     "provisos": [],
     "exceptions": [],
@@ -434,7 +434,23 @@
     "page_start": 18,
     "page_end": 18,
     "reviewed_by": null,
-    "reviewed_at": null
+    "reviewed_at": null,
+    "boundary_adjustment": {
+      "method": "boundary-fix-1.0",
+      "removed_text": "AMIT MEHTA, Jt. Secy.\nKUMAR VERMA\nMANOJ KUMAR VERMA\n20:50:14 +05'30'",
+      "markers": [
+        "signatory_designation",
+        "signatory_name_line"
+      ],
+      "original_sha256": "9a301c681a36aa37d307af377be21bde28ea41528aa7e40c16180d347951eb1d",
+      "applied_at": "2026-11-08T11:32:58.102963+00:00"
+    },
+    "review_status": "unverified",
+    "verified_by": null,
+    "verified_at": null,
+    "verification_evidence": {},
+    "verification_method_count": 0,
+    "review_note": "boundary adjusted at ingestion; must re-pass machine verification"
   },
   {
     "provision_id": "CC_RULES_2022_AMENDMENT_P001",
@@ -537,7 +553,7 @@
     "citation": "THE CONSUMER PROTECTION ACT, 2019, provision 2",
     "hierarchy_type": "clause",
     "parent_provision_id": null,
-    "original_text": "2. In this Act, unless the context otherwise requires,—\n(1) \"advertisement\" means any audio or visual publicity, representation,\nendorsement or pronouncement made by means of light, sound, smoke, gas, print,\nelectronic media, internet or website and includes any notice, circular, label, wrapper,\ninvoice or such other documents;\n(2) \"appropriate laboratory\" means a laboratory or an organisation—\n(i) recognised by the Central Government; or\n(ii) recognised by a State Government, subject to such guidelines as may\nbe issued by the Central Government in this behalf; or\n(iii) established by or under any law for the time being in force, which is\nmaintained, financed or aided by the Central Government or a State Government\nfor carrying out analysis or test of any goods with a view to determining whether\nsuch goods suffer from any defect;\n(3) \"branch office\" means—\n(i) any office or place of work described as a branch by the establishment; or\n(ii) any establishment carrying on either the same or substantially the\nsame activity carried on by the head office of the establishment;\n(4) \"Central Authority\" means the Central Consumer Protection Authority\nestablished under section 10;\n(5) \"complainant\" means—\n(i) a consumer; or\n(ii) any voluntary consumer association registered under any law for the\ntime being in force; or\n(iii) the Central Government or any State Government; or\n(iv) the Central Authority; or\n(v) one or more consumers, where there are numerous consumers having\nthe same interest; or\n(vi) in case of death of a consumer, his legal heir or legal representative; or\n(vii) in case of a consumer being a minor, his parent or legal guardian;\n(6) \"complaint\" means any allegation in writing, made by a complainant for\nobtaining any relief provided by or under this Act, that—\n(i) an unfair contract or unfair trade practice or a restrictive trade practice\nhas been adopted by any trader or service provider;\n(ii) the goods bought by him or agreed to be bought by him suffer from\none or more defects;\n(iii) the services hired or availed of or agreed to be hired or availed of by\nhim suffer from any deficiency;\n(iv) a trader or a service provider, as the case may be, has charged for the\ngoods or for the services mentioned in the complaint, a price in excess of the\nprice—\n(a) fixed by or under any law for the time being in force; or\nDefinitions.\n\n(b) displayed on the goods or any package containing such goods; or\n(c) displayed on the price list exhibited by him by or under any law\nfor the time being in force; or\n(d) agreed between the parties;\n(v) the goods, which are hazardous to life and safety when used, are being\noffered for sale to the public—\n(a) in contravention of standards relating to safety of such goods\nas required to be complied with, by or under any law for the time being in\nforce;\n(b) where the trader knows that the goods so offered are unsafe to\nthe public;\n(vi) the services which are hazardous or likely to be hazardous to life and\nsafety of the public when used, are being offered by a person who provides any\nservice and who knows it to be injurious to life and safety;\n(vii) a claim for product liability action lies against the product\nmanufacturer, product seller or product service provider, as the case may be;\n(7) \"consumer\" means any person who—\n(i) buys any goods for a consideration which has been paid or promised\nor partly paid and partly promised, or under any system of deferred payment\nand includes any user of such goods other than the person who buys such\ngoods for consideration paid or promised or partly paid or partly promised, or\nunder any system of deferred payment, when such use is made with the approval\nof such person, but does not include a person who obtains such goods for\nresale or for any commercial purpose; or\n(ii) hires or avails of any service for a consideration which has been paid\nor promised or partly paid and partly promised, or under any system of deferred\npayment and includes any beneficiary of such service other than the person\nwho hires or avails of the services for consideration paid or promised, or partly\npaid and partly promised, or under any system of deferred payment, when such\nservices are availed of with the approval of the first mentioned person, but does\nnot include a person who avails of such service for any commercial purpose.\nExplanation.—For the purposes of this clause,—\n(a) the expression \"commercial purpose\" does not include use by a\nperson of goods bought and used by him exclusively for the purpose of\nearning his livelihood, by means of self-employment;\n(b) the expressions \"buys any goods\" and \"hires or avails any\nservices\" includes offline or online transactions through electronic means\nor by teleshopping or direct selling or multi-level marketing;\n(8) \"consumer dispute\" means a dispute where the person against whom a\ncomplaint has been made, denies or disputes the allegations contained in the complaint;\n(9) \"consumer rights\" includes,—\n(i) the right to be protected against the marketing of goods, products or\nservices which are hazardous to life and property;\n(ii) the right to be informed about the quality, quantity, potency, purity,\nstandard and price of goods, products or services, as the case may be, so as to\nprotect the consumer against unfair trade practices;\n\n(iii) the right to be assured, wherever possible, access to a variety of\ngoods, products or services at competitive prices;\n(iv) the right to be heard and to be assured that consumer's interests will\nreceive due consideration at appropriate fora;\n(v) the right to seek redressal against unfair trade practice or restrictive\ntrade practices or unscrupulous exploitation of consumers; and\n(vi) the right to consumer awareness;\n(10) \"defect\" means any fault, imperfection or shortcoming in the quality,\nquantity, potency, purity or standard which is required to be maintained by or under\nany law for the time being in force or under any contract, express or implied or as is\nclaimed by the trader in any manner whatsoever in relation to any goods or product\nand the expression \"defective\" shall be construed accordingly;\n(11) \"deficiency\" means any fault, imperfection, shortcoming or inadequacy in\nthe quality, nature and manner of performance which is required to be maintained by or\nunder any law for the time being in force or has been undertaken to be performed by a\nperson in pursuance of a contract or otherwise in relation to any service and includes—\n(i) any act of negligence or omission or commission by such person which\ncauses loss or injury to the consumer; and\n(ii) deliberate withholding of relevant information by such person to the\nconsumer;\n(12) \"design\", in relation to a product, means the intended or known physical\nand material characteristics of such product and includes any intended or known\nformulation or content of such product and the usual result of the intended\nmanufacturing or other process used to produce such product;\n(13) \"direct selling\" means marketing, distribution and sale of goods or provision\nof services through a network of sellers, other than through a permanent retail location;\n(14) \"Director-General\" means the Director-General appointed under\nsub-section (2) of section 15;\n(15) \"District Commission\" means a District Consumer Disputes Redressal\nCommission established under sub-section (1) of section 28;\n(16) \"e-commerce\" means buying or selling of goods or services including\ndigital products over digital or electronic network;\n(17) \"electronic service provider\" means a person who provides technologies\nor processes to enable a product seller to engage in advertising or selling goods or\nservices to a consumer and includes any online market place or online auction sites;\n(18) \"endorsement\", in relation to an advertisement, means—\n(i) any message, verbal statement, demonstration; or\n(ii) depiction of the name, signature, likeness or other identifiable personal\ncharacteristics of an individual; or\n(iii) depiction of the name or seal of any institution or organisation,\nwhich makes the consumer to believe that it reflects the opinion, finding or experience of the\nperson making such endorsement;\n(19) \"establishment\" includes an advertising agency, commission agent,\nmanufacturing, trading or any other commercial agency which carries on any business,\ntrade or profession or any work in connection with or incidental or ancillary to any\n\ncommercial activity, trade or profession, or such other class or classes of persons\nincluding public utility entities in the manner as may be prescribed;\n(20) \"express warranty\" means any material statement, affirmation of fact, promise\nor description relating to a product or service warranting that it conforms to such\nmaterial statement, affirmation, promise or description and includes any sample or\nmodel of a product warranting that the whole of such product conforms to such\nsample or model;\n(21) \"goods\" means every kind of movable property and includes \"food\" as\ndefined in clause (j) of sub-section (1) of section 3 of the Food Safety and Standards\nAct, 2006;\n(22) \"harm\", in relation to a product liability, includes—\n(i) damage to any property, other than the product itself;\n(ii) personal injury, illness or death;\n(iii) mental agony or emotional distress attendant to personal injury or\nillness or damage to property; or\n(iv) any loss of consortium or services or other loss resulting from a harm\nreferred to in sub-clause (i) or sub-clause (ii) or sub-clause (iii),\nbut shall not include any harm caused to a product itself or any damage to the property\non account of breach of warranty conditions or any commercial or economic loss,\nincluding any direct, incidental or consequential loss relating thereto;\n(23) \"injury\" means any harm whatever illegally caused to any person, in body,\nmind or property;\n(24) \"manufacturer\" means a person who—\n(i) makes any goods or parts thereof; or\n(ii) assembles any goods or parts thereof made by others; or\n(iii) puts or causes to be put his own mark on any goods made by any\nother person;\n(25) \"mediation\" means the process by which a mediator mediates the consumer\ndisputes;\n(26) \"mediator\" means a mediator referred to in section 75;\n(27) \"member\" includes the President and a member of the National Commission\nor a State Commission or a District Commission, as the case may be;\n(28) \"misleading advertisement\" in relation to any product or service, means an\nadvertisement, which—\n(i) falsely describes such product or service; or\n(ii) gives a false guarantee to, or is likely to mislead the consumers as to\nthe nature, substance, quantity or quality of such product or service; or\n(iii) conveys an express or implied representation which, if made by the\nmanufacturer or seller or service provider thereof, would constitute an unfair\ntrade practice; or\n(iv) deliberately conceals important information;\n(29) \"National Commission\" means the National Consumer Disputes Redressal\nCommission established under sub-section (1) of section 53;\n34 of 2006.\n\n(30) \"notification\" means a notification published in the Official Gazette and the\nterm \"notify\" shall be construed accordingly;\n(31) \"person\" includes—\n(i) an individual;\n(ii) a firm whether registered or not;\n(iii) a Hindu undivided family;\n(iv) a co-operative society;\n(v) an association of persons whether registered under the Societies\nRegistration Act, 1860 or not;\n(vi) any corporation, company or a body of individuals whether\nincorporated or not;\n(vii) any artificial juridical person, not falling within any of the preceding\nsub-clauses;\n(32) \"prescribed\" means prescribed by rules made by the Central Government,\nor, as the case may be, the State Government;\n(33) \"product\" means any article or goods or substance or raw material or any\nextended cycle of such product, which may be in gaseous, liquid, or solid state\npossessing intrinsic value which is capable of delivery either as wholly assembled or\nas a component part and is produced for introduction to trade or commerce, but does\nnot include human tissues, blood, blood products and organs;\n(34) \"product liability\" means the responsibility of a product manufacturer or\nproduct seller, of any product or service, to compensate for any harm caused to a\nconsumer by such defective product manufactured or sold or by deficiency in services\nrelating thereto;\n(35) \"product liability action\" means a complaint filed by a person before a\nDistrict Commission or State Commission or National Commission, as the case may be,\nfor claiming compensation for the harm caused to him;\n(36) \"product manufacturer\" means a person who—\n(i) makes any product or parts thereof; or\n(ii) assembles parts thereof made by others; or\n(iii) puts or causes to be put his own mark on any products made by any\nother person; or\n(iv) makes a product and sells, distributes, leases, installs, prepares,\npackages, labels, markets, repairs, maintains such product or is otherwise involved\nin placing such product for commercial purpose; or\n(v) designs, produces, fabricates, constructs or re-manufactures any\nproduct before its sale; or\n(vi) being a product seller of a product, is also a manufacturer of such\nproduct;\n(37) \"product seller\", in relation to a product, means a person who, in the course\nof business, imports, sells, distributes, leases, installs, prepares, packages, labels,\nmarkets, repairs, maintains, or otherwise is involved in placing such product for\ncommercial purpose and includes—\n(i) a manufacturer who is also a product seller; or\n21 of 1860.\n\n(ii) a service provider,\nbut does not include—\n(a) a seller of immovable property, unless such person is engaged in the\nsale of constructed house or in the construction of homes or flats;\n(b) a provider of professional services in any transaction in which, the\nsale or use of a product is only incidental thereto, but furnishing of opinion, skill\nor services being the essence of such transaction;\n(c) a person who—\n(I) acts only in a financial capacity with respect to the sale of the\nproduct;\n(II) is not a manufacturer, wholesaler, distributor, retailer, direct seller\nor an electronic service provider;\n(III) leases a product, without having a reasonable opportunity to\ninspect and discover defects in the product, under a lease arrangement in\nwhich the selection, possession, maintenance, and operation of the\nproduct are controlled by a person other than the lessor;\n(38) \"product service provider\", in relation to a product, means a person who\nprovides any service in respect of such product;\n(39) \"regulations\" means the regulations made by the National Commission, or\nas the case may be, the Central Authority;\n(40) \"Regulator\" means a body or any authority established under any other\nlaw for the time being in force;\n(41) \"restrictive trade practice\" means a trade practice which tends to bring\nabout manipulation of price or its conditions of delivery or to affect flow of supplies in\nthe market relating to goods or services in such a manner as to impose on the consumers\nunjustified costs or restrictions and shall include—\n(i) delay beyond the period agreed to by a trader in supply of such goods\nor in providing the services which has led or is likely to lead to rise in the price;\n(ii) any trade practice which requires a consumer to buy, hire or avail of\nany goods or, as the case may be, services as condition precedent for buying,\nhiring or availing of other goods or services;\n(42) \"service\" means service of any description which is made available to\npotential users and includes, but not limited to, the provision of facilities in connection\nwith banking, financing, insurance, transport, processing, supply of electrical or other\nenergy, telecom, boarding or lodging or both, housing construction, entertainment,\namusement or the purveying of news or other information, but does not include the\nrendering of any service free of charge or under a contract of personal service;\n(43) \"spurious goods\" means such goods which are falsely claimed to be\ngenuine;\n(44) \"State Commission\" means a State Consumer Disputes Redressal\nCommission established under sub-section (1) of section 42;\n(45) \"trader\", in relation to any goods, means a person who sells or distributes\nany goods for sale and includes the manufacturer thereof, and where such goods are\nsold or distributed in package form, includes the packer thereof;\n(46) \"unfair contract\" means a contract between a manufacturer or trader or\nservice provider on one hand, and a consumer on the other, having such terms which\n\ncause significant change in the rights of such consumer, including the following,\nnamely:—\n(i) requiring manifestly excessive security deposits to be given by a\nconsumer for the performance of contractual obligations; or\n(ii) imposing any penalty on the consumer, for the breach of contract\nthereof which is wholly disproportionate to the loss occurred due to such breach\nto the other party to the contract; or\n(iii) refusing to accept early repayment of debts on payment of applicable\npenalty; or\n(iv) entitling a party to the contract to terminate such contract unilaterally,\nwithout reasonable cause; or\n(v) permitting or has the effect of permitting one party to assign the contract\nto the detriment of the other party who is a consumer, without his consent; or\n(vi) imposing on the consumer any unreasonable charge, obligation or\ncondition which puts such consumer to disadvantage;\n(47) \"unfair trade practice\" means a trade practice which, for the purpose of\npromoting the sale, use or supply of any goods or for the provision of any service,\nadopts any unfair method or unfair or deceptive practice including any of the following\npractices, namely:—\n(i) making any statement, whether orally or in writing or by visible\nrepresentation including by means of electronic record, which—\n(a) falsely represents that the goods are of a particular standard,\nquality, quantity, grade, composition, style or model;\n(b) falsely represents that the services are of a particular standard,\nquality or grade;\n(c) falsely represents any re-built, second-hand, renovated,\nreconditioned or old goods as new goods;\n(d) represents that the goods or services have sponsorship, approval,\nperformance, characteristics, accessories, uses or benefits which such\ngoods or services do not have;\n(e) represents that the seller or the supplier has a sponsorship or\napproval or affiliation which such seller or supplier does not have;\n(f) makes a false or misleading representation concerning the need\nfor, or the usefulness of, any goods or services;\n(g) gives to the public any warranty or guarantee of the performance,\nefficacy or length of life of a product or of any goods that is not based on\nan adequate or proper test thereof:\nProvided that where a defence is raised to the effect that such\nwarranty or guarantee is based on adequate or proper test, the burden of\nproof of such defence shall lie on the person raising such defence;\n(h) makes to the public a representation in a form that purports to\nbe—\n(A) a warranty or guarantee of a product or of any goods or\nservices; or\n(B) a promise to replace, maintain or repair an article or any\npart thereof or to repeat or continue a service until it has achieved a\nspecified result,\n\nif such purported warranty or guarantee or promise is materially misleading or if there\nis no reasonable prospect that such warranty, guarantee or promise will be carried out;\n(i) materially misleads the public concerning the price at which a product or like\nproducts or goods or services, have been or are, ordinarily sold or provided, and, for\nthis purpose, a representation as to price shall be deemed to refer to the price at which\nthe product or goods or services has or have been sold by sellers or provided by\nsuppliers generally in the relevant market unless it is clearly specified to be the price at\nwhich the product has been sold or services have been provided by the person by\nwhom or on whose behalf the representation is made;\n(j) gives false or misleading facts disparaging the goods, services or trade of\nanother person.\nExplanation.—For the purposes of this sub-clause, a statement that is,—\n(A) expressed on an article offered or displayed for sale, or on its wrapper or\ncontainer; or\n(B) expressed on anything attached to, inserted in, or accompanying, an article\noffered or displayed for sale, or on anything on which the article is mounted for\ndisplay or sale; or\n(C) contained in or on anything that is sold, sent, delivered, transmitted or in\nany other manner whatsoever made available to a member of the public,\nshall be deemed to be a statement made to the public by, and only by, the person who had\ncaused the statement to be so expressed, made or contained;\n(ii) permitting the publication of any advertisement, whether in any\nnewspaper or otherwise, including by way of electronic record, for the sale or\nsupply at a bargain price of goods or services that are not intended to be offered\nfor sale or supply at the bargain price, or for a period that is, and in quantities\nthat are, reasonable, having regard to the nature of the market in which the\nbusiness is carried on, the nature and size of business, and the nature of the\nadvertisement.\nExplanation.—For the purpose of this sub-clause, \"bargain price\" means,—\n(A) a price that is stated in any advertisement to be a bargain price,\nby reference to an ordinary price or otherwise; or\n(B) a price that a person who reads, hears or sees the advertisement,\nwould reasonably understand to be a bargain price having regard to the\nprices at which the product advertised or like products are ordinarily sold;\n(iii) permitting—\n(a) the offering of gifts, prizes or other items with the intention of\nnot providing them as offered or creating impression that something is\nbeing given or offered free of charge when it is fully or partly covered by\nthe amount charged, in the transaction as a whole;\n(b) the conduct of any contest, lottery, game of chance or skill, for\nthe purpose of promoting, directly or indirectly, the sale, use or supply of\nany product or any business interest, except such contest, lottery, game\nof chance or skill as may be prescribed;\n(c) withholding from the participants of any scheme offering gifts,\nprizes or other items free of charge on its closure, the information about\nfinal results of the scheme.\n\nExplanation.—For the purpose of this sub-clause, the participants of a scheme shall\nbe deemed to have been informed of the final results of the scheme where such results are\nwithin a reasonable time published, prominently in the same newspaper in which the scheme\nwas originally advertised;\n(iv) permitting the sale or supply of goods intended to be used, or are of\na kind likely to be used by consumers, knowing or having reason to believe that\nthe goods do not comply with the standards prescribed by the competent\nauthority relating to performance, composition, contents, design, constructions,\nfinishing or packaging as are necessary to prevent or reduce the risk of injury to\nthe person using the goods;\n(v) permitting the hoarding or destruction of goods, or refusal to sell the\ngoods or to make them available for sale or to provide any service, if such\nhoarding or destruction or refusal raises or tends to raise or is intended to raise,\nthe cost of those or other similar goods or services;\n(vi) manufacturing of spurious goods or offering such goods for sale or\nadopting deceptive practices in the provision of services;\n(vii) not issuing bill or cash memo or receipt for the goods sold or services\nrendered in such manner as may be prescribed;\n(viii) refusing, after selling goods or rendering services, to take back or\nwithdraw defective goods or to withdraw or discontinue deficient services and\nto refund the consideration thereof, if paid, within the period stipulated in the\nbill or cash memo or receipt or in the absence of such stipulation, within a period\nof thirty days;\n(ix) disclosing to other person any personal information given in\nconfidence by the consumer unless such disclosure is made in accordance with\nthe provisions of any law for the time being in force.\nCHAPTER II\nCONSUMER PROTECTION COUNCILS",
+    "original_text": "2. In this Act, unless the context otherwise requires,—\n(1) \"advertisement\" means any audio or visual publicity, representation,\nendorsement or pronouncement made by means of light, sound, smoke, gas, print,\nelectronic media, internet or website and includes any notice, circular, label, wrapper,\ninvoice or such other documents;\n(2) \"appropriate laboratory\" means a laboratory or an organisation—\n(i) recognised by the Central Government; or\n(ii) recognised by a State Government, subject to such guidelines as may\nbe issued by the Central Government in this behalf; or\n(iii) established by or under any law for the time being in force, which is\nmaintained, financed or aided by the Central Government or a State Government\nfor carrying out analysis or test of any goods with a view to determining whether\nsuch goods suffer from any defect;\n(3) \"branch office\" means—\n(i) any office or place of work described as a branch by the establishment; or\n(ii) any establishment carrying on either the same or substantially the\nsame activity carried on by the head office of the establishment;\n(4) \"Central Authority\" means the Central Consumer Protection Authority\nestablished under section 10;\n(5) \"complainant\" means—\n(i) a consumer; or\n(ii) any voluntary consumer association registered under any law for the\ntime being in force; or\n(iii) the Central Government or any State Government; or\n(iv) the Central Authority; or\n(v) one or more consumers, where there are numerous consumers having\nthe same interest; or\n(vi) in case of death of a consumer, his legal heir or legal representative; or\n(vii) in case of a consumer being a minor, his parent or legal guardian;\n(6) \"complaint\" means any allegation in writing, made by a complainant for\nobtaining any relief provided by or under this Act, that—\n(i) an unfair contract or unfair trade practice or a restrictive trade practice\nhas been adopted by any trader or service provider;\n(ii) the goods bought by him or agreed to be bought by him suffer from\none or more defects;\n(iii) the services hired or availed of or agreed to be hired or availed of by\nhim suffer from any deficiency;\n(iv) a trader or a service provider, as the case may be, has charged for the\ngoods or for the services mentioned in the complaint, a price in excess of the\nprice—\n(a) fixed by or under any law for the time being in force; or\nDefinitions.\n\n(b) displayed on the goods or any package containing such goods; or\n(c) displayed on the price list exhibited by him by or under any law\nfor the time being in force; or\n(d) agreed between the parties;\n(v) the goods, which are hazardous to life and safety when used, are being\noffered for sale to the public—\n(a) in contravention of standards relating to safety of such goods\nas required to be complied with, by or under any law for the time being in\nforce;\n(b) where the trader knows that the goods so offered are unsafe to\nthe public;\n(vi) the services which are hazardous or likely to be hazardous to life and\nsafety of the public when used, are being offered by a person who provides any\nservice and who knows it to be injurious to life and safety;\n(vii) a claim for product liability action lies against the product\nmanufacturer, product seller or product service provider, as the case may be;\n(7) \"consumer\" means any person who—\n(i) buys any goods for a consideration which has been paid or promised\nor partly paid and partly promised, or under any system of deferred payment\nand includes any user of such goods other than the person who buys such\ngoods for consideration paid or promised or partly paid or partly promised, or\nunder any system of deferred payment, when such use is made with the approval\nof such person, but does not include a person who obtains such goods for\nresale or for any commercial purpose; or\n(ii) hires or avails of any service for a consideration which has been paid\nor promised or partly paid and partly promised, or under any system of deferred\npayment and includes any beneficiary of such service other than the person\nwho hires or avails of the services for consideration paid or promised, or partly\npaid and partly promised, or under any system of deferred payment, when such\nservices are availed of with the approval of the first mentioned person, but does\nnot include a person who avails of such service for any commercial purpose.\nExplanation.—For the purposes of this clause,—\n(a) the expression \"commercial purpose\" does not include use by a\nperson of goods bought and used by him exclusively for the purpose of\nearning his livelihood, by means of self-employment;\n(b) the expressions \"buys any goods\" and \"hires or avails any\nservices\" includes offline or online transactions through electronic means\nor by teleshopping or direct selling or multi-level marketing;\n(8) \"consumer dispute\" means a dispute where the person against whom a\ncomplaint has been made, denies or disputes the allegations contained in the complaint;\n(9) \"consumer rights\" includes,—\n(i) the right to be protected against the marketing of goods, products or\nservices which are hazardous to life and property;\n(ii) the right to be informed about the quality, quantity, potency, purity,\nstandard and price of goods, products or services, as the case may be, so as to\nprotect the consumer against unfair trade practices;\n\n(iii) the right to be assured, wherever possible, access to a variety of\ngoods, products or services at competitive prices;\n(iv) the right to be heard and to be assured that consumer's interests will\nreceive due consideration at appropriate fora;\n(v) the right to seek redressal against unfair trade practice or restrictive\ntrade practices or unscrupulous exploitation of consumers; and\n(vi) the right to consumer awareness;\n(10) \"defect\" means any fault, imperfection or shortcoming in the quality,\nquantity, potency, purity or standard which is required to be maintained by or under\nany law for the time being in force or under any contract, express or implied or as is\nclaimed by the trader in any manner whatsoever in relation to any goods or product\nand the expression \"defective\" shall be construed accordingly;\n(11) \"deficiency\" means any fault, imperfection, shortcoming or inadequacy in\nthe quality, nature and manner of performance which is required to be maintained by or\nunder any law for the time being in force or has been undertaken to be performed by a\nperson in pursuance of a contract or otherwise in relation to any service and includes—\n(i) any act of negligence or omission or commission by such person which\ncauses loss or injury to the consumer; and\n(ii) deliberate withholding of relevant information by such person to the\nconsumer;\n(12) \"design\", in relation to a product, means the intended or known physical\nand material characteristics of such product and includes any intended or known\nformulation or content of such product and the usual result of the intended\nmanufacturing or other process used to produce such product;\n(13) \"direct selling\" means marketing, distribution and sale of goods or provision\nof services through a network of sellers, other than through a permanent retail location;\n(14) \"Director-General\" means the Director-General appointed under\nsub-section (2) of section 15;\n(15) \"District Commission\" means a District Consumer Disputes Redressal\nCommission established under sub-section (1) of section 28;\n(16) \"e-commerce\" means buying or selling of goods or services including\ndigital products over digital or electronic network;\n(17) \"electronic service provider\" means a person who provides technologies\nor processes to enable a product seller to engage in advertising or selling goods or\nservices to a consumer and includes any online market place or online auction sites;\n(18) \"endorsement\", in relation to an advertisement, means—\n(i) any message, verbal statement, demonstration; or\n(ii) depiction of the name, signature, likeness or other identifiable personal\ncharacteristics of an individual; or\n(iii) depiction of the name or seal of any institution or organisation,\nwhich makes the consumer to believe that it reflects the opinion, finding or experience of the\nperson making such endorsement;\n(19) \"establishment\" includes an advertising agency, commission agent,\nmanufacturing, trading or any other commercial agency which carries on any business,\ntrade or profession or any work in connection with or incidental or ancillary to any\n\ncommercial activity, trade or profession, or such other class or classes of persons\nincluding public utility entities in the manner as may be prescribed;\n(20) \"express warranty\" means any material statement, affirmation of fact, promise\nor description relating to a product or service warranting that it conforms to such\nmaterial statement, affirmation, promise or description and includes any sample or\nmodel of a product warranting that the whole of such product conforms to such\nsample or model;\n(21) \"goods\" means every kind of movable property and includes \"food\" as\ndefined in clause (j) of sub-section (1) of section 3 of the Food Safety and Standards\nAct, 2006;\n(22) \"harm\", in relation to a product liability, includes—\n(i) damage to any property, other than the product itself;\n(ii) personal injury, illness or death;\n(iii) mental agony or emotional distress attendant to personal injury or\nillness or damage to property; or\n(iv) any loss of consortium or services or other loss resulting from a harm\nreferred to in sub-clause (i) or sub-clause (ii) or sub-clause (iii),\nbut shall not include any harm caused to a product itself or any damage to the property\non account of breach of warranty conditions or any commercial or economic loss,\nincluding any direct, incidental or consequential loss relating thereto;\n(23) \"injury\" means any harm whatever illegally caused to any person, in body,\nmind or property;\n(24) \"manufacturer\" means a person who—\n(i) makes any goods or parts thereof; or\n(ii) assembles any goods or parts thereof made by others; or\n(iii) puts or causes to be put his own mark on any goods made by any\nother person;\n(25) \"mediation\" means the process by which a mediator mediates the consumer\ndisputes;\n(26) \"mediator\" means a mediator referred to in section 75;\n(27) \"member\" includes the President and a member of the National Commission\nor a State Commission or a District Commission, as the case may be;\n(28) \"misleading advertisement\" in relation to any product or service, means an\nadvertisement, which—\n(i) falsely describes such product or service; or\n(ii) gives a false guarantee to, or is likely to mislead the consumers as to\nthe nature, substance, quantity or quality of such product or service; or\n(iii) conveys an express or implied representation which, if made by the\nmanufacturer or seller or service provider thereof, would constitute an unfair\ntrade practice; or\n(iv) deliberately conceals important information;\n(29) \"National Commission\" means the National Consumer Disputes Redressal\nCommission established under sub-section (1) of section 53;\n34 of 2006.\n\n(30) \"notification\" means a notification published in the Official Gazette and the\nterm \"notify\" shall be construed accordingly;\n(31) \"person\" includes—\n(i) an individual;\n(ii) a firm whether registered or not;\n(iii) a Hindu undivided family;\n(iv) a co-operative society;\n(v) an association of persons whether registered under the Societies\nRegistration Act, 1860 or not;\n(vi) any corporation, company or a body of individuals whether\nincorporated or not;\n(vii) any artificial juridical person, not falling within any of the preceding\nsub-clauses;\n(32) \"prescribed\" means prescribed by rules made by the Central Government,\nor, as the case may be, the State Government;\n(33) \"product\" means any article or goods or substance or raw material or any\nextended cycle of such product, which may be in gaseous, liquid, or solid state\npossessing intrinsic value which is capable of delivery either as wholly assembled or\nas a component part and is produced for introduction to trade or commerce, but does\nnot include human tissues, blood, blood products and organs;\n(34) \"product liability\" means the responsibility of a product manufacturer or\nproduct seller, of any product or service, to compensate for any harm caused to a\nconsumer by such defective product manufactured or sold or by deficiency in services\nrelating thereto;\n(35) \"product liability action\" means a complaint filed by a person before a\nDistrict Commission or State Commission or National Commission, as the case may be,\nfor claiming compensation for the harm caused to him;\n(36) \"product manufacturer\" means a person who—\n(i) makes any product or parts thereof; or\n(ii) assembles parts thereof made by others; or\n(iii) puts or causes to be put his own mark on any products made by any\nother person; or\n(iv) makes a product and sells, distributes, leases, installs, prepares,\npackages, labels, markets, repairs, maintains such product or is otherwise involved\nin placing such product for commercial purpose; or\n(v) designs, produces, fabricates, constructs or re-manufactures any\nproduct before its sale; or\n(vi) being a product seller of a product, is also a manufacturer of such\nproduct;\n(37) \"product seller\", in relation to a product, means a person who, in the course\nof business, imports, sells, distributes, leases, installs, prepares, packages, labels,\nmarkets, repairs, maintains, or otherwise is involved in placing such product for\ncommercial purpose and includes—\n(i) a manufacturer who is also a product seller; or\n21 of 1860.\n\n(ii) a service provider,\nbut does not include—\n(a) a seller of immovable property, unless such person is engaged in the\nsale of constructed house or in the construction of homes or flats;\n(b) a provider of professional services in any transaction in which, the\nsale or use of a product is only incidental thereto, but furnishing of opinion, skill\nor services being the essence of such transaction;\n(c) a person who—\n(I) acts only in a financial capacity with respect to the sale of the\nproduct;\n(II) is not a manufacturer, wholesaler, distributor, retailer, direct seller\nor an electronic service provider;\n(III) leases a product, without having a reasonable opportunity to\ninspect and discover defects in the product, under a lease arrangement in\nwhich the selection, possession, maintenance, and operation of the\nproduct are controlled by a person other than the lessor;\n(38) \"product service provider\", in relation to a product, means a person who\nprovides any service in respect of such product;\n(39) \"regulations\" means the regulations made by the National Commission, or\nas the case may be, the Central Authority;\n(40) \"Regulator\" means a body or any authority established under any other\nlaw for the time being in force;\n(41) \"restrictive trade practice\" means a trade practice which tends to bring\nabout manipulation of price or its conditions of delivery or to affect flow of supplies in\nthe market relating to goods or services in such a manner as to impose on the consumers\nunjustified costs or restrictions and shall include—\n(i) delay beyond the period agreed to by a trader in supply of such goods\nor in providing the services which has led or is likely to lead to rise in the price;\n(ii) any trade practice which requires a consumer to buy, hire or avail of\nany goods or, as the case may be, services as condition precedent for buying,\nhiring or availing of other goods or services;\n(42) \"service\" means service of any description which is made available to\npotential users and includes, but not limited to, the provision of facilities in connection\nwith banking, financing, insurance, transport, processing, supply of electrical or other\nenergy, telecom, boarding or lodging or both, housing construction, entertainment,\namusement or the purveying of news or other information, but does not include the\nrendering of any service free of charge or under a contract of personal service;\n(43) \"spurious goods\" means such goods which are falsely claimed to be\ngenuine;\n(44) \"State Commission\" means a State Consumer Disputes Redressal\nCommission established under sub-section (1) of section 42;\n(45) \"trader\", in relation to any goods, means a person who sells or distributes\nany goods for sale and includes the manufacturer thereof, and where such goods are\nsold or distributed in package form, includes the packer thereof;\n(46) \"unfair contract\" means a contract between a manufacturer or trader or\nservice provider on one hand, and a consumer on the other, having such terms which\n\ncause significant change in the rights of such consumer, including the following,\nnamely:—\n(i) requiring manifestly excessive security deposits to be given by a\nconsumer for the performance of contractual obligations; or\n(ii) imposing any penalty on the consumer, for the breach of contract\nthereof which is wholly disproportionate to the loss occurred due to such breach\nto the other party to the contract; or\n(iii) refusing to accept early repayment of debts on payment of applicable\npenalty; or\n(iv) entitling a party to the contract to terminate such contract unilaterally,\nwithout reasonable cause; or\n(v) permitting or has the effect of permitting one party to assign the contract\nto the detriment of the other party who is a consumer, without his consent; or\n(vi) imposing on the consumer any unreasonable charge, obligation or\ncondition which puts such consumer to disadvantage;\n(47) \"unfair trade practice\" means a trade practice which, for the purpose of\npromoting the sale, use or supply of any goods or for the provision of any service,\nadopts any unfair method or unfair or deceptive practice including any of the following\npractices, namely:—\n(i) making any statement, whether orally or in writing or by visible\nrepresentation including by means of electronic record, which—\n(a) falsely represents that the goods are of a particular standard,\nquality, quantity, grade, composition, style or model;\n(b) falsely represents that the services are of a particular standard,\nquality or grade;\n(c) falsely represents any re-built, second-hand, renovated,\nreconditioned or old goods as new goods;\n(d) represents that the goods or services have sponsorship, approval,\nperformance, characteristics, accessories, uses or benefits which such\ngoods or services do not have;\n(e) represents that the seller or the supplier has a sponsorship or\napproval or affiliation which such seller or supplier does not have;\n(f) makes a false or misleading representation concerning the need\nfor, or the usefulness of, any goods or services;\n(g) gives to the public any warranty or guarantee of the performance,\nefficacy or length of life of a product or of any goods that is not based on\nan adequate or proper test thereof:\nProvided that where a defence is raised to the effect that such\nwarranty or guarantee is based on adequate or proper test, the burden of\nproof of such defence shall lie on the person raising such defence;\n(h) makes to the public a representation in a form that purports to\nbe—\n(A) a warranty or guarantee of a product or of any goods or\nservices; or\n(B) a promise to replace, maintain or repair an article or any\npart thereof or to repeat or continue a service until it has achieved a\nspecified result,\n\nif such purported warranty or guarantee or promise is materially misleading or if there\nis no reasonable prospect that such warranty, guarantee or promise will be carried out;\n(i) materially misleads the public concerning the price at which a product or like\nproducts or goods or services, have been or are, ordinarily sold or provided, and, for\nthis purpose, a representation as to price shall be deemed to refer to the price at which\nthe product or goods or services has or have been sold by sellers or provided by\nsuppliers generally in the relevant market unless it is clearly specified to be the price at\nwhich the product has been sold or services have been provided by the person by\nwhom or on whose behalf the representation is made;\n(j) gives false or misleading facts disparaging the goods, services or trade of\nanother person.\nExplanation.—For the purposes of this sub-clause, a statement that is,—\n(A) expressed on an article offered or displayed for sale, or on its wrapper or\ncontainer; or\n(B) expressed on anything attached to, inserted in, or accompanying, an article\noffered or displayed for sale, or on anything on which the article is mounted for\ndisplay or sale; or\n(C) contained in or on anything that is sold, sent, delivered, transmitted or in\nany other manner whatsoever made available to a member of the public,\nshall be deemed to be a statement made to the public by, and only by, the person who had\ncaused the statement to be so expressed, made or contained;\n(ii) permitting the publication of any advertisement, whether in any\nnewspaper or otherwise, including by way of electronic record, for the sale or\nsupply at a bargain price of goods or services that are not intended to be offered\nfor sale or supply at the bargain price, or for a period that is, and in quantities\nthat are, reasonable, having regard to the nature of the market in which the\nbusiness is carried on, the nature and size of business, and the nature of the\nadvertisement.\nExplanation.—For the purpose of this sub-clause, \"bargain price\" means,—\n(A) a price that is stated in any advertisement to be a bargain price,\nby reference to an ordinary price or otherwise; or\n(B) a price that a person who reads, hears or sees the advertisement,\nwould reasonably understand to be a bargain price having regard to the\nprices at which the product advertised or like products are ordinarily sold;\n(iii) permitting—\n(a) the offering of gifts, prizes or other items with the intention of\nnot providing them as offered or creating impression that something is\nbeing given or offered free of charge when it is fully or partly covered by\nthe amount charged, in the transaction as a whole;\n(b) the conduct of any contest, lottery, game of chance or skill, for\nthe purpose of promoting, directly or indirectly, the sale, use or supply of\nany product or any business interest, except such contest, lottery, game\nof chance or skill as may be prescribed;\n(c) withholding from the participants of any scheme offering gifts,\nprizes or other items free of charge on its closure, the information about\nfinal results of the scheme.\n\nExplanation.—For the purpose of this sub-clause, the participants of a scheme shall\nbe deemed to have been informed of the final results of the scheme where such results are\nwithin a reasonable time published, prominently in the same newspaper in which the scheme\nwas originally advertised;\n(iv) permitting the sale or supply of goods intended to be used, or are of\na kind likely to be used by consumers, knowing or having reason to believe that\nthe goods do not comply with the standards prescribed by the competent\nauthority relating to performance, composition, contents, design, constructions,\nfinishing or packaging as are necessary to prevent or reduce the risk of injury to\nthe person using the goods;\n(v) permitting the hoarding or destruction of goods, or refusal to sell the\ngoods or to make them available for sale or to provide any service, if such\nhoarding or destruction or refusal raises or tends to raise or is intended to raise,\nthe cost of those or other similar goods or services;\n(vi) manufacturing of spurious goods or offering such goods for sale or\nadopting deceptive practices in the provision of services;\n(vii) not issuing bill or cash memo or receipt for the goods sold or services\nrendered in such manner as may be prescribed;\n(viii) refusing, after selling goods or rendering services, to take back or\nwithdraw defective goods or to withdraw or discontinue deficient services and\nto refund the consideration thereof, if paid, within the period stipulated in the\nbill or cash memo or receipt or in the absence of such stipulation, within a period\nof thirty days;\n(ix) disclosing to other person any personal information given in\nconfidence by the consumer unless such disclosure is made in accordance with\nthe provisions of any law for the time being in force.",
     "search_text": "",
     "provisos": [],
     "exceptions": [],
@@ -548,7 +564,22 @@
     "page_start": 2,
     "page_end": 10,
     "reviewed_by": null,
-    "reviewed_at": null
+    "reviewed_at": null,
+    "boundary_adjustment": {
+      "method": "boundary-fix-1.0",
+      "removed_text": "CHAPTER II\nCONSUMER PROTECTION COUNCILS",
+      "markers": [
+        "trailing_next_heading"
+      ],
+      "original_sha256": "9e522475ab739079bd5b1fbf37c656b3ced6f9ff7023400fa4565842156bc9f1",
+      "applied_at": "2026-11-08T11:32:58.114532+00:00"
+    },
+    "review_status": "unverified",
+    "verified_by": null,
+    "verified_at": null,
+    "verification_evidence": {},
+    "verification_method_count": 0,
+    "review_note": "boundary adjusted at ingestion; must re-pass machine verification"
   },
   {
     "provision_id": "CPA_2019_P003",
@@ -670,7 +701,7 @@
     "citation": "THE CONSUMER PROTECTION ACT, 2019, provision 9",
     "hierarchy_type": "clause",
     "parent_provision_id": null,
-    "original_text": "9. The objects of every District Council shall be to render advice on promotion and\nprotection of consumer rights under this Act within the district.\nCHAPTER III\nCENTRAL CONSUMER PROTECTION AUTHORITY",
+    "original_text": "9. The objects of every District Council shall be to render advice on promotion and\nprotection of consumer rights under this Act within the district.",
     "search_text": "",
     "provisos": [],
     "exceptions": [],
@@ -681,7 +712,22 @@
     "page_start": 11,
     "page_end": 11,
     "reviewed_by": null,
-    "reviewed_at": null
+    "reviewed_at": null,
+    "boundary_adjustment": {
+      "method": "boundary-fix-1.0",
+      "removed_text": "CHAPTER III\nCENTRAL CONSUMER PROTECTION AUTHORITY",
+      "markers": [
+        "trailing_next_heading"
+      ],
+      "original_sha256": "ccdb3b9b0b2655f1563155d239f30e53472fd243fa647306013e97032dbeaf31",
+      "applied_at": "2026-11-08T11:32:58.115557+00:00"
+    },
+    "review_status": "unverified",
+    "verified_by": null,
+    "verified_at": null,
+    "verification_evidence": {},
+    "verification_method_count": 0,
+    "review_note": "boundary adjusted at ingestion; must re-pass machine verification"
   },
   {
     "provision_id": "CPA_2019_P010",
@@ -1012,7 +1058,7 @@
     "citation": "THE CONSUMER PROTECTION ACT, 2019, provision 27",
     "hierarchy_type": "clause",
     "parent_provision_id": null,
-    "original_text": "27. (1) The Central Authority shall prepare once in every year, in such form, manner\nand at such time as may be prescribed, an annual report giving full account of its activities\nduring the previous year and such other reports and returns, as may be directed, and copies\nof such report and returns shall be forwarded to the Central Government.\n(2) A copy of the annual report received under sub-section (1) shall be laid, as soon as\nmay be after it is received, before each House of Parliament.\nCHAPTER IV\nCONSUMER DISPUTES REDRESSAL COMMISSION",
+    "original_text": "27. (1) The Central Authority shall prepare once in every year, in such form, manner\nand at such time as may be prescribed, an annual report giving full account of its activities\nduring the previous year and such other reports and returns, as may be directed, and copies\nof such report and returns shall be forwarded to the Central Government.\n(2) A copy of the annual report received under sub-section (1) shall be laid, as soon as\nmay be after it is received, before each House of Parliament.",
     "search_text": "",
     "provisos": [],
     "exceptions": [],
@@ -1023,7 +1069,22 @@
     "page_start": 16,
     "page_end": 16,
     "reviewed_by": null,
-    "reviewed_at": null
+    "reviewed_at": null,
+    "boundary_adjustment": {
+      "method": "boundary-fix-1.0",
+      "removed_text": "CHAPTER IV\nCONSUMER DISPUTES REDRESSAL COMMISSION",
+      "markers": [
+        "trailing_next_heading"
+      ],
+      "original_sha256": "7d097600ce9193f4017357b236b5b7425b6424e91d2b157d60256575aa69b7fc",
+      "applied_at": "2026-11-08T11:32:58.118557+00:00"
+    },
+    "review_status": "unverified",
+    "verified_by": null,
+    "verified_at": null,
+    "verification_evidence": {},
+    "verification_method_count": 0,
+    "review_note": "boundary adjusted at ingestion; must re-pass machine verification"
   },
   {
     "provision_id": "CPA_2019_P028",
@@ -1886,7 +1947,7 @@
     "citation": "THE CONSUMER PROTECTION ACT, 2019, provision 73",
     "hierarchy_type": "clause",
     "parent_provision_id": null,
-    "original_text": "73. (1) Notwithstanding anything contained in the Code of Criminal Procedure, 1973,\nwhere an order is passed under sub-section (1) of section 72, an appeal shall lie, both on\nfacts and on law from—\n(a) the order made by the District Commission to the State Commission;\n(b) the order made by the State Commission to the National Commission; and\n(c) the order made by the National Commission to the Supreme Court.\n (2) Except as provided in sub-section (1), no appeal shall lie before any court, from\nany order of a District Commission or a State Commission or the National Commission, as the\ncase may be.\n(3) Every appeal under this section shall be preferred within a period of thirty days\nfrom the date of order of a District Commission or a State Commission or the National\nCommission, as the case may be:\nEnforcement\nof orders of\nDistrict\nCommission,\nState\nCommission\nand National\nCommission.\nPenalty for\nnon-\ncompliance of\norder.\nAppeal against\norder passed\nunder section 72.\n5 of 1908.\n2 of 1974.\n2 of 1974.\n\nProvided that the State Commission or the National Commission or the Supreme Court,\nas the case may be, may entertain an appeal after the expiry of the said period of thirty days,\nif it is satisfied that the appellant had sufficient cause for not preferring the appeal within the\nsaid period of thirty days.\nCHAPTER V\nMEDIATION",
+    "original_text": "73. (1) Notwithstanding anything contained in the Code of Criminal Procedure, 1973,\nwhere an order is passed under sub-section (1) of section 72, an appeal shall lie, both on\nfacts and on law from—\n(a) the order made by the District Commission to the State Commission;\n(b) the order made by the State Commission to the National Commission; and\n(c) the order made by the National Commission to the Supreme Court.\n (2) Except as provided in sub-section (1), no appeal shall lie before any court, from\nany order of a District Commission or a State Commission or the National Commission, as the\ncase may be.\n(3) Every appeal under this section shall be preferred within a period of thirty days\nfrom the date of order of a District Commission or a State Commission or the National\nCommission, as the case may be:\nEnforcement\nof orders of\nDistrict\nCommission,\nState\nCommission\nand National\nCommission.\nPenalty for\nnon-\ncompliance of\norder.\nAppeal against\norder passed\nunder section 72.\n5 of 1908.\n2 of 1974.\n2 of 1974.\n\nProvided that the State Commission or the National Commission or the Supreme Court,\nas the case may be, may entertain an appeal after the expiry of the said period of thirty days,\nif it is satisfied that the appellant had sufficient cause for not preferring the appeal within the\nsaid period of thirty days.",
     "search_text": "",
     "provisos": [],
     "exceptions": [],
@@ -1897,7 +1958,22 @@
     "page_start": 29,
     "page_end": 30,
     "reviewed_by": null,
-    "reviewed_at": null
+    "reviewed_at": null,
+    "boundary_adjustment": {
+      "method": "boundary-fix-1.0",
+      "removed_text": "CHAPTER V\nMEDIATION",
+      "markers": [
+        "trailing_next_heading"
+      ],
+      "original_sha256": "36fb6346f23a88dfbb82fac9d85bcf488c63a746f66674dea90bf1c4db279465",
+      "applied_at": "2026-11-08T11:32:58.128557+00:00"
+    },
+    "review_status": "unverified",
+    "verified_by": null,
+    "verified_at": null,
+    "verification_evidence": {},
+    "verification_method_count": 0,
+    "review_note": "boundary adjusted at ingestion; must re-pass machine verification"
   },
   {
     "provision_id": "CPA_2019_P074",
@@ -2038,7 +2114,7 @@
     "citation": "THE CONSUMER PROTECTION ACT, 2019, provision 81",
     "hierarchy_type": "clause",
     "parent_provision_id": null,
-    "original_text": "81. (1) The District Commission or the State Commission or the National Commission,\nas the case may be, shall, within seven days of the receipt of the settlement report, pass\nsuitable order recording such settlement of consumer dispute and dispose of the matter\naccordingly.\n(2) Where the consumer dispute is settled only in part, the District Commission or the\nState Commission or the National Commission, as the case may be, shall record settlement of\nthe issues which have been so settled and continue to hear other issues involved in such\nconsumer dispute.\n(3) Where the consumer dispute could not be settled by mediation, the District\nCommission or the State Commission or the National Commission, as the case may be, shall\ncontinue to hear all the issues involved in such consumer dispute.\nCHAPTER VI\nPRODUCT LIABILITY",
+    "original_text": "81. (1) The District Commission or the State Commission or the National Commission,\nas the case may be, shall, within seven days of the receipt of the settlement report, pass\nsuitable order recording such settlement of consumer dispute and dispose of the matter\naccordingly.\n(2) Where the consumer dispute is settled only in part, the District Commission or the\nState Commission or the National Commission, as the case may be, shall record settlement of\nthe issues which have been so settled and continue to hear other issues involved in such\nconsumer dispute.\n(3) Where the consumer dispute could not be settled by mediation, the District\nCommission or the State Commission or the National Commission, as the case may be, shall\ncontinue to hear all the issues involved in such consumer dispute.",
     "search_text": "",
     "provisos": [],
     "exceptions": [],
@@ -2049,7 +2125,22 @@
     "page_start": 31,
     "page_end": 31,
     "reviewed_by": null,
-    "reviewed_at": null
+    "reviewed_at": null,
+    "boundary_adjustment": {
+      "method": "boundary-fix-1.0",
+      "removed_text": "CHAPTER VI\nPRODUCT LIABILITY",
+      "markers": [
+        "trailing_next_heading"
+      ],
+      "original_sha256": "4fb1731ca928fbc71d778bd9a574f47dea12510142fa3f309058afadb2864352",
+      "applied_at": "2026-11-08T11:32:58.130067+00:00"
+    },
+    "review_status": "unverified",
+    "verified_by": null,
+    "verified_at": null,
+    "verification_evidence": {},
+    "verification_method_count": 0,
+    "review_note": "boundary adjusted at ingestion; must re-pass machine verification"
   },
   {
     "provision_id": "CPA_2019_P082",
@@ -2152,7 +2243,7 @@
     "citation": "THE CONSUMER PROTECTION ACT, 2019, provision 87",
     "hierarchy_type": "clause",
     "parent_provision_id": null,
-    "original_text": "87. (1) A product liability action cannot be brought against the product seller if, at the\ntime of harm, the product was misused, altered, or modified.\n(2) In any product liability action based on the failure to provide adequate warnings or\ninstructions, the product manufacturer shall not be liable, if—\n(a) the product was purchased by an employer for use at the workplace and the\nproduct manufacturer had provided warnings or instructions to such employer;\n(b) the product was sold as a component or material to be used in another\nproduct and necessary warnings or instructions were given by the product manufacturer\nto the purchaser of such component or material, but the harm was caused to the\ncomplainant by use of the end product in which such component or material was\nused;\n(c) the product was one which was legally meant to be used or dispensed only\nby or under the supervision of an expert or a class of experts and the product\nmanufacturer had employed reasonable means to give the warnings or instructions for\nusage of such product to such expert or class of experts; or\n(d) the complainant, while using such product, was under the influence of alcohol\nor any prescription drug which had not been prescribed by a medical practitioner.\nLiability of\nproduct\nservice\nprovider.\nLiability of\nproduct sellers.\nExceptions to\nproduct\nliability\naction.\n\n(3) A product manufacturer shall not be liable for failure to instruct or warn about a\ndanger which is obvious or commonly known to the user or consumer of such product or\nwhich, such user or consumer, ought to have known, taking into account the characteristics\nof such product.\nCHAPTER VII\nOFFENCES AND PENALTIES",
+    "original_text": "87. (1) A product liability action cannot be brought against the product seller if, at the\ntime of harm, the product was misused, altered, or modified.\n(2) In any product liability action based on the failure to provide adequate warnings or\ninstructions, the product manufacturer shall not be liable, if—\n(a) the product was purchased by an employer for use at the workplace and the\nproduct manufacturer had provided warnings or instructions to such employer;\n(b) the product was sold as a component or material to be used in another\nproduct and necessary warnings or instructions were given by the product manufacturer\nto the purchaser of such component or material, but the harm was caused to the\ncomplainant by use of the end product in which such component or material was\nused;\n(c) the product was one which was legally meant to be used or dispensed only\nby or under the supervision of an expert or a class of experts and the product\nmanufacturer had employed reasonable means to give the warnings or instructions for\nusage of such product to such expert or class of experts; or\n(d) the complainant, while using such product, was under the influence of alcohol\nor any prescription drug which had not been prescribed by a medical practitioner.\nLiability of\nproduct\nservice\nprovider.\nLiability of\nproduct sellers.\nExceptions to\nproduct\nliability\naction.\n\n(3) A product manufacturer shall not be liable for failure to instruct or warn about a\ndanger which is obvious or commonly known to the user or consumer of such product or\nwhich, such user or consumer, ought to have known, taking into account the characteristics\nof such product.",
     "search_text": "",
     "provisos": [],
     "exceptions": [],
@@ -2163,7 +2254,22 @@
     "page_start": 32,
     "page_end": 33,
     "reviewed_by": null,
-    "reviewed_at": null
+    "reviewed_at": null,
+    "boundary_adjustment": {
+      "method": "boundary-fix-1.0",
+      "removed_text": "CHAPTER VII\nOFFENCES AND PENALTIES",
+      "markers": [
+        "trailing_next_heading"
+      ],
+      "original_sha256": "b72cd23b5734fd3b53f1a6f0ad92d6fca7ac650087ef2914b01b3700f35c84a6",
+      "applied_at": "2026-11-08T11:32:58.132095+00:00"
+    },
+    "review_status": "unverified",
+    "verified_by": null,
+    "verified_at": null,
+    "verification_evidence": {},
+    "verification_method_count": 0,
+    "review_note": "boundary adjusted at ingestion; must re-pass machine verification"
   },
   {
     "provision_id": "CPA_2019_P088",
@@ -2266,7 +2372,7 @@
     "citation": "THE CONSUMER PROTECTION ACT, 2019, provision 93",
     "hierarchy_type": "clause",
     "parent_provision_id": null,
-    "original_text": "93. The Director General or any other officer, exercising powers under section 22, who\nknows that there are no reasonable grounds for so doing, and yet—\n(a) searches, or causes to be searched any premises; or\n(b) seizes any record, register or other document or article,\nshall, for every such offence, be punished with imprisonment for a term which may extend to\none year, or with fine which may extend to ten thousand rupees or with both.\nCHAPTER VIII\nMISCELLANEOUS",
+    "original_text": "93. The Director General or any other officer, exercising powers under section 22, who\nknows that there are no reasonable grounds for so doing, and yet—\n(a) searches, or causes to be searched any premises; or\n(b) seizes any record, register or other document or article,\nshall, for every such offence, be punished with imprisonment for a term which may extend to\none year, or with fine which may extend to ten thousand rupees or with both.",
     "search_text": "",
     "provisos": [],
     "exceptions": [],
@@ -2277,7 +2383,22 @@
     "page_start": 34,
     "page_end": 34,
     "reviewed_by": null,
-    "reviewed_at": null
+    "reviewed_at": null,
+    "boundary_adjustment": {
+      "method": "boundary-fix-1.0",
+      "removed_text": "CHAPTER VIII\nMISCELLANEOUS",
+      "markers": [
+        "trailing_next_heading"
+      ],
+      "original_sha256": "b797d1bacbd620ba711d4f0f7e952b31494323fdac25c7be4ef3909001b32738",
+      "applied_at": "2026-11-08T11:32:58.133095+00:00"
+    },
+    "review_status": "unverified",
+    "verified_by": null,
+    "verified_at": null,
+    "verification_evidence": {},
+    "verification_method_count": 0,
+    "review_note": "boundary adjusted at ingestion; must re-pass machine verification"
   },
   {
     "provision_id": "CPA_2019_P094",
@@ -2569,11 +2690,12 @@
       "V3_document_integrity": "pass",
       "V4_metadata_evidence": "pass",
       "V5_boundary": "pass",
-      "V6_amendment_effect": "pass"
+      "V6_amendment_effect": "pass",
+      "ocr_engine": "tesseract v5.4.0.20240606"
     },
     "verification_method_count": 2,
-    "pipeline_version": "machine-verify-1.2",
-    "verified_at": "2026-11-08T11:15:28.081682+00:00",
+    "pipeline_version": "machine-verify-1.3",
+    "verified_at": "2026-11-08T11:35:38.334629+00:00",
     "review_status": "machine_verified",
     "verified_by": "machine",
     "review_note": null
@@ -2602,11 +2724,12 @@
       "V3_document_integrity": "pass",
       "V4_metadata_evidence": "pass",
       "V5_boundary": "pass",
-      "V6_amendment_effect": "pass"
+      "V6_amendment_effect": "pass",
+      "ocr_engine": "tesseract v5.4.0.20240606"
     },
     "verification_method_count": 2,
-    "pipeline_version": "machine-verify-1.2",
-    "verified_at": "2026-11-08T11:15:28.088668+00:00",
+    "pipeline_version": "machine-verify-1.3",
+    "verified_at": "2026-11-08T11:35:38.340642+00:00",
     "review_status": "machine_verified",
     "verified_by": "machine",
     "review_note": null
@@ -2631,18 +2754,19 @@
     "reviewed_at": null,
     "verification_evidence": {
       "V1_independent_extraction": "fail",
-      "V2_number_inventory": "fail",
+      "V2_number_inventory": "pass",
       "V3_document_integrity": "pass",
       "V4_metadata_evidence": "pass",
       "V5_boundary": "fail",
-      "V6_amendment_effect": "pass"
+      "V6_amendment_effect": "pass",
+      "ocr_engine": "tesseract v5.4.0.20240606"
     },
     "verification_method_count": 2,
-    "pipeline_version": "machine-verify-1.2",
-    "verified_at": "2026-11-08T11:15:28.099642+00:00",
+    "pipeline_version": "machine-verify-1.3",
+    "verified_at": "2026-11-08T11:35:38.351641+00:00",
     "review_status": "rejected",
     "verified_by": "machine",
-    "review_note": "machine verification failed: V1_word_mismatch, V2_number_mismatch, V5_not_contiguous"
+    "review_note": "machine verification failed: V1_word_mismatch, V5_not_contiguous"
   },
   {
     "provision_id": "ECR_2020_P004",
@@ -2663,19 +2787,504 @@
     "reviewed_by": null,
     "reviewed_at": null,
     "verification_evidence": {
-      "V1_independent_extraction": "fail",
+      "V1_independent_extraction": "pass",
       "V2_number_inventory": "pass",
       "V3_document_integrity": "pass",
       "V4_metadata_evidence": "pass",
-      "V5_boundary": "fail",
-      "V6_amendment_effect": "fail"
+      "V5_boundary": "pass",
+      "V6_amendment_effect": "fail",
+      "ocr_engine": "tesseract v5.4.0.20240606"
     },
     "verification_method_count": 2,
-    "pipeline_version": "machine-verify-1.2",
-    "verified_at": "2026-11-08T11:15:28.111166+00:00",
+    "pipeline_version": "machine-verify-1.3",
+    "verified_at": "2026-11-08T11:35:38.362628+00:00",
     "review_status": "rejected",
     "verified_by": "machine",
-    "review_note": "machine verification failed: V1_word_mismatch, V5_not_contiguous, V6_amendment_text_changed"
+    "review_note": "machine verification failed: V6_amendment_text_changed"
+  },
+  {
+    "provision_id": "ECR_2020_P004_SR01",
+    "source_id": "ECR_2020",
+    "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (1)",
+    "hierarchy_type": "subsection",
+    "parent_provision_id": null,
+    "original_text": "4. Duties of e-commerce entities. ---\n(1)  An e-commerce entity shall:\nbe a company incorporated under the Companies Act, 1956 (1 of 1956) or the Companies Act, 2013 (18\nof 2013) or a foreign company covered under clause  (42) of section 2 of the Companies Act, 2013 (18\nof 2013) or an office, branch or agency outside India owned or controlled by a person resident in India\nas provided in sub-clause (iii) of clause  (v) of section 2 of the Foreign Exchange Management Act,\n1999 (42 of 1999); and\nappoint a nodal person of contact or an  alternate senior designated functionary who is resident in India,\nto ensure compliance with the provisions of the Act or the  rules made thereunder.",
+    "search_text": "4. Duties of e-commerce entities. --- Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (1)",
+    "provisos": [],
+    "exceptions": [],
+    "definitions_used": [],
+    "cross_references": [],
+    "mandatory_context": [],
+    "conditions": [],
+    "page_start": 8,
+    "page_end": 9,
+    "reviewed_by": null,
+    "reviewed_at": null,
+    "verification_evidence": {
+      "V1_independent_extraction": "pass",
+      "V2_number_inventory": "pass",
+      "V3_document_integrity": "pass",
+      "V4_metadata_evidence": "pass",
+      "V5_boundary": "pass",
+      "V6_amendment_effect": "fail",
+      "ocr_engine": "tesseract v5.4.0.20240606"
+    },
+    "verification_method_count": 2,
+    "pipeline_version": "machine-verify-1.3",
+    "verified_at": "2026-11-08T11:35:38.371644+00:00",
+    "review_status": "rejected",
+    "verified_by": "machine",
+    "review_note": "machine verification failed: V6_amendment_text_changed",
+    "boundary_adjustment": {
+      "method": "subrule-split-1.0",
+      "split_from": "ECR_2020_P004",
+      "parent_sha256": "71605bd422d71e2dd432c46bfce7105a872e3cb4ffdf9b1388f7dd8a49e70171",
+      "slice": [
+        0,
+        688
+      ],
+      "applied_at": "2026-11-08T11:35:36.934784+00:00"
+    }
+  },
+  {
+    "provision_id": "ECR_2020_P004_SR02",
+    "source_id": "ECR_2020",
+    "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (2)",
+    "hierarchy_type": "subsection",
+    "parent_provision_id": null,
+    "original_text": "(2) Every e-commerce entity shall provide the following information in a clear and accessible manner on its\nplatform, displayed prominently to its users, namely:--\n(क)  legal name of the e-commerce entity;\n(ख) principal geographic address of its headquarters and all branches;\n(ग) name and details of its website; and\n(घ) contact details like e-mail address, fax, landline and mobile numbers of customer care as well as of\ngrievance officer.",
+    "search_text": "4. Duties of e-commerce entities. --- Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (2)",
+    "provisos": [],
+    "exceptions": [],
+    "definitions_used": [],
+    "cross_references": [],
+    "mandatory_context": [],
+    "conditions": [],
+    "page_start": 8,
+    "page_end": 9,
+    "reviewed_by": null,
+    "reviewed_at": null,
+    "verification_evidence": {
+      "V1_independent_extraction": "pass",
+      "V2_number_inventory": "pass",
+      "V3_document_integrity": "pass",
+      "V4_metadata_evidence": "pass",
+      "V5_boundary": "pass",
+      "V6_amendment_effect": "pass",
+      "ocr_engine": "tesseract v5.4.0.20240606"
+    },
+    "verification_method_count": 2,
+    "pipeline_version": "machine-verify-1.3",
+    "verified_at": "2026-11-08T11:35:38.382669+00:00",
+    "review_status": "machine_verified",
+    "verified_by": "machine",
+    "review_note": null,
+    "boundary_adjustment": {
+      "method": "subrule-split-1.0",
+      "split_from": "ECR_2020_P004",
+      "parent_sha256": "71605bd422d71e2dd432c46bfce7105a872e3cb4ffdf9b1388f7dd8a49e70171",
+      "slice": [
+        688,
+        1130
+      ],
+      "applied_at": "2026-11-08T11:35:36.934784+00:00"
+    }
+  },
+  {
+    "provision_id": "ECR_2020_P004_SR03",
+    "source_id": "ECR_2020",
+    "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (3)",
+    "hierarchy_type": "subsection",
+    "parent_provision_id": null,
+    "original_text": "(3)\nNo e-commerce entity shall adopt any unfair trade practice, whether in the course of business on its\nplatform or otherwise.",
+    "search_text": "4. Duties of e-commerce entities. --- Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (3)",
+    "provisos": [],
+    "exceptions": [],
+    "definitions_used": [],
+    "cross_references": [],
+    "mandatory_context": [],
+    "conditions": [],
+    "page_start": 8,
+    "page_end": 9,
+    "reviewed_by": null,
+    "reviewed_at": null,
+    "verification_evidence": {
+      "V1_independent_extraction": "pass",
+      "V2_number_inventory": "pass",
+      "V3_document_integrity": "pass",
+      "V4_metadata_evidence": "pass",
+      "V5_boundary": "pass",
+      "V6_amendment_effect": "pass",
+      "ocr_engine": "tesseract v5.4.0.20240606"
+    },
+    "verification_method_count": 2,
+    "pipeline_version": "machine-verify-1.3",
+    "verified_at": "2026-11-08T11:35:38.391212+00:00",
+    "review_status": "machine_verified",
+    "verified_by": "machine",
+    "review_note": null,
+    "boundary_adjustment": {
+      "method": "subrule-split-1.0",
+      "split_from": "ECR_2020_P004",
+      "parent_sha256": "71605bd422d71e2dd432c46bfce7105a872e3cb4ffdf9b1388f7dd8a49e70171",
+      "slice": [
+        1130,
+        1258
+      ],
+      "applied_at": "2026-11-08T11:35:36.934784+00:00"
+    }
+  },
+  {
+    "provision_id": "ECR_2020_P004_SR04",
+    "source_id": "ECR_2020",
+    "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (4)",
+    "hierarchy_type": "subsection",
+    "parent_provision_id": null,
+    "original_text": "(4)\nEvery e-commerce entity shall establish an adequate grievance redressal mechanism having regard to\nthe number of grievances ordinarily received by such entity from India, and shall appoint a grievance\nofficer for consumer grievance redressal, and shall display the name, contact details, and designation of\nsuch officer on its platform.",
+    "search_text": "4. Duties of e-commerce entities. --- Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (4)",
+    "provisos": [],
+    "exceptions": [],
+    "definitions_used": [],
+    "cross_references": [],
+    "mandatory_context": [],
+    "conditions": [],
+    "page_start": 8,
+    "page_end": 9,
+    "reviewed_by": null,
+    "reviewed_at": null,
+    "verification_evidence": {
+      "V1_independent_extraction": "pass",
+      "V2_number_inventory": "pass",
+      "V3_document_integrity": "pass",
+      "V4_metadata_evidence": "pass",
+      "V5_boundary": "pass",
+      "V6_amendment_effect": "pass",
+      "ocr_engine": "tesseract v5.4.0.20240606"
+    },
+    "verification_method_count": 2,
+    "pipeline_version": "machine-verify-1.3",
+    "verified_at": "2026-11-08T11:35:38.401235+00:00",
+    "review_status": "machine_verified",
+    "verified_by": "machine",
+    "review_note": null,
+    "boundary_adjustment": {
+      "method": "subrule-split-1.0",
+      "split_from": "ECR_2020_P004",
+      "parent_sha256": "71605bd422d71e2dd432c46bfce7105a872e3cb4ffdf9b1388f7dd8a49e70171",
+      "slice": [
+        1258,
+        1600
+      ],
+      "applied_at": "2026-11-08T11:35:36.934784+00:00"
+    }
+  },
+  {
+    "provision_id": "ECR_2020_P004_SR05",
+    "source_id": "ECR_2020",
+    "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (5)",
+    "hierarchy_type": "subsection",
+    "parent_provision_id": null,
+    "original_text": "(5)\nEvery e-commerce entity shall ensure that the grievance officer referred to in sub-rule (4) acknowledges\nthe receipt of any consumer complaint within forty-eight hours and redresses the complaint within one\nmonth from the date of receipt of the complaint.",
+    "search_text": "4. Duties of e-commerce entities. --- Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (5)",
+    "provisos": [],
+    "exceptions": [],
+    "definitions_used": [],
+    "cross_references": [],
+    "mandatory_context": [],
+    "conditions": [],
+    "page_start": 8,
+    "page_end": 9,
+    "reviewed_by": null,
+    "reviewed_at": null,
+    "verification_evidence": {
+      "V1_independent_extraction": "pass",
+      "V2_number_inventory": "pass",
+      "V3_document_integrity": "pass",
+      "V4_metadata_evidence": "pass",
+      "V5_boundary": "pass",
+      "V6_amendment_effect": "pass",
+      "ocr_engine": "tesseract v5.4.0.20240606"
+    },
+    "verification_method_count": 2,
+    "pipeline_version": "machine-verify-1.3",
+    "verified_at": "2026-11-08T11:35:38.410222+00:00",
+    "review_status": "machine_verified",
+    "verified_by": "machine",
+    "review_note": null,
+    "boundary_adjustment": {
+      "method": "subrule-split-1.0",
+      "split_from": "ECR_2020_P004",
+      "parent_sha256": "71605bd422d71e2dd432c46bfce7105a872e3cb4ffdf9b1388f7dd8a49e70171",
+      "slice": [
+        1600,
+        1860
+      ],
+      "applied_at": "2026-11-08T11:35:36.934784+00:00"
+    }
+  },
+  {
+    "provision_id": "ECR_2020_P004_SR06",
+    "source_id": "ECR_2020",
+    "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (6)",
+    "hierarchy_type": "subsection",
+    "parent_provision_id": null,
+    "original_text": "(6)\nWhere an e-commerce entity offers imported goods or services for sale, it shall mention the name and\ndetails of any importer from whom it has purchased such goods or services, or who may be a seller on\nits platform.",
+    "search_text": "4. Duties of e-commerce entities. --- Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (6)",
+    "provisos": [],
+    "exceptions": [],
+    "definitions_used": [],
+    "cross_references": [],
+    "mandatory_context": [],
+    "conditions": [],
+    "page_start": 8,
+    "page_end": 9,
+    "reviewed_by": null,
+    "reviewed_at": null,
+    "verification_evidence": {
+      "V1_independent_extraction": "pass",
+      "V2_number_inventory": "pass",
+      "V3_document_integrity": "pass",
+      "V4_metadata_evidence": "pass",
+      "V5_boundary": "pass",
+      "V6_amendment_effect": "pass",
+      "ocr_engine": "tesseract v5.4.0.20240606"
+    },
+    "verification_method_count": 2,
+    "pipeline_version": "machine-verify-1.3",
+    "verified_at": "2026-11-08T11:35:38.419234+00:00",
+    "review_status": "machine_verified",
+    "verified_by": "machine",
+    "review_note": null,
+    "boundary_adjustment": {
+      "method": "subrule-split-1.0",
+      "split_from": "ECR_2020_P004",
+      "parent_sha256": "71605bd422d71e2dd432c46bfce7105a872e3cb4ffdf9b1388f7dd8a49e70171",
+      "slice": [
+        1860,
+        2080
+      ],
+      "applied_at": "2026-11-08T11:35:36.934784+00:00"
+    }
+  },
+  {
+    "provision_id": "ECR_2020_P004_SR07",
+    "source_id": "ECR_2020",
+    "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (7)",
+    "hierarchy_type": "subsection",
+    "parent_provision_id": null,
+    "original_text": "(7)\nEvery e-commerce entity shall endeavour on a best effort basis to become a partner in the convergence\nprocess of the National Consumer Helpline of the Central Government.",
+    "search_text": "4. Duties of e-commerce entities. --- Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (7)",
+    "provisos": [],
+    "exceptions": [],
+    "definitions_used": [],
+    "cross_references": [],
+    "mandatory_context": [],
+    "conditions": [],
+    "page_start": 8,
+    "page_end": 9,
+    "reviewed_by": null,
+    "reviewed_at": null,
+    "verification_evidence": {
+      "V1_independent_extraction": "pass",
+      "V2_number_inventory": "pass",
+      "V3_document_integrity": "pass",
+      "V4_metadata_evidence": "pass",
+      "V5_boundary": "pass",
+      "V6_amendment_effect": "pass",
+      "ocr_engine": "tesseract v5.4.0.20240606"
+    },
+    "verification_method_count": 2,
+    "pipeline_version": "machine-verify-1.3",
+    "verified_at": "2026-11-08T11:35:38.429221+00:00",
+    "review_status": "machine_verified",
+    "verified_by": "machine",
+    "review_note": null,
+    "boundary_adjustment": {
+      "method": "subrule-split-1.0",
+      "split_from": "ECR_2020_P004",
+      "parent_sha256": "71605bd422d71e2dd432c46bfce7105a872e3cb4ffdf9b1388f7dd8a49e70171",
+      "slice": [
+        2080,
+        2255
+      ],
+      "applied_at": "2026-11-08T11:35:36.934784+00:00"
+    }
+  },
+  {
+    "provision_id": "ECR_2020_P004_SR08",
+    "source_id": "ECR_2020",
+    "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (8)",
+    "hierarchy_type": "subsection",
+    "parent_provision_id": null,
+    "original_text": "(8)\nNo e-commerce entity shall impose cancellation charges on consumers cancelling after confirming\npurchase unless similar charges are also borne by the e- commerce entity, if they cancel the purchase\norder unilaterally for any reason.",
+    "search_text": "4. Duties of e-commerce entities. --- Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (8)",
+    "provisos": [],
+    "exceptions": [],
+    "definitions_used": [],
+    "cross_references": [],
+    "mandatory_context": [],
+    "conditions": [],
+    "page_start": 8,
+    "page_end": 9,
+    "reviewed_by": null,
+    "reviewed_at": null,
+    "verification_evidence": {
+      "V1_independent_extraction": "pass",
+      "V2_number_inventory": "pass",
+      "V3_document_integrity": "pass",
+      "V4_metadata_evidence": "pass",
+      "V5_boundary": "pass",
+      "V6_amendment_effect": "pass",
+      "ocr_engine": "tesseract v5.4.0.20240606"
+    },
+    "verification_method_count": 2,
+    "pipeline_version": "machine-verify-1.3",
+    "verified_at": "2026-11-08T11:35:38.439224+00:00",
+    "review_status": "machine_verified",
+    "verified_by": "machine",
+    "review_note": null,
+    "boundary_adjustment": {
+      "method": "subrule-split-1.0",
+      "split_from": "ECR_2020_P004",
+      "parent_sha256": "71605bd422d71e2dd432c46bfce7105a872e3cb4ffdf9b1388f7dd8a49e70171",
+      "slice": [
+        2255,
+        2492
+      ],
+      "applied_at": "2026-11-08T11:35:36.934784+00:00"
+    }
+  },
+  {
+    "provision_id": "ECR_2020_P004_SR09",
+    "source_id": "ECR_2020",
+    "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (9)",
+    "hierarchy_type": "subsection",
+    "parent_provision_id": null,
+    "original_text": "(9)\nEvery e-commerce entity shall only record the consent of a consumer for the purchase of any good or\nservice offered on its platform where such consent is expressed through an explicit and affirmative\naction, and no such entity shall record such consent automatically, including in the form of pre-ticked\ncheckboxes.",
+    "search_text": "4. Duties of e-commerce entities. --- Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (9)",
+    "provisos": [],
+    "exceptions": [],
+    "definitions_used": [],
+    "cross_references": [],
+    "mandatory_context": [],
+    "conditions": [],
+    "page_start": 8,
+    "page_end": 9,
+    "reviewed_by": null,
+    "reviewed_at": null,
+    "verification_evidence": {
+      "V1_independent_extraction": "pass",
+      "V2_number_inventory": "pass",
+      "V3_document_integrity": "pass",
+      "V4_metadata_evidence": "pass",
+      "V5_boundary": "pass",
+      "V6_amendment_effect": "pass",
+      "ocr_engine": "tesseract v5.4.0.20240606"
+    },
+    "verification_method_count": 2,
+    "pipeline_version": "machine-verify-1.3",
+    "verified_at": "2026-11-08T11:35:38.449209+00:00",
+    "review_status": "machine_verified",
+    "verified_by": "machine",
+    "review_note": null,
+    "boundary_adjustment": {
+      "method": "subrule-split-1.0",
+      "split_from": "ECR_2020_P004",
+      "parent_sha256": "71605bd422d71e2dd432c46bfce7105a872e3cb4ffdf9b1388f7dd8a49e70171",
+      "slice": [
+        2492,
+        2812
+      ],
+      "applied_at": "2026-11-08T11:35:36.934784+00:00"
+    }
+  },
+  {
+    "provision_id": "ECR_2020_P004_SR10",
+    "source_id": "ECR_2020",
+    "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (10)",
+    "hierarchy_type": "subsection",
+    "parent_provision_id": null,
+    "original_text": "(10)\nEvery e-commerce entity shall effect all payments towards accepted refund requests of the consumers\nas prescribed by the Reserve Bank of India or any other competent authority under any law for the time\nbeing in force, within a reasonable period of time, or as prescribed under applicable laws.",
+    "search_text": "4. Duties of e-commerce entities. --- Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (10)",
+    "provisos": [],
+    "exceptions": [],
+    "definitions_used": [],
+    "cross_references": [],
+    "mandatory_context": [],
+    "conditions": [],
+    "page_start": 8,
+    "page_end": 9,
+    "reviewed_by": null,
+    "reviewed_at": null,
+    "verification_evidence": {
+      "V1_independent_extraction": "pass",
+      "V2_number_inventory": "pass",
+      "V3_document_integrity": "pass",
+      "V4_metadata_evidence": "pass",
+      "V5_boundary": "pass",
+      "V6_amendment_effect": "pass",
+      "ocr_engine": "tesseract v5.4.0.20240606"
+    },
+    "verification_method_count": 2,
+    "pipeline_version": "machine-verify-1.3",
+    "verified_at": "2026-11-08T11:35:38.459258+00:00",
+    "review_status": "machine_verified",
+    "verified_by": "machine",
+    "review_note": null,
+    "boundary_adjustment": {
+      "method": "subrule-split-1.0",
+      "split_from": "ECR_2020_P004",
+      "parent_sha256": "71605bd422d71e2dd432c46bfce7105a872e3cb4ffdf9b1388f7dd8a49e70171",
+      "slice": [
+        2812,
+        3112
+      ],
+      "applied_at": "2026-11-08T11:35:36.935786+00:00"
+    }
+  },
+  {
+    "provision_id": "ECR_2020_P004_SR11",
+    "source_id": "ECR_2020",
+    "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (11)",
+    "hierarchy_type": "subsection",
+    "parent_provision_id": null,
+    "original_text": "(11)\nNo e-commerce entity shall--\nmanipulate the price of the goods or services offered on its platform in such a manner as to gain\nunreasonable profit by imposing on consumers any unjustified price having regard to the\nprevailing market conditions, the essential nature of the good or service, any extraordinary\ncircumstances under which the good or service is offered, and any other relevant consideration in\ndetermining whether the price charged is justified;\ndiscriminate between consumers of the same class or make any arbitrary classification of\nconsumers affecting their rights under the Act.",
+    "search_text": "4. Duties of e-commerce entities. --- Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (11)",
+    "provisos": [],
+    "exceptions": [],
+    "definitions_used": [],
+    "cross_references": [],
+    "mandatory_context": [],
+    "conditions": [],
+    "page_start": 8,
+    "page_end": 9,
+    "reviewed_by": null,
+    "reviewed_at": null,
+    "verification_evidence": {
+      "V1_independent_extraction": "pass",
+      "V2_number_inventory": "pass",
+      "V3_document_integrity": "pass",
+      "V4_metadata_evidence": "pass",
+      "V5_boundary": "pass",
+      "V6_amendment_effect": "pass",
+      "ocr_engine": "tesseract v5.4.0.20240606"
+    },
+    "verification_method_count": 2,
+    "pipeline_version": "machine-verify-1.3",
+    "verified_at": "2026-11-08T11:35:38.471773+00:00",
+    "review_status": "machine_verified",
+    "verified_by": "machine",
+    "review_note": null,
+    "boundary_adjustment": {
+      "method": "subrule-split-1.0",
+      "split_from": "ECR_2020_P004",
+      "parent_sha256": "71605bd422d71e2dd432c46bfce7105a872e3cb4ffdf9b1388f7dd8a49e70171",
+      "slice": [
+        3112,
+        3711
+      ],
+      "applied_at": "2026-11-08T11:35:36.935786+00:00"
+    }
   },
   {
     "provision_id": "ECR_2020_P005",
@@ -2696,19 +3305,20 @@
     "reviewed_by": null,
     "reviewed_at": null,
     "verification_evidence": {
-      "V1_independent_extraction": "fail",
+      "V1_independent_extraction": "pass",
       "V2_number_inventory": "pass",
       "V3_document_integrity": "pass",
       "V4_metadata_evidence": "pass",
-      "V5_boundary": "fail",
-      "V6_amendment_effect": "pass"
+      "V5_boundary": "pass",
+      "V6_amendment_effect": "pass",
+      "ocr_engine": "tesseract v5.4.0.20240606"
     },
     "verification_method_count": 2,
-    "pipeline_version": "machine-verify-1.2",
-    "verified_at": "2026-11-08T11:15:28.123694+00:00",
-    "review_status": "rejected",
+    "pipeline_version": "machine-verify-1.3",
+    "verified_at": "2026-11-08T11:35:38.483429+00:00",
+    "review_status": "machine_verified",
     "verified_by": "machine",
-    "review_note": "machine verification failed: V1_word_mismatch, V5_not_contiguous"
+    "review_note": null
   },
   {
     "provision_id": "ECR_2020_P006",
@@ -2734,11 +3344,12 @@
       "V3_document_integrity": "pass",
       "V4_metadata_evidence": "pass",
       "V5_boundary": "pass",
-      "V6_amendment_effect": "pass"
+      "V6_amendment_effect": "pass",
+      "ocr_engine": "tesseract v5.4.0.20240606"
     },
     "verification_method_count": 2,
-    "pipeline_version": "machine-verify-1.2",
-    "verified_at": "2026-11-08T11:15:28.135213+00:00",
+    "pipeline_version": "machine-verify-1.3",
+    "verified_at": "2026-11-08T11:35:38.497192+00:00",
     "review_status": "machine_verified",
     "verified_by": "machine",
     "review_note": null
@@ -2762,19 +3373,20 @@
     "reviewed_by": null,
     "reviewed_at": null,
     "verification_evidence": {
-      "V1_independent_extraction": "fail",
+      "V1_independent_extraction": "pass",
       "V2_number_inventory": "pass",
       "V3_document_integrity": "pass",
       "V4_metadata_evidence": "pass",
-      "V5_boundary": "fail",
-      "V6_amendment_effect": "pass"
+      "V5_boundary": "pass",
+      "V6_amendment_effect": "pass",
+      "ocr_engine": "tesseract v5.4.0.20240606"
     },
     "verification_method_count": 2,
-    "pipeline_version": "machine-verify-1.2",
-    "verified_at": "2026-11-08T11:15:28.142219+00:00",
-    "review_status": "rejected",
+    "pipeline_version": "machine-verify-1.3",
+    "verified_at": "2026-11-08T11:35:38.505170+00:00",
+    "review_status": "machine_verified",
     "verified_by": "machine",
-    "review_note": "machine verification failed: V1_word_mismatch, V5_not_contiguous"
+    "review_note": null
   },
   {
     "provision_id": "ECR_2020_P008",
@@ -2782,7 +3394,7 @@
     "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 8",
     "hierarchy_type": "clause",
     "parent_provision_id": null,
-    "original_text": "8.   Contravention of rules. — The provisions of the Consumer Protection Act, 2019 (35 of 2019) shall apply for any\nviolation of the provisions of these rules.\n[ F. No. J-10/3/2018-CPU]\nAMIT MEHTA, Jt. Secy.\nKUMAR VERMA\nMANOJ KUMAR VERMA\n22:00:30 +05'30'",
+    "original_text": "8.   Contravention of rules. — The provisions of the Consumer Protection Act, 2019 (35 of 2019) shall apply for any\nviolation of the provisions of these rules.",
     "search_text": "",
     "provisos": [],
     "exceptions": [],
@@ -2795,19 +3407,31 @@
     "reviewed_by": null,
     "reviewed_at": null,
     "verification_evidence": {
-      "V1_independent_extraction": "fail",
-      "V2_number_inventory": "fail",
+      "V1_independent_extraction": "pass",
+      "V2_number_inventory": "pass",
       "V3_document_integrity": "pass",
       "V4_metadata_evidence": "pass",
-      "V5_boundary": "fail",
-      "V6_amendment_effect": "pass"
+      "V5_boundary": "pass",
+      "V6_amendment_effect": "pass",
+      "ocr_engine": "tesseract v5.4.0.20240606"
     },
     "verification_method_count": 2,
-    "pipeline_version": "machine-verify-1.2",
-    "verified_at": "2026-11-08T11:15:28.148212+00:00",
-    "review_status": "rejected",
+    "pipeline_version": "machine-verify-1.3",
+    "verified_at": "2026-11-08T11:35:38.512419+00:00",
+    "review_status": "machine_verified",
     "verified_by": "machine",
-    "review_note": "machine verification failed: V1_word_mismatch, V2_number_mismatch, V5_not_contiguous, V5_non_law_text"
+    "review_note": null,
+    "boundary_adjustment": {
+      "method": "boundary-fix-1.0",
+      "removed_text": "[ F. No. J-10/3/2018-CPU]\nAMIT MEHTA, Jt. Secy.\nKUMAR VERMA\nMANOJ KUMAR VERMA\n22:00:30 +05'30'",
+      "markers": [
+        "file_number",
+        "signatory_designation",
+        "signatory_name_line"
+      ],
+      "original_sha256": "57b931282a59dd68e39fd9f7e40cb60afc28293a24388ab9c9c4d09ca48cce50",
+      "applied_at": "2026-11-08T11:32:58.141080+00:00"
+    }
   },
   {
     "provision_id": "ECR_2021_AMENDMENT_P001",
@@ -2833,11 +3457,12 @@
       "V3_document_integrity": "pass",
       "V4_metadata_evidence": "pass",
       "V5_boundary": "pass",
-      "V6_amendment_effect": "pass"
+      "V6_amendment_effect": "pass",
+      "ocr_engine": "tesseract v5.4.0.20240606"
     },
     "verification_method_count": 2,
-    "pipeline_version": "machine-verify-1.2",
-    "verified_at": "2026-11-08T11:15:29.752627+00:00",
+    "pipeline_version": "machine-verify-1.3",
+    "verified_at": "2026-11-08T11:33:00.269804+00:00",
     "review_status": "machine_verified",
     "verified_by": "machine",
     "review_note": null
@@ -2848,7 +3473,7 @@
     "citation": "Consumer Protection (E-Commerce) (Amendment) Rules, 2021, provision 2",
     "hierarchy_type": "clause",
     "parent_provision_id": null,
-    "original_text": "2. In the Consumer Protection (E-Commerce) Rules, 2020, in rule 4, for sub-rule (1), the following sub-rule\nshall be substituted, namely:--\n“(1) where an e-commerce entity is  a company incorporated under the Companies Act, 1956 (1 of 1956) or\nunder the Companies Act, 2013 (18 of 2013) or  a foreign company covered under clause (42) of section 2 of\nthe Companies Act, 2013 (18 of 2013) or   an office, branch or agency outside India owned or controlled by a\nperson resident in India as provided in sub-clause (iv) of clause (v) of section 2 of the Foreign Exchange\nManagement Act, 1999 (42 of 1999),  it shall appoint a nodal officer or an alternate senior designated\nfunctionary who is resident in India, to ensure compliance with the provisions of the Act or the rules made\nthereunder.”\nANUPAM MISHRA, Jt. Secy.\nMAHADASAM\nMAHADASAM",
+    "original_text": "2. In the Consumer Protection (E-Commerce) Rules, 2020, in rule 4, for sub-rule (1), the following sub-rule\nshall be substituted, namely:--\n“(1) where an e-commerce entity is  a company incorporated under the Companies Act, 1956 (1 of 1956) or\nunder the Companies Act, 2013 (18 of 2013) or  a foreign company covered under clause (42) of section 2 of\nthe Companies Act, 2013 (18 of 2013) or   an office, branch or agency outside India owned or controlled by a\nperson resident in India as provided in sub-clause (iv) of clause (v) of section 2 of the Foreign Exchange\nManagement Act, 1999 (42 of 1999),  it shall appoint a nodal officer or an alternate senior designated\nfunctionary who is resident in India, to ensure compliance with the provisions of the Act or the rules made\nthereunder.”",
     "search_text": "",
     "provisos": [],
     "exceptions": [],
@@ -2861,19 +3486,31 @@
     "reviewed_by": null,
     "reviewed_at": null,
     "verification_evidence": {
-      "V1_independent_extraction": "fail",
+      "V1_independent_extraction": "pass",
       "V2_number_inventory": "pass",
       "V3_document_integrity": "pass",
       "V4_metadata_evidence": "pass",
-      "V5_boundary": "fail",
-      "V6_amendment_effect": "pass"
+      "V5_boundary": "pass",
+      "V6_amendment_effect": "pass",
+      "ocr_engine": "tesseract v5.4.0.20240606"
     },
     "verification_method_count": 2,
-    "pipeline_version": "machine-verify-1.2",
-    "verified_at": "2026-11-08T11:15:29.757630+00:00",
-    "review_status": "rejected",
+    "pipeline_version": "machine-verify-1.3",
+    "verified_at": "2026-11-08T11:33:00.273801+00:00",
+    "review_status": "machine_verified",
     "verified_by": "machine",
-    "review_note": "machine verification failed: V1_word_mismatch, V5_not_contiguous, V5_non_law_text"
+    "review_note": null,
+    "boundary_adjustment": {
+      "method": "boundary-fix-1.0",
+      "removed_text": "ANUPAM MISHRA, Jt. Secy.\nMAHADASAM\nMAHADASAM",
+      "markers": [
+        "signatory_designation",
+        "signatory_name_line",
+        "trailing_uppercase_name_line"
+      ],
+      "original_sha256": "bcc591b6b2a75daead5720c8d7cd85839e3522c05856334e5f92dd37d49c1afb",
+      "applied_at": "2026-11-08T11:32:58.142077+00:00"
+    }
   },
   {
     "provision_id": "JURISDICTION_RULES_2021_CANDIDATE_A_P001",
@@ -2897,16 +3534,17 @@
       "V1_independent_extraction": "pass",
       "V2_number_inventory": "pass",
       "V3_document_integrity": "pass",
-      "V4_metadata_evidence": "pass",
+      "V4_metadata_evidence": "fail",
       "V5_boundary": "pass",
-      "V6_amendment_effect": "pass"
+      "V6_amendment_effect": "pass",
+      "ocr_engine": "tesseract v5.4.0.20240606"
     },
     "verification_method_count": 2,
-    "pipeline_version": "machine-verify-1.2",
-    "verified_at": "2026-11-08T11:15:31.175141+00:00",
-    "review_status": "machine_verified",
+    "pipeline_version": "machine-verify-1.3",
+    "verified_at": "2026-11-08T11:33:01.285245+00:00",
+    "review_status": "rejected",
     "verified_by": "machine",
-    "review_note": null
+    "review_note": "machine verification failed: V4_metadata_unquoted"
   },
   {
     "provision_id": "JURISDICTION_RULES_2021_CANDIDATE_A_P002",
@@ -2927,19 +3565,20 @@
     "reviewed_by": null,
     "reviewed_at": null,
     "verification_evidence": {
-      "V1_independent_extraction": "fail",
+      "V1_independent_extraction": "pass",
       "V2_number_inventory": "pass",
       "V3_document_integrity": "pass",
-      "V4_metadata_evidence": "pass",
-      "V5_boundary": "fail",
-      "V6_amendment_effect": "pass"
+      "V4_metadata_evidence": "fail",
+      "V5_boundary": "pass",
+      "V6_amendment_effect": "pass",
+      "ocr_engine": "tesseract v5.4.0.20240606"
     },
     "verification_method_count": 2,
-    "pipeline_version": "machine-verify-1.2",
-    "verified_at": "2026-11-08T11:15:31.180143+00:00",
+    "pipeline_version": "machine-verify-1.3",
+    "verified_at": "2026-11-08T11:33:01.285245+00:00",
     "review_status": "rejected",
     "verified_by": "machine",
-    "review_note": "machine verification failed: V1_word_mismatch, V5_not_contiguous"
+    "review_note": "machine verification failed: V4_metadata_unquoted"
   },
   {
     "provision_id": "JURISDICTION_RULES_2021_CANDIDATE_A_P003",
@@ -2963,16 +3602,17 @@
       "V1_independent_extraction": "pass",
       "V2_number_inventory": "pass",
       "V3_document_integrity": "pass",
-      "V4_metadata_evidence": "pass",
+      "V4_metadata_evidence": "fail",
       "V5_boundary": "pass",
-      "V6_amendment_effect": "pass"
+      "V6_amendment_effect": "pass",
+      "ocr_engine": "tesseract v5.4.0.20240606"
     },
     "verification_method_count": 2,
-    "pipeline_version": "machine-verify-1.2",
-    "verified_at": "2026-11-08T11:15:31.184141+00:00",
-    "review_status": "machine_verified",
+    "pipeline_version": "machine-verify-1.3",
+    "verified_at": "2026-11-08T11:33:01.285245+00:00",
+    "review_status": "rejected",
     "verified_by": "machine",
-    "review_note": null
+    "review_note": "machine verification failed: V4_metadata_unquoted"
   },
   {
     "provision_id": "JURISDICTION_RULES_2021_CANDIDATE_A_P004",
@@ -2996,16 +3636,17 @@
       "V1_independent_extraction": "pass",
       "V2_number_inventory": "pass",
       "V3_document_integrity": "pass",
-      "V4_metadata_evidence": "pass",
+      "V4_metadata_evidence": "fail",
       "V5_boundary": "pass",
-      "V6_amendment_effect": "pass"
+      "V6_amendment_effect": "pass",
+      "ocr_engine": "tesseract v5.4.0.20240606"
     },
     "verification_method_count": 2,
-    "pipeline_version": "machine-verify-1.2",
-    "verified_at": "2026-11-08T11:15:31.188152+00:00",
-    "review_status": "machine_verified",
+    "pipeline_version": "machine-verify-1.3",
+    "verified_at": "2026-11-08T11:33:01.285245+00:00",
+    "review_status": "rejected",
     "verified_by": "machine",
-    "review_note": null
+    "review_note": "machine verification failed: V4_metadata_unquoted"
   },
   {
     "provision_id": "JURISDICTION_RULES_2021_CANDIDATE_A_P005",
@@ -3013,7 +3654,7 @@
     "citation": "Consumer Protection (Jurisdiction of the District Commission, the State Commission and the National Commission) Rules, 2021, provision 5",
     "hierarchy_type": "clause",
     "parent_provision_id": null,
-    "original_text": "5.       Jurisdiction of National Commission.—Subject to the other provisions of the Act and in pursuance of proviso\nto sub-clause (i) of clause (a) of sub-section (1) of section 58, the National Commission shall have jurisdiction to\nentertain complaints where the value of the goods or services paid as consideration, exceeds  two crore rupees.\nANUPAM MISHRA, Jt. Secy.\nSURENDER\nMAHADASAM\nMAHADASAM",
+    "original_text": "5.       Jurisdiction of National Commission.—Subject to the other provisions of the Act and in pursuance of proviso\nto sub-clause (i) of clause (a) of sub-section (1) of section 58, the National Commission shall have jurisdiction to\nentertain complaints where the value of the goods or services paid as consideration, exceeds  two crore rupees.",
     "search_text": "",
     "provisos": [],
     "exceptions": [],
@@ -3029,15 +3670,27 @@
       "V1_independent_extraction": "pass",
       "V2_number_inventory": "pass",
       "V3_document_integrity": "pass",
-      "V4_metadata_evidence": "pass",
-      "V5_boundary": "fail",
-      "V6_amendment_effect": "pass"
+      "V4_metadata_evidence": "fail",
+      "V5_boundary": "pass",
+      "V6_amendment_effect": "pass",
+      "ocr_engine": "tesseract v5.4.0.20240606"
     },
     "verification_method_count": 2,
-    "pipeline_version": "machine-verify-1.2",
-    "verified_at": "2026-11-08T11:15:31.193160+00:00",
+    "pipeline_version": "machine-verify-1.3",
+    "verified_at": "2026-11-08T11:33:01.285245+00:00",
     "review_status": "rejected",
     "verified_by": "machine",
-    "review_note": "machine verification failed: V5_non_law_text"
+    "review_note": "machine verification failed: V4_metadata_unquoted",
+    "boundary_adjustment": {
+      "method": "boundary-fix-1.0",
+      "removed_text": "ANUPAM MISHRA, Jt. Secy.\nSURENDER\nMAHADASAM\nMAHADASAM",
+      "markers": [
+        "signatory_designation",
+        "signatory_name_line",
+        "trailing_uppercase_name_line"
+      ],
+      "original_sha256": "00b998665aafe759bc7a8eccc485ff87840abaa40e308d63882305f1b434df29",
+      "applied_at": "2026-11-08T11:32:58.142077+00:00"
+    }
   }
 ]

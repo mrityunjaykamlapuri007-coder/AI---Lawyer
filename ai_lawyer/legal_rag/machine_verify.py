@@ -27,8 +27,11 @@ Usage::
     python -m ai_lawyer.legal_rag.machine_verify --source ECR_2020
     python -m ai_lawyer.legal_rag.machine_verify --source ECR_2020 --dry-run
 
-OCR is a real engine (``rapidocr_onnxruntime``).  If it is not installed the
-command refuses: a single extraction method is not accepted.
+OCR is Tesseract (found via ``TESSERACT_CMD``, ``PATH`` or the default Windows
+install path).  If it is not installed the command refuses: a single
+extraction method is not accepted.  RapidOCR was used up to pipeline 1.2 and
+was replaced because it silently dropped whole lines (for example a definition
+line in the Jurisdiction Rules), which failed provisions for OCR reasons.
 """
 from __future__ import annotations
 
@@ -62,7 +65,8 @@ OCR_CACHE = LEGAL_CORPUS / "official" / "ocr"
 # part of the cache filename so a cache from another setting is never reused.
 OCR_DPI = 300
 
-PIPELINE_VERSION = "machine-verify-1.2"
+PIPELINE_VERSION = "machine-verify-1.3"
+OCR_ENGINE = "tesseract"
 CHECKS = (
     "V1_independent_extraction",
     "V2_number_inventory",
@@ -149,27 +153,57 @@ def _in_order_subsequence(needle: list[str], haystack: list[str]) -> tuple[int, 
 # ---------------------------------------------------------------------------
 # OCR
 # ---------------------------------------------------------------------------
-_OCR_ENGINE: Any = None
+_WINDOWS_TESSERACT = Path(r"C:\Program Files\Tesseract-OCR\tesseract.exe")
+
+
+def tesseract_cmd() -> str:
+    import os
+    import shutil
+
+    explicit = os.environ.get("TESSERACT_CMD")
+    if explicit and Path(explicit).exists():
+        return explicit
+    found = shutil.which("tesseract")
+    if found:
+        return found
+    if _WINDOWS_TESSERACT.exists():
+        return str(_WINDOWS_TESSERACT)
+    raise OcrUnavailable(
+        "Tesseract is not installed; V1 needs a second, independent extraction "
+        "method and will not run without OCR"
+    )
+
+
+def ocr_engine_version() -> str:
+    import subprocess
+
+    result = subprocess.run(
+        [tesseract_cmd(), "--version"], capture_output=True, text=True, timeout=60
+    )
+    first = (result.stdout or result.stderr).splitlines()
+    return first[0].strip() if first else "tesseract (unknown version)"
 
 
 def _default_ocr(image_path: Path) -> str:
-    global _OCR_ENGINE
-    try:
-        from rapidocr_onnxruntime import RapidOCR
-    except Exception as exc:  # noqa: BLE001
+    import subprocess
+
+    result = subprocess.run(
+        [tesseract_cmd(), str(image_path), "-", "-l", "eng", "--psm", "4"],
+        capture_output=True,
+        timeout=300,
+    )
+    if result.returncode != 0:
         raise OcrUnavailable(
-            "rapidocr_onnxruntime is not installed; V1 needs a second, "
-            "independent extraction method and will not run without OCR"
-        ) from exc
-    if _OCR_ENGINE is None:
-        _OCR_ENGINE = RapidOCR()
-    result, _ = _OCR_ENGINE(str(image_path))
-    return "\n".join(line[1] for line in (result or []))
+            f"tesseract failed on {image_path.name}: "
+            + result.stderr.decode("utf-8", errors="replace")[:200]
+        )
+    return result.stdout.decode("utf-8", errors="replace")
 
 
 def _cache_path(pdf_name: str, page_number: int, dpi: int = OCR_DPI) -> Path:
+    # The engine is part of the name so output from another engine is never reused.
     stem = pdf_name.replace(".pdf", "")
-    return OCR_CACHE / stem / f"page_{dpi:03d}_{page_number:03d}.txt"
+    return OCR_CACHE / stem / f"page_{OCR_ENGINE}_{dpi:03d}_{page_number:03d}.txt"
 
 
 def ocr_page(
@@ -260,8 +294,39 @@ def _find_quote(field: str, value: str, ocr_pages: dict[int, str]) -> tuple[str,
 
 
 def _rule_number(citation: str) -> int | None:
-    match = re.search(r"\bprovision\s+(\d+)\s*$", citation or "", re.IGNORECASE)
+    match = re.search(r"\bprovision\s+(\d+)\b", citation or "", re.IGNORECASE)
     return int(match.group(1)) if match else None
+
+
+def _sub_rule_number(citation: str) -> int | None:
+    match = re.search(r"\bsub-rule\s*\((\d+)\)\s*$", citation or "", re.IGNORECASE)
+    return int(match.group(1)) if match else None
+
+
+def _affected_sub_rules(text: str) -> dict[str, list[int]]:
+    """'in rule 4, for sub-rule (1)' -> {'4': [1]}.  Absent means whole rule."""
+    found: dict[str, set[int]] = {}
+    for rule, sub in re.findall(
+        r"\bin rule\s+(\d+)\s*,\s*for sub-rule\s*\((\d+)\)", text, re.IGNORECASE
+    ):
+        found.setdefault(rule, set()).add(int(sub))
+    return {rule: sorted(subs) for rule, subs in found.items()}
+
+
+def substitution_hits(
+    entry: dict[str, Any], rule_number: int | None, sub_rule: int | None
+) -> bool:
+    """True when this amendment substitutes text this provision contains."""
+    if entry.get("status") != "checked" or entry.get("effect") != "substitution":
+        return False
+    if rule_number is None or rule_number not in entry.get("affected_rules", []):
+        return False
+    subs = (entry.get("affected_sub_rules") or {}).get(str(rule_number))
+    if not subs:
+        return True  # the amendment's scope inside the rule is unknown: whole rule
+    if sub_rule is None:
+        return True  # this provision holds the whole rule, including the substituted part
+    return sub_rule in subs
 
 
 def _document_metadata(source_id: str) -> dict[str, Any]:
@@ -361,6 +426,7 @@ def _amendment_effect(entry: dict[str, Any]) -> dict[str, Any]:
         "status": "checked",
         "document_id": document_id,
         "affected_rules": rules,
+        "affected_sub_rules": _affected_sub_rules(text),
         "effective_from": entry.get("effective_from") or entry.get("instrument_date"),
         "version_status": entry.get("version_status"),
     }
@@ -573,6 +639,8 @@ def verify_source(
         "pdf": pdf_name,
         "pdf_sha256": _sha256(pdf_path),
         "pipeline_version": PIPELINE_VERSION,
+        "ocr_engine": ocr_engine_version() if ocr is None else "injected (test)",
+        "ocr_dpi": OCR_DPI,
         "provisions": [],
     }
 
@@ -627,13 +695,9 @@ def verify_source(
             result["flags"].append("V4_metadata_unquoted")
 
         rule_number = _rule_number(str(row.get("citation", "")))
+        sub_rule = _sub_rule_number(str(row.get("citation", "")))
         substituted_by = [
-            entry
-            for entry in chain
-            if entry.get("status") == "checked"
-            and entry.get("effect") == "substitution"
-            and rule_number is not None
-            and rule_number in entry.get("affected_rules", [])
+            entry for entry in chain if substitution_hits(entry, rule_number, sub_rule)
         ]
         if substituted_by:
             evidence["V6_amendment_effect"] = "fail"
@@ -647,6 +711,7 @@ def verify_source(
             evidence["V6_amendment_effect"] = "pass"
             evidence["V6_detail"] = {
                 "rule_number": rule_number,
+                "sub_rule": sub_rule,
                 "checked_instruments": [entry["instrument"] for entry in chain],
             }
 
@@ -662,7 +727,8 @@ def verify_source(
 
         if not dry_run:
             row["verification_evidence"] = {
-                key: evidence[key] for key in CHECKS
+                **{key: evidence[key] for key in CHECKS},
+                "ocr_engine": report["ocr_engine"],
             }
             row["verification_method_count"] = 2
             row["pipeline_version"] = PIPELINE_VERSION

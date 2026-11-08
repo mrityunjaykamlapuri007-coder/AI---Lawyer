@@ -2,14 +2,16 @@
   "source_id": "ECR_2021_AMENDMENT",
   "pdf": "ecr_2021_amendment.pdf",
   "pdf_sha256": "a7db1f7a8c900e0bc9c7fcb1f2921130ff85e6fac517fb5222efcf76cf559654",
-  "pipeline_version": "machine-verify-1.2",
+  "pipeline_version": "machine-verify-1.3",
+  "ocr_engine": "tesseract v5.4.0.20240606",
+  "ocr_dpi": 300,
   "provisions": [
     {
       "provision_id": "ECR_2021_AMENDMENT_P001",
       "passed": true,
       "flags": [],
       "evidence": {
-        "pipeline_version": "machine-verify-1.2",
+        "pipeline_version": "machine-verify-1.3",
         "pages": [
           2
         ],
@@ -26,12 +28,12 @@
           "metadata": {
             "published_date": {
               "status": "quoted",
-              "quote": "May 17, 2021",
+              "quote": "MAY 17, 2021",
               "page": 1
             },
             "effective_from": {
               "status": "quoted",
-              "quote": "May 17, 2021",
+              "quote": "MAY 17, 2021",
               "page": 1
             },
             "gazette_id": {
@@ -52,48 +54,32 @@
     },
     {
       "provision_id": "ECR_2021_AMENDMENT_P002",
-      "passed": false,
-      "flags": [
-        "V1_word_mismatch",
-        "V5_not_contiguous",
-        "V5_non_law_text"
-      ],
+      "passed": true,
+      "flags": [],
       "evidence": {
-        "pipeline_version": "machine-verify-1.2",
+        "pipeline_version": "machine-verify-1.3",
         "pages": [
           2
         ],
-        "V1_independent_extraction": "fail",
+        "V1_independent_extraction": "pass",
         "V1_detail": {
-          "stored_tokens": 146,
-          "matched_in_order": 144,
-          "sample_missing": [
-            "mahadasam"
-          ]
+          "stored_tokens": 140,
+          "matched": 140
         },
         "V2_number_inventory": "pass",
         "V3_document_integrity": "pass",
-        "V5_boundary": "fail",
-        "V5_detail": {
-          "reason": "stored_text_not_a_contiguous_span_of_ocr",
-          "reason_non_law": "stored text contains non-law text",
-          "non_law_markers": [
-            "signatory_designation",
-            "signatory_name_line",
-            "trailing_uppercase_name_line"
-          ]
-        },
+        "V5_boundary": "pass",
         "V4_metadata_evidence": "pass",
         "V4_detail": {
           "metadata": {
             "published_date": {
               "status": "quoted",
-              "quote": "May 17, 2021",
+              "quote": "MAY 17, 2021",
               "page": 1
             },
             "effective_from": {
               "status": "quoted",
-              "quote": "May 17, 2021",
+              "quote": "MAY 17, 2021",
               "page": 1
             },
             "gazette_id": {
@@ -116,12 +102,12 @@
   "metadata_evidence": {
     "published_date": {
       "status": "quoted",
-      "quote": "May 17, 2021",
+      "quote": "MAY 17, 2021",
       "page": 1
     },
     "effective_from": {
       "status": "quoted",
-      "quote": "May 17, 2021",
+      "quote": "MAY 17, 2021",
       "page": 1
     },
     "gazette_id": {
