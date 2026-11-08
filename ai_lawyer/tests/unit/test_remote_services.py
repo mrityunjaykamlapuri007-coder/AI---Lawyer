@@ -259,3 +259,53 @@ def test_serve_all_notebook_parses_inlines_server_and_never_prints_secrets():
                 if isinstance(n, ast.Name) and n.id in {"API_KEY", "HF_TOKEN"} and id(n) not in guarded:
                     leaks.append(ast.unparse(node))
     assert leaks == []
+
+
+# --- hosted OpenAI-compatible embeddings (interview route without Kaggle) -----------
+def _openai_transport(calls: list, *, vector=(3.0, 4.0, 0.0), count_override=None):
+    def handler(request: httpx.Request) -> httpx.Response:
+        calls.append(request)
+        if request.headers.get("authorization") != f"Bearer {KEY}":
+            return httpx.Response(401)
+        body = json.loads(request.content)
+        n = count_override if count_override is not None else len(body["input"])
+        return httpx.Response(200, json={"data": [{"index": i, "embedding": list(vector)} for i in range(n)]})
+    return httpx.MockTransport(handler)
+
+
+def test_openai_compatible_embedder_normalises_fingerprints_and_prefixes_queries():
+    from ai_lawyer.legal_rag.remote_embedder import OpenAICompatibleEmbedder
+
+    calls: list = []
+    embedder = OpenAICompatibleEmbedder("https://api.example/v1", KEY, "bge-test", query_prefix="Q: ",
+                                        batch_size=2, transport=_openai_transport(calls))
+    passages = embedder.embed(["a", "b", "c"])
+    query = embedder.embed_query("refund?")
+
+    assert passages.shape == (3, 3)
+    assert np.allclose(np.linalg.norm(passages, axis=1), 1.0)
+    assert embedder.model_id == "bge-test" and len(embedder.model_hash) == 32
+    assert json.loads(calls[-1].content)["input"] == ["Q: refund?"]
+    assert all(json.loads(c.content)["model"] == "bge-test" for c in calls)
+    assert query.shape == (1, 3)
+
+
+def test_openai_compatible_embedder_hash_changes_with_model_output():
+    from ai_lawyer.legal_rag.remote_embedder import OpenAICompatibleEmbedder
+
+    a = OpenAICompatibleEmbedder("https://api.example/v1", KEY, "m", transport=_openai_transport([]))
+    b = OpenAICompatibleEmbedder("https://api.example/v1", KEY, "m",
+                                 transport=_openai_transport([], vector=(0.0, 1.0, 0.0)))
+    assert a.model_hash != b.model_hash
+
+
+def test_openai_compatible_embedder_refuses_wrong_count_and_bad_key():
+    from ai_lawyer.legal_rag.remote_embedder import OpenAICompatibleEmbedder
+
+    short = OpenAICompatibleEmbedder("https://api.example/v1", KEY, "m",
+                                     transport=_openai_transport([], count_override=1))
+    with pytest.raises(EmbedderUnavailable, match="returned 1 vectors"):
+        short.embed(["a", "b"])
+    wrong = OpenAICompatibleEmbedder("https://api.example/v1", "bad", "m", transport=_openai_transport([]))
+    with pytest.raises(EmbedderUnavailable, match="rejected the key"):
+        wrong.embed(["a"])

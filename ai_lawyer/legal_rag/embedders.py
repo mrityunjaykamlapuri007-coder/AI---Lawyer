@@ -42,6 +42,17 @@ def get_embedder(settings: Settings | None = None):
             timeout_s=settings.embedder_timeout_s,
             batch_size=settings.embedder_batch_size,
         )
+    if settings.embedding_backend == "openai_compatible":
+        from ai_lawyer.legal_rag.remote_embedder import OpenAICompatibleEmbedder
+
+        return OpenAICompatibleEmbedder(
+            settings.embedder_base_url,
+            settings.embedder_api_key,
+            settings.embedding_model_id,
+            query_prefix=settings.embedder_query_prefix,
+            timeout_s=settings.embedder_timeout_s,
+            batch_size=settings.embedder_batch_size,
+        )
     if settings.embedding_backend == "sentence_transformers":
         return SentenceTransformerEmbedder(settings.embedding_model_id)
     if settings.corpus_mode == "real":

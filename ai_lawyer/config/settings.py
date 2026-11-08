@@ -36,8 +36,10 @@ class Settings(BaseSettings):
 
     # ``remote_http`` = the BGE service in the Kaggle notebook (kaggle/embed_server.py).
     # ``hash`` is a test embedder and is refused in real mode.
-    embedding_backend: Literal["hash", "sentence_transformers", "remote_http"] = "hash"
+    # ``openai_compatible`` = any hosted ``/embeddings`` API (model = EMBEDDING_MODEL_ID).
+    embedding_backend: Literal["hash", "sentence_transformers", "remote_http", "openai_compatible"] = "hash"
     embedding_model_id: str = "BAAI/bge-large-en-v1.5"
+    embedder_query_prefix: str = ""
     embedder_base_url: str = ""
     embedder_api_key: str = ""
     embedder_timeout_s: int = 60

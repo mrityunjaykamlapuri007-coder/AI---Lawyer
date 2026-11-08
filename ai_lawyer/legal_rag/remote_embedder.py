@@ -144,3 +144,76 @@ class RemoteHTTPEmbedder:
                 )
             return response.json()
         raise EmbedderUnavailable(f"embedder failed: {type(last).__name__}")  # pragma: no cover
+
+
+FINGERPRINT_PROBES = (
+    "refund for a cancelled online order",
+    "grievance officer acknowledges the complaint",
+    "the seller refused to take back defective goods",
+)
+
+
+class OpenAICompatibleEmbedder(RemoteHTTPEmbedder):
+    """Any hosted ``POST /embeddings`` endpoint in the OpenAI format.
+
+    Lets the interview re-run use a free hosted embedding API instead of the
+    Kaggle service, by ``.env`` only.  The provider gives no model hash, so the
+    client fingerprints the model by embedding fixed probe texts; a different
+    model or revision gives a different hash and the index refuses to load.
+    Vectors are L2-normalised here.  An optional query prefix (for BGE-style
+    models) is applied to queries only.
+    """
+
+    def __init__(self, base_url: str, api_key: str, model: str, *, query_prefix: str = "",
+                 **kwargs: Any) -> None:
+        if not model:
+            raise NotConfigured("EMBEDDING_MODEL_ID")
+        super().__init__(base_url, api_key, **kwargs)
+        self._model = model
+        self.query_prefix = query_prefix
+
+    def _raw(self, texts: list[str]) -> np.ndarray:
+        data = self._request("POST", "/embeddings", json={"model": self._model, "input": texts})
+        items = sorted(data.get("data") or [], key=lambda d: d.get("index", 0))
+        if len(items) != len(texts):
+            raise EmbedderUnavailable(
+                f"embedding API returned {len(items)} vectors for {len(texts)} texts", retryable=False
+            )
+        vectors = np.asarray([item.get("embedding") for item in items], dtype="float32")
+        if vectors.ndim != 2 or not vectors.shape[1]:
+            raise EmbedderUnavailable("embedding API returned malformed vectors", retryable=False)
+        norms = np.linalg.norm(vectors, axis=1, keepdims=True)
+        if np.any(norms == 0):
+            raise EmbedderUnavailable("embedding API returned a zero vector", retryable=False)
+        return vectors / norms
+
+    def info(self) -> dict[str, Any]:
+        if self._info is None:
+            import hashlib
+            import json as _json
+
+            probe = self._raw(list(FINGERPRINT_PROBES))
+            fingerprint = _json.dumps(
+                {"model": self._model, "probe": [[round(float(x), 3) for x in row] for row in probe]},
+                sort_keys=True,
+            )
+            self._info = {
+                "model_id": self._model,
+                "dimension": int(probe.shape[1]),
+                "model_hash": hashlib.sha256(fingerprint.encode("utf-8")).hexdigest()[:32],
+            }
+        return self._info
+
+    def _embed(self, texts: Sequence[str], kind: str) -> np.ndarray:
+        info = self.info()
+        if not texts:
+            return np.zeros((0, int(info["dimension"])), dtype="float32")
+        prefix = self.query_prefix if kind == "query" else ""
+        out = []
+        for start in range(0, len(texts), self.batch_size):
+            batch = [prefix + t for t in texts[start : start + self.batch_size]]
+            vectors = self._raw(batch)
+            if vectors.shape[1] != int(info["dimension"]):
+                raise EmbedderUnavailable("embedding dimension changed during the session", retryable=False)
+            out.append(vectors)
+        return np.vstack(out)

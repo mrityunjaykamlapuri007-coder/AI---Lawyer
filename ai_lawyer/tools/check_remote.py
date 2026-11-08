@@ -54,13 +54,24 @@ def check_embedder(settings: Settings, transport: Any = None) -> dict[str, Any]:
     from ai_lawyer.contracts.errors import UserSafeError
     from ai_lawyer.legal_rag.remote_embedder import RemoteHTTPEmbedder
 
-    if settings.embedding_backend != "remote_http" or not settings.embedder_base_url or not settings.embedder_api_key:
+    backends = {"remote_http", "openai_compatible"}
+    if settings.embedding_backend not in backends or not settings.embedder_base_url or not settings.embedder_api_key:
         return {"service": "embedder", "ok": False,
-                "detail": "not configured (EMBEDDING_BACKEND=remote_http, EMBEDDER_BASE_URL, EMBEDDER_API_KEY)"}
-    embedder = RemoteHTTPEmbedder(
-        settings.embedder_base_url, settings.embedder_api_key,
-        timeout_s=settings.embedder_timeout_s, retries=0, transport=transport,
-    )
+                "detail": "not configured (EMBEDDING_BACKEND=remote_http|openai_compatible, "
+                          "EMBEDDER_BASE_URL, EMBEDDER_API_KEY)"}
+    if settings.embedding_backend == "openai_compatible":
+        from ai_lawyer.legal_rag.remote_embedder import OpenAICompatibleEmbedder
+
+        embedder = OpenAICompatibleEmbedder(
+            settings.embedder_base_url, settings.embedder_api_key, settings.embedding_model_id,
+            query_prefix=settings.embedder_query_prefix,
+            timeout_s=settings.embedder_timeout_s, retries=0, transport=transport,
+        )
+    else:
+        embedder = RemoteHTTPEmbedder(
+            settings.embedder_base_url, settings.embedder_api_key,
+            timeout_s=settings.embedder_timeout_s, retries=0, transport=transport,
+        )
     start = time.perf_counter()
     try:
         vector = embedder.embed_query("refund not received")
