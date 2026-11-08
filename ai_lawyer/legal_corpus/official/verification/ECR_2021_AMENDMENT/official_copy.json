@@ -1,0 +1,12 @@
+{
+  "url": "https://egazette.gov.in/WriteReadData/2021/227003.pdf",
+  "host": "egazette.gov.in",
+  "local_file": "ecr_2021_amendment.pdf",
+  "local_sha256": "a7db1f7a8c900e0bc9c7fcb1f2921130ff85e6fac517fb5222efcf76cf559654",
+  "checked_at": "2026-11-08T11:15:05.962051+00:00",
+  "final_url": "https://egazette.gov.in/WriteReadData/2021/227003.pdf",
+  "http_status": 200,
+  "bytes": 1564930,
+  "sha256": "a7db1f7a8c900e0bc9c7fcb1f2921130ff85e6fac517fb5222efcf76cf559654",
+  "result": "byte_identical"
+}

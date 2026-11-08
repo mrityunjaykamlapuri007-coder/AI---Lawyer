@@ -1,0 +1,62 @@
+{
+  "provision_id": "ECR_2021_AMENDMENT_P002",
+  "passed": false,
+  "flags": [
+    "V1_word_mismatch",
+    "V5_not_contiguous",
+    "V5_non_law_text"
+  ],
+  "evidence": {
+    "pipeline_version": "machine-verify-1.2",
+    "pages": [
+      2
+    ],
+    "V1_independent_extraction": "fail",
+    "V1_detail": {
+      "stored_tokens": 146,
+      "matched_in_order": 144,
+      "sample_missing": [
+        "mahadasam"
+      ]
+    },
+    "V2_number_inventory": "pass",
+    "V3_document_integrity": "pass",
+    "V5_boundary": "fail",
+    "V5_detail": {
+      "reason": "stored_text_not_a_contiguous_span_of_ocr",
+      "reason_non_law": "stored text contains non-law text",
+      "non_law_markers": [
+        "signatory_designation",
+        "signatory_name_line",
+        "trailing_uppercase_name_line"
+      ]
+    },
+    "V4_metadata_evidence": "pass",
+    "V4_detail": {
+      "metadata": {
+        "published_date": {
+          "status": "quoted",
+          "quote": "May 17, 2021",
+          "page": 1
+        },
+        "effective_from": {
+          "status": "quoted",
+          "quote": "May 17, 2021",
+          "page": 1
+        },
+        "gazette_id": {
+          "status": "quoted",
+          "quote": "2624 GI/2021",
+          "page": 1
+        }
+      },
+      "amendment_chain_clean": true,
+      "known_gaps": []
+    },
+    "V6_amendment_effect": "pass",
+    "V6_detail": {
+      "rule_number": 2,
+      "checked_instruments": []
+    }
+  }
+}

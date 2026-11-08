@@ -1,0 +1,96 @@
+{
+  "check": "independent_official_copy",
+  "purpose": "Confirm each runtime source PDF is the authoritative Gazette of India publication, not only a copy hosted by the Department of Consumer Affairs. Machine verification (V1-V6) compares a PDF with itself; this check compares the PDF with a second, independently hosted official copy.",
+  "performed_at": "2026-11-08",
+  "performed_by": "machine (coding agent); not a human or lawyer review",
+  "method": "Downloaded the e-Gazette copy and compared SHA-256 with the file in originals/. Where a differently produced copy existed, compared every runtime provision word-for-word against its text layer.",
+  "notes": [
+    "egazette.nic.in no longer resolves; the same WriteReadData paths are served by egazette.gov.in.",
+    "The e-Gazette IDs for ECR 2020 and ECR 2021 were found via secondary articles; the JUR 2021 ID was taken from the DCA file name (232278_...). All three IDs are confirmed only by the byte-identical download, not by the citing pages."
+  ],
+  "sources": [
+    {
+      "source_id": "ECR_2020",
+      "instrument": "G.S.R. 462(E)",
+      "local_file": "originals/ecr_2020.pdf",
+      "local_sha256": "3012b37f6f6dba2d29523abf10f43fbb3a503768e578ef0fa02e4b9e4593bd0c",
+      "official_copies": [
+        {
+          "host": "egazette.gov.in (Gazette of India)",
+          "url": "https://egazette.gov.in/WriteReadData/2020/220661.pdf",
+          "http_status": 200,
+          "bytes": 1281359,
+          "sha256": "3012b37f6f6dba2d29523abf10f43fbb3a503768e578ef0fa02e4b9e4593bd0c",
+          "result": "byte_identical"
+        }
+      ],
+      "verdict": "pass"
+    },
+    {
+      "source_id": "ECR_2021_AMENDMENT",
+      "instrument": "G.S.R. 328(E)",
+      "local_file": "originals/ecr_2021_amendment.pdf",
+      "local_sha256": "a7db1f7a8c900e0bc9c7fcb1f2921130ff85e6fac517fb5222efcf76cf559654",
+      "official_copies": [
+        {
+          "host": "egazette.gov.in (Gazette of India)",
+          "url": "https://egazette.gov.in/WriteReadData/2021/227003.pdf",
+          "http_status": 200,
+          "bytes": 1564930,
+          "sha256": "a7db1f7a8c900e0bc9c7fcb1f2921130ff85e6fac517fb5222efcf76cf559654",
+          "result": "byte_identical"
+        }
+      ],
+      "verdict": "pass"
+    },
+    {
+      "source_id": "JURISDICTION_RULES_2021_CANDIDATE_A",
+      "instrument": "G.S.R. 912(E)",
+      "local_file": "originals/jurisdiction_rules_2021_candidate_a.pdf",
+      "local_sha256": "dd22dbfa7ac8bc0ef968765d6cd521ad7a29742afb071b9a919c164f83b765b7",
+      "official_copies": [
+        {
+          "host": "egazette.gov.in (Gazette of India)",
+          "url": "https://egazette.gov.in/WriteReadData/2021/232278.pdf",
+          "http_status": 200,
+          "bytes": 1182260,
+          "sha256": "dd22dbfa7ac8bc0ef968765d6cd521ad7a29742afb071b9a919c164f83b765b7",
+          "result": "byte_identical"
+        },
+        {
+          "host": "thc.nic.in (High Court of Tripura, government host)",
+          "url": "https://www.thc.nic.in/Central%20Governmental%20Rules/Consumer%20Protection%20(Jurisdiction%20of%20the%20District%20Commission,%20the%20State%20Commission%20and%20the%20National%20Commission)%20Rules,%202021.pdf",
+          "http_status": 200,
+          "bytes": 414701,
+          "sha256": "2c10f5a312064d5d7eaf80181580919fc13aff09f2df47b4ecc2ca7b79ade979",
+          "result": "different_file_text_compared",
+          "pdf_producer": "iLovePDF (re-processed copy; weaker witness than the e-Gazette file)",
+          "provision_text_comparison": {
+            "JURISDICTION_RULES_2021_CANDIDATE_A_P001": "match",
+            "JURISDICTION_RULES_2021_CANDIDATE_A_P003": "match",
+            "JURISDICTION_RULES_2021_CANDIDATE_A_P004": "match",
+            "JURISDICTION_RULES_2021_CANDIDATE_A_P005": "operative text matches; stored text continues past the rule into the signature block ('ANUPAM MISHRA, Jt. Secy.' plus the digital-signature stamp 'SURENDER MAHADASAM MAHADASAM') and skips '[F. No. J-9/1/2020-CPU]'"
+          }
+        }
+      ],
+      "verdict": "pass_for_document; P005 boundary defect found"
+    }
+  ],
+  "amendment_search": {
+    "ECR_2020": "Secondary sources show only the 2020 corrigendum (G.S.R. 488(E)), G.S.R. 328(E) (2021) and G.S.R. 789(E) (2026, effective 2027-01-01). Matches manifest.json. No 2022-2025 amendment found.",
+    "JURISDICTION_RULES_2021": "No amendment found in secondary sources.",
+    "limit": "Absence in web search is not proof of absence; e-Gazette has no queryable index from here."
+  },
+  "defects_found": [
+    "JURISDICTION_RULES_2021_CANDIDATE_A_P005 was machine_verified and in the runtime corpus, but its stored text included the signatory and digital-signature stamp. V5 checked only for a cut-off proviso after the span, not for non-law text inside it."
+  ],
+  "resolution": {
+    "date": "2026-11-08",
+    "pipeline_version": "machine-verify-1.2",
+    "changes": [
+      "V5 now rejects stored text containing a signatory line, file number, gazette footer, digital-signature name lines, or the next chapter heading. Text is rejected, never trimmed by code.",
+      "A source is machine_verified only if official_copy.result is byte_identical against egazette.gov.in and its hash equals document_sha256; the acceptance gate enforces the same rule."
+    ],
+    "rerun_result": "official_copy byte_identical for all three sources; P005 now rejected (V5_non_law_text); runtime corpus rebuilt with 7 provisions, gate PASS."
+  }
+}

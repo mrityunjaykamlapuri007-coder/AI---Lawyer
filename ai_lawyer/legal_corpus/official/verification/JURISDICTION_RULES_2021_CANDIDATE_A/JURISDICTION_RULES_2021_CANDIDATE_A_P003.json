@@ -1,0 +1,49 @@
+{
+  "provision_id": "JURISDICTION_RULES_2021_CANDIDATE_A_P003",
+  "passed": true,
+  "flags": [],
+  "evidence": {
+    "pipeline_version": "machine-verify-1.2",
+    "pages": [
+      2
+    ],
+    "V1_independent_extraction": "pass",
+    "V1_detail": {
+      "stored_tokens": 54,
+      "matched": 54
+    },
+    "V2_number_inventory": "pass",
+    "V3_document_integrity": "pass",
+    "V5_boundary": "pass",
+    "V5_detail": {
+      "contains_proviso_marker": true
+    },
+    "V4_metadata_evidence": "pass",
+    "V4_detail": {
+      "metadata": {
+        "published_date": {
+          "status": "quoted",
+          "quote": "30th December, 2021",
+          "page": 2
+        },
+        "effective_from": {
+          "status": "quoted",
+          "quote": "30th December, 2021",
+          "page": 2
+        },
+        "gazette_id": {
+          "status": "quoted",
+          "quote": "7647 GI/2021",
+          "page": 1
+        }
+      },
+      "amendment_chain_clean": true,
+      "known_gaps": []
+    },
+    "V6_amendment_effect": "pass",
+    "V6_detail": {
+      "rule_number": 3,
+      "checked_instruments": []
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "provision_id": "ECR_2021_AMENDMENT_P001",
+  "passed": true,
+  "flags": [],
+  "evidence": {
+    "pipeline_version": "machine-verify-1.2",
+    "pages": [
+      2
+    ],
+    "V1_independent_extraction": "pass",
+    "V1_detail": {
+      "stored_tokens": 31,
+      "matched": 31
+    },
+    "V2_number_inventory": "pass",
+    "V3_document_integrity": "pass",
+    "V5_boundary": "pass",
+    "V4_metadata_evidence": "pass",
+    "V4_detail": {
+      "metadata": {
+        "published_date": {
+          "status": "quoted",
+          "quote": "May 17, 2021",
+          "page": 1
+        },
+        "effective_from": {
+          "status": "quoted",
+          "quote": "May 17, 2021",
+          "page": 1
+        },
+        "gazette_id": {
+          "status": "quoted",
+          "quote": "2624 GI/2021",
+          "page": 1
+        }
+      },
+      "amendment_chain_clean": true,
+      "known_gaps": []
+    },
+    "V6_amendment_effect": "pass",
+    "V6_detail": {
+      "rule_number": 1,
+      "checked_instruments": []
+    }
+  }
+}

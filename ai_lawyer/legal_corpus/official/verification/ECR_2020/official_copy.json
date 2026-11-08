@@ -1,0 +1,12 @@
+{
+  "url": "https://egazette.gov.in/WriteReadData/2020/220661.pdf",
+  "host": "egazette.gov.in",
+  "local_file": "ecr_2020.pdf",
+  "local_sha256": "3012b37f6f6dba2d29523abf10f43fbb3a503768e578ef0fa02e4b9e4593bd0c",
+  "checked_at": "2026-11-08T11:14:59.075949+00:00",
+  "final_url": "https://egazette.gov.in/WriteReadData/2020/220661.pdf",
+  "http_status": 200,
+  "bytes": 1281359,
+  "sha256": "3012b37f6f6dba2d29523abf10f43fbb3a503768e578ef0fa02e4b9e4593bd0c",
+  "result": "byte_identical"
+}

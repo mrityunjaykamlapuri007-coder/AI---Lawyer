@@ -1,0 +1,12 @@
+{
+  "url": "https://egazette.gov.in/WriteReadData/2021/232278.pdf",
+  "host": "egazette.gov.in",
+  "local_file": "jurisdiction_rules_2021_candidate_a.pdf",
+  "local_sha256": "dd22dbfa7ac8bc0ef968765d6cd521ad7a29742afb071b9a919c164f83b765b7",
+  "checked_at": "2026-11-08T11:15:13.222762+00:00",
+  "final_url": "https://egazette.gov.in/WriteReadData/2021/232278.pdf",
+  "http_status": 200,
+  "bytes": 1182260,
+  "sha256": "dd22dbfa7ac8bc0ef968765d6cd521ad7a29742afb071b9a919c164f83b765b7",
+  "result": "byte_identical"
+}

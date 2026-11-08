@@ -1,0 +1,73 @@
+{
+  "provision_id": "ECR_2020_P004",
+  "passed": false,
+  "flags": [
+    "V1_word_mismatch",
+    "V5_not_contiguous",
+    "V6_amendment_text_changed"
+  ],
+  "evidence": {
+    "pipeline_version": "machine-verify-1.2",
+    "pages": [
+      8,
+      9
+    ],
+    "V1_independent_extraction": "fail",
+    "V1_detail": {
+      "stored_tokens": 608,
+      "matched_in_order": 73,
+      "sample_missing": [
+        "iii",
+        "forty",
+        "eight",
+        "hours",
+        "redresses",
+        "one",
+        "month",
+        "unilaterally",
+        "reserve",
+        "bank",
+        "competent",
+        "authority",
+        "law",
+        "affecting",
+        "rights"
+      ]
+    },
+    "V2_number_inventory": "pass",
+    "V3_document_integrity": "pass",
+    "V5_boundary": "fail",
+    "V5_detail": {
+      "reason": "stored_text_not_a_contiguous_span_of_ocr"
+    },
+    "V4_metadata_evidence": "pass",
+    "V4_detail": {
+      "metadata": {
+        "published_date": {
+          "status": "quoted",
+          "quote": "July 23, 2020",
+          "page": 1
+        },
+        "effective_from": {
+          "status": "quoted",
+          "quote": "July 23, 2020",
+          "page": 1
+        },
+        "gazette_id": {
+          "status": "quoted",
+          "quote": "3261 GI/2020",
+          "page": 1
+        }
+      },
+      "amendment_chain_clean": true,
+      "known_gaps": []
+    },
+    "V6_amendment_effect": "fail",
+    "V6_detail": {
+      "reason": "this rule is substituted by an amending instrument; the consolidated text was not rebuilt",
+      "instruments": [
+        "Amendment Rules 2021, G.S.R. 328(E) (2021-05-17)."
+      ]
+    }
+  }
+}

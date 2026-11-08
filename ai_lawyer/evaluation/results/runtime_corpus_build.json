@@ -1,0 +1,19 @@
+{
+  "staging": "C:\\Users\\Lenovo\\OneDrive\\Documents\\Default Project\\ai_lawyer\\legal_corpus\\official\\draft_curated",
+  "out_dir": "C:\\Users\\Lenovo\\OneDrive\\Documents\\Default Project\\ai_lawyer\\legal_corpus",
+  "approved_sources_total": 3,
+  "sources_with_approved_provisions": 3,
+  "provisions_total": 149,
+  "provisions_included": 7,
+  "per_source_included": {
+    "ECR_2020": 3,
+    "ECR_2021_AMENDMENT": 1,
+    "JURISDICTION_RULES_2021_CANDIDATE_A": 3
+  },
+  "excluded": {
+    "not verified": 134,
+    "rejected by machine verification": 8
+  },
+  "approved_sources_without_provisions": [],
+  "problems": []
+}

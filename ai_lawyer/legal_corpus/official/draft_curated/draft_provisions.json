@@ -2562,7 +2562,21 @@
     "page_start": 7,
     "page_end": 7,
     "reviewed_by": null,
-    "reviewed_at": null
+    "reviewed_at": null,
+    "verification_evidence": {
+      "V1_independent_extraction": "pass",
+      "V2_number_inventory": "pass",
+      "V3_document_integrity": "pass",
+      "V4_metadata_evidence": "pass",
+      "V5_boundary": "pass",
+      "V6_amendment_effect": "pass"
+    },
+    "verification_method_count": 2,
+    "pipeline_version": "machine-verify-1.2",
+    "verified_at": "2026-11-08T11:15:28.081682+00:00",
+    "review_status": "machine_verified",
+    "verified_by": "machine",
+    "review_note": null
   },
   {
     "provision_id": "ECR_2020_P002",
@@ -2581,7 +2595,21 @@
     "page_start": 7,
     "page_end": 7,
     "reviewed_by": null,
-    "reviewed_at": null
+    "reviewed_at": null,
+    "verification_evidence": {
+      "V1_independent_extraction": "pass",
+      "V2_number_inventory": "pass",
+      "V3_document_integrity": "pass",
+      "V4_metadata_evidence": "pass",
+      "V5_boundary": "pass",
+      "V6_amendment_effect": "pass"
+    },
+    "verification_method_count": 2,
+    "pipeline_version": "machine-verify-1.2",
+    "verified_at": "2026-11-08T11:15:28.088668+00:00",
+    "review_status": "machine_verified",
+    "verified_by": "machine",
+    "review_note": null
   },
   {
     "provision_id": "ECR_2020_P003",
@@ -2600,7 +2628,21 @@
     "page_start": 7,
     "page_end": 8,
     "reviewed_by": null,
-    "reviewed_at": null
+    "reviewed_at": null,
+    "verification_evidence": {
+      "V1_independent_extraction": "fail",
+      "V2_number_inventory": "fail",
+      "V3_document_integrity": "pass",
+      "V4_metadata_evidence": "pass",
+      "V5_boundary": "fail",
+      "V6_amendment_effect": "pass"
+    },
+    "verification_method_count": 2,
+    "pipeline_version": "machine-verify-1.2",
+    "verified_at": "2026-11-08T11:15:28.099642+00:00",
+    "review_status": "rejected",
+    "verified_by": "machine",
+    "review_note": "machine verification failed: V1_word_mismatch, V2_number_mismatch, V5_not_contiguous"
   },
   {
     "provision_id": "ECR_2020_P004",
@@ -2619,7 +2661,21 @@
     "page_start": 8,
     "page_end": 9,
     "reviewed_by": null,
-    "reviewed_at": null
+    "reviewed_at": null,
+    "verification_evidence": {
+      "V1_independent_extraction": "fail",
+      "V2_number_inventory": "pass",
+      "V3_document_integrity": "pass",
+      "V4_metadata_evidence": "pass",
+      "V5_boundary": "fail",
+      "V6_amendment_effect": "fail"
+    },
+    "verification_method_count": 2,
+    "pipeline_version": "machine-verify-1.2",
+    "verified_at": "2026-11-08T11:15:28.111166+00:00",
+    "review_status": "rejected",
+    "verified_by": "machine",
+    "review_note": "machine verification failed: V1_word_mismatch, V5_not_contiguous, V6_amendment_text_changed"
   },
   {
     "provision_id": "ECR_2020_P005",
@@ -2638,7 +2694,21 @@
     "page_start": 9,
     "page_end": 10,
     "reviewed_by": null,
-    "reviewed_at": null
+    "reviewed_at": null,
+    "verification_evidence": {
+      "V1_independent_extraction": "fail",
+      "V2_number_inventory": "pass",
+      "V3_document_integrity": "pass",
+      "V4_metadata_evidence": "pass",
+      "V5_boundary": "fail",
+      "V6_amendment_effect": "pass"
+    },
+    "verification_method_count": 2,
+    "pipeline_version": "machine-verify-1.2",
+    "verified_at": "2026-11-08T11:15:28.123694+00:00",
+    "review_status": "rejected",
+    "verified_by": "machine",
+    "review_note": "machine verification failed: V1_word_mismatch, V5_not_contiguous"
   },
   {
     "provision_id": "ECR_2020_P006",
@@ -2657,7 +2727,21 @@
     "page_start": 10,
     "page_end": 11,
     "reviewed_by": null,
-    "reviewed_at": null
+    "reviewed_at": null,
+    "verification_evidence": {
+      "V1_independent_extraction": "pass",
+      "V2_number_inventory": "pass",
+      "V3_document_integrity": "pass",
+      "V4_metadata_evidence": "pass",
+      "V5_boundary": "pass",
+      "V6_amendment_effect": "pass"
+    },
+    "verification_method_count": 2,
+    "pipeline_version": "machine-verify-1.2",
+    "verified_at": "2026-11-08T11:15:28.135213+00:00",
+    "review_status": "machine_verified",
+    "verified_by": "machine",
+    "review_note": null
   },
   {
     "provision_id": "ECR_2020_P007",
@@ -2676,7 +2760,21 @@
     "page_start": 11,
     "page_end": 11,
     "reviewed_by": null,
-    "reviewed_at": null
+    "reviewed_at": null,
+    "verification_evidence": {
+      "V1_independent_extraction": "fail",
+      "V2_number_inventory": "pass",
+      "V3_document_integrity": "pass",
+      "V4_metadata_evidence": "pass",
+      "V5_boundary": "fail",
+      "V6_amendment_effect": "pass"
+    },
+    "verification_method_count": 2,
+    "pipeline_version": "machine-verify-1.2",
+    "verified_at": "2026-11-08T11:15:28.142219+00:00",
+    "review_status": "rejected",
+    "verified_by": "machine",
+    "review_note": "machine verification failed: V1_word_mismatch, V5_not_contiguous"
   },
   {
     "provision_id": "ECR_2020_P008",
@@ -2695,7 +2793,21 @@
     "page_start": 11,
     "page_end": 11,
     "reviewed_by": null,
-    "reviewed_at": null
+    "reviewed_at": null,
+    "verification_evidence": {
+      "V1_independent_extraction": "fail",
+      "V2_number_inventory": "fail",
+      "V3_document_integrity": "pass",
+      "V4_metadata_evidence": "pass",
+      "V5_boundary": "fail",
+      "V6_amendment_effect": "pass"
+    },
+    "verification_method_count": 2,
+    "pipeline_version": "machine-verify-1.2",
+    "verified_at": "2026-11-08T11:15:28.148212+00:00",
+    "review_status": "rejected",
+    "verified_by": "machine",
+    "review_note": "machine verification failed: V1_word_mismatch, V2_number_mismatch, V5_not_contiguous, V5_non_law_text"
   },
   {
     "provision_id": "ECR_2021_AMENDMENT_P001",
@@ -2714,7 +2826,21 @@
     "page_start": 2,
     "page_end": 2,
     "reviewed_by": null,
-    "reviewed_at": null
+    "reviewed_at": null,
+    "verification_evidence": {
+      "V1_independent_extraction": "pass",
+      "V2_number_inventory": "pass",
+      "V3_document_integrity": "pass",
+      "V4_metadata_evidence": "pass",
+      "V5_boundary": "pass",
+      "V6_amendment_effect": "pass"
+    },
+    "verification_method_count": 2,
+    "pipeline_version": "machine-verify-1.2",
+    "verified_at": "2026-11-08T11:15:29.752627+00:00",
+    "review_status": "machine_verified",
+    "verified_by": "machine",
+    "review_note": null
   },
   {
     "provision_id": "ECR_2021_AMENDMENT_P002",
@@ -2733,7 +2859,21 @@
     "page_start": 2,
     "page_end": 2,
     "reviewed_by": null,
-    "reviewed_at": null
+    "reviewed_at": null,
+    "verification_evidence": {
+      "V1_independent_extraction": "fail",
+      "V2_number_inventory": "pass",
+      "V3_document_integrity": "pass",
+      "V4_metadata_evidence": "pass",
+      "V5_boundary": "fail",
+      "V6_amendment_effect": "pass"
+    },
+    "verification_method_count": 2,
+    "pipeline_version": "machine-verify-1.2",
+    "verified_at": "2026-11-08T11:15:29.757630+00:00",
+    "review_status": "rejected",
+    "verified_by": "machine",
+    "review_note": "machine verification failed: V1_word_mismatch, V5_not_contiguous, V5_non_law_text"
   },
   {
     "provision_id": "JURISDICTION_RULES_2021_CANDIDATE_A_P001",
@@ -2752,7 +2892,21 @@
     "page_start": 2,
     "page_end": 2,
     "reviewed_by": null,
-    "reviewed_at": null
+    "reviewed_at": null,
+    "verification_evidence": {
+      "V1_independent_extraction": "pass",
+      "V2_number_inventory": "pass",
+      "V3_document_integrity": "pass",
+      "V4_metadata_evidence": "pass",
+      "V5_boundary": "pass",
+      "V6_amendment_effect": "pass"
+    },
+    "verification_method_count": 2,
+    "pipeline_version": "machine-verify-1.2",
+    "verified_at": "2026-11-08T11:15:31.175141+00:00",
+    "review_status": "machine_verified",
+    "verified_by": "machine",
+    "review_note": null
   },
   {
     "provision_id": "JURISDICTION_RULES_2021_CANDIDATE_A_P002",
@@ -2771,7 +2925,21 @@
     "page_start": 2,
     "page_end": 2,
     "reviewed_by": null,
-    "reviewed_at": null
+    "reviewed_at": null,
+    "verification_evidence": {
+      "V1_independent_extraction": "fail",
+      "V2_number_inventory": "pass",
+      "V3_document_integrity": "pass",
+      "V4_metadata_evidence": "pass",
+      "V5_boundary": "fail",
+      "V6_amendment_effect": "pass"
+    },
+    "verification_method_count": 2,
+    "pipeline_version": "machine-verify-1.2",
+    "verified_at": "2026-11-08T11:15:31.180143+00:00",
+    "review_status": "rejected",
+    "verified_by": "machine",
+    "review_note": "machine verification failed: V1_word_mismatch, V5_not_contiguous"
   },
   {
     "provision_id": "JURISDICTION_RULES_2021_CANDIDATE_A_P003",
@@ -2790,7 +2958,21 @@
     "page_start": 2,
     "page_end": 2,
     "reviewed_by": null,
-    "reviewed_at": null
+    "reviewed_at": null,
+    "verification_evidence": {
+      "V1_independent_extraction": "pass",
+      "V2_number_inventory": "pass",
+      "V3_document_integrity": "pass",
+      "V4_metadata_evidence": "pass",
+      "V5_boundary": "pass",
+      "V6_amendment_effect": "pass"
+    },
+    "verification_method_count": 2,
+    "pipeline_version": "machine-verify-1.2",
+    "verified_at": "2026-11-08T11:15:31.184141+00:00",
+    "review_status": "machine_verified",
+    "verified_by": "machine",
+    "review_note": null
   },
   {
     "provision_id": "JURISDICTION_RULES_2021_CANDIDATE_A_P004",
@@ -2809,7 +2991,21 @@
     "page_start": 2,
     "page_end": 2,
     "reviewed_by": null,
-    "reviewed_at": null
+    "reviewed_at": null,
+    "verification_evidence": {
+      "V1_independent_extraction": "pass",
+      "V2_number_inventory": "pass",
+      "V3_document_integrity": "pass",
+      "V4_metadata_evidence": "pass",
+      "V5_boundary": "pass",
+      "V6_amendment_effect": "pass"
+    },
+    "verification_method_count": 2,
+    "pipeline_version": "machine-verify-1.2",
+    "verified_at": "2026-11-08T11:15:31.188152+00:00",
+    "review_status": "machine_verified",
+    "verified_by": "machine",
+    "review_note": null
   },
   {
     "provision_id": "JURISDICTION_RULES_2021_CANDIDATE_A_P005",
@@ -2828,6 +3024,20 @@
     "page_start": 2,
     "page_end": 2,
     "reviewed_by": null,
-    "reviewed_at": null
+    "reviewed_at": null,
+    "verification_evidence": {
+      "V1_independent_extraction": "pass",
+      "V2_number_inventory": "pass",
+      "V3_document_integrity": "pass",
+      "V4_metadata_evidence": "pass",
+      "V5_boundary": "fail",
+      "V6_amendment_effect": "pass"
+    },
+    "verification_method_count": 2,
+    "pipeline_version": "machine-verify-1.2",
+    "verified_at": "2026-11-08T11:15:31.193160+00:00",
+    "review_status": "rejected",
+    "verified_by": "machine",
+    "review_note": "machine verification failed: V5_non_law_text"
   }
 ]

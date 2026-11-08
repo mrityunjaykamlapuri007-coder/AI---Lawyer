@@ -1,0 +1,68 @@
+{
+  "provision_id": "ECR_2020_P007",
+  "passed": false,
+  "flags": [
+    "V1_word_mismatch",
+    "V5_not_contiguous"
+  ],
+  "evidence": {
+    "pipeline_version": "machine-verify-1.2",
+    "pages": [
+      11
+    ],
+    "V1_independent_extraction": "fail",
+    "V1_detail": {
+      "stored_tokens": 401,
+      "matched_in_order": 134,
+      "sample_missing": [
+        "total",
+        "price",
+        "single",
+        "figure",
+        "along",
+        "breakup",
+        "handling",
+        "conveyance",
+        "tax"
+      ]
+    },
+    "V2_number_inventory": "pass",
+    "V3_document_integrity": "pass",
+    "V5_boundary": "fail",
+    "V5_detail": {
+      "reason": "stored_text_not_a_contiguous_span_of_ocr",
+      "contains_proviso_marker": true
+    },
+    "V4_metadata_evidence": "pass",
+    "V4_detail": {
+      "metadata": {
+        "published_date": {
+          "status": "quoted",
+          "quote": "July 23, 2020",
+          "page": 1
+        },
+        "effective_from": {
+          "status": "quoted",
+          "quote": "July 23, 2020",
+          "page": 1
+        },
+        "gazette_id": {
+          "status": "quoted",
+          "quote": "3261 GI/2020",
+          "page": 1
+        }
+      },
+      "amendment_chain_clean": true,
+      "known_gaps": []
+    },
+    "V6_amendment_effect": "pass",
+    "V6_detail": {
+      "rule_number": 7,
+      "checked_instruments": [
+        "Corrigendum G.S.R. 488(E) (2020-08-04).",
+        "Amendment Rules 2021, G.S.R. 328(E) (2021-05-17).",
+        "Amendment Rules 2026, G.S.R. 789(E) (2026-09-09), effective 2027-01-01."
+      ]
+    }
+  }
+}
