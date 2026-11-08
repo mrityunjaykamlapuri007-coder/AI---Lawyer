@@ -49,7 +49,14 @@ _KEYWORDS: list[tuple[str, tuple[str, ...], bool]] = [
 _STATUS_PATTERNS: list[tuple[str, re.Pattern[str]]] = [
     ("reversed", re.compile(r"\brevers(?:ed|al)\b", re.I)),
     ("denied", re.compile(r"\bdenied\b|\brefused\b|\bdeclined\b|\breject(?:ed|ing)?\b", re.I)),
-    ("partial", re.compile(r"\bpartial\b|\bonly\s+(?:INR|Rs\.?|₹)?\s*[\d,]+\b|\blower than what I paid\b|\bdeducted\b", re.I)),
+    # "deducted" alone also matches "EMIs deducted from my bank account" (money taken,
+    # not a short refund; run-2 R03, development); only deductions from the refund count.
+    ("partial", re.compile(
+        r"\bpartial\b|\bonly\s+(?:INR|Rs\.?|₹)?\s*[\d,]+\b|\blower than what I paid\b|"
+        r"\bdeducted\s+(?:from|out\s+of)\s+(?:the|my)\s+refund\b|\brefund\b[^.]{0,30}\bdeducted\b|"
+        r"\bdeducted\s+(?:the\s+)?(?:shipping|delivery|return|cancellation|handling)\s+(?:charges?|fees?)\b",
+        re.I,
+    )),
     ("processed", re.compile(r"\bprocessed\b", re.I)),
     ("initiated", re.compile(r"\binitiated\b", re.I)),
     (
@@ -296,6 +303,19 @@ def _make_fact(
     }
 
 
+_OUTSIDE_BODY = re.compile(
+    r"\b(?:national consumer helpline|consumer helpline|helpline|nch|consumer (?:commission|court|forum)|"
+    r"police|cyber\s*cell)\b"
+)
+
+
+def _clause_from(text: str, start: int, max_chars: int = 60) -> str:
+    """The rest of the clause after a contact verb ("complained on the helpline")."""
+    tail = text[start : start + max_chars]
+    stops = [p for p in (tail.find("."), tail.find(";"), tail.find(" but ")) if p >= 0]
+    return tail[: min(stops)] if stops else tail
+
+
 def _contact_flags(text: str) -> dict[str, dict[str, Any]]:
     lowered = text.lower()
     out: dict[str, dict[str, Any]] = {}
@@ -316,6 +336,15 @@ def _contact_flags(text: str) -> dict[str, dict[str, Any]]:
         r"\btried\b[^.]{0,40}\b(?:chats?|calls?|emails?)\b|"
         r"\b(?:raised|filed|lodged)\s+(?:a\s+)?(?:complaint|grievance|ticket)\s+with\b",
         lowered,
+    )
+    # Run-4 defect (R05, development): a complaint to an outside body (the National
+    # Consumer Helpline, a consumer commission, the police) is not contact with the
+    # platform or seller.  Only matches whose clause names no outside body count.
+    positive = next(
+        (m for m in re.finditer(positive.re, lowered) if not _OUTSIDE_BODY.search(_clause_from(lowered, m.end())))
+        if positive
+        else iter(()),
+        None,
     )
     if negative and not positive:
         out["support_contact_made"] = _make_fact(
@@ -603,6 +632,12 @@ def _coerce_llm_fact(item: dict[str, Any], text: str, default_year: int | None =
         # Order and transaction ids are codes; "Visa card online" is not one.
         logger.info("dropping %s without any digit", fact_type)
         return None
+    if fact_type == "support_contact_made":
+        start = text.lower().find(raw.lower())
+        around = raw.lower() + " " + (_clause_from(text.lower(), start + len(raw)) if start >= 0 else "")
+        if _OUTSIDE_BODY.search(around):
+            logger.info("dropping support_contact_made: it names an outside body, not the platform")
+            return None
     if fact_type == "refund_status":
         normalised = normalise_refund_status(raw, normalised)
         if normalised is None:

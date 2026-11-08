@@ -111,3 +111,25 @@ def test_draft_output_cap_leaves_room_for_long_answers():
     from ai_lawyer.config.settings import Settings
 
     assert Settings().llm_max_tokens >= 3000
+
+
+# --- run-4 defects (development cases) -----------------------------------------
+def test_complaint_to_an_outside_body_is_not_platform_contact():  # R05 (development)
+    assert "support_contact_made" not in _contact_flags("I complained on the National Consumer Helpline.")
+    assert "support_contact_made" not in _contact_flags("We reported it to the police and the consumer forum.")
+    flag = _contact_flags("I complained on the National Consumer Helpline. I also called Flipkart customer care.")
+    assert flag["support_contact_made"]["normalised_value"] is True
+
+
+def test_emi_deduction_is_not_a_partial_refund():  # R03 (development)
+    assert normalise_refund_status("three EMIs have already been deducted from my bank account", None) != "partial"
+    assert normalise_refund_status("they deducted shipping charges and refunded the rest", None) == "partial"
+    assert normalise_refund_status("Rs 200 was deducted from my refund", None) == "partial"
+
+
+def test_llm_contact_with_an_outside_body_is_dropped():
+    text = "I complained on the National Consumer Helpline. The refund never came."
+    item = {"fact_type": "support_contact_made", "raw_value": "I complained", "normalised_value": True}
+    assert _coerce_llm_fact(item, text) is None
+    ok = {"fact_type": "support_contact_made", "raw_value": "I emailed their support", "normalised_value": True}
+    assert _coerce_llm_fact(ok, "I emailed their support twice.")["normalised_value"] is True

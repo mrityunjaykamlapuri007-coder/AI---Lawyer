@@ -42,10 +42,10 @@
   },
   "responses": [
     {
-      "conversation_id": "conv_2415ed55-ecc1-45c5-b1c5-47c985b60f4d",
-      "message_id": "msg_8f3d9b49-27fd-4dc1-94c5-44cf339399e3",
-      "assistant_message_id": "msg_aa3a66bb-cb0c-45e9-8288-a4671d6665fa",
-      "case_id": "case_ff97fd05-0ea7-4313-9348-76c956c10e9f",
+      "conversation_id": "conv_7e64a750-de77-4945-abc6-b2c6817c5673",
+      "message_id": "msg_c6786f1b-c7f0-4dc1-a7a4-ed94a9402d8c",
+      "assistant_message_id": "msg_8b425481-16c0-4e4b-9207-664ee73f8da7",
+      "case_id": "case_1911edb3-196f-4b9d-8e1d-8138e02b268b",
       "processing_status": "completed",
       "assistant_message": "## What I understood\n\nA consumer says an e-commerce refund is outstanding.\n\n## Facts\n\nFacts you reported:\n- Order id: SM-2002\n- Merchant name: ShopEasy Demo\n- Payment method: UPI\n- Refund status: has not arrived\n- Support contact made: have not contacted\n- Grievance officer contacted: have not contacted\n- Cancellation date: 1 November 2026\n- Cancellation date: 1 November\n\n## Legal sources that may apply\n\n- **TEST_ACT Article A1 (FIXTURE)** — role: supporting; applicability: applicable; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: Where a consumer cancels an order or returns goods, the seller must process a refund within a reasonable period after the cancellation or return.\"\n- **TEST_ACT Article A7 (FIXTURE)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: A seller must respond to a refund request within a period set by the platform.\"\n- **TEST_ACT Article A1 Proviso (FIXTURE)** — role: mandatory_qualifier; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: Provided that the seller may first require the consumer to return the goods.\"\n\n## How this may relate to your case\n\n- This provision may apply if the facts described are established.\n\n## Assessment\n\n**Informal resolution is recommended first.**\n\n- The refund is pending and there is no record that support has been contacted yet.\n\nSuggested next steps:\n1. Send a written support request to the seller or platform and keep proof of sending.\n2. State the order id, dates, amount and what outcome you want.\n3. Wait for a response before escalating.\n\nAssessment date: 2026-11-08.\n\n## Draft document\nA **support request** draft is included below for your review. It has not been sent or filed.\n\n## Limitations\n\n- This is general information and a draft for your review, not legal advice. I cannot guarantee any outcome.\n- FIXTURE DATA, NOT REAL LAW: the citations above come from a synthetic test corpus and must not be relied on as legal authority.\n",
       "case_summary": {
@@ -60,8 +60,8 @@
       },
       "extracted_facts": [
         {
-          "fact_id": "fact_b9924df7-c234-4218-8fb7-32220f515b76",
-          "case_id": "case_ff97fd05-0ea7-4313-9348-76c956c10e9f",
+          "fact_id": "fact_e11e9094-fd63-4871-912a-d92ef85372c6",
+          "case_id": "case_1911edb3-196f-4b9d-8e1d-8138e02b268b",
           "fact_type": "order_id",
           "raw_value": "SM-2002",
           "normalised_value": "SM-2002",
@@ -73,11 +73,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T21:00:32.189011Z"
+          "created_at": "2026-11-08T21:52:28.488351Z"
         },
         {
-          "fact_id": "fact_5760f286-7071-43b6-8d42-e05e6e64a874",
-          "case_id": "case_ff97fd05-0ea7-4313-9348-76c956c10e9f",
+          "fact_id": "fact_837ab693-7f15-4d7f-a27b-00c4216f2aab",
+          "case_id": "case_1911edb3-196f-4b9d-8e1d-8138e02b268b",
           "fact_type": "merchant_name",
           "raw_value": "ShopEasy Demo",
           "normalised_value": "ShopEasy Demo",
@@ -89,11 +89,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T21:00:32.209545Z"
+          "created_at": "2026-11-08T21:52:28.506911Z"
         },
         {
-          "fact_id": "fact_f211b376-12eb-489c-aebb-aaf8d0c46208",
-          "case_id": "case_ff97fd05-0ea7-4313-9348-76c956c10e9f",
+          "fact_id": "fact_7a501c7c-32f0-402d-8c8a-4492c62f39c6",
+          "case_id": "case_1911edb3-196f-4b9d-8e1d-8138e02b268b",
           "fact_type": "payment_method",
           "raw_value": "UPI",
           "normalised_value": "upi",
@@ -105,11 +105,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T21:00:32.232603Z"
+          "created_at": "2026-11-08T21:52:28.532073Z"
         },
         {
-          "fact_id": "fact_8f267997-cf5f-4ed1-904f-dbd1b93b5891",
-          "case_id": "case_ff97fd05-0ea7-4313-9348-76c956c10e9f",
+          "fact_id": "fact_3e8c3d8c-0c09-4752-8bc7-36ce6fdf7c96",
+          "case_id": "case_1911edb3-196f-4b9d-8e1d-8138e02b268b",
           "fact_type": "refund_status",
           "raw_value": "has not arrived",
           "normalised_value": "not_received",
@@ -121,11 +121,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T21:00:32.254147Z"
+          "created_at": "2026-11-08T21:52:28.554319Z"
         },
         {
-          "fact_id": "fact_fbccd0a7-9195-41a1-bde9-a435933f3897",
-          "case_id": "case_ff97fd05-0ea7-4313-9348-76c956c10e9f",
+          "fact_id": "fact_31cb0a2e-7813-4a2a-849d-0d413ee2419c",
+          "case_id": "case_1911edb3-196f-4b9d-8e1d-8138e02b268b",
           "fact_type": "support_contact_made",
           "raw_value": "have not contacted",
           "normalised_value": false,
@@ -137,11 +137,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T21:00:32.276686Z"
+          "created_at": "2026-11-08T21:52:28.572181Z"
         },
         {
-          "fact_id": "fact_d3effa53-bbe0-4693-870c-df65409fe768",
-          "case_id": "case_ff97fd05-0ea7-4313-9348-76c956c10e9f",
+          "fact_id": "fact_7b55ff98-e539-4fde-81ab-d14862606ea6",
+          "case_id": "case_1911edb3-196f-4b9d-8e1d-8138e02b268b",
           "fact_type": "grievance_officer_contacted",
           "raw_value": "have not contacted",
           "normalised_value": false,
@@ -153,11 +153,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T21:00:32.301090Z"
+          "created_at": "2026-11-08T21:52:28.596741Z"
         },
         {
-          "fact_id": "fact_d9ab65e9-2c14-436b-8106-d7ba375637a2",
-          "case_id": "case_ff97fd05-0ea7-4313-9348-76c956c10e9f",
+          "fact_id": "fact_28240ed1-f1b5-4010-8665-e95b49783596",
+          "case_id": "case_1911edb3-196f-4b9d-8e1d-8138e02b268b",
           "fact_type": "cancellation_date",
           "raw_value": "1 November 2026",
           "normalised_value": "2026-11-01",
@@ -169,11 +169,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T21:00:32.323006Z"
+          "created_at": "2026-11-08T21:52:28.617143Z"
         },
         {
-          "fact_id": "fact_78a7b70c-e7eb-4e6f-9c05-d34b0b208ce7",
-          "case_id": "case_ff97fd05-0ea7-4313-9348-76c956c10e9f",
+          "fact_id": "fact_baa2eee3-8ade-4969-b4a9-a98ad9d4c0ee",
+          "case_id": "case_1911edb3-196f-4b9d-8e1d-8138e02b268b",
           "fact_type": "cancellation_date",
           "raw_value": "1 November",
           "normalised_value": "2026-11-01",
@@ -185,7 +185,7 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T21:00:32.343577Z"
+          "created_at": "2026-11-08T21:52:28.633792Z"
         }
       ],
       "evidence_processing": [],
@@ -458,14 +458,14 @@
           "The refund is pending and there is no record that support has been contacted yet."
         ],
         "facts_used": [
-          "fact_b9924df7-c234-4218-8fb7-32220f515b76",
-          "fact_5760f286-7071-43b6-8d42-e05e6e64a874",
-          "fact_f211b376-12eb-489c-aebb-aaf8d0c46208",
-          "fact_8f267997-cf5f-4ed1-904f-dbd1b93b5891",
-          "fact_fbccd0a7-9195-41a1-bde9-a435933f3897",
-          "fact_d3effa53-bbe0-4693-870c-df65409fe768",
-          "fact_d9ab65e9-2c14-436b-8106-d7ba375637a2",
-          "fact_78a7b70c-e7eb-4e6f-9c05-d34b0b208ce7"
+          "fact_e11e9094-fd63-4871-912a-d92ef85372c6",
+          "fact_837ab693-7f15-4d7f-a27b-00c4216f2aab",
+          "fact_7a501c7c-32f0-402d-8c8a-4492c62f39c6",
+          "fact_3e8c3d8c-0c09-4752-8bc7-36ce6fdf7c96",
+          "fact_31cb0a2e-7813-4a2a-849d-0d413ee2419c",
+          "fact_7b55ff98-e539-4fde-81ab-d14862606ea6",
+          "fact_28240ed1-f1b5-4010-8665-e95b49783596",
+          "fact_baa2eee3-8ade-4969-b4a9-a98ad9d4c0ee"
         ],
         "provision_ids_used": [
           "TEST_ACT_A1",
@@ -501,15 +501,15 @@
         "Wait for a response before escalating."
       ],
       "document_draft": {
-        "draft_id": "doc_107fbae4-069e-43e4-8194-a9b58371e379",
-        "case_id": "case_ff97fd05-0ea7-4313-9348-76c956c10e9f",
+        "draft_id": "doc_037be0dd-f0b5-4221-b633-0b37c12ce85c",
+        "case_id": "case_1911edb3-196f-4b9d-8e1d-8138e02b268b",
         "draft_type": "support_request",
         "content": "# DRAFT: prepared for your review. Not sent or filed.\n\nTo: ShopEasy Demo — Customer Support\nSubject: Refund request for order SM-2002\n\nI am writing about order SM-2002 placed with ShopEasy Demo.\n\n**What happened**\n\n- Order id: SM-2002\n- Merchant: ShopEasy Demo\n- Amount paid / refund amount: [TO BE FILLED BY USER]\n- Relevant dates: cancellation: 1 November 2026; cancellation: 1 November\n- Current refund status: not_received\n\n- payment method: upi (reported by you)\n- refund status: not_received (reported by you)\n- support contact made: False (reported by you)\n- grievance officer contacted: False (reported by you)\n- cancellation date: 2026-11-01 (reported by you)\n- cancellation date: 2026-11-01 (reported by you)\n\n**What I am asking for**\n\nPlease confirm the status of the refund and process the outstanding amount to the original payment method. Please reply in writing.\n\nYours sincerely,\n\n[TO BE FILLED BY USER]\n[TO BE FILLED BY USER]\n\n---\n\nThis is a draft prepared by an AI assistant for your review. It has not been sent or filed. Check every fact before using it.",
         "status": "needs_review",
         "missing_fields": [
           "[TO BE FILLED BY USER]"
         ],
-        "created_at": "2026-11-08T21:00:32.387999Z"
+        "created_at": "2026-11-08T21:52:28.679515Z"
       }
     }
   ],
