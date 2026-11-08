@@ -1,6 +1,6 @@
 {
   "label": "FIXTURE DATA, NOT REAL LAW",
-  "generated_at": "2026-11-08T09:46:35.769160+00:00",
+  "generated_at": "2026-11-08T11:16:36.037160+00:00",
   "mode": "fixture",
   "cases": 17,
   "checks": 18,
@@ -10,7 +10,7 @@
     "B09_missing_corpus"
   ],
   "corpus_mode": "fixture",
-  "corpus_version": "617774ed4e200ccb",
+  "corpus_version": "f594de8fa9673ef7",
   "corpus_usable": 10,
   "embedder": "hash-embedder-v1",
   "llm": "fake (deterministic, offline)",

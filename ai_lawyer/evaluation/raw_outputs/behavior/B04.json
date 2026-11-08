@@ -26,7 +26,7 @@
   },
   "corpus": {
     "mode": "fixture",
-    "version": "617774ed4e200ccb",
+    "version": "f594de8fa9673ef7",
     "usable_count": 10,
     "usable_ids": [
       "TEST_ACT_A1",
@@ -43,10 +43,10 @@
   },
   "responses": [
     {
-      "conversation_id": "conv_d118fe28-561f-4de7-b146-f5f8e878f147",
-      "message_id": "msg_cba2970c-a0fd-4c8b-9196-e677b64eea3f",
-      "assistant_message_id": "msg_6c1c3918-55c9-4c48-b8de-734b552999b6",
-      "case_id": "case_2153fc69-edd0-4aad-9b38-5ca8aecdbc3f",
+      "conversation_id": "conv_faccc06f-56d4-4420-a894-572b5e992ad1",
+      "message_id": "msg_35bd0d42-dfb2-465b-8f66-30fa08dadbb7",
+      "assistant_message_id": "msg_e1a50485-c94c-455d-ae7f-d6c772d1eb47",
+      "case_id": "case_8255a551-0121-4a6b-843d-93b092450bac",
       "processing_status": "needs_clarification",
       "assistant_message": "## What I understood\n\nA consumer says an e-commerce refund is outstanding.\n\n## Facts\n\nFacts you reported:\n- Refund status: processed\n- Bank credit confirmed: not in my account\n\n## Legal sources that may apply\n\n- **TEST_ACT Article A1 (FIXTURE)** — role: supporting; applicability: applicable; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: Where a consumer cancels an order or returns goods, the seller must process a refund within a reasonable period after the cancellation or return.\"\n- **TEST_ACT Article A6 (FIXTURE definition)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: 'refund' means the return of money paid for goods or services.\"\n- **TEST_ACT Article A7 (FIXTURE)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: A seller must respond to a refund request within a period set by the platform.\"\n- **TEST_ACT Article A3 (FIXTURE)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: An e-commerce platform must provide a grievance officer to receive consumer complaints about refunds and returns.\"\n- **TEST_ACT Article A1 Proviso (FIXTURE)** — role: mandatory_qualifier; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: Provided that the seller may first require the consumer to return the goods.\"\n\n## How this may relate to your case\n\n- This provision may apply if the facts described are established.\n\n## Assessment\n\n**I need more information before assessing the next step.**\n\n- An essential fact is missing: an exact cancellation/return date.\n\nSuggested next steps:\n1. Answer the follow-up question so the refund timeline can be assessed.\n\nAssessment date: 2026-11-08.\n\n## Missing information\n- When did you cancel or return the order? Please give the exact date.\n- Have you contacted the seller or platform support in writing, and on what date?\n\n## Limitations\n\n- This is general information and a draft for your review, not legal advice. I cannot guarantee any outcome.\n- FIXTURE DATA, NOT REAL LAW: the citations above come from a synthetic test corpus and must not be relied on as legal authority.\n",
       "case_summary": {
@@ -59,8 +59,8 @@
       },
       "extracted_facts": [
         {
-          "fact_id": "fact_4449ef31-6057-491b-8be7-2a5467cff19f",
-          "case_id": "case_2153fc69-edd0-4aad-9b38-5ca8aecdbc3f",
+          "fact_id": "fact_bb027e15-999f-499b-b82c-0609e1d22313",
+          "case_id": "case_8255a551-0121-4a6b-843d-93b092450bac",
           "fact_type": "refund_status",
           "raw_value": "processed",
           "normalised_value": "processed",
@@ -72,11 +72,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T09:46:30.746458Z"
+          "created_at": "2026-11-08T11:16:31.181912Z"
         },
         {
-          "fact_id": "fact_375fc69c-51ee-45e6-8754-ec367b6556b0",
-          "case_id": "case_2153fc69-edd0-4aad-9b38-5ca8aecdbc3f",
+          "fact_id": "fact_5affa207-4c89-49eb-89ea-93d3dbb114fc",
+          "case_id": "case_8255a551-0121-4a6b-843d-93b092450bac",
           "fact_type": "bank_credit_confirmed",
           "raw_value": "not in my account",
           "normalised_value": false,
@@ -88,7 +88,7 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T09:46:30.755042Z"
+          "created_at": "2026-11-08T11:16:31.204438Z"
         }
       ],
       "evidence_processing": [],
@@ -362,7 +362,7 @@
         }
       ],
       "retrieval_summary": {
-        "corpus_version": "617774ed4e200ccb",
+        "corpus_version": "f594de8fa9673ef7",
         "candidate_count": 10,
         "accepted_count": 5,
         "rejected_count": 5,
@@ -379,8 +379,8 @@
           "An essential fact is missing: an exact cancellation/return date."
         ],
         "facts_used": [
-          "fact_4449ef31-6057-491b-8be7-2a5467cff19f",
-          "fact_375fc69c-51ee-45e6-8754-ec367b6556b0"
+          "fact_bb027e15-999f-499b-b82c-0609e1d22313",
+          "fact_5affa207-4c89-49eb-89ea-93d3dbb114fc"
         ],
         "provision_ids_used": [
           "TEST_ACT_A1",

@@ -25,7 +25,7 @@
   },
   "corpus": {
     "mode": "fixture",
-    "version": "617774ed4e200ccb",
+    "version": "f594de8fa9673ef7",
     "usable_count": 10,
     "usable_ids": [
       "TEST_ACT_A1",
@@ -42,10 +42,10 @@
   },
   "responses": [
     {
-      "conversation_id": "conv_06c5442d-a5ad-4450-a1e7-b41c5eaaa730",
-      "message_id": "msg_c94f9f28-d1d6-417e-9c72-8daafce5f2f0",
-      "assistant_message_id": "msg_11716eb8-9ded-45cb-b4a0-1704c8acf3c7",
-      "case_id": "case_a1e5d7d2-71d3-4209-85b9-28fcb257b4f0",
+      "conversation_id": "conv_bbdd787a-7039-4ab7-9365-91c8c7fcc3eb",
+      "message_id": "msg_7b912f81-c633-426d-ba75-e53203ae1dc8",
+      "assistant_message_id": "msg_45f83000-c978-41b7-8ed6-94b1fb6664b8",
+      "case_id": "case_e053fa01-dafe-4dcc-aecc-66078afb7637",
       "processing_status": "completed",
       "assistant_message": "## What I understood\n\nA consumer says an e-commerce refund is outstanding.\n\n## Facts\n\nFacts you reported:\n- Order id: ZP-7007\n- Merchant name: ZipStore Demo\n- Refund status: only 1,999\n- Refund amount: INR 1,999.00\n- Support contact made: have not contacted\n- Grievance officer contacted: have not contacted\n- Return requested: 12 October 2026\n\n## Legal sources that may apply\n\n- **TEST_ACT Article A6 (FIXTURE definition)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: 'refund' means the return of money paid for goods or services.\"\n- **TEST_ACT Article A1 (FIXTURE)** — role: supporting; applicability: applicable; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: Where a consumer cancels an order or returns goods, the seller must process a refund within a reasonable period after the cancellation or return.\"\n- **TEST_ACT Article A7 (FIXTURE)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: A seller must respond to a refund request within a period set by the platform.\"\n- **TEST_ACT Article A1 Proviso (FIXTURE)** — role: mandatory_qualifier; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: Provided that the seller may first require the consumer to return the goods.\"\n\n## How this may relate to your case\n\n- This provision may apply if the facts described are established.\n\n## Assessment\n\n**Informal resolution is recommended first.**\n\n- The refund is pending and there is no record that support has been contacted yet.\n\nSuggested next steps:\n1. Send a written support request to the seller or platform and keep proof of sending.\n2. State the order id, dates, amount and what outcome you want.\n3. Wait for a response before escalating.\n\nAssessment date: 2026-11-08.\n\n## Draft document\nA **support request** draft is included below for your review. It has not been sent or filed.\n\n## Limitations\n\n- This is general information and a draft for your review, not legal advice. I cannot guarantee any outcome.\n- FIXTURE DATA, NOT REAL LAW: the citations above come from a synthetic test corpus and must not be relied on as legal authority.\n",
       "case_summary": {
@@ -60,8 +60,8 @@
       },
       "extracted_facts": [
         {
-          "fact_id": "fact_949c6ce8-f3f6-488a-a175-ade0746bcd52",
-          "case_id": "case_a1e5d7d2-71d3-4209-85b9-28fcb257b4f0",
+          "fact_id": "fact_490ed0e6-05b4-4621-8106-39b4d8bcc325",
+          "case_id": "case_e053fa01-dafe-4dcc-aecc-66078afb7637",
           "fact_type": "order_id",
           "raw_value": "ZP-7007",
           "normalised_value": "ZP-7007",
@@ -73,11 +73,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T09:46:31.861124Z"
+          "created_at": "2026-11-08T11:16:32.309015Z"
         },
         {
-          "fact_id": "fact_fe66c329-40cf-437f-8def-417ee25bf0ba",
-          "case_id": "case_a1e5d7d2-71d3-4209-85b9-28fcb257b4f0",
+          "fact_id": "fact_752b2f9f-68b8-460e-94e7-40c2c528635c",
+          "case_id": "case_e053fa01-dafe-4dcc-aecc-66078afb7637",
           "fact_type": "merchant_name",
           "raw_value": "ZipStore Demo",
           "normalised_value": "ZipStore Demo",
@@ -89,11 +89,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T09:46:31.877556Z"
+          "created_at": "2026-11-08T11:16:32.329711Z"
         },
         {
-          "fact_id": "fact_38152d43-7513-47ee-bbb1-77b6c25d98f9",
-          "case_id": "case_a1e5d7d2-71d3-4209-85b9-28fcb257b4f0",
+          "fact_id": "fact_f699ad50-0cab-4b44-8bbc-9fc754fd4e1b",
+          "case_id": "case_e053fa01-dafe-4dcc-aecc-66078afb7637",
           "fact_type": "refund_status",
           "raw_value": "only 1,999",
           "normalised_value": "partial",
@@ -105,11 +105,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T09:46:31.904990Z"
+          "created_at": "2026-11-08T11:16:32.352449Z"
         },
         {
-          "fact_id": "fact_9b947462-21c0-4b01-b723-fa31062b956f",
-          "case_id": "case_a1e5d7d2-71d3-4209-85b9-28fcb257b4f0",
+          "fact_id": "fact_4187c0af-328d-4d3a-b080-1132b0e305ec",
+          "case_id": "case_e053fa01-dafe-4dcc-aecc-66078afb7637",
           "fact_type": "refund_amount",
           "raw_value": "1,999 rupees",
           "normalised_value": 199900,
@@ -121,11 +121,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T09:46:31.926317Z"
+          "created_at": "2026-11-08T11:16:32.375062Z"
         },
         {
-          "fact_id": "fact_018e6e3e-d676-4bf7-bc96-0e0f3f83e619",
-          "case_id": "case_a1e5d7d2-71d3-4209-85b9-28fcb257b4f0",
+          "fact_id": "fact_d3997c09-ea87-47b3-adf1-8d573e65614d",
+          "case_id": "case_e053fa01-dafe-4dcc-aecc-66078afb7637",
           "fact_type": "support_contact_made",
           "raw_value": "have not contacted",
           "normalised_value": false,
@@ -137,11 +137,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T09:46:31.951160Z"
+          "created_at": "2026-11-08T11:16:32.397857Z"
         },
         {
-          "fact_id": "fact_621f9bbc-663f-401e-bfe3-f2063ae26b3f",
-          "case_id": "case_a1e5d7d2-71d3-4209-85b9-28fcb257b4f0",
+          "fact_id": "fact_cf2b042a-55f1-4d2c-a1b2-79124e888d4c",
+          "case_id": "case_e053fa01-dafe-4dcc-aecc-66078afb7637",
           "fact_type": "grievance_officer_contacted",
           "raw_value": "have not contacted",
           "normalised_value": false,
@@ -153,11 +153,11 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T09:46:31.973414Z"
+          "created_at": "2026-11-08T11:16:32.419667Z"
         },
         {
-          "fact_id": "fact_d7bfe628-abab-4a70-8763-1eb86d56df60",
-          "case_id": "case_a1e5d7d2-71d3-4209-85b9-28fcb257b4f0",
+          "fact_id": "fact_0333a687-a55d-4428-872e-b2d55c6181fb",
+          "case_id": "case_e053fa01-dafe-4dcc-aecc-66078afb7637",
           "fact_type": "return_requested_date",
           "raw_value": "12 October 2026",
           "normalised_value": "2026-10-12",
@@ -169,7 +169,7 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T09:46:31.998440Z"
+          "created_at": "2026-11-08T11:16:32.439850Z"
         }
       ],
       "evidence_processing": [],
@@ -434,7 +434,7 @@
         }
       ],
       "retrieval_summary": {
-        "corpus_version": "617774ed4e200ccb",
+        "corpus_version": "f594de8fa9673ef7",
         "candidate_count": 10,
         "accepted_count": 4,
         "rejected_count": 6,
@@ -451,13 +451,13 @@
           "The refund is pending and there is no record that support has been contacted yet."
         ],
         "facts_used": [
-          "fact_949c6ce8-f3f6-488a-a175-ade0746bcd52",
-          "fact_fe66c329-40cf-437f-8def-417ee25bf0ba",
-          "fact_38152d43-7513-47ee-bbb1-77b6c25d98f9",
-          "fact_9b947462-21c0-4b01-b723-fa31062b956f",
-          "fact_018e6e3e-d676-4bf7-bc96-0e0f3f83e619",
-          "fact_621f9bbc-663f-401e-bfe3-f2063ae26b3f",
-          "fact_d7bfe628-abab-4a70-8763-1eb86d56df60"
+          "fact_490ed0e6-05b4-4621-8106-39b4d8bcc325",
+          "fact_752b2f9f-68b8-460e-94e7-40c2c528635c",
+          "fact_f699ad50-0cab-4b44-8bbc-9fc754fd4e1b",
+          "fact_4187c0af-328d-4d3a-b080-1132b0e305ec",
+          "fact_d3997c09-ea87-47b3-adf1-8d573e65614d",
+          "fact_cf2b042a-55f1-4d2c-a1b2-79124e888d4c",
+          "fact_0333a687-a55d-4428-872e-b2d55c6181fb"
         ],
         "provision_ids_used": [
           "TEST_ACT_A6",
@@ -494,15 +494,15 @@
         "Wait for a response before escalating."
       ],
       "document_draft": {
-        "draft_id": "doc_3508ab31-4958-4ee7-9687-e66e4d09e7cb",
-        "case_id": "case_a1e5d7d2-71d3-4209-85b9-28fcb257b4f0",
+        "draft_id": "doc_3b80a809-ea06-4426-9e92-db39be8c5ca0",
+        "case_id": "case_e053fa01-dafe-4dcc-aecc-66078afb7637",
         "draft_type": "support_request",
         "content": "# DRAFT: prepared for your review. Not sent or filed.\n\nTo: ZipStore Demo — Customer Support\nSubject: Refund request for order ZP-7007\n\nI am writing about order ZP-7007 placed with ZipStore Demo.\n\n**What happened**\n\n- Order id: ZP-7007\n- Merchant: ZipStore Demo\n- Amount paid / refund amount: INR 1,999.00\n- Relevant dates: return requested: 12 October 2026\n- Current refund status: partial\n\n- refund status: partial (reported by you)\n- refund amount: 199900 (reported by you)\n- support contact made: False (reported by you)\n- grievance officer contacted: False (reported by you)\n- return requested date: 2026-10-12 (reported by you)\n\n**What I am asking for**\n\nPlease confirm the status of the refund and process the outstanding amount to the original payment method. Please reply in writing.\n\nYours sincerely,\n\n[TO BE FILLED BY USER]\n[TO BE FILLED BY USER]\n\n---\n\nThis is a draft prepared by an AI assistant for your review. It has not been sent or filed. Check every fact before using it.",
         "status": "needs_review",
         "missing_fields": [
           "[TO BE FILLED BY USER]"
         ],
-        "created_at": "2026-11-08T09:46:32.050460Z"
+        "created_at": "2026-11-08T11:16:32.482716Z"
       }
     }
   ],

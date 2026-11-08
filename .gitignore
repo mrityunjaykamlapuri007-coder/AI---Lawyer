@@ -18,6 +18,8 @@ ai_lawyer/legal_corpus/corpus_manifest.json
 ai_lawyer/legal_corpus/official/originals/
 ai_lawyer/legal_corpus/official/_search/
 ai_lawyer/legal_corpus/official/draft/
+# page renders are reproducible from the (ignored) original PDFs
+ai_lawyer/legal_corpus/official/ocr/**/*.png
 *.db
 *.sqlite
 *.sqlite3

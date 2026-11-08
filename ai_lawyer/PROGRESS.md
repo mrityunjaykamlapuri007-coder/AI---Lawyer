@@ -300,3 +300,44 @@ Changes:
 
 Blockers: real mode needs an approved runtime corpus, and the manifest fields
 for vLLM/quantization/GPU need a real Kaggle session.
+
+### Official Gazette copy check + V5 non-law text (machine-verify-1.2)
+
+| Field | Value |
+|---|---|
+| Status | IMPLEMENTED_AND_TESTED |
+| Test command | `pytest -q` |
+| Result | 250 passed, 1 warning in 17.21s (13 new tests) |
+| Fixture eval | `python -m ai_lawyer.evaluation.run_behavior_eval` -> `FIXTURE: 18/18 checks PASS` |
+| Real check | `python -m ai_lawyer.legal_rag.official_copy --source <id> --url <egazette url>` -> `byte_identical` for ECR_2020, ECR_2021_AMENDMENT, JURISDICTION_RULES_2021_CANDIDATE_A |
+| Rebuild | `python -m ai_lawyer.legal_rag.build_runtime_corpus` -> 7 included, 8 rejected by machine verification, gate PASS |
+
+Why: V1-V6 compare a PDF with itself, so they cannot catch a file that is not
+the authoritative publication. All three runtime source PDFs (downloaded from
+consumeraffairs.gov.in) are byte-identical to the Gazette of India copies on
+egazette.gov.in. Evidence: `legal_corpus/official/verification/official_copy_crosscheck.json`
+and `verification/<source>/official_copy.json`.
+
+Changes:
+- New `legal_rag/official_copy.py`: https + `egazette.gov.in` only (refused
+  before any request otherwise), redirects off that host rejected, SHA-256 must
+  equal the local file and `document_sha256`. TLS verification stays on; the
+  site's incomplete chain is completed by the OS trust store (`truststore`,
+  added to `requirements.txt`).
+- `Source.official_copy` field. `machine_verify` passes a source only with a
+  matching official copy; `corpus_acceptance` enforces the same for every
+  `machine_verified` source.
+- V5 now rejects non-law text inside the stored span (signatory line, file
+  number, gazette footer, digital-signature name lines, next chapter heading).
+  Rejected, never trimmed. Scan of the 149 staged rows flagged 14: 7 with
+  signature blocks, 7 CPA rows with the next chapter heading attached.
+- Defect found and removed: `JURISDICTION_RULES_2021_CANDIDATE_A_P005` (National
+  Commission pecuniary limit) was in the runtime corpus with the signatory and
+  signature stamp in its text. It is now rejected, so the runtime corpus has
+  no provision for the National Commission limit.
+- The build report says "rejected by machine verification" instead of
+  "rejected by reviewer" for machine rejections.
+
+Limits: amendment completeness after the recorded chain rests on web search of
+secondary sources (no queryable e-Gazette index). Not reviewed by a human or a
+lawyer.
