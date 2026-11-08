@@ -1,0 +1,132 @@
+===== PAGE 1 =====
+      GI/202
+No.    ]
+
+===== PAGE 5 =====
+MINISTRY OF CONSUMER AFFAIRS, FOOD AND PUBLIC DISTRIBUTION
+(Department of Consumer Affairs)
+NOTIFICATION
+G.S.R.    (E).— In exercise of the powers conferred by clause (zg) of sub-section (2) of section
+101 of the Consumer Protection Act, 2019 (35 of 2019), the Central Government hereby makes the following rules to
+amend the Consumer Protection (E-Commerce) Rules, 2020, namely: -
+1.         Short title and commencement – (1) These rules may be called the Consumer Protection (E-Commerce)
+(Amendment) Rules, 2026.
+           They shall come into force with effect from  st January      .
+2.         In the Consumer Protection (E-Commerce) Rules, 2020 (hereinafter referred to as the principal rules) in rule 3,
+sub-rule (1), for clause (j), the following clause shall be substituted, namely: -
+“ j  “ranking” means the relative prominence or relevance given to the sellers on the platform or to the
+goods or  services offered through a marketplace e-commerce entity as presented, organised or
+communicated by such entity, irrespective of the technological means used for such presentation,
+organisation or communication;”
+In the principal rules, in rule 4, -
+for sub-rules   ), (5), (6) and (7), the following sub-rules shall respectively be substituted, namely: -
+“
+Every e-commerce entity shall provide the following information in a clear and accessible
+manner on its platform, displayed prominently at an appropriate place to its users, namely: -
+legal name of the e-commerce entity;
+principal geographic address of its headquarters and all branches;
+name and details of its website; and
+contact details like e-mail address, landline and mobile numbers of customer care
+as well as of grievance officer.
+  )
+Every e-commerce entity shall ensure that the grievance officer referred to in sub-rule (4)
+acknowledges the receipt of any consumer complaint within forty-eight hours, provides the
+complainant with a copy of the complaint as recorded by the grievance officer and redresses the
+complaint within one month from the date of receipt of the complaint.
+  )
+Where an e-commerce entity offers imported goods or services for sale, it shall:
+mention the name and details of any importer from whom it has purchased such
+goods or services, or who may be a seller on its platform; and
+provide for identification of goods and mention the full and complete name of the
+country of origin of such goods imported into India, as provided under the Legal Metrology
+(Packaged Commodities) Rules, 2011.
+  )
+Every e-commerce entity shall become a partner in the convergence process of the National
+Consumer Helpline of the Central Government.”;
+in sub-rule (11), after clause (b), the following clause shall be inserted, namely: -
+mislead users by manipulating search result or search indexes having regard to the search
+query of the user.”;
+after sub-rule (11), the following sub-rules shall be inserted, namely: -
+
+===== PAGE 6 =====
+ ‘
+Every e-commerce entity shall ensure that sponsored listing of products and services are
+distinctly identified with clear and prominent disclosures.
+Where an e-commerce entity or the seller announces a price reduction for any goods or
+services on its platform, it shall indicate the prior price of such goods or services along with reduced
+price.
+Explanation – For the purposes of this sub-rule, “prior price” means the lowest price of a good or
+service thirty days prior to the announcement of price reduction.
+Every e-commerce entity shall display clearly and prominently in its invoice, the name of
+the seller in the same font size as that of the e-commerce entity’s name
+Every e-commerce entity shall comply with the Guidelines for Prevention and Regulation
+of Dark Patterns, 2023 and also conduct yearly self-audit to ensure that its platform is free from dark
+patterns and a certificate to this effect shall be displayed prominently.’.
+ .
+In the principal rules, in rule 5, -
+in sub-rule (3), for clauses (a), (c) and (f), the following clauses shall respectively be substituted,
+namely: -
+details about the sellers offering goods and services, including the name of their business,
+whether registered or not, their geographic address, customer care number, name and details of its
+website and email address, where available, any rating or other aggregated feedback about such
+seller and any other information necessary for enabling consumers to make informed decisions at the
+pre-purchase stage:
+Provided that a marketplace e-commerce entity shall, on a request in writing made by a consumer
+after the purchase of any goods or services on its platform by such consumer, provide him with
+information regarding the seller from which such consumer has made such purchase, including the
+principal geographic address of its headquarters and all branches, name and details of its website, its
+email address and any other information necessary for communication with the seller for effective
+dispute resolution;
+information relating to return, refund, exchange warranty and guarantee, best before or use
+before date, delivery and shipment, modes of payment, grievance redressal mechanism and any other
+similar information which may be required by consumers to make informed decisions:
+Provided that in respect of food products, the requirement relating to display of best before or use
+before date shall be subject to the provisions of the Food Safety and Standards Act, 2006 (34 of
+      and the regulations made thereunder;
+an explanation of the main parameters in descending order which, individually or
+collectively  are most significant in determining the ranking of goods or sellers on its platform and
+the relative importance of those main parameters through an easily and publicly available
+description drafted in plain and intelligible language.”;
+after sub-rule (5), the following sub-rules shall be inserted, namely: -
+ “
+No marketplace e-commerce entity shall use information collected by it, -
+for sale of goods directly or indirectly by any seller, whether related or not,
+bearing a brand or name which is common with that of the marketplace e-commerce entity;
+or
+to promote or advertise any seller as being associated with the marketplace e-
+commerce entity, unless the marketplace e-commerce entity has obtained the express and
+affirmative consent for such use from the consumer(s) to whom such information pertains.
+No marketplace e-commerce entity shall collect any bundled fees from users for services
+provided on the e-commerce platform for any other services that are unrelated to the e-commerce
+platform:
+Provided that nothing contained herein shall apply to any loyalty or membership programme or to
+any benefit, service, offer or incentive provided in connection with or pursuant to such loyalty or
+membership programme.”.
+
+===== PAGE 7 =====
+ .
+In the principal rules, in rule    in sub-rule (5), -
+for clause (d), the following clause shall be substituted, namely: -
+all relevant details about the goods and services offered for sale by the seller including
+country of origin, best before or use before date, information related to return, refund, exchange,
+warranty and guarantee, delivery and shipment, cost and return shipping, mode of payments and any
+other similar information which are necessary for enabling the consumer to make an informed
+decision at the pre-purchase stage:
+Provided that in respect of food products, the requirement relating to display of best before or use
+before date shall be subject to the provisions of the Food Safety and Standards Act, 2006 (34 of
+      and the regulations made thereunder.”;
+after clause (i), the following clause shall be inserted, namely: -
+any identification number issued by the Central Government including Goods and Services
+Tax Identification Number or Micro and Small Medium Enterprises registration number ”.
+ .
+In the principal rules, in rule 7, in sub-rule (1), for clause (a), the following clause shall be substituted,
+namely: -
+accurate information related to return, refund, exchange, best before or use before date, warranty
+and guarantee, delivery and shipment, cost of return shipping, mode of payments, grievance redressal
+mechanism and any other similar information which may be required by consumers to make informed
+decisions:
+Provided that in respect of food products, the requirement relating to display of best before or use before date shall
+be subject to the provisions of the Food Safety and Standards Act, 2006 (34 of 2006) and the regulations made
+thereunder.”.
+ANUPAM MISHRA, Addl. Secy.
+section (i) vide number G.S.R. 4   (E), dated the   rd July, 2020.

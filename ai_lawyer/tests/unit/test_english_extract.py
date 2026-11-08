@@ -6,6 +6,7 @@ from ai_lawyer.legal_rag.english_extract import (
     _line_is_english,
     _metadata,
     _split_parts,
+    text_integrity_flags,
 )
 
 
@@ -99,3 +100,50 @@ def test_split_parts_keeps_a_single_notification_whole():
     assert len(parts) == 1
     assert [page for page, _ in parts[0][0]] == [7, 8]
     assert parts[0][1] == "_1"
+
+
+# ---------------------------------------------------------------------------
+# text-layer number integrity
+# ---------------------------------------------------------------------------
+def test_integrity_flags_clean_gazette_text_is_empty():
+    text = (
+        "NEW DELHI, THURSDAY, JULY 23, 2020\n"
+        "G.S.R. 462(E).—In exercise of the powers conferred by section 101.\n"
+        "No. 358]\n"
+        "These rules shall come into force on the 23rd day of July, 2020."
+    )
+    assert text_integrity_flags(text) == []
+
+
+def test_integrity_flags_detect_dropped_gsr_number():
+    text = "NOTIFICATION\nG.S.R.    (E).—In exercise of the powers conferred by section 101."
+    assert "missing_gsr_number" in text_integrity_flags(text)
+
+
+def test_integrity_flags_detect_a_partially_rendered_gsr_number():
+    # Digits are dropped individually, so one G.S.R. number can survive while
+    # another is reduced to a single digit.
+    text = (
+        "G.S.R.    (E).—notification number one.\n"
+        "vide number G.S.R. 4   (E), dated the   rd July, 2020."
+    )
+    assert "missing_gsr_number" in text_integrity_flags(text)
+
+
+def test_integrity_flags_detect_dropped_gazette_number():
+    assert "missing_gazette_number" in text_integrity_flags("No. ]\nNOTIFICATION")
+
+
+def test_integrity_flags_detect_dropped_commencement_date():
+    text = (
+        "1. Short title and commencement.\n"
+        "They shall come into force with effect from  st January      ."
+    )
+    flags = text_integrity_flags(text)
+    assert "missing_effective_date" in flags
+    assert "missing_commencement_date" in flags
+
+
+def test_integrity_flags_detect_a_text_layer_with_no_digits():
+    text = "rule text without any number in it at all " * 30
+    assert "no_digits_in_text_layer" in text_integrity_flags(text)

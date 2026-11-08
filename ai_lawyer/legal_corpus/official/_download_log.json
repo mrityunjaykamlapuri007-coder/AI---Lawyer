@@ -1,0 +1,93 @@
+﻿[
+    {
+        "file":  "cpa_2019.pdf",
+        "http":  "200",
+        "type":  "application/pdf",
+        "bytes":  "1236998",
+        "url":  "https://consumeraffairs.gov.in/public/upload/files/CP%20Act%202019_1732700731.pdf"
+    },
+    {
+        "file":  "cpa_2019_corrigendum.pdf",
+        "http":  "200",
+        "type":  "application/pdf",
+        "bytes":  "2859968",
+        "url":  "https://consumeraffairs.gov.in/public/upload/files/CP%20Act%202019-corrigendum_1732702741.pdf"
+    },
+    {
+        "file":  "cpa_2019_commencement.pdf",
+        "http":  "200",
+        "type":  "application/pdf",
+        "bytes":  "1064098",
+        "url":  "https://consumeraffairs.gov.in/public/upload/files/Act%20into%20force_1732702865.pdf"
+    },
+    {
+        "file":  "cpa_2019_provisions_in_force.pdf",
+        "http":  "200",
+        "type":  "application/pdf",
+        "bytes":  "1120231",
+        "url":  "https://consumeraffairs.gov.in/public/upload/files/Provisions%20of%20Act%20comes%20into%20force_1732703035.pdf"
+    },
+    {
+        "file":  "cc_rules_2020_and_general_rules_2020.pdf",
+        "http":  "200",
+        "type":  "application/pdf",
+        "bytes":  "1650463",
+        "url":  "https://consumeraffairs.gov.in/public/upload/files/Consumer%20Commission%20Rules%20\u0026%20General%20Rules_1732703661.pdf"
+    },
+    {
+        "file":  "cc_rules_2022_amendment.pdf",
+        "http":  "200",
+        "type":  "application/pdf",
+        "bytes":  "472632",
+        "url":  "https://consumeraffairs.gov.in/public/upload/files/CP_CDRC_AmendmentRules2022_1732705759.pdf"
+    },
+    {
+        "file":  "cc_rules_2023_amendment.pdf",
+        "http":  "200",
+        "type":  "application/pdf",
+        "bytes":  "1503104",
+        "url":  "https://consumeraffairs.gov.in/public/upload/files/CDRC%20Amendment%20Rules%202023-1_1732707073.pdf"
+    },
+    {
+        "file":  "ecr_2020.pdf",
+        "http":  "200",
+        "type":  "application/pdf",
+        "bytes":  "1281359",
+        "url":  "https://consumeraffairs.gov.in/public/upload/files/E%20commerce%20rules_1732703966.pdf"
+    },
+    {
+        "file":  "ecr_2020_corrigendum.pdf",
+        "http":  "200",
+        "type":  "application/pdf",
+        "bytes":  "789211",
+        "url":  "https://consumeraffairs.gov.in/public/upload/files/Corrigendum%20to%20e%20commerce%20rules_1732704181.pdf"
+    },
+    {
+        "file":  "ecr_2021_amendment.pdf",
+        "http":  "200",
+        "type":  "application/pdf",
+        "bytes":  "1564930",
+        "url":  "https://consumeraffairs.gov.in/public/upload/files/Consumer%20Protection%20(E-Commerce)%20(Amendment)%20Rules,%202021_1732704241.pdf"
+    },
+    {
+        "file":  "ecr_2026_amendment.pdf",
+        "http":  "200",
+        "type":  "application/pdf",
+        "bytes":  "1428970",
+        "url":  "https://consumeraffairs.gov.in/public/upload/files/E%20Commerce%20Amendment%20Rules%202026_1789127949.pdf"
+    },
+    {
+        "file":  "jurisdiction_rules_2021_candidate_a.pdf",
+        "http":  "200",
+        "type":  "application/pdf",
+        "bytes":  "1182260",
+        "url":  "https://consumeraffairs.gov.in/public/upload/files/232278_1732705181.pdf"
+    },
+    {
+        "file":  "jurisdiction_rules_2021_candidate_b.pdf",
+        "http":  "200",
+        "type":  "application/pdf",
+        "bytes":  "1182260",
+        "url":  "https://consumeraffairs.gov.in/public/upload/files/232278_1732705029.pdf"
+    }
+]

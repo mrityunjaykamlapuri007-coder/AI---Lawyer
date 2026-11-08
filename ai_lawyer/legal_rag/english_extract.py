@@ -189,6 +189,53 @@ def _metadata(text: str) -> dict[str, list[str]]:
     }
 
 
+_MONTHS = (
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December",
+)
+_COMMENCEMENT_RE = re.compile(r"\b(?:come|comes)\s+into\s+force\b", re.IGNORECASE)
+
+
+def text_integrity_flags(text: str) -> list[str]:
+    """Detect a text layer that has silently lost its numbers.
+
+    A gazette PDF can carry a readable text layer in which every digit is
+    missing because the embedded font has no ``ToUnicode`` mapping for them.
+    The prose still looks correct, so nothing else notices; notification
+    numbers, fees, rule numbers and commencement dates simply vanish.
+
+    Every check below fires only where a number is legally required, so a
+    clean document produces no flags.
+    """
+    flags: list[str] = []
+
+    for match in re.finditer(r"G\.S\.R\.", text):
+        tail = text[match.end() : match.end() + 30]
+        if not re.match(r"\s*\d+\s*\(E\)", tail):
+            flags.append("missing_gsr_number")
+            break
+
+    if re.search(r"\bNo\.\s*\]", text):
+        flags.append("missing_gazette_number")
+
+    if re.search(r"\bdated\s+the\s{2,}(?:st|nd|rd|th)\b", text, re.IGNORECASE):
+        flags.append("missing_dated_day")
+
+    if re.search(r"\bwith\s+effect\s+from\s{2,}(?:st|nd|rd|th)\b", text, re.IGNORECASE):
+        flags.append("missing_effective_date")
+
+    for match in _COMMENCEMENT_RE.finditer(text):
+        sentence = text[match.end() : match.end() + 160].split(".", 1)[0]
+        if any(month in sentence for month in _MONTHS) and not re.search(r"\d", sentence):
+            flags.append("missing_commencement_date")
+            break
+
+    if len(text) > 500 and not re.search(r"\d", text):
+        flags.append("no_digits_in_text_layer")
+
+    return sorted(set(flags))
+
+
 def _sha256(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as handle:
@@ -362,6 +409,7 @@ def extract_all(
                         "source_type": part.source_type,
                         "hierarchy_type": part.hierarchy_type,
                         "pages": part.pages,
+                        "integrity_flags": text_integrity_flags(part.text),
                         "candidate_title": part.candidate_title,
                         **part.metadata,
                     }
@@ -393,12 +441,20 @@ def main() -> None:
             f"latin_share={extract.latin_share:.1%} dropped_lines={extract.dropped_lines}"
         )
         for part in extract.parts:
+            flags = text_integrity_flags(part.text)
             print(
                 f"  {part.filename} source_id={part.source_id} "
                 f"pages={part.pages[0]}-{part.pages[-1]} chars={len(part.text)} "
-                f"title={part.candidate_title!r}"
+                f"title={part.candidate_title!r} integrity={flags or 'ok'}"
             )
     print(f"wrote {sum(len(e.parts) for e in extracts)} part files")
+    flagged = [part.filename for e in extracts for part in e.parts if text_integrity_flags(part.text)]
+    if flagged:
+        print(
+            "WARNING: text layer lost required numbers in "
+            + ", ".join(flagged)
+            + "; do not ingest these files without OCR/visual review."
+        )
 
 
 if __name__ == "__main__":

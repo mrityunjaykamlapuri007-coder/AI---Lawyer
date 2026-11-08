@@ -1,0 +1,151 @@
+{
+  "generated_at": "2026-11-08",
+  "review_status": "unverified",
+  "purpose": "Curated staging corpus; not citation-ready.",
+  "included": [
+    {
+      "source_id": "CC_RULES_2020_AND_GENERAL_RULES_2020",
+      "filename": "cc_rules_2020_and_general_rules_2020_1.txt",
+      "pages": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "integrity_flags": []
+    },
+    {
+      "source_id": "CC_RULES_2020_AND_GENERAL_RULES_2020_2",
+      "filename": "cc_rules_2020_and_general_rules_2020_2.txt",
+      "pages": [
+        17,
+        18
+      ],
+      "integrity_flags": []
+    },
+    {
+      "source_id": "CC_RULES_2022_AMENDMENT",
+      "filename": "cc_rules_2022_amendment_1.txt",
+      "pages": [
+        1,
+        2,
+        3
+      ],
+      "integrity_flags": []
+    },
+    {
+      "source_id": "CC_RULES_2023_AMENDMENT",
+      "filename": "cc_rules_2023_amendment_1.txt",
+      "pages": [
+        2,
+        3
+      ],
+      "integrity_flags": []
+    },
+    {
+      "source_id": "CPA_2019",
+      "filename": "cpa_2019_1.txt",
+      "pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40
+      ],
+      "integrity_flags": []
+    },
+    {
+      "source_id": "ECR_2020",
+      "filename": "ecr_2020_1.txt",
+      "pages": [
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "integrity_flags": []
+    },
+    {
+      "source_id": "ECR_2021_AMENDMENT",
+      "filename": "ecr_2021_amendment_1.txt",
+      "pages": [
+        2
+      ],
+      "integrity_flags": []
+    },
+    {
+      "source_id": "JURISDICTION_RULES_2021_CANDIDATE_A",
+      "filename": "jurisdiction_rules_2021_candidate_a_1.txt",
+      "pages": [
+        2
+      ],
+      "integrity_flags": []
+    }
+  ],
+  "excluded": [
+    {
+      "source_id": "CPA_2019_COMMENCEMENT",
+      "reason": "commencement notification: metadata, not a provision"
+    },
+    {
+      "source_id": "CPA_2019_PROVISIONS_IN_FORCE",
+      "reason": "commencement notification: metadata, not a provision"
+    },
+    {
+      "source_id": "ECR_2020_CORRIGENDUM",
+      "reason": "corrects Devanagari labels only; no English text change"
+    },
+    {
+      "source_id": "ECR_2026_AMENDMENT",
+      "reason": "blocked: text layer lost every operative digit"
+    },
+    {
+      "source_id": "INDIACODE_CPA_2019",
+      "reason": "alternate consolidated text of CPA_2019; cross-check only"
+    },
+    {
+      "source_id": "JURISDICTION_RULES_2021_CANDIDATE_B",
+      "reason": "byte-identical duplicate of candidate A"
+    }
+  ]
+}

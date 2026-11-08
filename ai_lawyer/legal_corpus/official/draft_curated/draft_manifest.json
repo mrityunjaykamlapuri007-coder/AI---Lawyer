@@ -1,0 +1,204 @@
+{
+  "generated_at": "2026-11-08",
+  "draft_only": true,
+  "citation_ready": false,
+  "review_status": "unverified",
+  "sources_count": 8,
+  "provisions_count": 149,
+  "documents": [
+    {
+      "filename": "cc_rules_2020_and_general_rules_2020_1.txt",
+      "source_id": "CC_RULES_2020_AND_GENERAL_RULES_2020",
+      "pages": 16,
+      "sections": 18,
+      "ascii_ratio": 0.9989,
+      "letter_ratio": 0.7849,
+      "latin_share": 1.0,
+      "ocr_risk": "low",
+      "title_extracted": false,
+      "candidate_title": "Consumer Protection (Consumer Disputes Redressal Commissions) Rules, 2020",
+      "candidate_dates": [],
+      "candidate_departments": [
+        "MINISTRY OF CONSUMER AFFAIRS, FOOD AND PUBLIC DISTRIBUTION"
+      ],
+      "candidate_gazette_ids": [
+        "3146 GI/2020"
+      ],
+      "notes": [
+        "title taken from the document's 'may be called' sentence; confirm it"
+      ]
+    },
+    {
+      "filename": "cc_rules_2020_and_general_rules_2020_2.txt",
+      "source_id": "CC_RULES_2020_AND_GENERAL_RULES_2020_2",
+      "pages": 18,
+      "sections": 5,
+      "ascii_ratio": 0.9953,
+      "letter_ratio": 0.7497,
+      "latin_share": 1.0,
+      "ocr_risk": "low",
+      "title_extracted": false,
+      "candidate_title": "Consumer Protection (General) Rules, 2020",
+      "candidate_dates": [],
+      "candidate_departments": [
+        "MINISTRY OF CONSUMER AFFAIRS, FOOD AND PUBLIC DISTRIBUTION"
+      ],
+      "candidate_gazette_ids": [
+        "3146 GI/2020"
+      ],
+      "notes": [
+        "title taken from the document's 'may be called' sentence; confirm it"
+      ]
+    },
+    {
+      "filename": "cc_rules_2022_amendment_1.txt",
+      "source_id": "CC_RULES_2022_AMENDMENT",
+      "pages": 3,
+      "sections": 2,
+      "ascii_ratio": 0.9983,
+      "letter_ratio": 0.7027,
+      "latin_share": 1.0,
+      "ocr_risk": "low",
+      "title_extracted": false,
+      "candidate_title": "Consumer Protection (Consumer Disputes Redressal Commissions) Amendment Rules, 2022",
+      "candidate_dates": [
+        "15th July, 2020",
+        "20th December, 2022",
+        "DECEMBER 21, 2022"
+      ],
+      "candidate_departments": [
+        "MINISTRY OF CONSUMER AFFAIRS, FOOD AND PUBLIC DISTRIBUTION"
+      ],
+      "candidate_gazette_ids": [
+        "8552 GI/2022"
+      ],
+      "notes": [
+        "title taken from the document's 'may be called' sentence; confirm it"
+      ]
+    },
+    {
+      "filename": "cc_rules_2023_amendment_1.txt",
+      "source_id": "CC_RULES_2023_AMENDMENT",
+      "pages": 3,
+      "sections": 2,
+      "ascii_ratio": 0.9983,
+      "letter_ratio": 0.7082,
+      "latin_share": 1.0,
+      "ocr_risk": "low",
+      "title_extracted": false,
+      "candidate_title": "Consumer Protection (Consumer Disputes Redressal Commissions) (Amendment) Rules, 2023",
+      "candidate_dates": [
+        "15th July, 2020",
+        "17th August, 2023",
+        "21st December, 2022",
+        "AUGUST 17, 2023"
+      ],
+      "candidate_departments": [
+        "MINISTRY OF CONSUMER AFFAIRS, FOOD AND PUBLIC DISTRIBUTION"
+      ],
+      "candidate_gazette_ids": [
+        "5300 GI/2023"
+      ],
+      "notes": [
+        "title taken from the document's 'may be called' sentence; confirm it"
+      ]
+    },
+    {
+      "filename": "cpa_2019_1.txt",
+      "source_id": "CPA_2019",
+      "pages": 40,
+      "sections": 107,
+      "ascii_ratio": 0.9993,
+      "letter_ratio": 0.791,
+      "latin_share": 1.0,
+      "ocr_risk": "low",
+      "title_extracted": true,
+      "candidate_title": "Consumer Protection Act, 2019",
+      "candidate_dates": [
+        "9th August, 2019",
+        "AUGUST 9, 2019"
+      ],
+      "candidate_departments": [
+        "MINISTRY OF LAW AND JUSTICE"
+      ],
+      "candidate_gazette_ids": [],
+      "notes": []
+    },
+    {
+      "filename": "ecr_2020_1.txt",
+      "source_id": "ECR_2020",
+      "pages": 11,
+      "sections": 8,
+      "ascii_ratio": 0.9979,
+      "letter_ratio": 0.7883,
+      "latin_share": 0.9996,
+      "ocr_risk": "low",
+      "title_extracted": false,
+      "candidate_title": "Consumer Protection (E-Commerce) Rules, 2020",
+      "candidate_dates": [
+        "23rd July, 2020",
+        "JULY 23, 2020"
+      ],
+      "candidate_departments": [
+        "MINISTRY OF CONSUMER AFFAIRS, FOOD AND PUBLIC DISTRIBUTION"
+      ],
+      "candidate_gazette_ids": [
+        "3261 GI/2020"
+      ],
+      "notes": [
+        "title taken from the document's 'may be called' sentence; confirm it"
+      ]
+    },
+    {
+      "filename": "ecr_2021_amendment_1.txt",
+      "source_id": "ECR_2021_AMENDMENT",
+      "pages": 2,
+      "sections": 2,
+      "ascii_ratio": 0.9979,
+      "letter_ratio": 0.7045,
+      "latin_share": 1.0,
+      "ocr_risk": "low",
+      "title_extracted": false,
+      "candidate_title": "Consumer Protection (E-Commerce) (Amendment) Rules, 2021",
+      "candidate_dates": [
+        "17th  May, 2021",
+        "23rd July, 2020",
+        "MAY 17, 2021"
+      ],
+      "candidate_departments": [
+        "MINISTRY OF CONSUMER AFFAIRS, FOOD AND PUBLIC DISTRIBUTION"
+      ],
+      "candidate_gazette_ids": [
+        "2624 GI/2021"
+      ],
+      "notes": [
+        "title taken from the document's 'may be called' sentence; confirm it"
+      ]
+    },
+    {
+      "filename": "jurisdiction_rules_2021_candidate_a_1.txt",
+      "source_id": "JURISDICTION_RULES_2021_CANDIDATE_A",
+      "pages": 2,
+      "sections": 5,
+      "ascii_ratio": 0.9953,
+      "letter_ratio": 0.7414,
+      "latin_share": 1.0,
+      "ocr_risk": "low",
+      "title_extracted": false,
+      "candidate_title": "Consumer Protection (Jurisdiction of the District Commission, the State Commission and the National Commission) Rules, 2021",
+      "candidate_dates": [
+        "30th December, 2021",
+        "DECEMBER 30, 2021"
+      ],
+      "candidate_departments": [
+        "MINISTRY OF CONSUMER AFFAIRS, FOOD AND PUBLIC DISTRIBUTION"
+      ],
+      "candidate_gazette_ids": [
+        "7647 GI/2021"
+      ],
+      "notes": [
+        "title taken from the document's 'may be called' sentence; confirm it"
+      ]
+    }
+  ]
+}
