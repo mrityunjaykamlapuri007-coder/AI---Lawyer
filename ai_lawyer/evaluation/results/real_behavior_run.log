@@ -1,0 +1,24 @@
+# rerun reason: first attempt BLOCKED by embedder ReadTimeout (60s, batch 32, run concurrently with retrieval eval); now EMBEDDER_TIMEOUT_S=300, EMBEDDER_BATCH_SIZE=8, run alone
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\Lenovo\OneDrive\Documents\Default Project\ai_lawyer\evaluation\run_behavior_eval.py", line 759, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "C:\Users\Lenovo\OneDrive\Documents\Default Project\ai_lawyer\evaluation\run_behavior_eval.py", line 494, in main
+    responses = _run_turns(
+                ^^^^^^^^^^^
+  File "C:\Users\Lenovo\OneDrive\Documents\Default Project\ai_lawyer\evaluation\run_behavior_eval.py", line 99, in _run_turns
+    response = orchestrator.handle_message(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\OneDrive\Documents\Default Project\ai_lawyer\backend\services\orchestrator.py", line 294, in handle_message
+    document = generate_document(
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\OneDrive\Documents\Default Project\ai_lawyer\documents\generator.py", line 87, in generate_document
+    amount = _money(_latest(facts, "refund_amount"))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\OneDrive\Documents\Default Project\ai_lawyer\documents\generator.py", line 33, in _money
+    return f"INR {minor / 100:,.2f}"
+                  ~~~~~~^~~~~
+TypeError: unsupported operand type(s) for /: 'str' and 'int'
+exit=1

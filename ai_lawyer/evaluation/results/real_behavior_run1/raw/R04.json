@@ -1,0 +1,510 @@
+{
+  "label": "REAL CORPUS, VERIFIED SUBSET (30 usable)",
+  "test_id": "R04",
+  "category": "return_refund_cancelled_wrong_item_claim",
+  "notes": null,
+  "now": "2026-11-08",
+  "turns": [
+    {
+      "message": "I ordered a riding jacket for Rs. 7350 and a mosquito mesh for Rs. 799 on Amazon. I was not happy with them and asked to return both. The pickup agent first marked the items as not ready without calling me, and customer service rescheduled the pickup for three days later. The jacket was then marked as picked up but the mesh was not. After I kept calling customer care, they told me that when the parcel reached their hub it had a mosquito mesh in it instead of the jacket. They promised the refund by August 16th, then said there would be an update by August 19th, and on August 19th they told me the refund was cancelled because the wrong item was sent."
+    }
+  ],
+  "expected": {
+    "outcome": "needs_more_information",
+    "rule": "R2",
+    "rationale": "No exact purchase, cancellation or return date (the August dates have no year)."
+  },
+  "corpus": {
+    "mode": "real",
+    "version": "0381858588e1a7be",
+    "usable_count": 30,
+    "usable_ids": [
+      "ECR_2020_P001",
+      "ECR_2020_P002",
+      "ECR_2020_P004_SR02",
+      "ECR_2020_P004_SR03",
+      "ECR_2020_P004_SR04",
+      "ECR_2020_P004_SR05",
+      "ECR_2020_P004_SR06",
+      "ECR_2020_P004_SR07",
+      "ECR_2020_P004_SR08",
+      "ECR_2020_P004_SR09",
+      "ECR_2020_P004_SR10",
+      "ECR_2020_P004_SR11",
+      "ECR_2020_P005_SR01",
+      "ECR_2020_P005_SR02",
+      "ECR_2020_P005_SR03",
+      "ECR_2020_P005_SR04",
+      "ECR_2020_P005_SR05",
+      "ECR_2020_P006_SR01",
+      "ECR_2020_P006_SR02",
+      "ECR_2020_P006_SR03",
+      "ECR_2020_P006_SR04",
+      "ECR_2020_P006_SR05",
+      "ECR_2020_P007_SR01",
+      "ECR_2020_P007_SR02",
+      "ECR_2020_P007_SR03",
+      "ECR_2020_P007_SR04",
+      "ECR_2020_P007_SR05",
+      "ECR_2020_P008",
+      "ECR_2021_AMENDMENT_P001",
+      "ECR_2021_AMENDMENT_P002"
+    ]
+  },
+  "responses": [
+    {
+      "conversation_id": "conv_dc389e26-bf2e-4ac1-b599-0846aa3ffe03",
+      "message_id": "msg_63f188f4-f595-4d48-9807-053902c2c331",
+      "assistant_message_id": "msg_4f5678a2-346e-476c-a40d-48267f787e0e",
+      "case_id": "case_e1f4ef8f-1106-4eec-8be8-8439970dbe8c",
+      "processing_status": "needs_clarification",
+      "assistant_message": "## What I understood\n\nThe user requested a return and refund for two items purchased on Amazon, but the refund was cancelled due to the wrong item being sent.\n\n## Facts\n\nFacts you reported:\n- Support response: told me that when the parcel reached their hub\n- Platform name: Amazon\n- Order id: I ordered a riding jacket for Rs. 7350 and a mosquito mesh for Rs. 799 on Amazon.\n- Return requested: I was not happy with them and asked to return both.\n- Pickup date: The pickup agent first marked the items as not ready without calling me, and customer service rescheduled the pickup for three days later.\n- Refund initiated: They promised the refund by August 16th, then said there would be an update by August 19th, and on August 19th they told me the refund was cancelled because the wrong item was sent.\n- Refund status: they told me the refund was cancelled because the wrong item was sent.\n\n## Legal sources that may apply\n\n- **Consumer Protection (E-Commerce) Rules, 2020, provision 5, sub-rule (3)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"(3)  Every marketplace e-commerce entity shall provide the following information in a clear and accessible manner,\ndisplayed prominently to its users at the appropriate place on its platform:\n(a)  details about the sellers offering goods and services, including the name of their business, whether registered\nor not, their geographic address,customer care number, any rating or other aggregated feedb\"\n- **Consumer Protection (E-Commerce) Rules, 2020, provision 7, sub-rule (1)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"7. Duties and liabilities of inventory e-commerce entities: -\n(1) Every inventory e-commerce entity shall provide the following information in a clear and accessible\nmanner, displayed prominently to its users:\n(a)      accurate information related to return, refund, exchange, warranty and guarantee, delivery and\nshipment, cost of return shipping, mode of payments, grievance redressal mechanism, an\"\n\n## How this may relate to your case\n\n- The marketplace e-commerce entity (Amazon) should have provided the user with the details of the seller after the purchase, including the principal geographic address of its headquarters and all branches, name and details of its website, its email address, and any other information necessary for communication with the seller for effective dispute resolution.\n- The inventory e-commerce entity (Amazon) should have provided the user with accurate information related to return, refund, exchange, warranty and guarantee, delivery and shipment, cost of return shipping, mode of payments, grievance redressal mechanism, and any other similar information which may be required by consumers to make informed decisions.\n\n## Assessment\n\n**I need more information before assessing the next step.**\n\n- An essential fact is missing: an exact cancellation/return date.\n\nSuggested next steps:\n1. Answer the follow-up question so the refund timeline can be assessed.\n\nAssessment date: 2026-11-08.\n\n## Missing information\n- When did you cancel or return the order? Please give the exact date.\n- Have you contacted the seller or platform support in writing, and on what date?\n\n## Limitations\n\n- This is general information and a draft for your review, not legal advice. I cannot guarantee any outcome.\n",
+      "case_summary": {
+        "identifiers": [
+          "I ordered a riding jacket for Rs. 7350 and a mosquito mesh for Rs. 799 on Amazon."
+        ],
+        "merchant": null,
+        "platform": "Amazon",
+        "amount_minor": null,
+        "currency": "INR",
+        "refund_status": "they told me the refund was cancelled because the wrong item was sent."
+      },
+      "extracted_facts": [
+        {
+          "fact_id": "fact_cbde2d07-446c-48ba-a186-41a894fd0f50",
+          "case_id": "case_e1f4ef8f-1106-4eec-8be8-8439970dbe8c",
+          "fact_type": "support_response",
+          "raw_value": "told me that when the parcel reached their hub",
+          "normalised_value": "told me that when the parcel reached their hub",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T18:33:25.081563Z"
+        },
+        {
+          "fact_id": "fact_1b2a8e2b-aa4c-447a-9104-f70b53390d7b",
+          "case_id": "case_e1f4ef8f-1106-4eec-8be8-8439970dbe8c",
+          "fact_type": "platform_name",
+          "raw_value": "Amazon",
+          "normalised_value": "Amazon",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T18:33:25.097452Z"
+        },
+        {
+          "fact_id": "fact_908edd3a-913b-400e-8daf-07490adaa173",
+          "case_id": "case_e1f4ef8f-1106-4eec-8be8-8439970dbe8c",
+          "fact_type": "order_id",
+          "raw_value": "I ordered a riding jacket for Rs. 7350 and a mosquito mesh for Rs. 799 on Amazon.",
+          "normalised_value": "I ordered a riding jacket for Rs. 7350 and a mosquito mesh for Rs. 799 on Amazon.",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T18:33:25.113023Z"
+        },
+        {
+          "fact_id": "fact_8c091756-3dd8-41ee-be19-4b6d45e7ccfb",
+          "case_id": "case_e1f4ef8f-1106-4eec-8be8-8439970dbe8c",
+          "fact_type": "return_requested_date",
+          "raw_value": "I was not happy with them and asked to return both.",
+          "normalised_value": null,
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T18:33:25.131025Z"
+        },
+        {
+          "fact_id": "fact_f32f413a-1a64-461b-b92c-e0390720a922",
+          "case_id": "case_e1f4ef8f-1106-4eec-8be8-8439970dbe8c",
+          "fact_type": "pickup_date",
+          "raw_value": "The pickup agent first marked the items as not ready without calling me, and customer service rescheduled the pickup for three days later.",
+          "normalised_value": null,
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T18:33:25.146624Z"
+        },
+        {
+          "fact_id": "fact_01602007-60f1-4230-bf46-4d17b2236896",
+          "case_id": "case_e1f4ef8f-1106-4eec-8be8-8439970dbe8c",
+          "fact_type": "refund_initiated_date",
+          "raw_value": "They promised the refund by August 16th, then said there would be an update by August 19th, and on August 19th they told me the refund was cancelled because the wrong item was sent.",
+          "normalised_value": null,
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T18:33:25.163598Z"
+        },
+        {
+          "fact_id": "fact_c59f4155-af19-428a-b593-01f288380505",
+          "case_id": "case_e1f4ef8f-1106-4eec-8be8-8439970dbe8c",
+          "fact_type": "refund_status",
+          "raw_value": "they told me the refund was cancelled because the wrong item was sent.",
+          "normalised_value": "they told me the refund was cancelled because the wrong item was sent.",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T18:33:25.180553Z"
+        }
+      ],
+      "evidence_processing": [],
+      "legal_sources": [
+        {
+          "provision_id": "ECR_2020_P005_SR03",
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 5, sub-rule (3)",
+          "excerpt": "(3)  Every marketplace e-commerce entity shall provide the following information in a clear and accessible manner,\ndisplayed prominently to its users at the appropriate place on its platform:\n(a)  details about the sellers offering goods and services, including the name of their business, whether registered\nor not, their geographic address,customer care number, any rating or other aggregated feedback about such\nseller, and any other information necessary for enabling consumers to make informed decisions at the pre-\npurchase stage:\nProvided that a marketplace e-commerce entity shall, on a reque",
+          "role": "supporting",
+          "applicability": "unknown",
+          "source_validity": "current_for_date",
+          "official_url": "https://consumeraffairs.gov.in/public/upload/files/E%20commerce%20rules_1732703966.pdf"
+        },
+        {
+          "provision_id": "ECR_2020_P007_SR01",
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 7, sub-rule (1)",
+          "excerpt": "7. Duties and liabilities of inventory e-commerce entities: -\n(1) Every inventory e-commerce entity shall provide the following information in a clear and accessible\nmanner, displayed prominently to its users:\n(a)      accurate information related to return, refund, exchange, warranty and guarantee, delivery and\nshipment, cost of return shipping, mode of payments, grievance redressal mechanism, and any\nother similar information which may be required by consumers to make informed decisions;\n(b)      all mandatory notices and information required by applicable laws;\n(c)      information on avail",
+          "role": "supporting",
+          "applicability": "unknown",
+          "source_validity": "current_for_date",
+          "official_url": "https://consumeraffairs.gov.in/public/upload/files/E%20commerce%20rules_1732703966.pdf"
+        }
+      ],
+      "retrieval_candidates": [
+        {
+          "chunk_id": "ECR_2020_P005_SR03::c0",
+          "provision_id": "ECR_2020_P005_SR03",
+          "source_id": "ECR_2020",
+          "dense_rank": 2,
+          "sparse_rank": 1,
+          "rrf_score": 0.15629220221299733,
+          "rerank_score": null,
+          "relevance_grade": 2,
+          "relevance_reason": "This provision requires marketplace e-commerce entities to provide information regarding return, refund, exchange, warranty and guarantee, which is relevant to the consumer's refund case.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "supporting",
+          "rejection_reason": null,
+          "added_because": null,
+          "accepted": true,
+          "conditional": true,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 5, sub-rule (3)"
+        },
+        {
+          "chunk_id": "ECR_2020_P007_SR01::c0",
+          "provision_id": "ECR_2020_P007_SR01",
+          "source_id": "ECR_2020",
+          "dense_rank": 4,
+          "sparse_rank": 4,
+          "rrf_score": 0.1375642739613328,
+          "rerank_score": null,
+          "relevance_grade": 2,
+          "relevance_reason": "This provision requires inventory e-commerce entities to provide information related to return, refund, exchange, warranty and guarantee, which is relevant to the consumer's refund case.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "supporting",
+          "rejection_reason": null,
+          "added_because": null,
+          "accepted": true,
+          "conditional": true,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 7, sub-rule (1)"
+        },
+        {
+          "chunk_id": "ECR_2020_P006_SR04::c0",
+          "provision_id": "ECR_2020_P006_SR04",
+          "source_id": "ECR_2020",
+          "dense_rank": 3,
+          "sparse_rank": 1,
+          "rrf_score": 0.15207577198150615,
+          "rerank_score": null,
+          "relevance_grade": 1,
+          "relevance_reason": "This provision requires sellers to provide information about their grievance officer, which is background information for the case.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "background",
+          "rejection_reason": "relevance grade 1 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 6, sub-rule (4)"
+        },
+        {
+          "chunk_id": "ECR_2020_P004_SR04::c0",
+          "provision_id": "ECR_2020_P004_SR04",
+          "source_id": "ECR_2020",
+          "dense_rank": 2,
+          "sparse_rank": 3,
+          "rrf_score": 0.11877905841352546,
+          "rerank_score": null,
+          "relevance_grade": 1,
+          "relevance_reason": "This provision mandates the establishment of a grievance redressal mechanism, which is background information for the case.",
+          "applicability": "applicable",
+          "applicability_reasons": [
+            "fact fact_1b2a8e2b-aa4c-447a-9104-f70b53390d7b records platform_name"
+          ],
+          "source_validity": "current_for_date",
+          "role": "background",
+          "rejection_reason": "relevance grade 1 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (4)"
+        },
+        {
+          "chunk_id": "ECR_2020_P004_SR05::c0",
+          "provision_id": "ECR_2020_P004_SR05",
+          "source_id": "ECR_2020",
+          "dense_rank": 1,
+          "sparse_rank": 1,
+          "rrf_score": 0.11069439938852327,
+          "rerank_score": null,
+          "relevance_grade": 1,
+          "relevance_reason": "This provision requires the grievance officer to acknowledge receipt of complaints within 48 hours and resolve them within a month, which is background information for the case.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no fact of type grievance_officer_contacted"
+          ],
+          "source_validity": "current_for_date",
+          "role": "background",
+          "rejection_reason": "relevance grade 1 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (5)"
+        },
+        {
+          "chunk_id": "ECR_2020_P006_SR05::c0",
+          "provision_id": "ECR_2020_P006_SR05",
+          "source_id": "ECR_2020",
+          "dense_rank": 7,
+          "sparse_rank": 2,
+          "rrf_score": 0.10594764527208157,
+          "rerank_score": null,
+          "relevance_grade": 1,
+          "relevance_reason": "This provision requires sellers to provide information about terms of exchange, returns, and refunds, which is background information for the case.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "background",
+          "rejection_reason": "relevance grade 1 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 6, sub-rule (5)"
+        },
+        {
+          "chunk_id": "ECR_2020_P004_SR10::c0",
+          "provision_id": "ECR_2020_P004_SR10",
+          "source_id": "ECR_2020",
+          "dense_rank": 1,
+          "sparse_rank": 4,
+          "rrf_score": 0.10059715960049644,
+          "rerank_score": null,
+          "relevance_grade": 1,
+          "relevance_reason": "This provision requires e-commerce entities to effect all payments towards accepted refund requests within a reasonable period of time. While it is related to refunds, it does not directly address the issue of the wrong item being sent.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no fact of type refund_initiated_date"
+          ],
+          "source_validity": "current_for_date",
+          "role": "background",
+          "rejection_reason": "relevance grade 1 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (10)"
+        },
+        {
+          "chunk_id": "ECR_2021_AMENDMENT_P002::c0",
+          "provision_id": "ECR_2021_AMENDMENT_P002",
+          "source_id": "ECR_2021_AMENDMENT",
+          "dense_rank": 6,
+          "sparse_rank": 7,
+          "rrf_score": 0.1107167455046481,
+          "rerank_score": null,
+          "relevance_grade": 0,
+          "relevance_reason": "This amendment does not directly relate to the consumer's refund case.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "rejected",
+          "rejection_reason": "relevance grade 0 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) (Amendment) Rules, 2021, provision 2"
+        },
+        {
+          "chunk_id": "ECR_2020_P004_SR02::c0",
+          "provision_id": "ECR_2020_P004_SR02",
+          "source_id": "ECR_2020",
+          "dense_rank": 2,
+          "sparse_rank": 1,
+          "rrf_score": 0.10610174970835519,
+          "rerank_score": null,
+          "relevance_grade": 0,
+          "relevance_reason": "grader_failed",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "rejected",
+          "rejection_reason": "relevance grade 0 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (2)"
+        },
+        {
+          "chunk_id": "ECR_2020_P007_SR04::c0",
+          "provision_id": "ECR_2020_P007_SR04",
+          "source_id": "ECR_2020",
+          "dense_rank": 1,
+          "sparse_rank": 3,
+          "rrf_score": 0.1045048351767318,
+          "rerank_score": null,
+          "relevance_grade": 2,
+          "relevance_reason": "The provision states that no inventory e-commerce entity shall refuse to take back goods or refuse to refund consideration if the goods are not as advertised or if such goods are delivered late from the stated delivery schedule. This is relevant to the case where the refund was cancelled due to the wrong item being sent.",
+          "applicability": "not_applicable",
+          "applicability_reasons": [
+            "refund_status is 'they told me the refund was cancelled because the wrong item was sent.', not in ['denied', 'partial']"
+          ],
+          "source_validity": "current_for_date",
+          "role": "rejected",
+          "rejection_reason": "conditions not met: refund_status is 'they told me the refund was cancelled because the wrong item was sent.', not in ['denied', 'partial']",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 7, sub-rule (4)"
+        }
+      ],
+      "retrieval_summary": {
+        "corpus_version": "0381858588e1a7be",
+        "candidate_count": 10,
+        "accepted_count": 2,
+        "rejected_count": 8,
+        "retry_count": 0
+      },
+      "verification": {
+        "overall": "verified",
+        "blocked_claims": [],
+        "note": "deterministic citation/date/phrase guards only; claim-level entailment is DESIGN_ONLY"
+      },
+      "assessment": {
+        "outcome": "needs_more_information",
+        "reasons": [
+          "An essential fact is missing: an exact cancellation/return date."
+        ],
+        "facts_used": [
+          "fact_cbde2d07-446c-48ba-a186-41a894fd0f50",
+          "fact_1b2a8e2b-aa4c-447a-9104-f70b53390d7b",
+          "fact_908edd3a-913b-400e-8daf-07490adaa173",
+          "fact_8c091756-3dd8-41ee-be19-4b6d45e7ccfb",
+          "fact_f32f413a-1a64-461b-b92c-e0390720a922",
+          "fact_01602007-60f1-4230-bf46-4d17b2236896",
+          "fact_c59f4155-af19-428a-b593-01f288380505"
+        ],
+        "provision_ids_used": [
+          "ECR_2020_P005_SR03",
+          "ECR_2020_P007_SR01"
+        ],
+        "missing_information": [
+          "When did you cancel or return the order? Please give the exact date.",
+          "Have you contacted the seller or platform support in writing, and on what date?"
+        ],
+        "uncertainties": [
+          "relevance grade 1 below 2",
+          "relevance grade 1 below 2",
+          "relevance grade 1 below 2",
+          "relevance grade 1 below 2",
+          "relevance grade 1 below 2"
+        ],
+        "urgency": "unknown",
+        "next_steps": [
+          "Answer the follow-up question so the refund timeline can be assessed."
+        ],
+        "lawyer_needed": false,
+        "lawyer_reason": null,
+        "rule_trace": [
+          "R2: An essential fact is missing: an exact cancellation/return date."
+        ],
+        "llm_proposed_outcome": "needs_more_information"
+      },
+      "missing_information": [
+        "When did you cancel or return the order? Please give the exact date.",
+        "Have you contacted the seller or platform support in writing, and on what date?"
+      ],
+      "next_steps": [
+        "Answer the follow-up question so the refund timeline can be assessed."
+      ],
+      "document_draft": null
+    }
+  ],
+  "case_status_final": "open",
+  "event_types": [
+    "case_created",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "assessment_completed"
+  ],
+  "checks_failed": [],
+  "observed": {
+    "outcome": "needs_more_information"
+  },
+  "data_origin": "public_commission_order",
+  "split": "test",
+  "result": "PASS"
+}

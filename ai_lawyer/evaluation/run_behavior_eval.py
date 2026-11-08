@@ -491,9 +491,21 @@ def main(argv: list[str] | None = None) -> int:
             )
             conversation = db.create_conversation(settings.demo_user_id)
             as_of = date.fromisoformat(case["now"])
-            responses = _run_turns(
-                orchestrator, conversation.conversation_id, settings, case, as_of
-            )
+            crash: str | None = None
+            try:
+                responses = _run_turns(
+                    orchestrator, conversation.conversation_id, settings, case, as_of
+                )
+            except Exception as exc:  # noqa: BLE001 - one case must not stop the run
+                import traceback
+
+                crash = f"{type(exc).__name__}: {exc}"
+                responses = [{
+                    "assistant_message": "",
+                    "assessment": {},
+                    "pipeline_error": crash,
+                    "traceback": traceback.format_exc(limit=8),
+                }]
 
             final = responses[-1]
             case_id = final.get("case_id")
@@ -505,6 +517,8 @@ def main(argv: list[str] | None = None) -> int:
                 event_types = [e["event_type"] for e in db.get_events(case_id)]
 
             failed, observed = _check_case(case, responses, case_status, event_types, corpus)
+            if crash:
+                failed.insert(0, f"pipeline crashed: {crash}")
             if not synthetic:
                 said = " ".join(_lower(r.get("assistant_message")) for r in responses)
                 hits = [p for p in STANDARD_FORBIDDEN if p in said]

@@ -1,0 +1,32 @@
+{
+  "generated_at": "2026-11-08T18:26:47.540525+00:00",
+  "data_origin": "public_commission_order",
+  "label_note": "Gold labels are machine-derived from machine-verified conditions (not human labels). Only provisions whose conditions are fully extractable can be labelled, so most rows share the same 2-3 gold provisions and unlabelled provisions are not known to be irrelevant: precision is a lower bound.",
+  "rows": {
+    "total_labels_file": 17,
+    "machine_derived": 17,
+    "development": 7,
+    "test": 10
+  },
+  "corpus_version": "0381858588e1a7be",
+  "corpus_usable": 30,
+  "trust_level": "machine",
+  "embedder_id": "BAAI/bge-large-en-v1.5",
+  "embedder_model_hash": "66fb4645018b1085d2643add159e00b6",
+  "rrf_k": 60,
+  "k_values_clipped_to": 30,
+  "experiments": {
+    "E1_dense": "RUN",
+    "E2_bm25": "RUN",
+    "E3_hybrid_rrf": "RUN",
+    "E4_reranker": "NOT RUN: reranker not deployed on Kaggle",
+    "false_acceptance_rate": "NOT RUN here: needs the LLM verification step; see behaviour run"
+  },
+  "synthetic_table": "0 labelled synthetic rows; no synthetic metrics reported",
+  "tuning": "none; parameters are the configured defaults, not chosen on these rows",
+  "raw_sha256": {
+    "E1_dense.jsonl": "0a8b9e33ad5eb10e9fe7aa31d00ed8ff4670dad583c989ab5242ca5c6ba8cf8c",
+    "E2_bm25.jsonl": "8580a635288e90277acd22cf8e6422ab47185fc49d3c08ab3cf6066ee32c854e",
+    "E3_hybrid_rrf.jsonl": "16796ef80921bd982fedb34d32366d36f2dec4670af12f02a5a38acae00da282"
+  }
+}

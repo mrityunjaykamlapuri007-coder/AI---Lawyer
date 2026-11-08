@@ -1,0 +1,22 @@
+rows: {'total_labels_file': 17, 'machine_derived': 17, 'development': 7, 'test': 10}
+E1_dense       development k= 5 n= 7 P=0.0 R=0.0 MRR=0.0 nDCG=0.0
+E1_dense       development k=10 n= 7 P=0.042857142857142864 R=0.21428571428571427 MRR=0.05612244897959184 nDCG=0.08446217211757538
+E1_dense       development k=20 n= 7 P=0.09285714285714286 R=0.9285714285714286 MRR=0.10299224584938871 nDCG=0.31219630713961927
+E1_dense       test        k= 5 n=10 P=0.0 R=0.0 MRR=0.0 nDCG=0.0
+E1_dense       test        k=10 n=10 P=0.05 R=0.23333333333333334 MRR=0.06317460317460317 nDCG=0.09275932013982345
+E1_dense       test        k=20 n=10 P=0.095 R=0.9 MRR=0.10049353424353424 nDCG=0.3027854027782728
+E2_bm25        development k= 5 n= 7 P=0.028571428571428574 R=0.07142857142857142 MRR=0.14285714285714285 nDCG=0.0875924561093512
+E2_bm25        development k=10 n= 7 P=0.08571428571428573 R=0.42857142857142855 MRR=0.1988095238095238 nDCG=0.22731120205042796
+E2_bm25        development k=20 n= 7 P=0.1 R=1.0 MRR=0.2298469387755102 nDCG=0.40189879021679725
+E2_bm25        test        k= 5 n=10 P=0.06000000000000001 R=0.15 MRR=0.09 nDCG=0.0861248232773134
+E2_bm25        test        k=10 n=10 P=0.1 R=0.4833333333333333 MRR=0.1592857142857143 nDCG=0.21198532713807525
+E2_bm25        test        k=20 n=10 P=0.095 R=0.9166666666666666 MRR=0.16697802197802197 nDCG=0.3518466271108075
+E3_hybrid_rrf  development k= 5 n= 7 P=0.028571428571428574 R=0.07142857142857142 MRR=0.028571428571428574 nDCG=0.03388538753847089
+E3_hybrid_rrf  development k=10 n= 7 P=0.08571428571428573 R=0.42857142857142855 MRR=0.1108843537414966 nDCG=0.16750664106864782
+E3_hybrid_rrf  development k=20 n= 7 P=0.1 R=1.0 MRR=0.1227891156462585 nDCG=0.355153229541712
+E3_hybrid_rrf  test        k= 5 n=10 P=0.06000000000000001 R=0.15 MRR=0.065 nDCG=0.07384635481111834
+E3_hybrid_rrf  test        k=10 n=10 P=0.12000000000000002 R=0.5666666666666667 MRR=0.14317460317460318 nDCG=0.23640794063923157
+E3_hybrid_rrf  test        k=20 n=10 P=0.1 R=0.95 MRR=0.1515079365079365 nDCG=0.358971718988787
+NOTE: Gold labels are machine-derived from machine-verified conditions (not human labels). Only provisions whose conditions are fully extractable can be labelled, so most rows share the same 2-3 gold provisions and unlabelled provisions are not known to be irrelevant: precision is a lower bound.
+results: C:\Users\Lenovo\OneDrive\Documents\Default Project\ai_lawyer\evaluation\results\real_retrieval
+exit=0

@@ -28,7 +28,8 @@ def _latest(facts: list[Fact], fact_type: str):
 
 
 def _money(minor: int | None) -> str:
-    if minor is None:
+    # Anything that is not integer minor units becomes a placeholder, never a crash.
+    if minor is None or isinstance(minor, bool) or not isinstance(minor, int):
         return PLACEHOLDER
     return f"INR {minor / 100:,.2f}"
 
