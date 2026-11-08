@@ -133,3 +133,46 @@ R1 notes:
 - PDFs under `legal_corpus/official/originals/` and scratch `_search/` are
   git-ignored (17.8 MB / 5.3 MB); the provenance manifest and hashes are
   committed instead.
+
+### R2 - review worksheet tooling
+
+| Field | Value |
+|---|---|
+| Status | IMPLEMENTED_AND_TESTED |
+| Test command | `pytest -q` |
+| Result | 197 passed, 1 warning in 13.90s |
+| Test command (focused) | `pytest ai_lawyer/tests/unit/test_review_tool.py -q` |
+| Result | 12 passed |
+| Dry run | temp copy of `official/draft_curated` |
+
+What changed:
+- `Provision.review_status` (`human_verified` / `unverified` / `rejected`),
+  `review_note`; `Provision.reviewed_at` is now a full timestamp.
+- Usability now needs BOTH a `human_verified` source and a `human_verified`
+  provision with a named reviewer. A verified source no longer makes every
+  provision in it citable.
+- The real-mode gate rejects a `human_verified` provision whose source is not
+  approved, a verified provision with no reviewer/date, an unreviewed
+  condition, and any `rejected` provision present in a runtime corpus.
+- `python -m ai_lawyer.legal_rag.review_tool` with `list`, `show`, `approve`,
+  `reject`, `source-approve`. `approve` takes exactly one provision id and
+  requires the id to be typed again (`--confirm` in non-interactive use).
+  There is no batch mode. `source-approve` prints every missing provenance
+  field and writes nothing until they are complete.
+- Writes go only to the staging directory. The CSV worksheets are refreshed
+  from the JSON after each write.
+- Fixture provisions carry `review_status`/reviewer so the fixture corpus keeps
+  10 usable / 1 unusable.
+
+Dry-run evidence (temp copy, not the real staging files):
+- `show ECR_2020_P001` printed the verbatim text, page 7, text file
+  `ecr_2020_1.txt`, original PDF path, and SHA-256.
+- wrong `--confirm` -> exit 2, row unchanged.
+- correct `--confirm` -> exit 0, row `human_verified by=DryRun`, warning that the
+  source is not approved.
+- `reject ECR_2020_P002 --note ...` -> exit 0, row `rejected`.
+- `source-approve ECR_2020` -> exit 2, listed `publisher`, `official_url`,
+  `published_date`, `version_status`.
+
+Blockers: the real staging corpus is still 0/149 approved. Only Mri can approve;
+the tooling does not write legal text, conditions, or metadata from memory.

@@ -24,6 +24,22 @@ logger = logging.getLogger(__name__)
 ALLOWED_OPERATORS = {"exists", "equals", "in", "date_before", "date_after", "manual"}
 
 
+def provision_is_usable(source: Source | None, provision: Provision) -> bool:
+    """A provision is citable only when both it and its source were approved.
+
+    ``human_verified`` on a source says the document is the right document.
+    It says nothing about whether a human read this particular provision, so a
+    per-provision approval with a named reviewer is also required.
+    """
+    if source is None:
+        return False
+    if source.review_status != "human_verified":
+        return False
+    if provision.review_status != "human_verified":
+        return False
+    return bool(provision.reviewed_by and provision.reviewed_by.strip())
+
+
 @dataclass
 class Corpus:
     sources: dict[str, Source]
@@ -50,12 +66,14 @@ class Corpus:
         return {
             pid
             for pid, p in self.provisions.items()
-            if self.sources[p.source_id].review_status == "human_verified"
+            if provision_is_usable(self.sources.get(p.source_id), p)
         }
 
     def is_usable(self, provision_id: str) -> bool:
         p = self.provisions.get(provision_id)
-        return bool(p and self.sources[p.source_id].review_status == "human_verified")
+        if p is None:
+            return False
+        return provision_is_usable(self.sources.get(p.source_id), p)
 
     @property
     def usable_count(self) -> int:
@@ -193,21 +211,18 @@ def validate_and_build(
         raise CorpusValidationError(errors)
 
     corpus_version = _canonical_hash(list(sources.values()), list(provisions.values()))
+    usable_count = sum(
+        1
+        for p in provisions.values()
+        if provision_is_usable(sources.get(p.source_id), p)
+    )
     manifest = CorpusManifest(
         corpus_version=corpus_version,
         mode=mode,  # type: ignore[arg-type]
         sources_count=len(sources),
         provisions_count=len(provisions),
-        usable_count=sum(
-            1
-            for p in provisions.values()
-            if sources[p.source_id].review_status == "human_verified"
-        ),
-        unusable_count=sum(
-            1
-            for p in provisions.values()
-            if sources[p.source_id].review_status != "human_verified"
-        ),
+        usable_count=usable_count,
+        unusable_count=len(provisions) - usable_count,
         generated_at=utc_now(),
     )
     corpus = Corpus(
@@ -220,7 +235,8 @@ def validate_and_build(
     if corpus.unusable_count:
         msg = (
             f"{corpus.unusable_count} of {len(provisions)} provisions are loaded but "
-            "unusable because their source is not human_verified; they will not be cited."
+            "unusable because the provision and its source are not both human_verified; "
+            "they will not be cited."
         )
         corpus.warnings.append(msg)
         if warn_unusable:

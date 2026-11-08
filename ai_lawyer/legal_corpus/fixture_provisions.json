@@ -7,23 +7,44 @@
     "parent_provision_id": null,
     "original_text": "FAKE TEST TEXT: Where a consumer cancels an order or returns goods, the seller must process a refund within a reasonable period after the cancellation or return.",
     "search_text": "refund cancellation return order seller process refund reasonable period e-commerce consumer money not received delayed pending",
-    "provisos": ["TEST_ACT_A1_P1"],
-    "exceptions": ["TEST_ACT_A2"],
-    "definitions_used": ["TEST_ACT_A6"],
-    "cross_references": ["TEST_ACT_A3"],
-    "mandatory_context": ["TEST_ACT_A1_P1"],
+    "provisos": [
+      "TEST_ACT_A1_P1"
+    ],
+    "exceptions": [
+      "TEST_ACT_A2"
+    ],
+    "definitions_used": [
+      "TEST_ACT_A6"
+    ],
+    "cross_references": [
+      "TEST_ACT_A3"
+    ],
+    "mandatory_context": [
+      "TEST_ACT_A1_P1"
+    ],
     "conditions": [
       {
         "condition_id": "TEST_ACT_A1_C1",
         "description": "The refund is still outstanding in one of the recognised unresolved states.",
         "fact_type": "refund_status",
         "operator": "in",
-        "expected_value": ["not_received", "pending", "initiated", "processed", "partial", "denied"],
+        "expected_value": [
+          "not_received",
+          "pending",
+          "initiated",
+          "processed",
+          "partial",
+          "denied"
+        ],
         "human_review_status": "reviewed"
       }
     ],
     "page_start": 1,
-    "page_end": 1
+    "page_end": 1,
+    "review_status": "human_verified",
+    "reviewed_by": "fixture-reviewer",
+    "reviewed_at": "2026-01-01T00:00:00Z",
+    "review_note": null
   },
   {
     "provision_id": "TEST_ACT_A1_P1",
@@ -40,7 +61,11 @@
     "mandatory_context": [],
     "conditions": [],
     "page_start": 1,
-    "page_end": 1
+    "page_end": 1,
+    "review_status": "human_verified",
+    "reviewed_by": "fixture-reviewer",
+    "reviewed_at": "2026-01-01T00:00:00Z",
+    "review_note": null
   },
   {
     "provision_id": "TEST_ACT_A2",
@@ -57,7 +82,11 @@
     "mandatory_context": [],
     "conditions": [],
     "page_start": 1,
-    "page_end": 1
+    "page_end": 1,
+    "review_status": "human_verified",
+    "reviewed_by": "fixture-reviewer",
+    "reviewed_at": "2026-01-01T00:00:00Z",
+    "review_note": null
   },
   {
     "provision_id": "TEST_ACT_A3",
@@ -70,7 +99,9 @@
     "provisos": [],
     "exceptions": [],
     "definitions_used": [],
-    "cross_references": ["TEST_ACT_A4"],
+    "cross_references": [
+      "TEST_ACT_A4"
+    ],
     "mandatory_context": [],
     "conditions": [
       {
@@ -83,7 +114,11 @@
       }
     ],
     "page_start": 1,
-    "page_end": 1
+    "page_end": 1,
+    "review_status": "human_verified",
+    "reviewed_by": "fixture-reviewer",
+    "reviewed_at": "2026-01-01T00:00:00Z",
+    "review_note": null
   },
   {
     "provision_id": "TEST_ACT_A4",
@@ -109,7 +144,11 @@
       }
     ],
     "page_start": 1,
-    "page_end": 1
+    "page_end": 1,
+    "review_status": "human_verified",
+    "reviewed_by": "fixture-reviewer",
+    "reviewed_at": "2026-01-01T00:00:00Z",
+    "review_note": null
   },
   {
     "provision_id": "TEST_ACT_A5",
@@ -126,7 +165,11 @@
     "mandatory_context": [],
     "conditions": [],
     "page_start": 1,
-    "page_end": 1
+    "page_end": 1,
+    "review_status": "human_verified",
+    "reviewed_by": "fixture-reviewer",
+    "reviewed_at": "2026-01-01T00:00:00Z",
+    "review_note": null
   },
   {
     "provision_id": "TEST_ACT_A6",
@@ -143,7 +186,11 @@
     "mandatory_context": [],
     "conditions": [],
     "page_start": 1,
-    "page_end": 1
+    "page_end": 1,
+    "review_status": "human_verified",
+    "reviewed_by": "fixture-reviewer",
+    "reviewed_at": "2026-01-01T00:00:00Z",
+    "review_note": null
   },
   {
     "provision_id": "TEST_ACT_A7",
@@ -169,7 +216,11 @@
       }
     ],
     "page_start": 1,
-    "page_end": 1
+    "page_end": 1,
+    "review_status": "human_verified",
+    "reviewed_by": "fixture-reviewer",
+    "reviewed_at": "2026-01-01T00:00:00Z",
+    "review_note": null
   },
   {
     "provision_id": "TEST_FUTURE_A8",
@@ -186,7 +237,11 @@
     "mandatory_context": [],
     "conditions": [],
     "page_start": 1,
-    "page_end": 1
+    "page_end": 1,
+    "review_status": "human_verified",
+    "reviewed_by": "fixture-reviewer",
+    "reviewed_at": "2026-01-01T00:00:00Z",
+    "review_note": null
   },
   {
     "provision_id": "TEST_OLD_A9",
@@ -203,7 +258,11 @@
     "mandatory_context": [],
     "conditions": [],
     "page_start": 1,
-    "page_end": 1
+    "page_end": 1,
+    "review_status": "human_verified",
+    "reviewed_by": "fixture-reviewer",
+    "reviewed_at": "2026-01-01T00:00:00Z",
+    "review_note": null
   },
   {
     "provision_id": "TEST_UNVERIFIED_A10",
@@ -220,6 +279,10 @@
     "mandatory_context": [],
     "conditions": [],
     "page_start": 1,
-    "page_end": 1
+    "page_end": 1,
+    "review_status": "unverified",
+    "reviewed_by": null,
+    "reviewed_at": null,
+    "review_note": null
   }
 ]

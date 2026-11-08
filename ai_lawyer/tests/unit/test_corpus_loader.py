@@ -40,6 +40,9 @@ PROVISION = {
     "conditions": [],
     "page_start": 1,
     "page_end": 1,
+    "review_status": "human_verified",
+    "reviewed_by": "fixture-reviewer",
+    "reviewed_at": "2026-01-01T00:00:00Z",
 }
 
 
@@ -120,6 +123,27 @@ def test_unverified_source_is_loaded_but_unusable():
     assert corpus.usable_count == 1
     assert corpus.unusable_count == 1
     assert not corpus.is_usable("S2_A2")
+
+
+def test_unverified_provision_under_verified_source_is_unusable():
+    pending = {
+        **deepcopy(PROVISION),
+        "provision_id": "S1_A2",
+        "review_status": "unverified",
+        "reviewed_by": None,
+        "reviewed_at": None,
+    }
+    corpus = _build([deepcopy(PROVISION), pending])
+    assert corpus.usable_count == 1
+    assert corpus.is_usable("S1_A1")
+    assert not corpus.is_usable("S1_A2")
+
+
+def test_verified_provision_without_reviewer_is_unusable():
+    nameless = {**deepcopy(PROVISION), "reviewed_by": "  "}
+    corpus = _build([nameless])
+    assert corpus.usable_count == 0
+    assert not corpus.is_usable("S1_A1")
 
 
 def test_real_mode_without_sources_fails_clearly(tmp_path):

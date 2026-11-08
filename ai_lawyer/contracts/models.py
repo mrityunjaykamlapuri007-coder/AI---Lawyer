@@ -121,9 +121,11 @@ class Provision(StrictModel):
     page_start: int = 0
     page_end: int = 0
     # Per-provision provenance.  A human_verified source does not make every
-    # provision in it reviewed; real-mode acceptance requires both.
+    # provision in it reviewed; only provisions a human approved are citable.
+    review_status: Literal["human_verified", "unverified", "rejected"] = "unverified"
     reviewed_by: str | None = None
-    reviewed_at: date_cls | None = None
+    reviewed_at: datetime | None = None
+    review_note: str | None = None
 
     @field_validator("original_text")
     @classmethod

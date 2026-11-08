@@ -45,8 +45,10 @@ REAL_PROVISION = {
     "conditions": [],
     "page_start": 1,
     "page_end": 1,
+    "review_status": "human_verified",
     "reviewed_by": "reviewer-name",
-    "reviewed_at": "2026-11-08",
+    "reviewed_at": "2026-11-08T12:00:00Z",
+    "review_note": None,
 }
 
 
@@ -55,14 +57,24 @@ def _write(tmp_path: Path, sources, provisions) -> None:
     (tmp_path / "provisions.json").write_text(json.dumps(provisions), encoding="utf-8")
 
 
-def test_real_corpus_with_no_verified_source_is_rejected(tmp_path):
+def test_real_corpus_with_no_verified_provision_is_rejected(tmp_path):
+    provision = {**deepcopy(REAL_PROVISION), "review_status": "unverified"}
+    _write(tmp_path, [deepcopy(REAL_SOURCE)], [provision])
+
+    with pytest.raises(CorpusValidationError) as exc:
+        load_corpus("real", corpus_dir=tmp_path)
+
+    assert any("no human_verified provision" in e for e in exc.value.errors)
+
+
+def test_verified_provision_under_unapproved_source_is_rejected(tmp_path):
     source = {**deepcopy(REAL_SOURCE), "review_status": "unverified"}
     _write(tmp_path, [source], [deepcopy(REAL_PROVISION)])
 
     with pytest.raises(CorpusValidationError) as exc:
         load_corpus("real", corpus_dir=tmp_path)
 
-    assert any("no human_verified source" in e for e in exc.value.errors)
+    assert any("approve the source first" in e for e in exc.value.errors)
 
 
 def test_verified_source_without_reviewer_is_rejected(tmp_path):
@@ -148,6 +160,7 @@ def test_partial_real_corpus_is_allowed_when_verified_entries_are_complete(tmp_p
         **deepcopy(REAL_PROVISION),
         "provision_id": "PENDING_ACT_S1",
         "source_id": "PENDING_ACT",
+        "review_status": "unverified",
         "reviewed_by": None,
         "reviewed_at": None,
     }
@@ -161,4 +174,31 @@ def test_partial_real_corpus_is_allowed_when_verified_entries_are_complete(tmp_p
 
     assert corpus.usable_count == 1
     assert corpus.unusable_count == 1
+    assert real_corpus_problems(corpus) == []
+
+
+def test_rejected_provision_must_not_be_in_runtime_corpus(tmp_path):
+    provision = {**deepcopy(REAL_PROVISION), "review_status": "rejected"}
+    _write(tmp_path, [deepcopy(REAL_SOURCE)], [provision])
+
+    with pytest.raises(CorpusValidationError) as exc:
+        load_corpus("real", corpus_dir=tmp_path)
+
+    assert any("marked rejected" in e for e in exc.value.errors)
+
+
+def test_unverified_provision_under_verified_source_is_allowed_as_background(tmp_path):
+    background = {
+        **deepcopy(REAL_PROVISION),
+        "provision_id": "REAL_ACT_S2",
+        "review_status": "unverified",
+        "reviewed_by": None,
+        "reviewed_at": None,
+    }
+    _write(tmp_path, [deepcopy(REAL_SOURCE)], [deepcopy(REAL_PROVISION), background])
+
+    corpus = load_corpus("real", corpus_dir=tmp_path)
+
+    assert corpus.usable_count == 1
+    assert not corpus.is_usable("REAL_ACT_S2")
     assert real_corpus_problems(corpus) == []

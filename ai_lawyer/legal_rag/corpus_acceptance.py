@@ -9,16 +9,20 @@ service could only answer "I have no law", and worse, a single stray
 This gate runs from :func:`load_corpus` only for real mode.  It raises
 ``CorpusValidationError`` and the application refuses to start when:
 
-* no source is ``human_verified``;
+* no provision is ``human_verified``;
 * a verified source has no publisher, official URL, publication date, document
   hash, reviewer name or review date;
 * a verified source's ``version_status`` is ``uncertain``;
-* a provision belonging to a verified source has no reviewer name or review
-  date;
-* a provision belonging to a verified source has an unreviewed condition.
+* a ``human_verified`` provision belongs to a source that is not itself
+  ``human_verified``;
+* a ``human_verified`` provision has no reviewer name or review date;
+* a ``human_verified`` provision has an unreviewed condition;
+* a ``rejected`` provision is present in the runtime corpus.
 
-Fixture mode is never gated: its synthetic sources are marked verified by
-construction and must keep working without real-world provenance.
+A provision that is not ``human_verified`` is allowed to load as background
+context; it stays uncitable.  Fixture mode is never gated: its synthetic
+sources and provisions are marked verified by construction and must keep
+working without real-world provenance.
 """
 from __future__ import annotations
 
@@ -53,9 +57,15 @@ def real_corpus_problems(corpus: Corpus) -> list[str]:
         for source in corpus.sources.values()
         if source.review_status == "human_verified"
     ]
-    if not verified:
+
+    verified_provisions = [
+        provision
+        for provision in corpus.provisions.values()
+        if provision.review_status == "human_verified"
+    ]
+    if not verified_provisions:
         problems.append(
-            "real corpus contains no human_verified source; nothing in it is "
+            "real corpus contains no human_verified provision; nothing in it is "
             "citable, so the service must not start"
         )
 
@@ -72,14 +82,26 @@ def real_corpus_problems(corpus: Corpus) -> list[str]:
             )
 
     for provision in sorted(corpus.provisions.values(), key=lambda p: p.provision_id):
-        source = corpus.sources[provision.source_id]
-        if source.review_status != "human_verified":
+        source = corpus.sources.get(provision.source_id)
+        if provision.review_status == "rejected":
+            problems.append(
+                f"provision {provision.provision_id} is marked rejected but is present "
+                "in the runtime corpus; rebuild from approved rows only"
+            )
             continue
+        if provision.review_status != "human_verified":
+            # Loaded background text.  It stays uncitable, which is allowed.
+            continue
+        if source is None or source.review_status != "human_verified":
+            problems.append(
+                f"provision {provision.provision_id} is human_verified but its source "
+                f"{provision.source_id} is not; approve the source first"
+            )
         for field in ("reviewed_by", "reviewed_at"):
             if _blank(getattr(provision, field)):
                 problems.append(
-                    f"provision {provision.provision_id} belongs to a human_verified "
-                    f"source but {field} is missing"
+                    f"provision {provision.provision_id} is human_verified but "
+                    f"{field} is missing"
                 )
         for condition in provision.conditions:
             if condition.human_review_status != "reviewed":

@@ -256,6 +256,8 @@ def _corpus_without(corpus, needle: str):
     Used only for the B09 fallback check: the evaluator must show what happens
     when the Consumer Commission route is absent from the corpus.
     """
+    from ai_lawyer.legal_rag.corpus_loader import provision_is_usable
+
     kept = {}
     removed: list[str] = []
     for pid, provision in corpus.provisions.items():
@@ -269,7 +271,7 @@ def _corpus_without(corpus, needle: str):
     usable = sum(
         1
         for p in kept.values()
-        if corpus.sources[p.source_id].review_status == "human_verified"
+        if provision_is_usable(corpus.sources.get(p.source_id), p)
     )
     manifest = corpus.manifest.model_copy(
         update={
