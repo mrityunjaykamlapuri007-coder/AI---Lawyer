@@ -23,6 +23,7 @@ from ai_lawyer.contracts.models import Candidate, DocumentDraft
 from ai_lawyer.documents.generator import generate_document
 from ai_lawyer.legal_engine.source_validity import evaluate_source_validity
 from ai_lawyer.legal_rag.corpus_loader import Corpus, startup_summary
+from ai_lawyer.legal_rag.known_gaps import TRUST_NOTE, gaps_for
 
 if TYPE_CHECKING:  # pragma: no cover - typing only
     from ai_lawyer.legal_rag.index_manager import IndexBundle
@@ -121,15 +122,22 @@ def health(request: Request) -> dict:
             "usable": corpus.usable_count,
             "unusable": corpus.unusable_count,
             "fixture_data_not_real_law": corpus.mode == "fixture",
+            "trust_level": settings.corpus_trust_level,
+            "trust_note": TRUST_NOTE.get(settings.corpus_trust_level, ""),
+            "known_gaps": gaps_for(corpus.sources.values()) if corpus.mode == "real" else [],
             "warnings": list(corpus.warnings),
         },
         "index": {
             "loaded": index is not None,
             "chunks": len(index.chunk_ids) if index is not None else 0,
             "embedder": (index.manifest.get("embedder_id") if index is not None else ""),
+            "embedder_model_hash": (
+                index.manifest.get("embedder_model_hash") if index is not None else None
+            ),
         },
         "llm": {
             "provider": getattr(llm, "provider", "unknown"),
+            "model": settings.llm_model_name if getattr(llm, "provider", "") != "fake" else "fake",
             "offline": getattr(llm, "provider", "") == "fake",
         },
         "database": "ok" if database_ok else "error",

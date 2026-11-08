@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import json
 import re
 import tempfile
@@ -26,7 +27,7 @@ from ai_lawyer.backend.services.evidence_store import EvidenceStore
 from ai_lawyer.backend.services.llm_providers import get_llm
 from ai_lawyer.backend.services.orchestrator import Orchestrator, Upload
 from ai_lawyer.config.settings import PROJECT_ROOT, Settings
-from ai_lawyer.contracts.errors import CorpusValidationError
+from ai_lawyer.contracts.errors import CorpusValidationError, UserSafeError
 from ai_lawyer.tests.fakes import FakeLLM, HashEmbedder
 from ai_lawyer.legal_rag.corpus_loader import load_corpus
 from ai_lawyer.legal_rag.embedders import get_embedder
@@ -69,6 +70,9 @@ def dataset_origin(cases: list[dict[str, Any]]) -> tuple[str | None, str | None]
     if len(origins) > 1:
         return None, f"rows mix data origins {sorted(origins)}; run them as separate tables"
     return origins.pop() if origins else None, None
+
+
+STANDARD_FORBIDDEN = ("violated", "broke the law", "illegal", "you will win", "guaranteed")
 
 
 def _lower(text: Any) -> str:
@@ -116,7 +120,11 @@ def _check_case(
     failed: list[str] = []
     observed: dict[str, Any] = {}
 
-    if "outcome" in expected:
+    if expected.get("outcome") == "undetermined":
+        # Rules R0-R7 do not settle this story from its stated facts: record the
+        # output without an outcome pass/fail.
+        observed["outcome"] = final.get("assessment", {}).get("outcome")
+    elif "outcome" in expected:
         observed["outcome"] = final.get("assessment", {}).get("outcome")
         if observed["outcome"] != expected["outcome"]:
             failed.append(f"outcome {observed['outcome']!r} != {expected['outcome']!r}")
@@ -440,12 +448,21 @@ def main(argv: list[str] | None = None) -> int:
                 "one source and provision, then rebuild the runtime corpus."
             )
             return 2
-        embedder = get_embedder(base)
-        llm = get_llm(base) if real else FakeLLM()
-        index = build_index(
-            corpus, embedder, out_dir=base.vectorstore_path,
-            max_chunk_chars=base.max_chunk_chars,
-        )
+        try:
+            embedder = get_embedder(base)
+            llm = get_llm(base) if real else FakeLLM()
+            index = build_index(
+                corpus, embedder, out_dir=base.vectorstore_path,
+                max_chunk_chars=base.max_chunk_chars,
+            )
+        except UserSafeError as exc:
+            # Rule 9: real mode fails closed with a clear message, never a fallback.
+            print(f"BLOCKED: {exc.user_safe_message}")
+            if exc.details.get("detail"):
+                print(f"  - {exc.details['detail']}")
+            print("Start kaggle/serve_all.ipynb, fill .env, then run "
+                  "`python -m ai_lawyer.tools.check_remote`.")
+            return 2
         retriever = Retriever(index, corpus, base)
         label = (
             f"REAL CORPUS, VERIFIED SUBSET ({corpus.usable_count} usable)"
@@ -488,6 +505,11 @@ def main(argv: list[str] | None = None) -> int:
                 event_types = [e["event_type"] for e in db.get_events(case_id)]
 
             failed, observed = _check_case(case, responses, case_status, event_types, corpus)
+            if not synthetic:
+                said = " ".join(_lower(r.get("assistant_message")) for r in responses)
+                hits = [p for p in STANDARD_FORBIDDEN if p in said]
+                if hits:
+                    failed.append(f"forbidden phrase(s) present: {hits}")
             if real:
                 invented = _unverified_section_numbers(responses, corpus)
                 if invented:
@@ -518,7 +540,13 @@ def main(argv: list[str] | None = None) -> int:
                 "event_types": event_types,
                 "checks_failed": failed,
                 "observed": observed,
-                "result": "PASS" if not failed else "FAIL",
+                "data_origin": case.get("data_origin"),
+                "split": case.get("split"),
+                "result": (
+                    "FAIL" if failed
+                    else "RECORDED" if case.get("expected", {}).get("outcome") == "undetermined"
+                    else "PASS"
+                ),
             }
             (raw_dir / f"{case['test_id']}.json").write_text(
                 json.dumps(raw, indent=2, ensure_ascii=False, default=str),
@@ -528,6 +556,7 @@ def main(argv: list[str] | None = None) -> int:
                 {
                     "label": label,
                     "test_id": case["test_id"],
+                    "split": case.get("split", ""),
                     "category": case.get("category", ""),
                     "result": raw["result"],
                     "observed_outcome": observed.get("outcome", ""),
@@ -657,7 +686,22 @@ def main(argv: list[str] | None = None) -> int:
         "cases": len(cases),
         "checks": len(summary),
         "passed": passed,
-        "failed": len(summary) - passed,
+        "failed": sum(1 for row in summary if row["result"] == "FAIL"),
+        "recorded_without_pass_fail": sum(1 for row in summary if row["result"] == "RECORDED"),
+        "per_split": {
+            split: {
+                result: sum(1 for r in summary if r.get("split") == split and r["result"] == result)
+                for result in ("PASS", "FAIL", "RECORDED")
+            }
+            for split in sorted({r.get("split") or "none" for r in summary})
+        },
+        "embedder_model_hash": index.manifest.get("embedder_model_hash"),
+        "trust_level": base.corpus_trust_level,
+        # R-5: raw outputs are code-written; hashes let any later edit be detected.
+        "raw_sha256": {
+            p.name: hashlib.sha256(p.read_bytes()).hexdigest()
+            for p in sorted(raw_dir.glob("*.json"))
+        },
         "derived_checks": [] if real else ["B09_missing_corpus"],
         "corpus_mode": corpus.mode,
         "corpus_version": corpus.corpus_version,

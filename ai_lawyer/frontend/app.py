@@ -111,11 +111,26 @@ def render_disclaimer(info: dict | None) -> None:
             icon="⚠️",
         )
     else:
+        corpus = info.get("corpus", {})
+        index = info.get("index", {})
+        llm = info.get("llm", {})
+        # Plain text (st.text), so nothing from the API is rendered as markup.
         st.info(
-            "The legal corpus is user-supplied and may be unverified. This tool is general "
-            "information and a drafting aid, not legal advice.",
+            "REAL CORPUS. This tool is general information and a drafting aid, not legal advice.",
             icon="ℹ️",
         )
+        st.text(
+            f"Trust: {corpus.get('trust_note') or corpus.get('trust_level', 'unknown')}\n"
+            f"Verified provisions in use: {corpus.get('usable', 0)}\n"
+            f"LLM: {llm.get('model') or llm.get('provider', 'unknown')} "
+            f"({llm.get('provider', 'unknown')})\n"
+            f"Embedder: {index.get('embedder') or 'unknown'} "
+            f"(hash {index.get('embedder_model_hash') or 'n/a'})"
+        )
+        gaps = corpus.get("known_gaps") or []
+        if gaps:
+            with st.expander(f"Known gaps in the legal corpus ({len(gaps)})"):
+                st.text("\n".join(f"- {gap}" for gap in gaps))
 
 
 def render_facts(response: dict) -> None:

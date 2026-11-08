@@ -35,6 +35,10 @@ def test_health_lists_components_without_secrets(orchestrator, settings):
     assert payload["corpus"]["fixture_data_not_real_law"] is True
     assert payload["llm"]["provider"] == "fake"
     assert payload["llm"]["offline"] is True
+    assert payload["corpus"]["trust_level"] == "machine"
+    assert "NOT been reviewed by a human or a lawyer" in payload["corpus"]["trust_note"]
+    assert payload["corpus"]["known_gaps"] == []  # gaps are listed for the real corpus only
+    assert "embedder_model_hash" in payload["index"]
     assert payload["index"]["loaded"] is True
     assert "api_key" not in response.text.lower()
     assert "llm_base_url" not in response.text.lower()

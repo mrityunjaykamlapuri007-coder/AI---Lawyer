@@ -1,6 +1,6 @@
 {
   "label": "FIXTURE DATA, NOT REAL LAW",
-  "generated_at": "2026-11-08T12:14:32.544714+00:00",
+  "generated_at": "2026-11-08T16:28:16.563645+00:00",
   "mode": "fixture",
   "data_origin": "synthetic_written",
   "data_note": "SYNTHETIC STORIES, NOT REAL DATA: written for testing; do not present as results on real disputes",
@@ -8,6 +8,36 @@
   "checks": 18,
   "passed": 18,
   "failed": 0,
+  "recorded_without_pass_fail": 0,
+  "per_split": {
+    "none": {
+      "PASS": 0,
+      "FAIL": 0,
+      "RECORDED": 0
+    }
+  },
+  "embedder_model_hash": null,
+  "trust_level": "machine",
+  "raw_sha256": {
+    "B01.json": "75f8341a13abb2699a3a49a2706a8a6a5efe122659c047d819dd8cb2b0d8ce30",
+    "B02.json": "bcbc6a694916ef0952bb2a9138ce8a414126e1f283a7e0757918b732de3b1032",
+    "B03.json": "1792c877f723d769d41669626d353cb210675a166f9f7a5790e66ba77850f945",
+    "B04.json": "f8a0a65ace2e0ea65b1105b91205ee574278dc5d738df40212fc7815add7ef8f",
+    "B05.json": "b71b4345d68a237826a1f0009cbcf4abca3a9b8340345612bdc529b4080f9b63",
+    "B06.json": "41981af325399136d991a1b2735846eaea374e7e960b680244916ba622a5e2b6",
+    "B07.json": "331480bb93944711396fd23001671425089a087cfaaec19061e1762705d92938",
+    "B08.json": "d15fb5057071f278e639367083556b654b28b113ef32ba504f4a03d8be28021f",
+    "B09.json": "3cb1674eb8620be5c54e86122a7c16652311295c0fde71a56e92d4c26fe5850b",
+    "B09_missing_corpus.json": "774b929d2418060ebefedd8e505fa58acfec9b1b39d3fa1431b7d0dfc2aea7dd",
+    "B10.json": "3eb9826e04fbcaa117ccb21924f69ed8de06ccb23497b76fbdf8fdd759062660",
+    "B11.json": "98f9cf9c60ff7325780ff9feb7355160660876fc4a38088eb88760dc82e4b1f9",
+    "B12.json": "91ca9ae5ae03b4dcb4d8599d50f9a89fc09a2ecc219ce642ae0c159b159860a3",
+    "B13.json": "c04588f4784b43a68fb8604799f0d87cab9bb1598715952a8ed403a06ecb2f9b",
+    "B14.json": "c6914b8da4e0ebffd245c7dfa41db1664ea303a5000e8cc84dcfa597834b4a14",
+    "B15.json": "54124951c30c839452e8fbc85fbb2bbd1396cfab732077071d0a2f39f623d3db",
+    "B16.json": "79691597fecebb5016d8bc14776b3b775716dbed2a3307f08d158db423e69335",
+    "B17.json": "a5f7145f7194255b7b01feb965da4e3a082001ff7c933aab0b985324d6e2cf80"
+  },
   "derived_checks": [
     "B09_missing_corpus"
   ],

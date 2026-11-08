@@ -44,10 +44,10 @@
   },
   "responses": [
     {
-      "conversation_id": "conv_22fda6a7-3e30-4823-8ea3-755f56312276",
-      "message_id": "msg_6ae6a301-0077-406e-83e1-8cd200bf4b1b",
-      "assistant_message_id": "msg_59cbaff0-7804-47c2-b940-4537aadd6c77",
-      "case_id": "case_8e678bbc-2fdb-4116-a0bb-4484e9d6ed62",
+      "conversation_id": "conv_23d76da0-49f8-4d4b-8865-12081612f221",
+      "message_id": "msg_8c1a998e-ea6d-4f5d-8ffe-a471ea86516a",
+      "assistant_message_id": "msg_b73b7d7f-2f76-4b89-a97c-590fcfd660f7",
+      "case_id": "case_37e1ac80-ea8d-4469-a2c2-9a21536b00af",
       "processing_status": "completed",
       "assistant_message": "## What I understood\n\nA consumer says an e-commerce refund is outstanding.\n\n## Facts\n\nFacts supported by a document:\n- Refund status: initiated (page 1)\n- Refund amount: INR 1,500.00 (page 1)\n- Refund initiated: 2 November 2026 (page 1)\n\nFacts you reported:\n- Order id: FM-1414\n\nEvidence files:\n- B14-attachment.txt: completed\n\n## Legal sources that may apply\n\n- **TEST_ACT Article A1 (FIXTURE)** — role: supporting; applicability: applicable; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: Where a consumer cancels an order or returns goods, the seller must process a refund within a reasonable period after the cancellation or return.\"\n- **TEST_ACT Article A7 (FIXTURE)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: A seller must respond to a refund request within a period set by the platform.\"\n- **TEST_ACT Article A3 (FIXTURE)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: An e-commerce platform must provide a grievance officer to receive consumer complaints about refunds and returns.\"\n- **TEST_ACT Article A1 Proviso (FIXTURE)** — role: mandatory_qualifier; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: Provided that the seller may first require the consumer to return the goods.\"\n\n## How this may relate to your case\n\n- This provision may apply if the facts described are established.\n- A document showing that a refund was 'processed' or 'initiated' does not prove that the money reached your account. It does not confirm a credit; only your bank or payment app can confirm that.\n\n## Assessment\n\n**Informal resolution is recommended first.**\n\n- The refund is pending and there is no record that support has been contacted yet.\n\nSuggested next steps:\n1. Send a written support request to the seller or platform and keep proof of sending.\n2. State the order id, dates, amount and what outcome you want.\n3. Wait for a response before escalating.\n\nAssessment date: 2026-11-08.\n\n## Draft document\nA **support request** draft is included below for your review. It has not been sent or filed.\n\n## Limitations\n\n- This is general information and a draft for your review, not legal advice. I cannot guarantee any outcome.\n- FIXTURE DATA, NOT REAL LAW: the citations above come from a synthetic test corpus and must not be relied on as legal authority.\n",
       "case_summary": {
@@ -62,8 +62,8 @@
       },
       "extracted_facts": [
         {
-          "fact_id": "fact_666eaf5d-f21c-4d0f-9999-9b45cf763e76",
-          "case_id": "case_8e678bbc-2fdb-4116-a0bb-4484e9d6ed62",
+          "fact_id": "fact_5dd0207d-15b0-4ee9-b1aa-858a9502a54e",
+          "case_id": "case_37e1ac80-ea8d-4469-a2c2-9a21536b00af",
           "fact_type": "order_id",
           "raw_value": "FM-1414",
           "normalised_value": "FM-1414",
@@ -75,55 +75,55 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T12:14:31.260261Z"
+          "created_at": "2026-11-08T16:28:15.121599Z"
         },
         {
-          "fact_id": "fact_cdd60b7e-8e23-47f8-b312-46c9af86e927",
-          "case_id": "case_8e678bbc-2fdb-4116-a0bb-4484e9d6ed62",
+          "fact_id": "fact_5707c043-1696-40d9-a2c2-f9d89e82f47d",
+          "case_id": "case_37e1ac80-ea8d-4469-a2c2-9a21536b00af",
           "fact_type": "refund_status",
           "raw_value": "initiated",
           "normalised_value": "initiated",
           "source_type": "evidence",
-          "source_id": "ev_c08b8008-a839-490c-a26b-57f7dd14273a",
-          "evidence_id": "ev_c08b8008-a839-490c-a26b-57f7dd14273a",
+          "source_id": "ev_394603ab-f6b8-408a-b7e9-889dec6df42a",
+          "evidence_id": "ev_394603ab-f6b8-408a-b7e9-889dec6df42a",
           "page_number": 1,
           "status": "document_supported",
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T12:14:31.275759Z"
+          "created_at": "2026-11-08T16:28:15.137602Z"
         },
         {
-          "fact_id": "fact_97030f98-5879-462d-840e-f687914334c9",
-          "case_id": "case_8e678bbc-2fdb-4116-a0bb-4484e9d6ed62",
+          "fact_id": "fact_e19b054b-459a-4088-8e9a-2cb4c1bf471b",
+          "case_id": "case_37e1ac80-ea8d-4469-a2c2-9a21536b00af",
           "fact_type": "refund_amount",
           "raw_value": "INR 1,500",
           "normalised_value": 150000,
           "source_type": "evidence",
-          "source_id": "ev_c08b8008-a839-490c-a26b-57f7dd14273a",
-          "evidence_id": "ev_c08b8008-a839-490c-a26b-57f7dd14273a",
+          "source_id": "ev_394603ab-f6b8-408a-b7e9-889dec6df42a",
+          "evidence_id": "ev_394603ab-f6b8-408a-b7e9-889dec6df42a",
           "page_number": 1,
           "status": "document_supported",
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T12:14:31.292779Z"
+          "created_at": "2026-11-08T16:28:15.155621Z"
         },
         {
-          "fact_id": "fact_c95cfbd0-8902-40fe-9c96-f74c4ffc76d4",
-          "case_id": "case_8e678bbc-2fdb-4116-a0bb-4484e9d6ed62",
+          "fact_id": "fact_c6ec7970-2177-4b3d-996c-8695d1980dba",
+          "case_id": "case_37e1ac80-ea8d-4469-a2c2-9a21536b00af",
           "fact_type": "refund_initiated_date",
           "raw_value": "2 November 2026",
           "normalised_value": "2026-11-02",
           "source_type": "evidence",
-          "source_id": "ev_c08b8008-a839-490c-a26b-57f7dd14273a",
-          "evidence_id": "ev_c08b8008-a839-490c-a26b-57f7dd14273a",
+          "source_id": "ev_394603ab-f6b8-408a-b7e9-889dec6df42a",
+          "evidence_id": "ev_394603ab-f6b8-408a-b7e9-889dec6df42a",
           "page_number": 1,
           "status": "document_supported",
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T12:14:31.310307Z"
+          "created_at": "2026-11-08T16:28:15.174629Z"
         }
       ],
       "evidence_processing": [
@@ -411,10 +411,10 @@
           "The refund is pending and there is no record that support has been contacted yet."
         ],
         "facts_used": [
-          "fact_666eaf5d-f21c-4d0f-9999-9b45cf763e76",
-          "fact_cdd60b7e-8e23-47f8-b312-46c9af86e927",
-          "fact_97030f98-5879-462d-840e-f687914334c9",
-          "fact_c95cfbd0-8902-40fe-9c96-f74c4ffc76d4"
+          "fact_5dd0207d-15b0-4ee9-b1aa-858a9502a54e",
+          "fact_5707c043-1696-40d9-a2c2-f9d89e82f47d",
+          "fact_e19b054b-459a-4088-8e9a-2cb4c1bf471b",
+          "fact_c6ec7970-2177-4b3d-996c-8695d1980dba"
         ],
         "provision_ids_used": [
           "TEST_ACT_A1",
@@ -451,15 +451,15 @@
         "Wait for a response before escalating."
       ],
       "document_draft": {
-        "draft_id": "doc_d5a71683-75f9-4248-9f8a-9d04523fbdbf",
-        "case_id": "case_8e678bbc-2fdb-4116-a0bb-4484e9d6ed62",
+        "draft_id": "doc_1be5b890-cf58-4628-8310-4e43ee493171",
+        "case_id": "case_37e1ac80-ea8d-4469-a2c2-9a21536b00af",
         "draft_type": "support_request",
         "content": "# DRAFT: prepared for your review. Not sent or filed.\n\nTo: [TO BE FILLED BY USER] — Customer Support\nSubject: Refund request for order FM-1414\n\nI am writing about order FM-1414 placed with [TO BE FILLED BY USER].\n\n**What happened**\n\n- Order id: FM-1414\n- Merchant: [TO BE FILLED BY USER]\n- Amount paid / refund amount: INR 1,500.00\n- Relevant dates: refund initiated: 2 November 2026\n- Current refund status: initiated\n\n- refund status: initiated (reported by document, page 1)\n- refund amount: 150000 (reported by document, page 1)\n- refund initiated date: 2026-11-02 (reported by document, page 1)\n\n**What I am asking for**\n\nPlease confirm the status of the refund and process the outstanding amount to the original payment method. Please reply in writing.\n\nYours sincerely,\n\n[TO BE FILLED BY USER]\n[TO BE FILLED BY USER]\n\n---\n\nThis is a draft prepared by an AI assistant for your review. It has not been sent or filed. Check every fact before using it.",
         "status": "needs_review",
         "missing_fields": [
           "[TO BE FILLED BY USER]"
         ],
-        "created_at": "2026-11-08T12:14:31.339560Z"
+        "created_at": "2026-11-08T16:28:15.208080Z"
       }
     }
   ],
@@ -478,5 +478,7 @@
     "refused": false,
     "must_not_contain_hits": []
   },
+  "data_origin": "synthetic_written",
+  "split": null,
   "result": "PASS"
 }
