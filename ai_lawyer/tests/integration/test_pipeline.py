@@ -228,3 +228,35 @@ def test_different_platform_in_same_chat_starts_a_new_case(orchestrator, convers
         as_of_date=AS_OF,
     )
     assert first.case_id and second.case_id and second.case_id != first.case_id
+
+
+def _with_router(orchestrator, routes):
+    orchestrator.llm.scripts["router"] = list(routes)
+    return orchestrator
+
+
+def test_router_off_topic_is_refused_with_its_own_words(orchestrator, conversation, settings):
+    _with_router(orchestrator, [{"intent": "off_topic", "reply": "I can't help with choosing shoes to buy."}])
+    response = _handle(orchestrator, conversation, settings, "I want to buy shoes from amazon")
+    assert response.processing_status == "out_of_scope"
+    assert response.assistant_message.startswith("I can't help with choosing shoes to buy.")
+    assert "refund disputes" in response.assistant_message and "qualified lawyer" in response.assistant_message
+
+
+def test_router_greeting_uses_model_reply(orchestrator, conversation, settings):
+    _with_router(orchestrator, [{"intent": "greeting", "reply": "Hi Mrityunjay! What happened with your order?"}])
+    response = _handle(orchestrator, conversation, settings, "Hy, I am Mrityunjay")
+    assert response.assistant_message == "Hi Mrityunjay! What happened with your order?"
+    assert response.legal_sources == []
+
+
+def test_router_reply_with_legal_content_is_replaced(orchestrator, conversation, settings):
+    _with_router(orchestrator, [{"intent": "greeting", "reply": "Under Rule 4 they must refund in 7 days."}])
+    response = _handle(orchestrator, conversation, settings, "hello")
+    assert "Rule 4" not in response.assistant_message and "7 days" not in response.assistant_message
+
+
+def test_router_refund_case_runs_full_analysis(orchestrator, conversation, settings):
+    _with_router(orchestrator, [{"intent": "refund_case", "reply": ""}])
+    response = _handle(orchestrator, conversation, settings, B01)
+    assert response.case_id and response.legal_sources

@@ -262,12 +262,13 @@ def _out_of_scope_text(domain: str) -> str:
         "financial_other": "loan, insurance or tax",
         "medical": "medical",
         "education": "education",
-    }.get(domain, "this")
+    }.get(domain)
+    covers = f"It does not cover {label} matters" if label else "It does not cover this kind of issue"
     return (
         "**This is outside what I can help with.**\n\n"
         "I only handle unresolved e-commerce refund disputes in India: cancelled or returned "
         "orders, and refunds that are delayed, refused, partial or wrong. "
-        f"It does not cover {label} matters, and I cannot prepare documents or represent you for it.\n\n"
+        f"{covers}, and I cannot prepare documents or represent you for it.\n\n"
         "Please speak to a qualified lawyer or the appropriate authority for this issue."
     )
 
