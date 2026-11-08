@@ -105,7 +105,7 @@
     "version_status": "current",
     "reviewed_by": null,
     "reviewed_at": null,
-    "notes": "DRAFT generated mechanically from ecr_2020_1.txt on 2026-11-08; text_sha256=cbddd979579b3dd57a91925fc22b89f65aa27fee9cdb741c2c1b0060a00d8e49; pdf_sha256=3012b37f6f6dba2d29523abf10f43fbb3a503768e578ef0fa02e4b9e4593bd0c; ascii_ratio=0.998; letter_ratio=0.788; latin_letter_share=1.000; ocr_risk=low. Not reviewed. Usable only after a human sets review_status=human_verified. Machine-verified by the automated pipeline; NOT reviewed by a lawyer or a human. Machine-verified by the automated pipeline; NOT reviewed by a lawyer or a human. Machine-verified by the automated pipeline; NOT reviewed by a lawyer or a human. Machine-verified by the automated pipeline; NOT reviewed by a lawyer or a human. Machine-verified by the automated pipeline; NOT reviewed by a lawyer or a human.",
+    "notes": "DRAFT generated mechanically from ecr_2020_1.txt on 2026-11-08; text_sha256=cbddd979579b3dd57a91925fc22b89f65aa27fee9cdb741c2c1b0060a00d8e49; pdf_sha256=3012b37f6f6dba2d29523abf10f43fbb3a503768e578ef0fa02e4b9e4593bd0c; ascii_ratio=0.998; letter_ratio=0.788; latin_letter_share=1.000; ocr_risk=low. Not reviewed. Usable only after a human sets review_status=human_verified. Machine-verified by the automated pipeline; NOT reviewed by a lawyer or a human. Machine-verified by the automated pipeline; NOT reviewed by a lawyer or a human. Machine-verified by the automated pipeline; NOT reviewed by a lawyer or a human. Machine-verified by the automated pipeline; NOT reviewed by a lawyer or a human. Machine-verified by the automated pipeline; NOT reviewed by a lawyer or a human. Machine-verified by the automated pipeline; NOT reviewed by a lawyer or a human.",
     "verification_evidence": {
       "metadata": {
         "published_date": {
@@ -173,11 +173,11 @@
       "known_gaps": [],
       "pipeline_version": "machine-verify-1.3",
       "pdf_sha256": "3012b37f6f6dba2d29523abf10f43fbb3a503768e578ef0fa02e4b9e4593bd0c",
-      "provisions_passed": 16,
-      "provisions_checked": 19
+      "provisions_passed": 31,
+      "provisions_checked": 34
     },
     "pipeline_version": "machine-verify-1.3",
-    "verified_at": "2026-11-08T11:35:38.512419+00:00",
+    "verified_at": "2026-11-08T11:40:55.925527+00:00",
     "amendment_chain": [
       {
         "status": "checked",

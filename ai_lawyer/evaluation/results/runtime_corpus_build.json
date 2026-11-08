@@ -3,15 +3,16 @@
   "out_dir": "C:\\Users\\Lenovo\\OneDrive\\Documents\\Default Project\\ai_lawyer\\legal_corpus",
   "approved_sources_total": 2,
   "sources_with_approved_provisions": 2,
-  "provisions_total": 160,
-  "provisions_included": 18,
+  "provisions_total": 175,
+  "provisions_included": 30,
   "per_source_included": {
-    "ECR_2020": 16,
+    "ECR_2020": 28,
     "ECR_2021_AMENDMENT": 2
   },
   "excluded": {
     "not verified": 134,
-    "rejected by machine verification": 8
+    "rejected by machine verification": 7,
+    "split into sub-rules (sub-rules included instead)": 4
   },
   "approved_sources_without_provisions": [],
   "problems": []

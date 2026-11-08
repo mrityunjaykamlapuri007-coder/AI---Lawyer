@@ -18,7 +18,7 @@ is pure; the caller decides whether to raise.
 from __future__ import annotations
 
 from ai_lawyer.contracts.errors import CorpusValidationError
-from ai_lawyer.legal_rag.corpus_loader import CITABLE_STATUSES, Corpus
+from ai_lawyer.legal_rag.corpus_loader import Corpus, citable_statuses
 from ai_lawyer.legal_rag.official_copy import official_copy_problems
 
 SOURCE_PROVENANCE_FIELDS = ("publisher", "official_url", "published_date", "document_sha256")
@@ -102,18 +102,19 @@ def _machine_provision_problems(provision) -> list[str]:
 
 def real_corpus_problems(corpus: Corpus) -> list[str]:
     """Return every reason this real corpus must not be used."""
+    statuses = citable_statuses()
     problems: list[str] = []
 
     verified_sources = [
         source
         for source in corpus.sources.values()
-        if source.review_status in CITABLE_STATUSES
+        if source.review_status in statuses
     ]
 
     verified_provisions = [
         provision
         for provision in corpus.provisions.values()
-        if provision.review_status in CITABLE_STATUSES
+        if provision.review_status in statuses
     ]
     if not verified_provisions:
         problems.append(
@@ -150,9 +151,9 @@ def real_corpus_problems(corpus: Corpus) -> list[str]:
                 "in the runtime corpus; rebuild from verified rows only"
             )
             continue
-        if provision.review_status not in CITABLE_STATUSES:
+        if provision.review_status not in statuses:
             continue
-        if source is None or source.review_status not in CITABLE_STATUSES:
+        if source is None or source.review_status not in statuses:
             problems.append(
                 f"provision {provision.provision_id} is {provision.review_status} but its "
                 f"source {provision.source_id} is not; verify the source first"
@@ -175,6 +176,13 @@ def real_corpus_problems(corpus: Corpus) -> list[str]:
                 condition.machine_review_status == "machine_verified"
                 and bool(condition.source_quote.strip())
             )
+            if machine and " ".join(condition.source_quote.split()) not in " ".join(
+                provision.original_text.split()
+            ):
+                problems.append(
+                    f"provision {provision.provision_id} condition "
+                    f"{condition.condition_id} quote is not in the provision text"
+                )
             if not (human or machine):
                 problems.append(
                     f"provision {provision.provision_id} condition "

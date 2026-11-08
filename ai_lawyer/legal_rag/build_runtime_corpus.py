@@ -101,8 +101,19 @@ def build(
             continue
         approved_sources[source.source_id] = source
 
+    # A rule split into sub-rules is represented by its sub-rules only, so the
+    # same text is not indexed twice.
+    split_parents = {
+        str(p.boundary_adjustment.get("split_from"))
+        for p in provisions
+        if p.boundary_adjustment.get("split_from")
+    }
+
     included: list[Provision] = []
     for provision in provisions:
+        if provision.provision_id in split_parents:
+            excluded["split into sub-rules (sub-rules included instead)"] += 1
+            continue
         if provision.review_status == "rejected":
             who = "machine verification" if provision.verified_by == "machine" else "reviewer"
             excluded[f"rejected by {who}"] += 1

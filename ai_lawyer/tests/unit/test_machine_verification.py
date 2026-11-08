@@ -175,7 +175,7 @@ def test_machine_condition_with_quote_passes(tmp_path):
             "operator": "equals",
             "expected_value": "pending",
             "human_review_status": "unreviewed",
-            "source_quote": "the refund has not been made",
+            "source_quote": "refund a cancelled order",
             "drafted_by": "agent",
             "machine_review_status": "machine_verified",
         }

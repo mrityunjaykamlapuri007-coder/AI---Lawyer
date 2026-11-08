@@ -32,11 +32,19 @@ from ai_lawyer.legal_rag.machine_verify import DEFAULT_STAGING
 
 METHOD = "subrule-split-1.0"
 _SUBRULE_START = re.compile(r"(?m)^[ \t]*\((\d{1,2})\)")
+# A heading line ending in a dash (any dash or a replacement glyph), then "(1)".
+_INLINE_FIRST = re.compile(r"(?m)^\d+\.[^\n]*?[\-–—�:]\s*(\(1\))")
 
 
 def split_points(text: str) -> list[tuple[int, int]]:
     """Return [(sub_rule_number, start_offset)], or [] if numbering is not 1..n."""
     points = [(int(m.group(1)), m.start(1) - 1) for m in _SUBRULE_START.finditer(text)]
+    if points and points[0][0] == 2:
+        # "6. Duties of sellers. – (1) No seller ..." puts (1) on the heading
+        # line, right after the heading's dash.
+        inline = _INLINE_FIRST.search(text[: points[0][1]])
+        if inline:
+            points.insert(0, (1, inline.start(1)))
     if len(points) < 2 or [n for n, _ in points] != list(range(1, len(points) + 1)):
         return []
     return points

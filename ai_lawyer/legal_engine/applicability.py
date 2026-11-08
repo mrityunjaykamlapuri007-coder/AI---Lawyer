@@ -43,9 +43,24 @@ def _norm(value: Any) -> Any:
     return value
 
 
+def condition_is_trusted(condition: Condition) -> bool:
+    """Human-reviewed, or machine-verified with its source quote at trust level machine."""
+    if condition.human_review_status == "reviewed":
+        return True
+    if condition.machine_review_status != "machine_verified" or not condition.source_quote.strip():
+        return False
+    from ai_lawyer.legal_rag.corpus_loader import trust_level  # lazy
+
+    return trust_level() == "machine"
+
+
 def evaluate_condition(condition: Condition, facts: list[Fact]) -> TriResult:
-    if condition.human_review_status != "reviewed":
-        return TriResult(None, f"condition {condition.condition_id} is not human-reviewed")
+    if not condition_is_trusted(condition):
+        return TriResult(
+            None,
+            f"condition {condition.condition_id} is neither human-reviewed nor "
+            "machine-verified at the configured trust level",
+        )
     if condition.operator == "manual":
         return TriResult(None, f"condition {condition.condition_id} is manual and always UNKNOWN")
 

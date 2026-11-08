@@ -1,0 +1,346 @@
+{
+  "method": "machine-conditions-1.0",
+  "checked_at": "2026-11-08T11:47:52.872847+00:00",
+  "conditions_file": "agent_conditions.json",
+  "provisions": {
+    "ECR_2020_P002": [
+      {
+        "condition_id": "ECR_2020_P002_C1",
+        "accepted": true,
+        "problems": [],
+        "condition_test_table": [
+          {
+            "case": "applicable",
+            "expected": true,
+            "got": true,
+            "pass": true
+          },
+          {
+            "case": "not_applicable",
+            "expected": false,
+            "got": false,
+            "pass": true
+          },
+          {
+            "case": "unknown",
+            "expected": null,
+            "got": null,
+            "pass": true
+          }
+        ]
+      }
+    ],
+    "ECR_2020_P004_SR04": [
+      {
+        "condition_id": "ECR_2020_P004_SR04_C1",
+        "accepted": true,
+        "problems": [],
+        "condition_test_table": [
+          {
+            "case": "applicable",
+            "expected": true,
+            "got": true,
+            "pass": true
+          },
+          {
+            "case": "not_applicable",
+            "expected": false,
+            "got": false,
+            "pass": true
+          },
+          {
+            "case": "unknown",
+            "expected": null,
+            "got": null,
+            "pass": true
+          }
+        ]
+      }
+    ],
+    "ECR_2020_P004_SR05": [
+      {
+        "condition_id": "ECR_2020_P004_SR05_C1",
+        "accepted": true,
+        "problems": [],
+        "condition_test_table": [
+          {
+            "case": "applicable",
+            "expected": true,
+            "got": true,
+            "pass": true
+          },
+          {
+            "case": "not_applicable",
+            "expected": false,
+            "got": false,
+            "pass": true
+          },
+          {
+            "case": "unknown",
+            "expected": null,
+            "got": null,
+            "pass": true
+          }
+        ]
+      },
+      {
+        "condition_id": "ECR_2020_P004_SR05_C2",
+        "accepted": true,
+        "problems": [],
+        "condition_test_table": [
+          {
+            "case": "applicable",
+            "expected": true,
+            "got": true,
+            "pass": true
+          },
+          {
+            "case": "not_applicable",
+            "expected": false,
+            "got": false,
+            "pass": true
+          },
+          {
+            "case": "unknown",
+            "expected": null,
+            "got": null,
+            "pass": true
+          }
+        ]
+      }
+    ],
+    "ECR_2020_P004_SR08": [
+      {
+        "condition_id": "ECR_2020_P004_SR08_C1",
+        "accepted": true,
+        "problems": [],
+        "condition_test_table": [
+          {
+            "case": "applicable",
+            "expected": true,
+            "got": true,
+            "pass": true
+          },
+          {
+            "case": "not_applicable",
+            "expected": false,
+            "got": false,
+            "pass": true
+          },
+          {
+            "case": "unknown",
+            "expected": null,
+            "got": null,
+            "pass": true
+          }
+        ]
+      },
+      {
+        "condition_id": "ECR_2020_P004_SR08_C2",
+        "accepted": true,
+        "problems": [],
+        "condition_test_table": [
+          {
+            "case": "applicable",
+            "expected": null,
+            "got": null,
+            "pass": true
+          },
+          {
+            "case": "not_applicable",
+            "expected": null,
+            "got": null,
+            "pass": true
+          },
+          {
+            "case": "unknown",
+            "expected": null,
+            "got": null,
+            "pass": true
+          }
+        ]
+      }
+    ],
+    "ECR_2020_P004_SR10": [
+      {
+        "condition_id": "ECR_2020_P004_SR10_C1",
+        "accepted": true,
+        "problems": [],
+        "condition_test_table": [
+          {
+            "case": "applicable",
+            "expected": true,
+            "got": true,
+            "pass": true
+          },
+          {
+            "case": "not_applicable",
+            "expected": false,
+            "got": false,
+            "pass": true
+          },
+          {
+            "case": "unknown",
+            "expected": null,
+            "got": null,
+            "pass": true
+          }
+        ]
+      }
+    ],
+    "ECR_2020_P006_SR03": [
+      {
+        "condition_id": "ECR_2020_P006_SR03_C1",
+        "accepted": true,
+        "problems": [],
+        "condition_test_table": [
+          {
+            "case": "applicable",
+            "expected": null,
+            "got": null,
+            "pass": true
+          },
+          {
+            "case": "not_applicable",
+            "expected": null,
+            "got": null,
+            "pass": true
+          },
+          {
+            "case": "unknown",
+            "expected": null,
+            "got": null,
+            "pass": true
+          }
+        ]
+      },
+      {
+        "condition_id": "ECR_2020_P006_SR03_C2",
+        "accepted": true,
+        "problems": [],
+        "condition_test_table": [
+          {
+            "case": "applicable",
+            "expected": true,
+            "got": true,
+            "pass": true
+          },
+          {
+            "case": "not_applicable",
+            "expected": false,
+            "got": false,
+            "pass": true
+          },
+          {
+            "case": "unknown",
+            "expected": null,
+            "got": null,
+            "pass": true
+          }
+        ]
+      },
+      {
+        "condition_id": "ECR_2020_P006_SR03_C3",
+        "accepted": true,
+        "problems": [],
+        "condition_test_table": [
+          {
+            "case": "applicable",
+            "expected": null,
+            "got": null,
+            "pass": true
+          },
+          {
+            "case": "not_applicable",
+            "expected": null,
+            "got": null,
+            "pass": true
+          },
+          {
+            "case": "unknown",
+            "expected": null,
+            "got": null,
+            "pass": true
+          }
+        ]
+      }
+    ],
+    "ECR_2020_P007_SR04": [
+      {
+        "condition_id": "ECR_2020_P007_SR04_C1",
+        "accepted": true,
+        "problems": [],
+        "condition_test_table": [
+          {
+            "case": "applicable",
+            "expected": null,
+            "got": null,
+            "pass": true
+          },
+          {
+            "case": "not_applicable",
+            "expected": null,
+            "got": null,
+            "pass": true
+          },
+          {
+            "case": "unknown",
+            "expected": null,
+            "got": null,
+            "pass": true
+          }
+        ]
+      },
+      {
+        "condition_id": "ECR_2020_P007_SR04_C2",
+        "accepted": true,
+        "problems": [],
+        "condition_test_table": [
+          {
+            "case": "applicable",
+            "expected": true,
+            "got": true,
+            "pass": true
+          },
+          {
+            "case": "not_applicable",
+            "expected": false,
+            "got": false,
+            "pass": true
+          },
+          {
+            "case": "unknown",
+            "expected": null,
+            "got": null,
+            "pass": true
+          }
+        ]
+      },
+      {
+        "condition_id": "ECR_2020_P007_SR04_C3",
+        "accepted": true,
+        "problems": [],
+        "condition_test_table": [
+          {
+            "case": "applicable",
+            "expected": null,
+            "got": null,
+            "pass": true
+          },
+          {
+            "case": "not_applicable",
+            "expected": null,
+            "got": null,
+            "pass": true
+          },
+          {
+            "case": "unknown",
+            "expected": null,
+            "got": null,
+            "pass": true
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -27,6 +27,19 @@ ALLOWED_OPERATORS = {"exists", "equals", "in", "date_before", "date_after", "man
 CITABLE_STATUSES = frozenset({"human_verified", "machine_verified"})
 
 
+def trust_level() -> str:
+    """``CORPUS_TRUST_LEVEL``: ``machine`` accepts machine_verified rows,
+    ``human`` accepts only human_verified ones."""
+    from ai_lawyer.config.settings import get_settings  # lazy
+
+    return get_settings().corpus_trust_level
+
+
+def citable_statuses() -> frozenset[str]:
+    """The review statuses that count as verified at the configured trust level."""
+    return CITABLE_STATUSES if trust_level() == "machine" else frozenset({"human_verified"})
+
+
 def provision_is_usable(source: Source | None, provision: Provision) -> bool:
     """A provision is citable only when both it and its source were verified.
 
@@ -40,6 +53,11 @@ def provision_is_usable(source: Source | None, provision: Provision) -> bool:
     if source.review_status not in CITABLE_STATUSES:
         return False
     if provision.review_status not in CITABLE_STATUSES:
+        return False
+    if trust_level() == "human" and "machine_verified" in {
+        source.review_status,
+        provision.review_status,
+    }:
         return False
     if provision.review_status == "human_verified":
         return bool(provision.reviewed_by and provision.reviewed_by.strip())

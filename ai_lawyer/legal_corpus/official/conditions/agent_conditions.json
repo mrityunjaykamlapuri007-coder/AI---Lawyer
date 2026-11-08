@@ -1,0 +1,123 @@
+{
+  "_about": "Agent-drafted applicability conditions (drafted_by: agent). Each condition quotes the exact provision phrase it comes from. Conditions with no extractable fact are 'manual' and always evaluate to UNKNOWN. Accepted only after legal_rag.machine_conditions validates the quote and passes the 3-case test table. Not reviewed by a human or a lawyer.",
+  "conditions": {
+    "ECR_2020_P002": [
+      {
+        "condition_id": "ECR_2020_P002_C1",
+        "description": "The purchase was made over a digital or electronic network (an e-commerce platform is named).",
+        "fact_type": "platform_name",
+        "operator": "exists",
+        "expected_value": null,
+        "source_quote": "all goods and services bought or sold over digital or electronic network"
+      }
+    ],
+    "ECR_2020_P004_SR04": [
+      {
+        "condition_id": "ECR_2020_P004_SR04_C1",
+        "description": "The dispute involves an e-commerce entity (an e-commerce platform is named).",
+        "fact_type": "platform_name",
+        "operator": "exists",
+        "expected_value": null,
+        "source_quote": "Every e-commerce entity shall establish an adequate grievance redressal mechanism"
+      }
+    ],
+    "ECR_2020_P004_SR05": [
+      {
+        "condition_id": "ECR_2020_P004_SR05_C1",
+        "description": "The dispute involves an e-commerce entity (an e-commerce platform is named).",
+        "fact_type": "platform_name",
+        "operator": "exists",
+        "expected_value": null,
+        "source_quote": "Every e-commerce entity shall ensure that the grievance officer"
+      },
+      {
+        "condition_id": "ECR_2020_P004_SR05_C2",
+        "description": "A complaint was made to the grievance officer (the acknowledgement and redressal periods run from its receipt).",
+        "fact_type": "grievance_officer_contacted",
+        "operator": "exists",
+        "expected_value": null,
+        "source_quote": "acknowledges the receipt of any consumer complaint"
+      }
+    ],
+    "ECR_2020_P004_SR08": [
+      {
+        "condition_id": "ECR_2020_P004_SR08_C1",
+        "description": "The consumer cancelled the purchase.",
+        "fact_type": "cancellation_date",
+        "operator": "exists",
+        "expected_value": null,
+        "source_quote": "consumers cancelling after confirming purchase"
+      },
+      {
+        "condition_id": "ECR_2020_P004_SR08_C2",
+        "description": "Cancellation charges were imposed on the consumer. No extracted fact records charges, so this stays unknown.",
+        "fact_type": "refund_status",
+        "operator": "manual",
+        "expected_value": null,
+        "source_quote": "impose cancellation charges"
+      }
+    ],
+    "ECR_2020_P004_SR10": [
+      {
+        "condition_id": "ECR_2020_P004_SR10_C1",
+        "description": "The refund request was accepted (a refund initiation date is recorded).",
+        "fact_type": "refund_initiated_date",
+        "operator": "exists",
+        "expected_value": null,
+        "source_quote": "accepted refund requests of the consumers"
+      }
+    ],
+    "ECR_2020_P006_SR03": [
+      {
+        "condition_id": "ECR_2020_P006_SR03_C1",
+        "description": "The seller sells through a marketplace e-commerce entity (marketplace model). Not determinable from extracted facts.",
+        "fact_type": "platform_name",
+        "operator": "manual",
+        "expected_value": null,
+        "source_quote": "through a marketplace e-commerce entity"
+      },
+      {
+        "condition_id": "ECR_2020_P006_SR03_C2",
+        "description": "The refund of consideration was refused, in whole (denied) or in part (partial).",
+        "fact_type": "refund_status",
+        "operator": "in",
+        "expected_value": ["denied", "partial"],
+        "source_quote": "refuse to refund consideration"
+      },
+      {
+        "condition_id": "ECR_2020_P006_SR03_C3",
+        "description": "A listed ground applies: defective, deficient or spurious goods/services, not as advertised or agreed, or late delivery (subject to the force majeure proviso). Not determinable from extracted facts.",
+        "fact_type": "refund_status",
+        "operator": "manual",
+        "expected_value": null,
+        "source_quote": "if such goods or services are defective, deficient or spurious"
+      }
+    ],
+    "ECR_2020_P007_SR04": [
+      {
+        "condition_id": "ECR_2020_P007_SR04_C1",
+        "description": "The platform sells its own inventory (inventory model). Not determinable from extracted facts.",
+        "fact_type": "platform_name",
+        "operator": "manual",
+        "expected_value": null,
+        "source_quote": "No inventory e-commerce entity shall refuse to take back goods"
+      },
+      {
+        "condition_id": "ECR_2020_P007_SR04_C2",
+        "description": "The refund of consideration was refused, in whole (denied) or in part (partial).",
+        "fact_type": "refund_status",
+        "operator": "in",
+        "expected_value": ["denied", "partial"],
+        "source_quote": "refuse to refund consideration"
+      },
+      {
+        "condition_id": "ECR_2020_P007_SR04_C3",
+        "description": "A listed ground applies: defective, deficient or spurious goods/services, not as advertised or agreed, or late delivery (subject to the force majeure proviso). Not determinable from extracted facts.",
+        "fact_type": "refund_status",
+        "operator": "manual",
+        "expected_value": null,
+        "source_quote": "if such goods or services are defective, deficient spurious"
+      }
+    ]
+  }
+}
