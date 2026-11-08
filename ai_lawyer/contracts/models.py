@@ -71,6 +71,21 @@ ALLOWED_FACT_TYPES: tuple[str, ...] = (
 # ---------------------------------------------------------------------------
 # Corpus
 # ---------------------------------------------------------------------------
+class AmendmentEntry(StrictModel):
+    """One known amending instrument and what the supplied text does (C3.1)."""
+
+    instrument: str
+    status: Literal["checked", "unchecked"] = "unchecked"
+    note: str = ""
+    # Machine evidence for the chain check.  These values are read from the
+    # supplied amending instrument, never inferred.
+    document_id: str = ""
+    affected_rules: list[int] = Field(default_factory=list)
+    effective_from: str | None = None
+    version_status: str = ""
+    effect: str = ""
+
+
 class Source(StrictModel):
     source_id: str
     title: str
@@ -80,11 +95,29 @@ class Source(StrictModel):
     published_date: date_cls | None = None
     retrieved_at: date_cls
     document_sha256: str | None = None
-    review_status: Literal["human_verified", "unverified"]
+    review_status: Literal["human_verified", "machine_verified", "unverified"]
     version_label: str
     effective_from: date_cls | None = None
     effective_to: date_cls | None = None
     version_status: Literal["current", "superseded", "future", "uncertain"]
+    # Risk controls (AGENT_RISK_CONTROLS.md).  All default to "not checked", so
+    # an old record can never look checked after the fact.
+    amendment_chain: list[AmendmentEntry] = Field(default_factory=list)
+    amendment_chain_checked: bool = False
+    known_gaps: list[str] = Field(default_factory=list)
+    # Machine verification provenance (AGENT_MACHINE_VERIFICATION.md).
+    verified_by: Literal["machine", "human"] | None = None
+    verified_at: datetime | None = None
+    verification_evidence: dict[str, Any] = Field(default_factory=dict)
+    pipeline_version: str = ""
+    # Byte comparison with the Gazette of India copy (legal_rag.official_copy).
+    # Empty means not checked; a machine_verified source needs a match.
+    official_copy: dict[str, Any] = Field(default_factory=dict)
+    # C2.1: the exact quoted text each metadata field came from.
+    metadata_quotes: dict[str, str] = Field(default_factory=dict)
+    metadata_quote_pages: dict[str, int] = Field(default_factory=dict)
+    # C2.3: an effective date that the document does not state is never inferred.
+    effective_date_status: Literal["stated", "not_stated"] = "not_stated"
     # Provenance.  Required for every human_verified source in real mode; the
     # acceptance gate in legal_rag.corpus_acceptance refuses to start without
     # it, because a verified flag with no named reviewer is not evidence.
@@ -100,6 +133,11 @@ class Condition(StrictModel):
     operator: ConditionOperator
     expected_value: Any = None
     human_review_status: Literal["reviewed", "unreviewed"] = "unreviewed"
+    # Machine verification (AGENT_MACHINE_VERIFICATION.md).  A condition without
+    # the quote it was derived from is invalid; it cannot be machine-verified.
+    source_quote: str = ""
+    drafted_by: Literal["agent", "human"] = "agent"
+    machine_review_status: Literal["unreviewed", "machine_verified"] = "unreviewed"
 
 
 class Provision(StrictModel):
@@ -122,10 +160,23 @@ class Provision(StrictModel):
     page_end: int = 0
     # Per-provision provenance.  A human_verified source does not make every
     # provision in it reviewed; only provisions a human approved are citable.
-    review_status: Literal["human_verified", "unverified", "rejected"] = "unverified"
+    review_status: Literal["human_verified", "machine_verified", "unverified", "rejected"] = "unverified"
     reviewed_by: str | None = None
     reviewed_at: datetime | None = None
     review_note: str | None = None
+    # Machine verification provenance.  ``verified_by`` is never a person's
+    # name; only the review tool writes human fields.
+    verified_by: Literal["machine", "human"] | None = None
+    verified_at: datetime | None = None
+    verification_method_count: int = 0
+    verification_evidence: dict[str, Any] = Field(default_factory=dict)
+    pipeline_version: str = ""
+    # Risk controls.  Flags are written by the independent extraction check;
+    # they can only be cleared by a human who compared the rendered page.
+    integrity_flags: list[str] = Field(default_factory=list)
+    integrity_verified_by: str | None = None
+    needs_proviso_check: bool = False
+    proviso_checked_by: str | None = None
 
     @field_validator("original_text")
     @classmethod

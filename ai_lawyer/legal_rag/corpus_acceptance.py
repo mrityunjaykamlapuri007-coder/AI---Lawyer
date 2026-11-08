@@ -1,42 +1,36 @@
-"""Fail-closed acceptance gate for ``CORPUS_MODE=real``.
+"""Fail-closed acceptance for a real corpus.
 
-``validate_and_build`` will happily parse a real corpus that is entirely
-unverified.  That is useful while building the review queue, but such a corpus
-must never reach a running service: every provision in it is uncitable, so the
-service could only answer "I have no law", and worse, a single stray
-``human_verified`` flag with no named reviewer would be treated as evidence.
+Two verification levels are allowed:
 
-This gate runs from :func:`load_corpus` only for real mode.  It raises
-``CorpusValidationError`` and the application refuses to start when:
+``human_verified``
+    a named person read the provision.  ``reviewed_by`` and ``reviewed_at``
+    must be present; only the review tool writes them.
 
-* no provision is ``human_verified``;
-* a verified source has no publisher, official URL, publication date, document
-  hash, reviewer name or review date;
-* a verified source's ``version_status`` is ``uncertain``;
-* a ``human_verified`` provision belongs to a source that is not itself
-  ``human_verified``;
-* a ``human_verified`` provision has no reviewer name or review date;
-* a ``human_verified`` provision has an unreviewed condition;
-* a ``rejected`` provision is present in the runtime corpus.
+``machine_verified``
+    the automated pipeline recorded its evidence.  It must show at least two
+    independent extraction methods, a full V1-V6 evidence record that passed,
+    no integrity flags, a checked amendment chain on the source, and a source
+    PDF that is byte-identical to the Gazette of India copy.
 
-A provision that is not ``human_verified`` is allowed to load as background
-context; it stays uncitable.  Fixture mode is never gated: its synthetic
-sources and provisions are marked verified by construction and must keep
-working without real-world provenance.
+Machine verification is never described as human review anywhere.  This module
+is pure; the caller decides whether to raise.
 """
 from __future__ import annotations
 
 from ai_lawyer.contracts.errors import CorpusValidationError
-from ai_lawyer.legal_rag.corpus_loader import Corpus
+from ai_lawyer.legal_rag.corpus_loader import CITABLE_STATUSES, Corpus
+from ai_lawyer.legal_rag.official_copy import official_copy_problems
 
-# Required for every human_verified source in real mode.
-SOURCE_PROVENANCE_FIELDS = (
-    "publisher",
-    "official_url",
-    "published_date",
-    "document_sha256",
-    "reviewed_by",
-    "reviewed_at",
+SOURCE_PROVENANCE_FIELDS = ("publisher", "official_url", "published_date", "document_sha256")
+
+# Every check a machine_verified provision must carry, all "pass".
+MACHINE_CHECKS = (
+    "V1_independent_extraction",
+    "V2_number_inventory",
+    "V3_document_integrity",
+    "V4_metadata_evidence",
+    "V5_boundary",
+    "V6_amendment_effect",
 )
 
 
@@ -44,70 +38,148 @@ def _blank(value: object) -> bool:
     return value is None or (isinstance(value, str) and not value.strip())
 
 
-def real_corpus_problems(corpus: Corpus) -> list[str]:
-    """Return every reason this real corpus must not be used.
+def _machine_source_problems(source) -> list[str]:
+    problems: list[str] = []
+    if source.verified_by != "machine":
+        problems.append(
+            f"source {source.source_id} is machine_verified but verified_by is not 'machine'"
+        )
+    if source.verified_at is None:
+        problems.append(f"source {source.source_id} is machine_verified but verified_at is missing")
+    if not source.amendment_chain_checked:
+        problems.append(
+            f"source {source.source_id} is machine_verified but its amendment chain "
+            "was never checked"
+        )
+    unchecked = [
+        entry.instrument
+        for entry in source.amendment_chain
+        if entry.status != "checked"
+    ]
+    if unchecked:
+        problems.append(
+            f"source {source.source_id} has unchecked amendments: {', '.join(unchecked)}"
+        )
+    if not source.verification_evidence:
+        problems.append(
+            f"source {source.source_id} is machine_verified but has no verification evidence"
+        )
+    problems.extend(
+        official_copy_problems(source.source_id, source.official_copy, source.document_sha256)
+    )
+    return problems
 
-    Empty list means the corpus passed.  The function is pure so the review
-    tooling can call it without raising.
-    """
+
+def _machine_provision_problems(provision) -> list[str]:
+    problems: list[str] = []
+    if provision.verified_by != "machine":
+        problems.append(
+            f"provision {provision.provision_id} is machine_verified but verified_by "
+            "is not 'machine'"
+        )
+    if provision.verified_at is None:
+        problems.append(
+            f"provision {provision.provision_id} is machine_verified but verified_at is missing"
+        )
+    if provision.verification_method_count < 2:
+        problems.append(
+            f"provision {provision.provision_id} is machine_verified but has fewer than "
+            "two independent extraction methods"
+        )
+    for check in MACHINE_CHECKS:
+        if provision.verification_evidence.get(check) != "pass":
+            problems.append(
+                f"provision {provision.provision_id} is machine_verified but {check} "
+                "did not pass"
+            )
+    if provision.integrity_flags:
+        problems.append(
+            f"provision {provision.provision_id} is machine_verified but carries "
+            f"integrity flags: {', '.join(provision.integrity_flags)}"
+        )
+    return problems
+
+
+def real_corpus_problems(corpus: Corpus) -> list[str]:
+    """Return every reason this real corpus must not be used."""
     problems: list[str] = []
 
-    verified = [
+    verified_sources = [
         source
         for source in corpus.sources.values()
-        if source.review_status == "human_verified"
+        if source.review_status in CITABLE_STATUSES
     ]
 
     verified_provisions = [
         provision
         for provision in corpus.provisions.values()
-        if provision.review_status == "human_verified"
+        if provision.review_status in CITABLE_STATUSES
     ]
     if not verified_provisions:
         problems.append(
-            "real corpus contains no human_verified provision; nothing in it is "
-            "citable, so the service must not start"
+            "real corpus contains no verified provision; nothing in it is citable, "
+            "so the service must not start"
         )
 
-    for source in sorted(verified, key=lambda s: s.source_id):
+    for source in sorted(verified_sources, key=lambda s: s.source_id):
         for field in SOURCE_PROVENANCE_FIELDS:
             if _blank(getattr(source, field)):
                 problems.append(
-                    f"source {source.source_id} is human_verified but {field} is missing"
+                    f"source {source.source_id} is {source.review_status} but "
+                    f"{field} is missing"
                 )
         if source.version_status == "uncertain":
             problems.append(
-                f"source {source.source_id} is human_verified but its version_status "
-                "is 'uncertain'"
+                f"source {source.source_id} is {source.review_status} but its "
+                "version_status is 'uncertain'"
             )
+        if source.review_status == "machine_verified":
+            problems.extend(_machine_source_problems(source))
+        else:
+            for field in ("reviewed_by", "reviewed_at"):
+                if _blank(getattr(source, field)):
+                    problems.append(
+                        f"source {source.source_id} is human_verified but {field} is missing"
+                    )
 
     for provision in sorted(corpus.provisions.values(), key=lambda p: p.provision_id):
         source = corpus.sources.get(provision.source_id)
         if provision.review_status == "rejected":
             problems.append(
                 f"provision {provision.provision_id} is marked rejected but is present "
-                "in the runtime corpus; rebuild from approved rows only"
+                "in the runtime corpus; rebuild from verified rows only"
             )
             continue
-        if provision.review_status != "human_verified":
-            # Loaded background text.  It stays uncitable, which is allowed.
+        if provision.review_status not in CITABLE_STATUSES:
             continue
-        if source is None or source.review_status != "human_verified":
+        if source is None or source.review_status not in CITABLE_STATUSES:
             problems.append(
-                f"provision {provision.provision_id} is human_verified but its source "
-                f"{provision.source_id} is not; approve the source first"
+                f"provision {provision.provision_id} is {provision.review_status} but its "
+                f"source {provision.source_id} is not; verify the source first"
             )
-        for field in ("reviewed_by", "reviewed_at"):
-            if _blank(getattr(provision, field)):
-                problems.append(
-                    f"provision {provision.provision_id} is human_verified but "
-                    f"{field} is missing"
-                )
+            continue
+
+        if provision.review_status == "human_verified":
+            for field in ("reviewed_by", "reviewed_at"):
+                if _blank(getattr(provision, field)):
+                    problems.append(
+                        f"provision {provision.provision_id} is human_verified but "
+                        f"{field} is missing"
+                    )
+        else:
+            problems.extend(_machine_provision_problems(provision))
+
         for condition in provision.conditions:
-            if condition.human_review_status != "reviewed":
+            human = condition.human_review_status == "reviewed"
+            machine = (
+                condition.machine_review_status == "machine_verified"
+                and bool(condition.source_quote.strip())
+            )
+            if not (human or machine):
                 problems.append(
                     f"provision {provision.provision_id} condition "
-                    f"{condition.condition_id} is not human-reviewed"
+                    f"{condition.condition_id} is neither human-reviewed nor "
+                    "machine-verified with a source quote"
                 )
 
     return problems

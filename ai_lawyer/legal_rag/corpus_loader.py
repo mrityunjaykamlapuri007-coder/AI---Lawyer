@@ -24,20 +24,31 @@ logger = logging.getLogger(__name__)
 ALLOWED_OPERATORS = {"exists", "equals", "in", "date_before", "date_after", "manual"}
 
 
-def provision_is_usable(source: Source | None, provision: Provision) -> bool:
-    """A provision is citable only when both it and its source were approved.
+CITABLE_STATUSES = frozenset({"human_verified", "machine_verified"})
 
-    ``human_verified`` on a source says the document is the right document.
-    It says nothing about whether a human read this particular provision, so a
-    per-provision approval with a named reviewer is also required.
+
+def provision_is_usable(source: Source | None, provision: Provision) -> bool:
+    """A provision is citable only when both it and its source were verified.
+
+    ``human_verified`` means a named person read it.  ``machine_verified``
+    means the automated pipeline recorded at least two independent extraction
+    methods and every risk control passed.  Machine verification is never
+    presented as human review.
     """
     if source is None:
         return False
-    if source.review_status != "human_verified":
+    if source.review_status not in CITABLE_STATUSES:
         return False
-    if provision.review_status != "human_verified":
+    if provision.review_status not in CITABLE_STATUSES:
         return False
-    return bool(provision.reviewed_by and provision.reviewed_by.strip())
+    if provision.review_status == "human_verified":
+        return bool(provision.reviewed_by and provision.reviewed_by.strip())
+    return (
+        provision.verified_by == "machine"
+        and provision.verified_at is not None
+        and provision.verification_method_count >= 2
+        and bool(provision.verification_evidence)
+    )
 
 
 @dataclass

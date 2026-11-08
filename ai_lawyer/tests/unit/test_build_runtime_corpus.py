@@ -19,7 +19,41 @@ STAGING = (
 def _copy_staging(tmp_path: Path) -> Path:
     destination = tmp_path / "staging"
     shutil.copytree(STAGING, destination)
+    _reset_verification(destination)
     return destination
+
+
+def _reset_verification(staging: Path) -> None:
+    """Make the copied staging independent of the live staging state.
+
+    The live corpus now contains machine-verified rows.  These tests exercise
+    the human review path, so the copy starts with nothing verified.
+    """
+    sources_path = staging / "draft_sources.json"
+    sources = json.loads(sources_path.read_text(encoding="utf-8"))
+    for source in sources:
+        source["review_status"] = "unverified"
+        source["verified_by"] = None
+        source["verified_at"] = None
+        source["reviewed_by"] = None
+        source["reviewed_at"] = None
+        source["amendment_chain_checked"] = False
+    sources_path.write_text(json.dumps(sources, indent=2) + "\n", encoding="utf-8")
+
+    provisions_path = staging / "draft_provisions.json"
+    provisions = json.loads(provisions_path.read_text(encoding="utf-8"))
+    for provision in provisions:
+        provision["review_status"] = "unverified"
+        provision["verified_by"] = None
+        provision["verified_at"] = None
+        provision["verification_evidence"] = {}
+        provision["verification_method_count"] = 0
+        provision["reviewed_by"] = None
+        provision["reviewed_at"] = None
+        provision["review_note"] = None
+    provisions_path.write_text(
+        json.dumps(provisions, indent=2) + "\n", encoding="utf-8"
+    )
 
 
 def _ecr_ids(staging: Path, count: int) -> list[str]:
@@ -164,7 +198,7 @@ def test_unreviewed_condition_blocks_the_build(tmp_path, capsys):
 
     output = capsys.readouterr().out
     assert code == 2
-    assert "not human-reviewed" in output
+    assert "neither human-reviewed nor" in output
     assert not (out / "provisions.json").exists()
 
 

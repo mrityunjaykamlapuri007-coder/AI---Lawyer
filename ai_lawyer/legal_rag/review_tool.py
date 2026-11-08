@@ -324,10 +324,27 @@ def cmd_approve(args: argparse.Namespace) -> int:
     row = _find_provision(provisions, args.provision_id)
     _confirm_provision_id(args.provision_id, args.confirm)
 
+    # Risk controls C1.2 / C5.4: a flagged row cannot be approved silently.
+    flags = list(row.get("integrity_flags") or [])
+    if flags and not args.integrity_verified:
+        raise Refusal(
+            f"{args.provision_id} carries integrity flags {flags}; compare the "
+            "stored text with the rendered page, then pass --integrity-verified"
+        )
+    if row.get("needs_proviso_check") and not args.proviso_checked:
+        raise Refusal(
+            f"{args.provision_id} mentions a proviso/exception/explanation; read it "
+            "in the PDF and pass --proviso-checked"
+        )
+
     row["review_status"] = "human_verified"
     row["reviewed_by"] = reviewer
     row["reviewed_at"] = _now().isoformat()
     row["review_note"] = None
+    if args.integrity_verified:
+        row["integrity_verified_by"] = reviewer
+    if args.proviso_checked:
+        row["proviso_checked_by"] = reviewer
     save(args.staging, sources, provisions)
 
     print(f"approved {args.provision_id} by {reviewer}")
@@ -531,6 +548,16 @@ def build_parser() -> argparse.ArgumentParser:
     p_approve.add_argument(
         "--confirm",
         help="the same provision id; required in non-interactive use",
+    )
+    p_approve.add_argument(
+        "--integrity-verified",
+        action="store_true",
+        help="you compared the stored text with the rendered page (required when flagged)",
+    )
+    p_approve.add_argument(
+        "--proviso-checked",
+        action="store_true",
+        help="you read the proviso/exception/explanation in the PDF",
     )
     p_approve.set_defaults(func=cmd_approve)
 

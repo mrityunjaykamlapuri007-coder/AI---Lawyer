@@ -51,8 +51,10 @@ def test_section_number_detection_ignores_plain_numbers():
     assert harness._unverified_section_numbers(responses, corpus) == []
 
 
-def test_real_mode_refuses_when_no_runtime_corpus_exists(capsys):
-    code = harness.main(["--mode", "real"])
+def test_real_mode_refuses_when_no_runtime_corpus_exists(tmp_path, capsys):
+    empty = tmp_path / "empty-corpus"
+    empty.mkdir()
+    code = harness.main(["--mode", "real", "--corpus-dir", str(empty)])
 
     output = capsys.readouterr().out
     assert code == 2

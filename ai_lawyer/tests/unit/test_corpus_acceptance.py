@@ -64,7 +64,7 @@ def test_real_corpus_with_no_verified_provision_is_rejected(tmp_path):
     with pytest.raises(CorpusValidationError) as exc:
         load_corpus("real", corpus_dir=tmp_path)
 
-    assert any("no human_verified provision" in e for e in exc.value.errors)
+    assert any("no verified provision" in e for e in exc.value.errors)
 
 
 def test_verified_provision_under_unapproved_source_is_rejected(tmp_path):
@@ -74,7 +74,7 @@ def test_verified_provision_under_unapproved_source_is_rejected(tmp_path):
     with pytest.raises(CorpusValidationError) as exc:
         load_corpus("real", corpus_dir=tmp_path)
 
-    assert any("approve the source first" in e for e in exc.value.errors)
+    assert any("verify the source first" in e for e in exc.value.errors)
 
 
 def test_verified_source_without_reviewer_is_rejected(tmp_path):
@@ -135,7 +135,7 @@ def test_unreviewed_condition_is_rejected(tmp_path):
     with pytest.raises(CorpusValidationError) as exc:
         load_corpus("real", corpus_dir=tmp_path)
 
-    assert any("not human-reviewed" in e for e in exc.value.errors)
+    assert any("neither human-reviewed nor" in e for e in exc.value.errors)
 
 
 def test_fully_provenanced_real_corpus_loads(tmp_path):

@@ -41,11 +41,11 @@ FIXTURE_CORPUS = PROJECT_ROOT / "ai_lawyer" / "legal_corpus"
 SECTION_RE = re.compile(r"\b(?:Section|Sec\.?|Rule)\s+(\d+[A-Za-z]?)", re.IGNORECASE)
 
 
-def _settings(tmp: Path, mode: str = "fixture") -> Settings:
+def _settings(tmp: Path, mode: str = "fixture", corpus_dir: Path | None = None) -> Settings:
     values = {
         "app_env": "evaluation",
         "corpus_mode": mode,
-        "corpus_dir": str(FIXTURE_CORPUS),
+        "corpus_dir": str(corpus_dir or FIXTURE_CORPUS),
         "vectorstore_dir": str(tmp / "vectorstore"),
         "sqlite_path": str(tmp / "lawyer.db"),
         "evidence_dir": str(tmp / "evidence"),
@@ -372,6 +372,12 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--vllm-version", default="")
     parser.add_argument("--quantization", default="")
     parser.add_argument("--gpu-type", default="")
+    parser.add_argument(
+        "--corpus-dir",
+        type=Path,
+        default=None,
+        help="real-mode corpus directory (default: ai_lawyer/legal_corpus)",
+    )
     args = parser.parse_args(argv)
 
     real = args.mode == "real"
@@ -389,7 +395,7 @@ def main(argv: list[str] | None = None) -> int:
 
     with tempfile.TemporaryDirectory() as tmp_name:
         tmp = Path(tmp_name)
-        base = _settings(tmp, args.mode)
+        base = _settings(tmp, args.mode, args.corpus_dir)
         try:
             corpus = load_corpus(settings=base)
         except CorpusValidationError as exc:

@@ -34,8 +34,12 @@ from pydantic import ValidationError
 
 from ai_lawyer.contracts.errors import CorpusValidationError
 from ai_lawyer.contracts.models import Provision, Source
-from ai_lawyer.legal_rag.corpus_acceptance import real_corpus_problems
-from ai_lawyer.legal_rag.corpus_loader import validate_and_build
+from ai_lawyer.legal_rag.corpus_acceptance import (
+    _machine_provision_problems,
+    _machine_source_problems,
+    real_corpus_problems,
+)
+from ai_lawyer.legal_rag.corpus_loader import CITABLE_STATUSES, validate_and_build
 
 PACKAGE_DIR = Path(__file__).resolve().parents[1]
 DEFAULT_STAGING = PACKAGE_DIR / "legal_corpus" / "official" / "draft_curated"
@@ -87,25 +91,34 @@ def build(
     approved_sources: dict[str, Source] = {}
 
     for source in sources:
-        if source.review_status != "human_verified":
+        if source.review_status not in CITABLE_STATUSES:
             continue
         problems = _source_problems(source)
+        if source.review_status == "machine_verified":
+            problems.extend(_machine_source_problems(source))
         if problems:
-            excluded[f"source {source.source_id}: " + "; ".join(problems)] += 0
+            excluded["source " + source.source_id + ": " + "; ".join(problems)] += 0
             continue
         approved_sources[source.source_id] = source
 
     included: list[Provision] = []
     for provision in provisions:
         if provision.review_status == "rejected":
-            excluded["rejected by reviewer"] += 1
+            who = "machine verification" if provision.verified_by == "machine" else "reviewer"
+            excluded[f"rejected by {who}"] += 1
             continue
-        if provision.review_status != "human_verified":
-            excluded["not approved"] += 1
+        if provision.review_status not in CITABLE_STATUSES:
+            excluded["not verified"] += 1
             continue
-        if _blank(provision.reviewed_by):
-            excluded["missing reviewer"] += 1
-            continue
+        if provision.review_status == "human_verified":
+            if _blank(provision.reviewed_by):
+                excluded["missing reviewer"] += 1
+                continue
+        else:
+            machine_problems = _machine_provision_problems(provision)
+            if machine_problems:
+                excluded["machine verification incomplete"] += 1
+                continue
         source = by_source.get(provision.source_id)
         if source is None:
             excluded["unknown source"] += 1

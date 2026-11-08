@@ -25,6 +25,10 @@ class Settings(BaseSettings):
 
     app_env: str = "local"
     corpus_mode: Literal["real", "fixture"] = "fixture"
+    # Which verification level this deployment claims.  ``machine`` is the
+    # default for the submission: the corpus was checked by the automated
+    # pipeline, not by a lawyer or a human.  The banner says which is in force.
+    corpus_trust_level: Literal["machine", "human"] = "machine"
     corpus_dir: str = "ai_lawyer/legal_corpus"
     vectorstore_dir: str = "ai_lawyer/vectorstore"
     sqlite_path: str = "ai_lawyer/data/lawyer.db"
