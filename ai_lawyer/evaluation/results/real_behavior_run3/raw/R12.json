@@ -1,0 +1,528 @@
+{
+  "label": "REAL CORPUS, VERIFIED SUBSET (30 usable)",
+  "test_id": "R12",
+  "category": "wrong_product_return_refund_refused",
+  "notes": null,
+  "now": "2026-11-08",
+  "turns": [
+    {
+      "message": "I ordered a Fujifilm X-T5 mirrorless camera worth Rs. 1,43,000 through Amazon from the seller Clicktech Retail. It was delivered on 10-02-2025, but the box contained a different model, an X-T50, and the package had two conflicting labels. I told them immediately. They agreed to take it back and refund me, the camera was collected from my home, and the seller received it on 20-02-2025. They still refused to refund Rs. 1,43,000. Customer support told me an investigation had cleared them and claimed I had returned the wrong product. On 21-02-2025 Amazon emailed me that the returned item was used and damaged. I sent photographs of the conflicting labels, but the refund request was rejected without a valid reason."
+    }
+  ],
+  "expected": {
+    "outcome": "formal_grievance_recommended",
+    "rule": "R5",
+    "rationale": "Refund denied, exact return date, support contacted, grievance officer not mentioned."
+  },
+  "corpus": {
+    "mode": "real",
+    "version": "0381858588e1a7be",
+    "usable_count": 30,
+    "usable_ids": [
+      "ECR_2020_P001",
+      "ECR_2020_P002",
+      "ECR_2020_P004_SR02",
+      "ECR_2020_P004_SR03",
+      "ECR_2020_P004_SR04",
+      "ECR_2020_P004_SR05",
+      "ECR_2020_P004_SR06",
+      "ECR_2020_P004_SR07",
+      "ECR_2020_P004_SR08",
+      "ECR_2020_P004_SR09",
+      "ECR_2020_P004_SR10",
+      "ECR_2020_P004_SR11",
+      "ECR_2020_P005_SR01",
+      "ECR_2020_P005_SR02",
+      "ECR_2020_P005_SR03",
+      "ECR_2020_P005_SR04",
+      "ECR_2020_P005_SR05",
+      "ECR_2020_P006_SR01",
+      "ECR_2020_P006_SR02",
+      "ECR_2020_P006_SR03",
+      "ECR_2020_P006_SR04",
+      "ECR_2020_P006_SR05",
+      "ECR_2020_P007_SR01",
+      "ECR_2020_P007_SR02",
+      "ECR_2020_P007_SR03",
+      "ECR_2020_P007_SR04",
+      "ECR_2020_P007_SR05",
+      "ECR_2020_P008",
+      "ECR_2021_AMENDMENT_P001",
+      "ECR_2021_AMENDMENT_P002"
+    ]
+  },
+  "responses": [
+    {
+      "conversation_id": "conv_88d5bc26-86b9-437a-81da-8aa76f411ca6",
+      "message_id": "msg_571f2941-a393-47a4-aa67-4a84dc527fc9",
+      "assistant_message_id": "msg_24397214-6465-4c53-93ac-0b20f48810be",
+      "case_id": "case_b7438f01-13be-4c2b-a7b5-370e8ecec5cb",
+      "processing_status": "needs_clarification",
+      "assistant_message": "## What I understood\n\nThe user ordered a Fujifilm X-T5 mirrorless camera but received an X-T50 instead. The merchant agreed to take back the item and refund, but the refund was denied due to alleged damage and misuse.\n\n## Facts\n\nFacts you reported:\n- Refund status: refused\n- Support contact made: i told\n- Support response: told me an investigation had cleared them and c\n- Merchant name: Clicktech Retail\n- Platform name: Amazon\n- Refund status: still refused to refund Rs. 1,43,000.\n- Support contact made: Customer support told me an investigation had cleared them and claimed I had returned the wrong product.\n- Support response: the returned item was used and damaged.\n\n## Legal sources that may apply\n\n- **Consumer Protection (E-Commerce) Rules, 2020, provision 7, sub-rule (4)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"(4)\nNo inventory e-commerce entity shall refuse to take back goods, or withdraw or discontinue services\npurchased or agreed to be purchased, or refuse to refund consideration, if paid, if such goods or services\nare defective, deficient spurious, or if the goods or services are not of the characteristics or features as\nadvertised or as agreed to, or if such goods or services are delivered late from\"\n- **Consumer Protection (E-Commerce) Rules, 2020, provision 6, sub-rule (3)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"(3) No seller offering goods or services through a marketplace e-commerce entity shall refuse to take back goods,\nor withdraw or discontinue services purchased or agreed to be purchased, or refuse to refund consideration, if\npaid, if such goods or services are defective, deficient or spurious, or if the goods or services are not of the\ncharacteristics or features as advertised or as agreed to, or \"\n\n## How this may relate to your case\n\n- may apply if the returned item was not defective, deficient, or spurious, and the user reported the issue immediately upon discovery.\n\n## Assessment\n\n**I need more information before assessing the next step.**\n\n- An essential fact is missing: an exact cancellation/return date.\n\nSuggested next steps:\n1. Answer the follow-up question so the refund timeline can be assessed.\n\nAssessment date: 2026-11-08.\n\n## Missing information\n- When did you cancel or return the order? Please give the exact date.\n- Have you contacted the platform's grievance officer, and on what date?\n\n## Limitations\n\n- This is general information and a draft for your review, not legal advice. I cannot guarantee any outcome.\n",
+      "case_summary": {
+        "identifiers": [],
+        "merchant": "Clicktech Retail",
+        "platform": "Amazon",
+        "amount_minor": null,
+        "currency": "INR",
+        "refund_status": "denied"
+      },
+      "extracted_facts": [
+        {
+          "fact_id": "fact_47cfd380-261e-439a-8737-10a1c0f22184",
+          "case_id": "case_b7438f01-13be-4c2b-a7b5-370e8ecec5cb",
+          "fact_type": "refund_status",
+          "raw_value": "refused",
+          "normalised_value": "denied",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T19:47:22.848259Z"
+        },
+        {
+          "fact_id": "fact_89f8b22b-d419-45cb-bc2a-bb2225fa25f0",
+          "case_id": "case_b7438f01-13be-4c2b-a7b5-370e8ecec5cb",
+          "fact_type": "support_contact_made",
+          "raw_value": "i told",
+          "normalised_value": true,
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T19:47:22.864504Z"
+        },
+        {
+          "fact_id": "fact_0410d31d-db05-4998-9075-595d39f3f8d5",
+          "case_id": "case_b7438f01-13be-4c2b-a7b5-370e8ecec5cb",
+          "fact_type": "support_response",
+          "raw_value": "told me an investigation had cleared them and c",
+          "normalised_value": "told me an investigation had cleared them and c",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T19:47:22.882503Z"
+        },
+        {
+          "fact_id": "fact_0a032bab-f457-40ed-b52e-71db77ceb7c8",
+          "case_id": "case_b7438f01-13be-4c2b-a7b5-370e8ecec5cb",
+          "fact_type": "merchant_name",
+          "raw_value": "Clicktech Retail",
+          "normalised_value": "Clicktech Retail",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T19:47:22.901054Z"
+        },
+        {
+          "fact_id": "fact_f81ca5bf-5fb2-4ecb-90b6-f185eea6895a",
+          "case_id": "case_b7438f01-13be-4c2b-a7b5-370e8ecec5cb",
+          "fact_type": "platform_name",
+          "raw_value": "Amazon",
+          "normalised_value": "Amazon",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T19:47:22.916688Z"
+        },
+        {
+          "fact_id": "fact_3f003493-bccf-454a-bd25-a681173bc4e9",
+          "case_id": "case_b7438f01-13be-4c2b-a7b5-370e8ecec5cb",
+          "fact_type": "refund_status",
+          "raw_value": "still refused to refund Rs. 1,43,000.",
+          "normalised_value": "denied",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T19:47:22.933884Z"
+        },
+        {
+          "fact_id": "fact_e3b165e5-520f-47bb-a2b1-45d1b8c47d1b",
+          "case_id": "case_b7438f01-13be-4c2b-a7b5-370e8ecec5cb",
+          "fact_type": "support_contact_made",
+          "raw_value": "Customer support told me an investigation had cleared them and claimed I had returned the wrong product.",
+          "normalised_value": true,
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T19:47:22.949849Z"
+        },
+        {
+          "fact_id": "fact_a9ff13e0-fba3-4fa6-bf6b-b06f9530959d",
+          "case_id": "case_b7438f01-13be-4c2b-a7b5-370e8ecec5cb",
+          "fact_type": "support_response",
+          "raw_value": "the returned item was used and damaged.",
+          "normalised_value": "the returned item was used and damaged.",
+          "source_type": "user_message",
+          "source_id": "user",
+          "evidence_id": null,
+          "page_number": null,
+          "status": "user_reported",
+          "inferred": false,
+          "ambiguity_flag": false,
+          "supersedes_fact_id": null,
+          "created_at": "2026-11-08T19:47:22.968526Z"
+        }
+      ],
+      "evidence_processing": [],
+      "legal_sources": [
+        {
+          "provision_id": "ECR_2020_P007_SR04",
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 7, sub-rule (4)",
+          "excerpt": "(4)\nNo inventory e-commerce entity shall refuse to take back goods, or withdraw or discontinue services\npurchased or agreed to be purchased, or refuse to refund consideration, if paid, if such goods or services\nare defective, deficient spurious, or if the goods or services are not of the characteristics or features as\nadvertised or as agreed to, or if such goods or services are delivered late from the stated delivery\nschedule:\n   Provided that in the case of late delivery, this sub rule shall not apply if such late delivery was due to\nforce majeure.",
+          "role": "supporting",
+          "applicability": "unknown",
+          "source_validity": "current_for_date",
+          "official_url": "https://consumeraffairs.gov.in/public/upload/files/E%20commerce%20rules_1732703966.pdf"
+        },
+        {
+          "provision_id": "ECR_2020_P006_SR03",
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 6, sub-rule (3)",
+          "excerpt": "(3) No seller offering goods or services through a marketplace e-commerce entity shall refuse to take back goods,\nor withdraw or discontinue services purchased or agreed to be purchased, or refuse to refund consideration, if\npaid, if such goods or services are defective, deficient or spurious, or if the goods or services are not of the\ncharacteristics or features as advertised or as agreed to, or if such goods or services are delivered late from the\nstated delivery schedule:\n Provided that in the case of late delivery, this sub-rule shall not be applied if such late delivery was due to\nforce m",
+          "role": "supporting",
+          "applicability": "unknown",
+          "source_validity": "current_for_date",
+          "official_url": "https://consumeraffairs.gov.in/public/upload/files/E%20commerce%20rules_1732703966.pdf"
+        }
+      ],
+      "retrieval_candidates": [
+        {
+          "chunk_id": "ECR_2020_P007_SR04::c0",
+          "provision_id": "ECR_2020_P007_SR04",
+          "source_id": "ECR_2020",
+          "dense_rank": 1,
+          "sparse_rank": 2,
+          "rrf_score": 0.14497700431069022,
+          "rerank_score": null,
+          "relevance_grade": 2,
+          "relevance_reason": "This provision states that inventory e-commerce entities cannot refuse to take back goods or services that are defective, deficient, or spurious, which is directly relevant to the case.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "condition ECR_2020_P007_SR04_C1 is manual and always UNKNOWN; condition ECR_2020_P007_SR04_C3 is manual and always UNKNOWN"
+          ],
+          "source_validity": "current_for_date",
+          "role": "supporting",
+          "rejection_reason": null,
+          "added_because": null,
+          "accepted": true,
+          "conditional": true,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 7, sub-rule (4)"
+        },
+        {
+          "chunk_id": "ECR_2020_P006_SR03::c0",
+          "provision_id": "ECR_2020_P006_SR03",
+          "source_id": "ECR_2020",
+          "dense_rank": 1,
+          "sparse_rank": 1,
+          "rrf_score": 0.14299690205197044,
+          "rerank_score": null,
+          "relevance_grade": 2,
+          "relevance_reason": "This provision states that sellers cannot refuse to take back goods or services that are defective, deficient, or spurious, which is directly relevant to the case.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "condition ECR_2020_P006_SR03_C1 is manual and always UNKNOWN; condition ECR_2020_P006_SR03_C3 is manual and always UNKNOWN"
+          ],
+          "source_validity": "current_for_date",
+          "role": "supporting",
+          "rejection_reason": null,
+          "added_because": null,
+          "accepted": true,
+          "conditional": true,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 6, sub-rule (3)"
+        },
+        {
+          "chunk_id": "ECR_2020_P005_SR03::c0",
+          "provision_id": "ECR_2020_P005_SR03",
+          "source_id": "ECR_2020",
+          "dense_rank": 3,
+          "sparse_rank": 2,
+          "rrf_score": 0.15655111018014245,
+          "rerank_score": null,
+          "relevance_grade": 1,
+          "relevance_reason": "This provision requires marketplace e-commerce entities to provide information regarding the seller, including details about returns, refunds, and exchanges, which is relevant background information for the case.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "background",
+          "rejection_reason": "relevance grade 1 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 5, sub-rule (3)"
+        },
+        {
+          "chunk_id": "ECR_2020_P007_SR01::c0",
+          "provision_id": "ECR_2020_P007_SR01",
+          "source_id": "ECR_2020",
+          "dense_rank": 3,
+          "sparse_rank": 1,
+          "rrf_score": 0.15654530464981284,
+          "rerank_score": null,
+          "relevance_grade": 1,
+          "relevance_reason": "This provision requires inventory e-commerce entities to provide information regarding returns, refunds, and exchanges, which is relevant background information for the case.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "background",
+          "rejection_reason": "relevance grade 1 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 7, sub-rule (1)"
+        },
+        {
+          "chunk_id": "ECR_2020_P006_SR05::c0",
+          "provision_id": "ECR_2020_P006_SR05",
+          "source_id": "ECR_2020",
+          "dense_rank": 5,
+          "sparse_rank": 2,
+          "rrf_score": 0.15083279113062137,
+          "rerank_score": null,
+          "relevance_grade": 1,
+          "relevance_reason": "This provision requires sellers to provide information about returns, refunds, and exchanges, which is relevant background information for the case.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "background",
+          "rejection_reason": "relevance grade 1 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 6, sub-rule (5)"
+        },
+        {
+          "chunk_id": "ECR_2020_P004_SR10::c0",
+          "provision_id": "ECR_2020_P004_SR10",
+          "source_id": "ECR_2020",
+          "dense_rank": 1,
+          "sparse_rank": 1,
+          "rrf_score": 0.12785593277396556,
+          "rerank_score": null,
+          "relevance_grade": 1,
+          "relevance_reason": "This provision requires e-commerce entities to effect payments towards accepted refund requests within a reasonable period, which is relevant background information for the case.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no fact of type refund_initiated_date"
+          ],
+          "source_validity": "current_for_date",
+          "role": "background",
+          "rejection_reason": "relevance grade 1 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (10)"
+        },
+        {
+          "chunk_id": "ECR_2020_P004_SR04::c0",
+          "provision_id": "ECR_2020_P004_SR04",
+          "source_id": "ECR_2020",
+          "dense_rank": 7,
+          "sparse_rank": 8,
+          "rrf_score": 0.09872087268169204,
+          "rerank_score": null,
+          "relevance_grade": 1,
+          "relevance_reason": "This provision requires e-commerce entities to establish a grievance redressal mechanism, which is relevant background information for the case.",
+          "applicability": "applicable",
+          "applicability_reasons": [
+            "fact fact_f81ca5bf-5fb2-4ecb-90b6-f185eea6895a records platform_name"
+          ],
+          "source_validity": "current_for_date",
+          "role": "background",
+          "rejection_reason": "relevance grade 1 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (4)"
+        },
+        {
+          "chunk_id": "ECR_2021_AMENDMENT_P002::c0",
+          "provision_id": "ECR_2021_AMENDMENT_P002",
+          "source_id": "ECR_2021_AMENDMENT",
+          "dense_rank": 12,
+          "sparse_rank": 5,
+          "rrf_score": 0.09675984833879571,
+          "rerank_score": null,
+          "relevance_grade": 0,
+          "relevance_reason": "This amendment provision does not directly relate to the specific issue of a consumer refund in the case.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "rejected",
+          "rejection_reason": "relevance grade 0 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) (Amendment) Rules, 2021, provision 2"
+        },
+        {
+          "chunk_id": "ECR_2020_P005_SR05::c0",
+          "provision_id": "ECR_2020_P005_SR05",
+          "source_id": "ECR_2020",
+          "dense_rank": 10,
+          "sparse_rank": 12,
+          "rrf_score": 0.09471786471786472,
+          "rerank_score": null,
+          "relevance_grade": 0,
+          "relevance_reason": "This provision is about maintaining records of sellers who have offered goods or services that have been removed due to copyright, trademark, or IT issues. It does not address the issue of receiving the wrong product or the process of refunds.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "rejected",
+          "rejection_reason": "relevance grade 0 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 5, sub-rule (5)"
+        },
+        {
+          "chunk_id": "ECR_2020_P004_SR09::c0",
+          "provision_id": "ECR_2020_P004_SR09",
+          "source_id": "ECR_2020",
+          "dense_rank": 10,
+          "sparse_rank": 14,
+          "rrf_score": 0.09450898950898952,
+          "rerank_score": null,
+          "relevance_grade": 0,
+          "relevance_reason": "This provision is about the recording of consumer consent for purchases. It does not pertain to the scenario of receiving the wrong product or the process of refunds.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "rejected",
+          "rejection_reason": "relevance grade 0 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "Consumer Protection (E-Commerce) Rules, 2020, provision 4, sub-rule (9)"
+        }
+      ],
+      "retrieval_summary": {
+        "corpus_version": "0381858588e1a7be",
+        "candidate_count": 10,
+        "accepted_count": 2,
+        "rejected_count": 8,
+        "retry_count": 0
+      },
+      "verification": {
+        "overall": "verified",
+        "blocked_claims": [],
+        "note": "deterministic citation/date/phrase guards only; claim-level entailment is DESIGN_ONLY"
+      },
+      "assessment": {
+        "outcome": "needs_more_information",
+        "reasons": [
+          "An essential fact is missing: an exact cancellation/return date."
+        ],
+        "facts_used": [
+          "fact_47cfd380-261e-439a-8737-10a1c0f22184",
+          "fact_89f8b22b-d419-45cb-bc2a-bb2225fa25f0",
+          "fact_0410d31d-db05-4998-9075-595d39f3f8d5",
+          "fact_0a032bab-f457-40ed-b52e-71db77ceb7c8",
+          "fact_f81ca5bf-5fb2-4ecb-90b6-f185eea6895a",
+          "fact_3f003493-bccf-454a-bd25-a681173bc4e9",
+          "fact_e3b165e5-520f-47bb-a2b1-45d1b8c47d1b",
+          "fact_a9ff13e0-fba3-4fa6-bf6b-b06f9530959d"
+        ],
+        "provision_ids_used": [
+          "ECR_2020_P007_SR04",
+          "ECR_2020_P006_SR03"
+        ],
+        "missing_information": [
+          "When did you cancel or return the order? Please give the exact date.",
+          "Have you contacted the platform's grievance officer, and on what date?"
+        ],
+        "uncertainties": [
+          "relevance grade 1 below 2",
+          "relevance grade 1 below 2",
+          "relevance grade 1 below 2",
+          "relevance grade 1 below 2",
+          "relevance grade 1 below 2"
+        ],
+        "urgency": "unknown",
+        "next_steps": [
+          "Answer the follow-up question so the refund timeline can be assessed."
+        ],
+        "lawyer_needed": false,
+        "lawyer_reason": null,
+        "rule_trace": [
+          "R2: An essential fact is missing: an exact cancellation/return date."
+        ],
+        "llm_proposed_outcome": "needs_more_information"
+      },
+      "missing_information": [
+        "When did you cancel or return the order? Please give the exact date.",
+        "Have you contacted the platform's grievance officer, and on what date?"
+      ],
+      "next_steps": [
+        "Answer the follow-up question so the refund timeline can be assessed."
+      ],
+      "document_draft": null
+    }
+  ],
+  "case_status_final": "open",
+  "event_types": [
+    "case_created",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "fact_added",
+    "assessment_completed"
+  ],
+  "checks_failed": [
+    "outcome 'needs_more_information' != 'formal_grievance_recommended'"
+  ],
+  "observed": {
+    "outcome": "needs_more_information"
+  },
+  "data_origin": "public_commission_order",
+  "split": "test",
+  "result": "FAIL"
+}

@@ -72,7 +72,9 @@ class Settings(BaseSettings):
     llm_base_url: str = ""
     llm_api_key: str = ""
     llm_temperature: float = 0.0
-    llm_max_tokens: int = 1500
+    # 1500 truncated long drafting answers mid-JSON in real run 3 (R02, R03);
+    # prompts are ~3.3k tokens and the context is 8192, so 3000 fits.
+    llm_max_tokens: int = 3000
     llm_timeout_s: int = 120
     # JSON-schema constrained decoding.  On by default for the 8B Kaggle model,
     # which is weak at strict JSON; the retry-then-reject rule stays on top.

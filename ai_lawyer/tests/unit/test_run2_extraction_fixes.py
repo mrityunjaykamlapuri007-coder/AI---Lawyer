@@ -86,3 +86,28 @@ def test_more_ways_of_contacting_the_platform_count_as_support_contact():
 def test_not_contacting_is_still_recognised():
     flag = _contact_flags("I have not contacted them yet.")["support_contact_made"]
     assert flag["normalised_value"] is False
+
+
+# --- run-3 regressions (the run-2 date rule was too strict) -------------------
+def test_event_word_after_the_date_gives_its_role():
+    text = "On 14 March 2024 I bought hair gummies for 799 rupees."
+    item = {"fact_type": "purchase_date", "raw_value": "14 March 2024", "normalised_value": "2024-03-14"}
+    assert _coerce_llm_fact(item, text)["fact_type"] == "purchase_date"
+    assert ("purchase_date", "2024-03-14") in _dates(_facts(text))
+
+
+def test_collected_is_a_pickup_word():
+    text = "The product was collected on 24/07/2023 with assurances of a refund."
+    assert ("pickup_date", "2023-07-24") in _dates(_facts(text))
+
+
+def test_llm_role_is_kept_when_the_text_names_no_event():
+    text = "My case reference date is 10 January 2025 and nothing has been paid."
+    item = {"fact_type": "refund_initiated_date", "raw_value": "10 January 2025", "normalised_value": "2025-01-10"}
+    assert _coerce_llm_fact(item, text)["fact_type"] == "refund_initiated_date"
+
+
+def test_draft_output_cap_leaves_room_for_long_answers():
+    from ai_lawyer.config.settings import Settings
+
+    assert Settings().llm_max_tokens >= 3000

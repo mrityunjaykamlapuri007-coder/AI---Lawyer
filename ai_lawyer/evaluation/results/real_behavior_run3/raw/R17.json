@@ -1,0 +1,74 @@
+{
+  "label": "REAL CORPUS, VERIFIED SUBSET (30 usable)",
+  "test_id": "R17",
+  "category": "wrong_brand_no_response",
+  "notes": null,
+  "now": "2026-11-08",
+  "turns": [
+    {
+      "message": "I ordered WeCool earbuds from VLE Bazaar, an online marketplace, on April 14, 2025 and paid ₹359. When the package was delivered on April 30, 2025 it contained boAt earbuds instead. I contacted the platform immediately and they asked me to email photographs of the wrong product. I sent them and followed up repeatedly, but got no response, and the wrong product was never taken back."
+    }
+  ],
+  "expected": {
+    "outcome": "needs_more_information",
+    "rule": "R2",
+    "rationale": "The refund status is not stated."
+  },
+  "corpus": {
+    "mode": "real",
+    "version": "0381858588e1a7be",
+    "usable_count": 30,
+    "usable_ids": [
+      "ECR_2020_P001",
+      "ECR_2020_P002",
+      "ECR_2020_P004_SR02",
+      "ECR_2020_P004_SR03",
+      "ECR_2020_P004_SR04",
+      "ECR_2020_P004_SR05",
+      "ECR_2020_P004_SR06",
+      "ECR_2020_P004_SR07",
+      "ECR_2020_P004_SR08",
+      "ECR_2020_P004_SR09",
+      "ECR_2020_P004_SR10",
+      "ECR_2020_P004_SR11",
+      "ECR_2020_P005_SR01",
+      "ECR_2020_P005_SR02",
+      "ECR_2020_P005_SR03",
+      "ECR_2020_P005_SR04",
+      "ECR_2020_P005_SR05",
+      "ECR_2020_P006_SR01",
+      "ECR_2020_P006_SR02",
+      "ECR_2020_P006_SR03",
+      "ECR_2020_P006_SR04",
+      "ECR_2020_P006_SR05",
+      "ECR_2020_P007_SR01",
+      "ECR_2020_P007_SR02",
+      "ECR_2020_P007_SR03",
+      "ECR_2020_P007_SR04",
+      "ECR_2020_P007_SR05",
+      "ECR_2020_P008",
+      "ECR_2021_AMENDMENT_P001",
+      "ECR_2021_AMENDMENT_P002"
+    ]
+  },
+  "responses": [
+    {
+      "assistant_message": "",
+      "assessment": {},
+      "pipeline_error": "EmbedderUnavailable: embedder returned HTTP 530",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Lenovo\\OneDrive\\Documents\\Default Project\\ai_lawyer\\evaluation\\run_behavior_eval.py\", line 496, in main\n    responses = _run_turns(\n                ^^^^^^^^^^^\n  File \"C:\\Users\\Lenovo\\OneDrive\\Documents\\Default Project\\ai_lawyer\\evaluation\\run_behavior_eval.py\", line 99, in _run_turns\n    response = orchestrator.handle_message(\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Lenovo\\OneDrive\\Documents\\Default Project\\ai_lawyer\\backend\\services\\orchestrator.py\", line 248, in handle_message\n    verification = run_with_verification(\n                   ^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Lenovo\\OneDrive\\Documents\\Default Project\\ai_lawyer\\legal_engine\\retry_policy.py\", line 99, in run_with_verification\n    result = retriever.search(\n             ^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Lenovo\\OneDrive\\Documents\\Default Project\\ai_lawyer\\legal_rag\\retriever.py\", line 74, in search\n    ranked_lists[f\"dense_{i}\"] = self._dense(query, self.settings.dense_top_k)\n                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Lenovo\\OneDrive\\Documents\\Default Project\\ai_lawyer\\legal_rag\\retriever.py\", line 44, in _dense\n    return [cid for cid, _ in self.index.dense_search(query, top_k=top_k)]\n                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Lenovo\\OneDrive\\Documents\\Default Project\\ai_lawyer\\legal_rag\\index_manager.py\", line 62, in dense_search\n    vec = np.asarray(self.embedder.embed_query(query), dtype=\"float32\")\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Lenovo\\OneDrive\\Documents\\Default Project\\ai_lawyer\\legal_rag\\remote_embedder.py\", line 88, in embed_query\n    return self._embed([text], \"query\")\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nai_lawyer.legal_rag.remote_embedder.EmbedderUnavailable: embedder returned HTTP 530\n"
+    }
+  ],
+  "case_status_final": null,
+  "event_types": [],
+  "checks_failed": [
+    "pipeline crashed: EmbedderUnavailable: embedder returned HTTP 530",
+    "outcome None != 'needs_more_information'"
+  ],
+  "observed": {
+    "outcome": null
+  },
+  "data_origin": "public_commission_order",
+  "split": "development",
+  "result": "FAIL"
+}

@@ -1,0 +1,22 @@
+# run 3: after fixing the run-2 extraction defects (commit 3e99a11; designed from development cases R02/R03/R09 and generic phrasing); same model, corpus and stories
+summary: C:\Users\Lenovo\OneDrive\Documents\Default Project\ai_lawyer\evaluation\results\real_behavior\summary.md
+R01: PASS (formal_grievance_recommended)
+R02: FAIL () — pipeline crashed: UserSafeError: The drafting step returned an invalid response. No legal conclusion was produced.; outcome None != 'needs_more_information'
+R03: FAIL () — pipeline crashed: UserSafeError: The drafting step returned an invalid response. No legal conclusion was produced.; outcome None != 'formal_grievance_recommended'
+R04: PASS (needs_more_information)
+R05: FAIL (needs_more_information) — outcome 'needs_more_information' != 'informal_resolution_recommended'
+R06: PASS (needs_more_information)
+R07: FAIL (needs_more_information) — outcome 'needs_more_information' != 'formal_grievance_recommended'
+R08: PASS (needs_more_information)
+R09: PASS (needs_more_information)
+R10: RECORDED (needs_more_information)
+R11: FAIL (needs_more_information) — outcome 'needs_more_information' != 'formal_grievance_recommended'
+R12: FAIL (needs_more_information) — outcome 'needs_more_information' != 'formal_grievance_recommended'
+R13: RECORDED (needs_more_information)
+R14: PASS (formal_grievance_recommended)
+R15: FAIL () — pipeline crashed: LLMUnavailable: The model endpoint returned HTTP 530 after 3 attempt(s).; outcome None != 'needs_more_information'
+R16: FAIL () — pipeline crashed: EmbedderUnavailable: embedder returned HTTP 530; outcome None != 'formal_grievance_recommended'
+R17: FAIL () — pipeline crashed: EmbedderUnavailable: embedder returned HTTP 530; outcome None != 'needs_more_information'
+REAL: 6/17 checks PASS (17 core cases)
+summary: C:\Users\Lenovo\OneDrive\Documents\Default Project\ai_lawyer\evaluation\results\real_behavior\behavior_summary.csv
+exit=1

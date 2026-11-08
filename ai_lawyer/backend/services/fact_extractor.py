@@ -177,7 +177,7 @@ _EVENT_KEYWORDS: list[tuple[str, tuple[str, ...]]] = [
     ("grievance_contact_date", ("grievance",)),
     ("support_contact_date", ("emailed", "wrote", "contacted", "called", "customer care", "support")),
     ("return_approved_date", ("approved",)),
-    ("pickup_date", ("pickup", "picked up", "pick up")),
+    ("pickup_date", ("pickup", "picked up", "pick up", "collected")),
     ("cancellation_date", ("cancelled", "canceled", "cancellation")),
     ("return_requested_date", ("returned", "return")),
     ("refund_initiated_date", ("initiated", "processed", "refund sent", "refund of", "refunded")),
@@ -192,13 +192,34 @@ def _sentence_before(text: str, start: int, max_chars: int = 240) -> str:
 
 
 
-def date_role(text: str, start: int, prev_end: int | None = None) -> tuple[str | None, bool]:
-    """Role of the date at ``start``: the event words between it and the previous
-    date in the same sentence decide; the whole sentence is the fallback.
+def _clause_after(text: str, end: int, max_chars: int = 120) -> str:
+    """Words after a date, up to the end of its sentence or the next date."""
+    tail = text[end : end + max_chars]
+    cut = len(tail)
+    for mark in (".", "!", "?", "\n"):
+        pos = tail.find(mark)
+        if pos >= 0:
+            cut = min(cut, pos)
+    tail = tail[:cut]
+    nxt = find_dates(tail)
+    return tail[: nxt[0].start] if nxt else tail
 
-    "We cancelled ... on 29 November and returned the item ... on 8 December":
-    the second date sits after "returned", so it is a return date, not a
-    cancellation (run-2 defect, R03).
+
+_DELIVERY_WORDS = re.compile(
+    r"\b(?:arrived|delivered|delivery|reached\s+me|received\s+the\s+(?:parcel|package|order))\b", re.I
+)
+
+
+def date_role(
+    text: str, start: int, prev_end: int | None = None, end: int | None = None
+) -> tuple[str | None, bool]:
+    """Role of the date at ``start``.
+
+    Event words between the date and the previous date in the same sentence
+    decide first ("... cancelled on 29 November and returned the item on
+    8 December" -> return; run-2 defect R03); then the rest of the sentence
+    before the date; then the words right after it ("On 14 March 2024 I
+    bought ..."; run-3 regression R11).
     """
     sentence = _sentence_before(text, start)
     sentence_start = start - len(sentence)
@@ -206,7 +227,17 @@ def date_role(text: str, start: int, prev_end: int | None = None) -> tuple[str |
         role = _date_fact_type(text[prev_end:start])
         if role[0] is not None:
             return role
-    return _date_fact_type(sentence)
+    role = _date_fact_type(sentence)
+    if role[0] is not None or end is None:
+        return role
+    return _date_fact_type(_clause_after(text, end))
+
+
+def is_delivery_date(text: str, start: int, end: int) -> bool:
+    """The text marks this date as a delivery ("the parcel arrived on ...")."""
+    around = _sentence_before(text, start)[-60:] + " " + _clause_after(text, end, 60)
+    return bool(_DELIVERY_WORDS.search(around))
+
 
 def _date_fact_type(before: str) -> tuple[str | None, bool]:
     """Pick the event keyword nearest to the date, within the same sentence.
@@ -502,7 +533,7 @@ def deterministic_facts(
 
     prev_end: int | None = None
     for hit in find_dates(text, default_year=default_year):
-        fact_type, is_grievance = date_role(text, hit.start, prev_end)
+        fact_type, is_grievance = date_role(text, hit.start, prev_end, hit.end)
         prev_end = hit.end
         if not fact_type:
             continue
@@ -593,11 +624,17 @@ def _coerce_llm_fact(item: dict[str, Any], text: str, default_year: int | None =
         if not located:
             return None
         previous = [h.end for h in all_hits if h.end <= located[0].start]
-        role, _ = date_role(text, located[0].start, previous[-1] if previous else None)
-        if role is None:
-            logger.info("dropping LLM %s: no event word for it in the text", fact_type)
+        here = located[0]
+        role, _ = date_role(text, here.start, previous[-1] if previous else None, here.end)
+        if role is not None:
+            fact_type = role  # the text names the event; it wins over the LLM's label
+        elif is_delivery_date(text, here.start, here.end):
+            # "When the parcel arrived on July 4, 2022" is a delivery, not a purchase
+            # or any decision date (run-2 defect R09).
+            logger.info("dropping LLM %s: the text marks it as a delivery date", fact_type)
             return None
-        fact_type = role
+        # No event word either way ("It was collected on ..." before "collected" was
+        # known): the LLM's role is kept (run-3 regression R07).
     elif fact_type == "refund_amount":
         # Always parsed from the text into integer minor units; the LLM's own
         # value (e.g. the string "0.00") is never trusted.

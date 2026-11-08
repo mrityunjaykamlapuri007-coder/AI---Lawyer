@@ -1,0 +1,74 @@
+{
+  "label": "REAL CORPUS, VERIFIED SUBSET (30 usable)",
+  "test_id": "R03",
+  "category": "partial_delivery_cancelled_refund_not_received",
+  "notes": null,
+  "now": "2026-11-08",
+  "turns": [
+    {
+      "message": "On 23rd November 2021 we ordered 30 mosquito and bird nets from Amazon and paid Rs. 17,970 in advance with a Bajaj EMI card. Only one of the 30 items arrived. We cancelled the whole order through Amazon on 29th November 2021 and returned the one item, as Amazon instructed, on 8th December 2021. We sent notices to Amazon and to the seller, Shiv Enterprises, but no refund has come. Meanwhile three EMIs have already been deducted from my bank account."
+    }
+  ],
+  "expected": {
+    "outcome": "formal_grievance_recommended",
+    "rule": "R5",
+    "rationale": "Refund not received, exact cancellation date, notices sent to the platform and seller (contact made), grievance officer not mentioned."
+  },
+  "corpus": {
+    "mode": "real",
+    "version": "0381858588e1a7be",
+    "usable_count": 30,
+    "usable_ids": [
+      "ECR_2020_P001",
+      "ECR_2020_P002",
+      "ECR_2020_P004_SR02",
+      "ECR_2020_P004_SR03",
+      "ECR_2020_P004_SR04",
+      "ECR_2020_P004_SR05",
+      "ECR_2020_P004_SR06",
+      "ECR_2020_P004_SR07",
+      "ECR_2020_P004_SR08",
+      "ECR_2020_P004_SR09",
+      "ECR_2020_P004_SR10",
+      "ECR_2020_P004_SR11",
+      "ECR_2020_P005_SR01",
+      "ECR_2020_P005_SR02",
+      "ECR_2020_P005_SR03",
+      "ECR_2020_P005_SR04",
+      "ECR_2020_P005_SR05",
+      "ECR_2020_P006_SR01",
+      "ECR_2020_P006_SR02",
+      "ECR_2020_P006_SR03",
+      "ECR_2020_P006_SR04",
+      "ECR_2020_P006_SR05",
+      "ECR_2020_P007_SR01",
+      "ECR_2020_P007_SR02",
+      "ECR_2020_P007_SR03",
+      "ECR_2020_P007_SR04",
+      "ECR_2020_P007_SR05",
+      "ECR_2020_P008",
+      "ECR_2021_AMENDMENT_P001",
+      "ECR_2021_AMENDMENT_P002"
+    ]
+  },
+  "responses": [
+    {
+      "assistant_message": "",
+      "assessment": {},
+      "pipeline_error": "UserSafeError: The drafting step returned an invalid response. No legal conclusion was produced.",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Lenovo\\OneDrive\\Documents\\Default Project\\ai_lawyer\\backend\\services\\llm_providers.py\", line 283, in generate_structured\n    return schema.model_validate_json(_strip_fences(raw))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Lenovo\\OneDrive\\Documents\\Default Project\\.venv\\Lib\\site-packages\\pydantic\\main.py\", line 847, in model_validate_json\n    return cls.__pydantic_validator__.validate_json(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\npydantic_core._pydantic_core.ValidationError: 1 validation error for LegalDraft\n  Invalid JSON: EOF while parsing a string at line 66 column 24 [type=json_invalid, input_value='{\\n  \"issue_summary\": \"T...       \"fact_0430c213-3', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/json_invalid\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\Lenovo\\OneDrive\\Documents\\Default Project\\ai_lawyer\\legal_engine\\reasoning.py\", line 97, in generate_draft\n    return llm.generate_structured(prompt, LegalDraft, options)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Lenovo\\OneDrive\\Documents\\Default Project\\ai_lawyer\\backend\\services\\llm_providers.py\", line 294, in generate_structured\n    raise ModelOutputInvalid(\"model response did not match schema\") from exc\nai_lawyer.contracts.errors.ModelOutputInvalid: The language model returned an unusable response. Please try again.\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\Lenovo\\OneDrive\\Documents\\Default Project\\ai_lawyer\\evaluation\\run_behavior_eval.py\", line 496, in main\n    responses = _run_turns(\n                ^^^^^^^^^^^\n  File \"C:\\Users\\Lenovo\\OneDrive\\Documents\\Default Project\\ai_lawyer\\evaluation\\run_behavior_eval.py\", line 99, in _run_turns\n    response = orchestrator.handle_message(\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Lenovo\\OneDrive\\Documents\\Default Project\\ai_lawyer\\backend\\services\\orchestrator.py\", line 275, in handle_message\n    draft = generate_draft(\n            ^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Lenovo\\OneDrive\\Documents\\Default Project\\ai_lawyer\\legal_engine\\reasoning.py\", line 99, in generate_draft\n    raise UserSafeError(\nai_lawyer.contracts.errors.UserSafeError: The drafting step returned an invalid response. No legal conclusion was produced.\n"
+    }
+  ],
+  "case_status_final": null,
+  "event_types": [],
+  "checks_failed": [
+    "pipeline crashed: UserSafeError: The drafting step returned an invalid response. No legal conclusion was produced.",
+    "outcome None != 'formal_grievance_recommended'"
+  ],
+  "observed": {
+    "outcome": null
+  },
+  "data_origin": "public_commission_order",
+  "split": "development",
+  "result": "FAIL"
+}

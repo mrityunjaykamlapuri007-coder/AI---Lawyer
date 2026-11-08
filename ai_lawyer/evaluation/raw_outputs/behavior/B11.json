@@ -46,9 +46,9 @@
   },
   "responses": [
     {
-      "conversation_id": "conv_829ce96d-ad8c-4a71-8798-c161c369af91",
-      "message_id": "msg_1c89bb86-1adb-4231-8206-6a61bac3d89b",
-      "assistant_message_id": "msg_3a0927a6-7056-4531-8f44-5ca03aaad174",
+      "conversation_id": "conv_5710b055-5f12-4c3d-b2de-ce8e118f5ea2",
+      "message_id": "msg_d636e8c6-e060-49fd-a22b-8bb915090c85",
+      "assistant_message_id": "msg_ff3a2cb0-0e09-446e-8c93-335dffdf6eb4",
       "case_id": null,
       "processing_status": "out_of_scope",
       "assistant_message": "## Scope\n\nThis assistant only handles unresolved e-commerce refund disputes in India: cancelled or returned orders, delayed, denied, partial or incorrect refunds. It does not cover tenancy or security-deposit matters, and I cannot prepare documents or represent you.\n\nPlease speak to a qualified lawyer or the appropriate authority for this issue.",
