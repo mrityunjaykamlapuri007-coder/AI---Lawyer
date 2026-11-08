@@ -19,19 +19,19 @@ Runs two services and exposes each through its own cloudflared quick tunnel:
 
 | service | port | what |
 |---|---|---|
-| vLLM (OpenAI-compatible) | 8000 | Llama 3.1 8B Instruct, JSON-schema output |
+| vLLM (OpenAI-compatible) | 8000 | Qwen2.5-7B-Instruct (Apache-2.0, ungated), JSON-schema output |
 | embedder (`embed_server.py`) | 8001 | BGE sentence embeddings, L2-normalised |
 
 **Before running**
 
 1. Settings: **Accelerator = GPU T4 x2** (preferred) or T4 x1; **Internet = On**
    (needs a phone-verified Kaggle account).
-2. Accept Meta's Llama 3.1 license (Hugging Face route: new read-only token as
-   Kaggle Secret `HF_TOKEN`; or attach the model from Kaggle Models and set
-   `MODEL_SOURCE = "kaggle_model"`).
-3. Kaggle Secrets: `API_KEY` (random string; the app uses the same value for the
-   LLM and the embedder) and `HF_TOKEN` (Hugging Face route only).
-4. Never paste a token into a cell.  Secrets are read, never printed.
+2. Kaggle Secret `API_KEY`: any random string; the app uses the same value for
+   the LLM and the embedder.  No Hugging Face token is needed (the model is ungated).
+3. Never paste a key into a cell.  Secrets are read, never printed.
+
+To use a gated model instead (e.g. `meta-llama/Llama-3.1-8B-Instruct`), change the
+two model ids in Cell 1, accept its license, and add the Secret `HF_TOKEN`.
 
 Run all cells top to bottom.  Copy the printed `.env` lines to the app machine.
 Leave the last cell running during evaluation and the demo; the URLs die with
@@ -41,8 +41,9 @@ the session.  Status until run on Kaggle: IMPLEMENTED_NOT_TESTED.
 CELLS = [
     """# Cell 1 - settings
 MODEL_SOURCE = "huggingface"          # "huggingface" or "kaggle_model"
-HF_MODEL_ID = "meta-llama/Meta-Llama-3.1-8B-Instruct"
-AWQ_MODEL_ID = "casperhansen/llama-3.1-8b-instruct-awq"
+# Both ids were checked on Hugging Face on 2026-11-08 (exist, Apache-2.0, not gated).
+HF_MODEL_ID = "Qwen/Qwen2.5-7B-Instruct"          # fp16 on two T4s
+AWQ_MODEL_ID = "Qwen/Qwen2.5-7B-Instruct-AWQ"     # 4-bit, fits one T4
 KAGGLE_MODEL_PATH = ""                # set when MODEL_SOURCE == "kaggle_model"
 SERVED_NAME = "refund-llm"
 MAX_MODEL_LEN = 8192
@@ -87,7 +88,7 @@ def optional_secret(name):
 API_KEY = optional_secret("API_KEY")
 if not API_KEY:
     raise SystemExit("Missing Kaggle Secret API_KEY. Add it in Add-ons > Secrets.")
-HF_TOKEN = optional_secret("HF_TOKEN") if MODEL_SOURCE == "huggingface" else None
+HF_TOKEN = optional_secret("HF_TOKEN") if MODEL_SOURCE == "huggingface" else None  # only for gated models
 print("API_KEY loaded:", bool(API_KEY), "| HF_TOKEN loaded:", bool(HF_TOKEN))
 """,
     """# Cell 4 - GPUs and LLM plan
@@ -173,7 +174,7 @@ def wait_for(name, url, proc, log, minutes=10):
     return False
 
 if not wait_for("vLLM", f"http://127.0.0.1:{LLM_PORT}/v1/models", llm_server, LLM_LOG):
-    raise SystemExit("vLLM did not start. 401/403 in the log: license not accepted or HF_TOKEN wrong.")
+    raise SystemExit("vLLM did not start; see the log above. For a gated model, 401/403 means license not accepted or HF_TOKEN wrong.")
 if not wait_for("embedder", f"http://127.0.0.1:{EMBED_PORT}/info", embed_server, EMBED_LOG, minutes=6):
     print("Large embedder failed; trying the fallback", EMBED_FALLBACK_ID, "(this is logged).")
     EMBED_IN_USE = EMBED_FALLBACK_ID

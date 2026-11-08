@@ -9,7 +9,7 @@ notebook matches the tested file. Status: `IMPLEMENTED_NOT_TESTED` until run on
 Kaggle. After setting `.env`, check with `python -m ai_lawyer.tools.check_remote`.
 
 `serve_llm.ipynb` (LLM only) starts an OpenAI-compatible vLLM server for
-**Llama 3.1 8B Instruct** on a Kaggle GPU and exposes it through a cloudflared
+**Qwen2.5-7B-Instruct** (ungated; Llama 3.1 8B can be set instead) on a Kaggle GPU and exposes it through a cloudflared
 quick tunnel. The app talks to it through the existing `openai_compatible`
 provider; there is no new adapter.
 
