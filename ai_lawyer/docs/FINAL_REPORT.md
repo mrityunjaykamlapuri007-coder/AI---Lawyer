@@ -356,7 +356,7 @@ failure text is preserved in `failure_analysis.md`.
 
 ```text
 .venv\Scripts\python.exe -m pytest -q
-134 passed, 1 warning in 6.63s
+134 passed, 1 warning
 ```
 
 - Python: 3.12.14 on Windows.

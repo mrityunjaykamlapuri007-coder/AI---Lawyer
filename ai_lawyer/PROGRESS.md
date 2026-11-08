@@ -95,7 +95,7 @@ Observed results:
 
 ```text
 .venv\Scripts\python.exe -m pytest -q
-134 passed, 1 warning in 6.63s
+134 passed, 1 warning
 ```
 
 If the count differs, rerun the command and trust the terminal output over this
