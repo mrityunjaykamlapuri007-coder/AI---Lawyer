@@ -12,6 +12,7 @@ from time import perf_counter
 
 from ai_lawyer.config.settings import Settings, get_settings
 from ai_lawyer.contracts.models import Candidate, RetrievalRun
+from ai_lawyer.legal_rag.boosting import apply_boosts
 from ai_lawyer.legal_rag.corpus_loader import Corpus
 from ai_lawyer.legal_rag.index_manager import IndexBundle
 from ai_lawyer.legal_rag.query_planner import QueryPlan
@@ -74,6 +75,15 @@ class Retriever:
             ranked_lists[f"sparse_{i}"] = self._sparse(query, self.settings.sparse_top_k)
 
         fused = fuse(ranked_lists, k=self.settings.rrf_k)
+
+        if self.settings.boost_enabled:
+            fused = apply_boosts(
+                fused,
+                query=plan.original_query or plan.self_contained_query,
+                chunk_lookup=self.index.chunk,
+                corpus=self.corpus,
+                settings=self.settings,
+            )
 
         # Provision-level consolidation: keep the best fused chunk per provision.
         by_provision: dict[str, tuple[Any, dict]] = {}

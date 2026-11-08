@@ -11,6 +11,7 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
+import os
 import tempfile
 from datetime import date, datetime, timezone
 from importlib import metadata
@@ -65,6 +66,10 @@ def _settings(tmp: Path) -> Settings:
         embedding_backend="hash",
         llm_provider="fake",
         reranker_enabled=False,
+        # Opt-in parity stages, measured separately so the default run stays
+        # reproducible:  RAG_BOOST=1 / RAG_COMPRESSION=1
+        boost_enabled=os.getenv("RAG_BOOST", "0") == "1",
+        compression_enabled=os.getenv("RAG_COMPRESSION", "0") == "1",
     )
 
 
@@ -317,6 +322,10 @@ def main() -> None:
                 "fused_top_k_for_eval": 20,
                 "max_retrieval_retries": settings.max_retrieval_retries,
                 "relevance_min_grade": settings.relevance_min_grade,
+                "boost_enabled": settings.boost_enabled,
+                "exact_reference_boost": settings.exact_reference_boost,
+                "qualifier_tiebreak": settings.qualifier_tiebreak,
+                "compression_enabled": settings.compression_enabled,
             },
             "notes": [
                 "All metrics are for a synthetic 11-provision fixture corpus.",

@@ -272,6 +272,7 @@ class Orchestrator:
                 missing_facts=[
                     f.fact_type for f in active_facts(facts) if f.normalised_value is None
                 ],
+                settings=self.settings,
             )
             draft = self._apply_guards(draft, accepted, facts, blocked)
 

@@ -45,6 +45,14 @@ class Settings(BaseSettings):
     relevance_min_grade: int = 2
     max_chunk_chars: int = 1800
 
+    # Reference-stack parity stages.  Both are off by default so the fixture
+    # evaluation stays reproducible; enable to measure their effect.
+    boost_enabled: bool = False
+    exact_reference_boost: float = 0.5
+    qualifier_tiebreak: bool = True
+    compression_enabled: bool = False
+    compression_max_chars: int = 1200
+
     llm_provider: Literal["fake", "openai_compatible", "hf_local"] = "fake"
     llm_model_id: str = ""
     llm_model_path: str = ""
