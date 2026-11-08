@@ -51,8 +51,8 @@ that clearly called for a grievance; the rules overrode it and logged the disagr
   provision's text matches an independent OCR reading word for word, numbers exact, with amendments
   applied at sub-rule level. Machine-verified — **not lawyer-reviewed**, and said so in the UI.
 - **Citations by id, rendered from the corpus**, never from model text; unknown ids are blocked.
-- **Any section number not in the corpus blocks the answer.** Result: **0** such numbers in every
-  real-model answer (RUN3_SECTIONS_TBD).
+- **Any section number not in the corpus blocks the answer.** Result: **0** such numbers in 50
+  real-model answers.
 - **Abstention:** no applicable verified provision → it says so and asks; it never fills the gap.
 
 ## 5. How I know it's good — and where it fails
@@ -61,22 +61,25 @@ that clearly called for a grievance; the rules overrode it and logged the disagr
 (anonymised, sourced, split 7 development / 10 test before any run; expected outcome = the rules
 applied to the stated facts) + 17 synthetic edge cases reported separately.
 
-| Run (real model on Kaggle) | Test (n=10) | Notes |
-|---|---|---|
-| 1 | crashed on case 5 | found 4 defects: free-text status, negation, junk ids, amount crash |
-| 2 | **8/10** | 0 invented sections, 0 schema failures |
-| 3 | RUN3_TEST_TBD | extraction fixes designed on development cases only |
+| Run (real model on Kaggle) | Test (n=10) | Dev | Notes |
+|---|---|---|---|
+| 1 | crashed on case 5 | | 4 defects: free-text status, negation, junk ids, amount crash |
+| 2 | 8/10 | 2/5 | 0 invented sections, 0 schema failures |
+| 3 | 6/17 overall | | tunnel died; output cap; a regression from my own fix |
+| **4** | **8/10** | **4/5** | final run |
+| **Held-out** (4 unseen, pre-registered) | **3/4** | | collected after the fixes |
 
-**Where it fails (all fact extraction, none legal hallucination):** a credited refund labelled
-"processed"; two events in one sentence getting each other's date; "August 16th" silently given
-this year (now refused); contact with support worded as "sent notices" or "reported in the app"
-missed; event words like "collected"/"received it" not recognised (open). Retrieval: the top
+**Where it fails (fact extraction and scope, never invented law):** a credited refund labelled
+"processed"; two events in one sentence swapping dates; "August 16th" silently given this year
+(fixed); contact worded as "sent notices" missed (fixed); a fix of mine that read words *after* a
+date then turned a delivery date into a purchase date (R16, reported, not hidden); a story that
+mentioned a police complaint was refused as "criminal" (held-out H03: safe but unhelpful). Retrieval: the top
 results are the refund-specific rules, but machine-derived labels can only score two generic
 provisions (recall@10 0.57, test) — the metric is weak, and I say so.
 
 ## 6. Scale and cost
 
-Per case: ~5 LLM calls, ~9,400 tokens, ~2–3 minutes on two free Kaggle T4s; cost at volume =
+Per case: ~5 LLM calls, ~9,300 tokens, ~82 s on two free Kaggle T4s; cost at volume =
 tokens × the provider's price, and the model is swapped in `.env` (any OpenAI-compatible API).
 Retrieval runs locally and is cheap. Growing coverage means feeding new Gazette PDFs through the
 same verification pipeline, not longer prompts. [YOUR CALL: one line on what you would do first at
