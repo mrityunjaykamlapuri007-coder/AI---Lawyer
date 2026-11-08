@@ -40,6 +40,17 @@ def _summary_from_facts(facts: list[dict[str, Any]], identifiers: list[str]) -> 
     }
 
 
+def _different_platform(case, facts: list[dict[str, Any]]) -> bool:
+    """True when this message names a different platform (or seller) than the case."""
+    new = _summary_from_facts(facts, [])
+    old = case.summary or {}
+    for key in ("platform", "merchant"):
+        a, b = new.get(key), old.get(key)
+        if a and b:
+            return str(a).strip().lower() != str(b).strip().lower()
+    return False
+
+
 def resolve_case(
     db: Database,
     *,
@@ -65,7 +76,9 @@ def resolve_case(
     identifiers = orders + [t for t in txns if t not in orders]
     if case_id_hint:
         case = db.get_case(case_id_hint)
-        if case and case.user_id == user_id:
+        if case and case.user_id == user_id and not (
+            not identifiers and _different_platform(case, facts)
+        ):
             return CaseResolution(case_id=case.case_id, is_new=False)
 
     if identifiers:
@@ -103,8 +116,13 @@ def resolve_case(
     same_conversation = [
         c for c in db.cases_for_conversation(conversation_id) if c.status in {"open", "reopened"}
     ]
-    if len(same_conversation) == 1:
-        case = same_conversation[0]
+    if same_conversation and _different_platform(same_conversation[0], facts):
+        # A different platform in the same chat is a different order: keep the
+        # facts apart instead of mixing a Flipkart amount into an Amazon case.
+        case_id = db.create_case(user_id, _summary_from_facts(facts, []), conversation_id)
+        return CaseResolution(case_id=case_id, is_new=True)
+    if same_conversation:
+        case = same_conversation[0]  # the most recent case in this chat (newest first)
         summary = dict(case.summary)
         summary.update({k: v for k, v in _summary_from_facts(facts, []).items() if v is not None})
         summary["identifiers"] = summary.get("identifiers", [])

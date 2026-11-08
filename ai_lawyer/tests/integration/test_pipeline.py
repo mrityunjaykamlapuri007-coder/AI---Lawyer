@@ -183,3 +183,48 @@ def test_llm_provider_swap_via_config_only(tmp_path):
         get_llm(Settings(llm_provider="openai_compatible", llm_base_url="", llm_model_id=""))
     with pytest.raises(NotConfigured):
         get_llm(Settings(llm_provider="hf_local", llm_model_path="", llm_model_id=""))
+
+
+def test_greeting_gets_instant_intake_reply_without_a_case(orchestrator, conversation, settings):
+    response = _handle(orchestrator, conversation, settings, "hy I am Mrityunjay.")
+    assert response.processing_status == "needs_clarification"
+    assert response.case_id is None
+    assert response.legal_sources == []
+    assert "Hi Mrityunjay" in response.assistant_message
+    assert response.missing_information
+
+
+def test_vague_opener_is_asked_not_refused(orchestrator, conversation, settings):
+    response = _handle(orchestrator, conversation, settings, "I am having issues here in this")
+    assert response.processing_status != "out_of_scope"
+    assert response.missing_information
+
+
+def test_greeting_after_case_does_not_rerun_analysis(orchestrator, conversation, settings):
+    first = _handle(orchestrator, conversation, settings, B01)
+    greeting = _handle(orchestrator, conversation, settings, "hi there")
+    assert greeting.case_id == first.case_id
+    assert greeting.legal_sources == []
+    assert "still have your refund case" in greeting.assistant_message
+
+
+def test_answer_speaks_to_the_user_and_lists_each_fact_once(orchestrator, conversation, settings):
+    response = _handle(orchestrator, conversation, settings, B01)
+    text = response.assistant_message
+    assert "the user" not in text.lower()
+    assert "role:" not in text and "applicability:" not in text
+    noted = next(line for line in text.splitlines() if line.startswith("Platform") or "Order:" in line)
+    labels = [part.split(":")[0].strip() for part in noted.split(" · ")]
+    assert len(labels) == len(set(labels))
+
+
+def test_different_platform_in_same_chat_starts_a_new_case(orchestrator, conversation, settings):
+    first = _handle(orchestrator, conversation, settings, "I ordered from Flipkart. The refund of 500 rupees for the cancelled order has not come.")
+    second = orchestrator.handle_message(
+        conversation_id=conversation.conversation_id,
+        user_id=settings.demo_user_id,
+        message="Separately, I ordered from Amazon. The refund of 900 rupees for the returned order has not come.",
+        case_id_hint=first.case_id,
+        as_of_date=AS_OF,
+    )
+    assert first.case_id and second.case_id and second.case_id != first.case_id

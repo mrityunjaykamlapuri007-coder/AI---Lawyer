@@ -37,6 +37,31 @@ def _term_present(text: str, term: str) -> bool:
     return re.search(pattern, text) is not None
 
 
+_CHAT_WORDS = {
+    "hi", "hii", "hiii", "hy", "hey", "heyy", "hello", "helo", "namaste", "yo", "good", "morning",
+    "afternoon", "evening", "night", "thanks", "thank", "thankyou", "you", "u", "ok", "okay", "k",
+    "cool", "great", "nice", "fine", "bye", "test", "testing", "how", "are", "who", "what", "can",
+    "do", "help", "me", "there", "sir", "madam", "bro", "ji", "please", "assistant", "doing",
+}
+_INTRO = re.compile(r"\b(?:i\s+am|i'm|im|my\s+name\s+is|this\s+is)\s+[A-Za-z]+(?:\s+[A-Za-z]+)?\s*[.!]?\s*$", re.I)
+
+
+def is_small_talk(text: str) -> bool:
+    """Greetings, thanks and introductions: no refund content to analyse."""
+    stripped = (text or "").strip()
+    if not stripped or len(stripped.split()) > 8 or keyword_scope(stripped) is not None:
+        return False
+    rest = _INTRO.sub("", stripped)  # "hy I am Mrityunjay" -> "hy"
+    words = re.findall(r"[a-z']+", rest.lower())
+    return all(w in _CHAT_WORDS for w in words)
+
+
+def is_vague(text: str) -> bool:
+    """A short message with no refund or other-domain terms ("I have an issue")."""
+    stripped = (text or "").strip()
+    return len(stripped.split()) <= 15 and keyword_scope(stripped) is None
+
+
 def keyword_scope(text: str) -> ScopeDecision | None:
     lowered = (text or "").lower()
     out_domain = None

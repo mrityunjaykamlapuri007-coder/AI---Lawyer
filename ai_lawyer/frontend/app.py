@@ -233,6 +233,11 @@ def render_sources(response: dict) -> None:
 def render_answer(response: dict, *, latest: bool) -> None:
     assessment = response.get("assessment") or {}
     outcome = assessment.get("outcome") or ""
+    # Greetings, intake questions, order-split questions and refusals are plain
+    # conversational replies: show the message itself, not an assessment card.
+    if outcome == "out_of_scope" or not (response.get("legal_sources") or response.get("extracted_facts")):
+        st.markdown(response.get("assistant_message", ""))
+        return
     kind, icon, headline = OUTCOME.get(outcome, ("info", "ℹ️", "Here is what I found."))
     getattr(st, kind)(f"**{headline}**", icon=icon)
 

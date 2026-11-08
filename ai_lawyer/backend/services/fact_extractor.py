@@ -392,6 +392,7 @@ def _status_fact(text: str, source_type: str, source_id: str, evidence_id, page_
 
 def _amount_facts(text: str, source_type: str, source_id: str, evidence_id, page_number) -> list[dict[str, Any]]:
     out: list[dict[str, Any]] = []
+    paid: list[tuple[str, int]] = []
     seen: set[str] = set()
     for pattern in _AMOUNT_PATTERNS:
         for match in pattern.finditer(text):
@@ -401,10 +402,14 @@ def _amount_facts(text: str, source_type: str, source_id: str, evidence_id, page
                 continue
             seen.add(raw.lower())
             ctx = text[max(0, match.start() - 90) : match.start()].lower()
-            if not any(w in ctx for w in ("refund", "refunded", "credited", "arrived", "only", "processed")):
-                continue
             minor = parse_amount_minor(raw_number)
             if minor is None:
+                continue
+            if not any(w in ctx for w in ("refund", "refunded", "credited", "arrived", "only", "processed")):
+                # "paid ₹2,499" is the amount at stake, used only when no refund
+                # amount is stated (a partial refund must not look like a conflict).
+                if any(w in ctx[-40:] for w in ("paid", "charged", "debited", "deducted", "worth", "cost", "price")):
+                    paid.append((raw, minor))
                 continue
             out.append(
                 _make_fact(
@@ -418,6 +423,20 @@ def _amount_facts(text: str, source_type: str, source_id: str, evidence_id, page
                     page_number=page_number,
                 )
             )
+    if not out and len({m for _, m in paid}) == 1:
+        raw, minor = paid[0]
+        out.append(
+            _make_fact(
+                "refund_amount",
+                raw,
+                minor,
+                source_type,
+                source_id,
+                "document_supported" if source_type == "evidence" else "user_reported",
+                evidence_id=evidence_id,
+                page_number=page_number,
+            )
+        )
     return out
 
 

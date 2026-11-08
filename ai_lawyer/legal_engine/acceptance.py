@@ -99,7 +99,7 @@ def assign_roles(
 
     return sorted(
         candidates,
-        key=lambda c: (_ROLE_ORDER.get(c.role, 9), -c.rrf_score, c.provision_id),
+        key=lambda c: (_ROLE_ORDER.get(c.role, 9), -(c.relevance_grade or 0), -c.rrf_score, c.provision_id),
     )
 
 

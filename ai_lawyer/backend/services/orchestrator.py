@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import logging
 import re
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
 from datetime import date
 from typing import Any, Iterable
@@ -23,7 +24,12 @@ from ai_lawyer.backend.services.evidence_store import EvidenceStore
 from ai_lawyer.backend.services.fact_extractor import explicit_year, extract_fact_dicts, mark_conflicts
 from ai_lawyer.backend.services.llm_providers import get_llm
 from ai_lawyer.backend.services.response_generator import generate_response
-from ai_lawyer.backend.services.scope_classifier import classify_scope, keyword_scope
+from ai_lawyer.backend.services.scope_classifier import (
+    classify_scope,
+    is_small_talk,
+    is_vague,
+    keyword_scope,
+)
 from ai_lawyer.config.settings import Settings, get_settings
 from ai_lawyer.contracts.errors import UserSafeError
 from ai_lawyer.contracts.ids import today_utc
@@ -124,10 +130,32 @@ class Orchestrator:
         # (message first, then their documents); never from today's date.
         reference_year = explicit_year(message)
 
+        # Step 0: greetings and vague openers get an instant intake reply; no
+        # model call, no retrieval, no repeated analysis of the open case.
+        open_cases = self.db.cases_for_conversation(conversation_id)
+        uploads = list(uploads or [])
+        if not uploads and (is_small_talk(message) or (not open_cases and is_vague(message))):
+            return self._intake_reply(conversation_id, user_message, message, open_cases)
+
         # Step 1: scope gate before any retrieval.  A follow-up with no scope
         # terms (e.g. "the 999 rupees arrived") stays in scope when the same
-        # conversation already has a refund case.
-        scope = classify_scope(message, self.llm)
+        # conversation already has a refund case.  Fact extraction from the
+        # message runs at the same time (both are independent model calls).
+        early_facts = None
+        if reference_year is not None or not uploads:
+            with ThreadPoolExecutor(max_workers=2) as pool:
+                facts_future = pool.submit(
+                    extract_fact_dicts,
+                    message,
+                    source_type="user_message",
+                    source_id="user",
+                    llm=self.llm,
+                    default_year=reference_year,
+                )
+                scope = classify_scope(message, self.llm)
+                early_facts = facts_future.result()
+        else:
+            scope = classify_scope(message, self.llm)
         if not scope.in_scope:
             deterministic = keyword_scope(message)
             has_case = bool(self.db.cases_for_conversation(conversation_id))
@@ -169,23 +197,26 @@ class Orchestrator:
         evidence_processing: list[EvidenceProcessing] = []
         evidence_notes: list[str] = []
         evidence_facts, evidence_ids = self._process_uploads(
-            uploads or [], evidence_processing, evidence_notes, reference_year
+            uploads, evidence_processing, evidence_notes, reference_year
         )
 
-        if reference_year is None:
-            years = [
-                int(str(f["normalised_value"])[:4])
-                for f in evidence_facts
-                if f["fact_type"].endswith("_date") and f.get("normalised_value")
-            ]
-            reference_year = max(years) if years else None
-        message_facts = extract_fact_dicts(
-            message,
-            source_type="user_message",
-            source_id="user",
-            llm=self.llm,
-            default_year=reference_year,
-        )
+        if early_facts is not None:
+            message_facts = early_facts
+        else:
+            if reference_year is None:
+                years = [
+                    int(str(f["normalised_value"])[:4])
+                    for f in evidence_facts
+                    if f["fact_type"].endswith("_date") and f.get("normalised_value")
+                ]
+                reference_year = max(years) if years else None
+            message_facts = extract_fact_dicts(
+                message,
+                source_type="user_message",
+                source_id="user",
+                llm=self.llm,
+                default_year=reference_year,
+            )
         all_fact_dicts = mark_conflicts(message_facts + evidence_facts)
 
         resolution = case_manager.resolve_case(
@@ -495,6 +526,64 @@ class Orchestrator:
                 )
             )
         return out
+
+    def _intake_reply(self, conversation_id, user_message, message, open_cases) -> MessageResponse:
+        name_match = re.search(r"\b(?:i\s+am|i'm|im|my\s+name\s+is|this\s+is)\s+([A-Za-z]{2,20})\b", message, re.I)
+        name = f" {name_match.group(1).capitalize()}" if name_match else ""
+        if re.search(r"\bthank", message, re.I):
+            opener = "You're welcome!"
+        else:
+            opener = f"Hi{name}!"
+        case = open_cases[-1] if open_cases else None
+        if case is not None:
+            summary = case.summary or {}
+            bits = []
+            if summary.get("platform") or summary.get("merchant"):
+                bits.append(str(summary.get("platform") or summary.get("merchant")))
+            if isinstance(summary.get("amount_minor"), int):
+                bits.append(f"₹{summary['amount_minor'] / 100:,.0f}")
+            about = f" ({', '.join(bits)})" if bits else ""
+            questions = [
+                "Has anything changed since your last message: a reply from support, a new date, "
+                "or has the money reached your account?"
+            ]
+            text = (
+                f"{opener} I still have your refund case{about} open.\n\n"
+                "Tell me what is new, for example a reply from customer support, a new date, or whether "
+                "the money has reached your account. You can also attach a screenshot."
+            )
+        else:
+            questions = [
+                "Which app or website was the order on, and what happened (cancelled, returned, not delivered)?",
+                "When did it happen, how much did you pay and how?",
+                "Have you contacted their customer support yet?",
+            ]
+            text = (
+                f"{opener} I help with online shopping refunds in India that have not come through: "
+                "cancelled or returned orders, and refunds that are delayed, refused or only partly paid.\n\n"
+                "Tell me in a few lines:\n"
+                "- which app or website (for example Flipkart, Amazon, Myntra)\n"
+                "- what happened and when (cancelled, returned, picked up)\n"
+                "- the amount and how you paid\n"
+                "- whether you have contacted their customer support yet\n\n"
+                "You can also attach a screenshot of the order or refund message."
+            )
+        assessment = Assessment(
+            outcome=Outcome.needs_more_information,
+            reasons=[],
+            missing_information=questions,
+        )
+        assistant = self._save_assistant(conversation_id, text, {"status": "intake"})
+        return MessageResponse(
+            conversation_id=conversation_id,
+            message_id=user_message.message_id,
+            assistant_message_id=assistant.message_id,
+            case_id=case.case_id if case else None,
+            processing_status="needs_clarification",
+            assistant_message=text,
+            assessment=assessment,
+            missing_information=questions,
+        )
 
     def _save_assistant(self, conversation_id: str, text: str, payload: dict[str, Any]):
         return self.db.add_message(conversation_id, "assistant", text, payload)

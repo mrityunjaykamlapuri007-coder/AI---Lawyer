@@ -20,7 +20,22 @@ Write conditional language: "may apply if...". Never say a seller broke the law,
 is illegal, is guilty, or that the user will win. Never guarantee an outcome.
 Return JSON matching the LegalDraft schema. Cite provisions by provision_id only.
 If a fact is missing, put it in missing_facts instead of guessing.
-Each provision carries ``text``: a verbatim excerpt of the provision. Quote it verbatim, never paraphrase it."""
+Each provision carries ``text``: a verbatim excerpt of the provision. Quote it verbatim, never paraphrase it.
+
+STYLE RULES (strict; the answer is shown to an ordinary consumer):
+- Speak to the consumer as "you". Never write "the user", "the consumer" or "the customer".
+- Plain, warm, simple English. Short sentences. No legal jargon, no field names, no underscores.
+- issue_summary: ONE or TWO sentences, max 40 words, retelling the consumer's situation with the
+  platform, amount and dates they gave. Example: "You cancelled your Flipkart order on 5 November 2026
+  and paid Rs 2,499 by UPI, but the refund has not reached you yet."
+- application_analysis: at most 3 items, only for the provisions that matter most. Each
+  conditional_statement is ONE sentence, max 30 words, saying what the provision means for this
+  consumer, e.g. "If Flipkart accepted your cancellation, this rule says the refund should be paid
+  within a reasonable period of time." Do not mention provision ids or numbers in the sentence.
+- missing_facts: at most 2 short questions to the consumer, only for facts that change the next step.
+- proposed_next_step: ONE sentence.
+- Leave user_reported_facts, document_supported_facts, assumptions and possible_options as empty
+  lists, and uncertainties at most 1 short item. Python fills the facts itself."""
 
 
 def build_prompt(
