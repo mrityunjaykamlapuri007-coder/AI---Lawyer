@@ -20,7 +20,7 @@ from ai_lawyer.backend.services.context_assembler import (
     facts_for_prompt,
 )
 from ai_lawyer.backend.services.evidence_store import EvidenceStore
-from ai_lawyer.backend.services.fact_extractor import extract_fact_dicts, mark_conflicts
+from ai_lawyer.backend.services.fact_extractor import explicit_year, extract_fact_dicts, mark_conflicts
 from ai_lawyer.backend.services.llm_providers import get_llm
 from ai_lawyer.backend.services.response_generator import generate_response
 from ai_lawyer.backend.services.scope_classifier import classify_scope, keyword_scope
@@ -120,7 +120,9 @@ class Orchestrator:
 
         self.db.ensure_user(user_id)
         user_message = self.db.add_message(conversation_id, "user", message)
-        reference_year = (as_of_date or today_utc()).year
+        # Yearless dates borrow a year only from an explicit date the user stated
+        # (message first, then their documents); never from today's date.
+        reference_year = explicit_year(message)
 
         # Step 1: scope gate before any retrieval.  A follow-up with no scope
         # terms (e.g. "the 999 rupees arrived") stays in scope when the same
@@ -170,6 +172,13 @@ class Orchestrator:
             uploads or [], evidence_processing, evidence_notes, reference_year
         )
 
+        if reference_year is None:
+            years = [
+                int(str(f["normalised_value"])[:4])
+                for f in evidence_facts
+                if f["fact_type"].endswith("_date") and f.get("normalised_value")
+            ]
+            reference_year = max(years) if years else None
         message_facts = extract_fact_dicts(
             message,
             source_type="user_message",

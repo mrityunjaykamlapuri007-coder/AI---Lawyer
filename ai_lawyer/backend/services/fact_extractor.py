@@ -61,11 +61,12 @@ _STATUS_PATTERNS: list[tuple[str, re.Pattern[str]]] = [
             r"\bnot\s+come\b|\bnot\s+arrived\b|\bno\s+refund\s+credit\b|"
             # Negated credit ("nothing has been credited") must not read as "received".
             r"\bnothing\s+(?:has\s+been\s+|was\s+)?credited\b|\bnot\s+(?:been\s+|yet\s+)?credited\b|"
-            r"\bhas(?:\s+not|n't)\s+been\s+credited\b|\bno\s+refund\s+(?:has\s+been\s+)?credited\b",
+            r"\bhas(?:\s+not|n't)\s+been\s+credited\b|\bno\s+refund\s+(?:has\s+been\s+)?credited\b|"
+            r"\b(?:has\s+not|hasn't|not|never)\s+(?:yet\s+)?reached\b",
             re.I,
         ),
     ),
-    ("received", re.compile(r"\b(?:money|refund|amount|rupees|rs\.?|inr)\b[^.]{0,40}\b(?:arrived|credited|received)\b|\barrived in my account\b|\bcredit of\b[^.]{0,30}\breceived\b", re.I)),
+    ("received", re.compile(r"\b(?:money|refund|amount|rupees|rs\.?|inr)\b[^.]{0,40}\b(?:arrived|credited|received)\b|\barrived in my account\b|\breached\s+my\s+(?:bank\s+)?account\b|\bcredit of\b[^.]{0,30}\breceived\b", re.I)),
     ("pending", re.compile(r"\bpending\b|\bprocessing\b|\bstuck\b", re.I)),
 ]
 
@@ -114,11 +115,28 @@ def parse_amount_minor(raw: str) -> int | None:
         return None
 
 
+class _NoYear(ValueError):
+    pass
+
+
+def _explicit_year(year_hint: int | None) -> int:
+    if year_hint is None:
+        raise _NoYear
+    return year_hint
+
+
 def find_dates(text: str, default_year: int | None = None) -> list[DateHit]:
+    """Dates in ``text``.
+
+    A yearless date takes the year of an explicit full date in the same text,
+    else ``default_year``.  Callers pass ``default_year`` only when it comes from
+    an explicit date the user stated (see ``explicit_year``), never from today.
+    """
     hits: list[DateHit] = []
     used: list[tuple[int, int]] = []
     year_hint: int | None = None
-    fallback_year = default_year or date.today().year
+    # A yearless date ("August 16th") is normalised only when the same text states a
+    # year explicitly.  The current year is never assumed (run-2 defect, R04).
     for pattern, kind in _DATE_PATTERNS:
         for match in pattern.finditer(text):
             if any(a < match.end() and match.start() < b for a, b in used):
@@ -131,9 +149,9 @@ def find_dates(text: str, default_year: int | None = None) -> list[DateHit]:
                 elif kind == "month_d_y":
                     d, m, y = int(match.group(2)), MONTHS[match.group(1).lower()], int(match.group(3))
                 elif kind == "d_month":
-                    d, m, y = int(match.group(1)), MONTHS[match.group(2).lower()], year_hint or fallback_year
+                    d, m, y = int(match.group(1)), MONTHS[match.group(2).lower()], _explicit_year(year_hint or default_year)
                 elif kind == "month_d":
-                    d, m, y = int(match.group(2)), MONTHS[match.group(1).lower()], year_hint or fallback_year
+                    d, m, y = int(match.group(2)), MONTHS[match.group(1).lower()], _explicit_year(year_hint or default_year)
                 else:
                     y, m, d = int(match.group(1)), int(match.group(2)), int(match.group(3))
                 value = date(y, m, d)
@@ -146,6 +164,15 @@ def find_dates(text: str, default_year: int | None = None) -> list[DateHit]:
     return sorted(hits, key=lambda h: h.start)
 
 
+
+def explicit_year(*texts: str) -> int | None:
+    """Year of the last full date (with a year) stated in the given texts, else None."""
+    year: int | None = None
+    for text in texts:
+        for hit in find_dates(text or ""):
+            year = hit.value.year
+    return year
+
 _EVENT_KEYWORDS: list[tuple[str, tuple[str, ...]]] = [
     ("grievance_contact_date", ("grievance",)),
     ("support_contact_date", ("emailed", "wrote", "contacted", "called", "customer care", "support")),
@@ -155,7 +182,7 @@ _EVENT_KEYWORDS: list[tuple[str, tuple[str, ...]]] = [
     ("return_requested_date", ("returned", "return")),
     ("refund_initiated_date", ("initiated", "processed", "refund sent", "refund of", "refunded")),
 ]
-_PURCHASE_KEYWORDS = ("bought", "purchased", "ordered")
+_PURCHASE_KEYWORDS = ("bought", "purchased", "ordered", "placed")
 
 
 def _sentence_before(text: str, start: int, max_chars: int = 240) -> str:
@@ -163,6 +190,23 @@ def _sentence_before(text: str, start: int, max_chars: int = 240) -> str:
     boundary = max(prefix.rfind("."), prefix.rfind("!"), prefix.rfind("?"), prefix.rfind("\n"))
     return prefix[boundary + 1 :]
 
+
+
+def date_role(text: str, start: int, prev_end: int | None = None) -> tuple[str | None, bool]:
+    """Role of the date at ``start``: the event words between it and the previous
+    date in the same sentence decide; the whole sentence is the fallback.
+
+    "We cancelled ... on 29 November and returned the item ... on 8 December":
+    the second date sits after "returned", so it is a return date, not a
+    cancellation (run-2 defect, R03).
+    """
+    sentence = _sentence_before(text, start)
+    sentence_start = start - len(sentence)
+    if prev_end is not None and prev_end > sentence_start:
+        role = _date_fact_type(text[prev_end:start])
+        if role[0] is not None:
+            return role
+    return _date_fact_type(sentence)
 
 def _date_fact_type(before: str) -> tuple[str | None, bool]:
     """Pick the event keyword nearest to the date, within the same sentence.
@@ -229,10 +273,17 @@ def _contact_flags(text: str) -> dict[str, dict[str, Any]]:
         r"\bhave not contacted\b|\bnot contacted anyone\b",
         lowered,
     )
+    # Run-2 defects (R03, R04, R09): notices, repeated calls, in-app reports and
+    # chats are contact with the platform too, not only "I emailed/called".
     positive = re.search(
-        r"\b(?:i|we)\s+(?:have\s+)?(?:emailed|wrote|called|contacted|reached)\b|"
+        r"\b(?:i|we)\s+(?:have\s+)?(?:already\s+)?(?:kept\s+)?"
+        r"(?:emailed|wrote|called|calling|contacted|reached|complained|reported|informed|told|sent)\b|"
         r"\b(?:emailed|wrote\s+to)\s+(?:their|the|my)?\s*(?:support|customer care|grievance)\b|"
-        r"\bcalled\s+[A-Za-z0-9&.]+\s+customer\s+care\b",
+        r"\b(?:called|contacted|emailed)\s+[A-Za-z0-9&.]+\s+customer\s+(?:care|service|support)\b|"
+        r"\bsent\s+(?:a\s+)?(?:legal\s+)?notices?\s+to\b|"
+        r"\breported\s+(?:it|this|the\s+issue)\b[^.]{0,40}\b(?:app|support|customer care|platform)\b|"
+        r"\btried\b[^.]{0,40}\b(?:chats?|calls?|emails?)\b|"
+        r"\b(?:raised|filed|lodged)\s+(?:a\s+)?(?:complaint|grievance|ticket)\s+with\b",
         lowered,
     )
     if negative and not positive:
@@ -449,8 +500,10 @@ def deterministic_facts(
             )
         )
 
+    prev_end: int | None = None
     for hit in find_dates(text, default_year=default_year):
-        fact_type, is_grievance = _date_fact_type(_sentence_before(text, hit.start))
+        fact_type, is_grievance = date_role(text, hit.start, prev_end)
+        prev_end = hit.end
         if not fact_type:
             continue
         facts.append(
@@ -478,15 +531,19 @@ _PAYMENT_PATTERN = re.compile(
 def normalise_refund_status(raw: str, proposed: Any) -> str | None:
     """Map a refund status onto the fixed vocabulary the rules engine uses.
 
-    The LLM's proposed value is kept only if it is already a vocabulary value;
-    otherwise the same deterministic patterns are applied to the raw text.
-    Free text the patterns cannot place returns None and the fact is dropped.
+    Deterministic patterns on the raw span win; otherwise the LLM's value is
+    kept only if it is already a vocabulary value.  Anything else returns None
+    and the fact is dropped.
     """
-    if isinstance(proposed, str) and proposed.strip().lower() in REFUND_STATUS_VALUES:
-        return proposed.strip().lower()
+    # The span the LLM chose is checked against the patterns first: "refunded
+    # ... which reached my account" is received even if the LLM says
+    # "processed" (run-2 defect, R02).  The LLM's label is used only when no
+    # pattern places the span.
     for name, pattern in _STATUS_PATTERNS:
         if pattern.search(raw):
             return name
+    if isinstance(proposed, str) and proposed.strip().lower() in REFUND_STATUS_VALUES:
+        return proposed.strip().lower()
     return None
 
 
@@ -527,6 +584,20 @@ def _coerce_llm_fact(item: dict[str, Any], text: str, default_year: int | None =
     elif fact_type.endswith("_date"):
         hit = next((h for h in find_dates(raw, default_year=default_year) if h.raw == raw), None)
         normalised = hit.value.isoformat() if hit else None
+        if normalised is None:
+            return None  # no explicit, complete date in the text
+        # The role must be stated in the text around the date.  "When the parcel
+        # arrived on July 4, 2022" is not a purchase date (run-2 defect, R09).
+        all_hits = find_dates(text, default_year=default_year)
+        located = [h for h in all_hits if h.raw == raw]
+        if not located:
+            return None
+        previous = [h.end for h in all_hits if h.end <= located[0].start]
+        role, _ = date_role(text, located[0].start, previous[-1] if previous else None)
+        if role is None:
+            logger.info("dropping LLM %s: no event word for it in the text", fact_type)
+            return None
+        fact_type = role
     elif fact_type == "refund_amount":
         # Always parsed from the text into integer minor units; the LLM's own
         # value (e.g. the string "0.00") is never trusted.
