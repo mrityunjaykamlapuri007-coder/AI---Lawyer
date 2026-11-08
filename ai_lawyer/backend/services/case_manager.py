@@ -117,23 +117,9 @@ def resolve_case(
             db.update_case(case.case_id, summary=summary)
         return CaseResolution(case_id=case.case_id, is_new=False, reopened=reopened)
 
-    open_cases = db.open_cases(user_id)
-    if len(open_cases) == 1:
-        case = open_cases[0]
-        label = case.summary.get("merchant") or ", ".join(case.summary.get("identifiers", [])) or "your open case"
-        return CaseResolution(
-            case_id=None,
-            clarification=(
-                f"Is this message about your existing case for {label}? "
-                "If not, please share the order id so I do not merge two cases."
-            ),
-        )
-    if len(open_cases) > 1:
-        return CaseResolution(
-            case_id=None,
-            clarification="You have more than one open case. Please share the order id for this message.",
-        )
-
+    # A new chat without an order id starts its own case.  Cases from other chats
+    # are linked only by an explicit order or transaction id (handled above);
+    # asking "which open case?" on a first vague message confused real users.
     summary = _summary_from_facts(facts, [])
     case_id = db.create_case(user_id, summary, conversation_id)
     return CaseResolution(case_id=case_id, is_new=True)
