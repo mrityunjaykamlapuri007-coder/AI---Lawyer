@@ -1,3 +1,5 @@
+> **Superseded (2026-11-09).** This file describes the earlier fixture-only stage. Current status, results and run steps: the top-level `README.md` and `SUBMISSION_NOTES.md`. Kept for history.
+
 # Final report — AI Consumer Refund Dispute Assistant MVP
 
 **Run date:** 2026-11-08  
