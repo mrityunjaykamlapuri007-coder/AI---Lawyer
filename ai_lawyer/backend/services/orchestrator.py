@@ -366,6 +366,7 @@ class Orchestrator:
             extracted_facts=facts,
             evidence_processing=evidence_processing,
             legal_sources=sources,
+            retrieval_candidates=verification.candidates,
             retrieval_summary=RetrievalSummary(
                 corpus_version=self.corpus.corpus_version,
                 candidate_count=len(verification.candidates),

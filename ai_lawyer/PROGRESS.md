@@ -270,3 +270,33 @@ Changes:
 
 Blockers: a real smoke needs the Kaggle tunnel URL, the served model name and
 `LLM_API_KEY` in `.env`. None exist yet, so no real-model call has been made.
+
+### R6 - behaviour harness: fixture/real modes, retrieval candidates, leakage check
+
+| Field | Value |
+|---|---|
+| Status | IMPLEMENTED_AND_TESTED (fixture mode); real mode BLOCKED (no approved corpus) |
+| Test command | `pytest -q` |
+| Result | 226 passed, 1 warning in 17.84s |
+| Fixture run | `python -m ai_lawyer.evaluation.run_behavior_eval` -> `FIXTURE: 18/18 checks PASS`, exit 0 |
+| Real run | `python -m ai_lawyer.evaluation.run_behavior_eval --mode real` -> `BLOCKED: the real corpus is not loadable`, exit 2 |
+| Focused tests | `pytest ai_lawyer/tests/unit/test_behavior_eval_harness.py -q` -> 4 passed |
+
+Changes:
+- The runner takes `--mode fixture|real`. Fixture mode is unchanged (fake corpus,
+  HashEmbedder, FakeLLM, 18/18 including the derived B09 fallback).
+- Real mode loads the runtime corpus, uses the configured embedder and LLM, and
+  writes to `evaluation/results/real_behavior/` with `raw/`, `summary.md` and
+  `manifest.json`.
+- Every response now carries `retrieval_candidates`, so diagnostics keep the
+  three independent labels (`relevance_grade`, `applicability`,
+  `source_validity`) rather than only the accepted sources.
+- Real mode scans every assistant message for `Section N` / `Rule N` patterns
+  that do not occur in a usable provision, and fails the case if one is found.
+- The manifest records model, provider, embedder, vLLM version, quantization,
+  GPU type and corpus usable count; values not supplied stay empty rather than
+  guessed.
+- Real mode reports B09 as it actually behaved, without editing the case.
+
+Blockers: real mode needs an approved runtime corpus, and the manifest fields
+for vLLM/quantization/GPU need a real Kaggle session.

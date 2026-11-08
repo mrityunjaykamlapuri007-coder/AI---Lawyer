@@ -3,6 +3,7 @@
   "test_id": "B10",
   "category": "missing_key_dates",
   "notes": "Rule R2. Vague time phrases must not be turned into exact dates.",
+  "now": "2026-11-08",
   "turns": [
     {
       "message": "I returned my order a while ago and still have no refund."
@@ -23,12 +24,29 @@
       "guaranteed"
     ]
   },
+  "corpus": {
+    "mode": "fixture",
+    "version": "617774ed4e200ccb",
+    "usable_count": 10,
+    "usable_ids": [
+      "TEST_ACT_A1",
+      "TEST_ACT_A1_P1",
+      "TEST_ACT_A2",
+      "TEST_ACT_A3",
+      "TEST_ACT_A4",
+      "TEST_ACT_A5",
+      "TEST_ACT_A6",
+      "TEST_ACT_A7",
+      "TEST_FUTURE_A8",
+      "TEST_OLD_A9"
+    ]
+  },
   "responses": [
     {
-      "conversation_id": "conv_60fb42e2-58cf-43da-8ca5-cbc22efee3e5",
-      "message_id": "msg_788b4394-899c-4160-ad40-7e24d0d3b64b",
-      "assistant_message_id": "msg_2a898cd8-4694-4b0a-a550-dffe0937c1fd",
-      "case_id": "case_75e321f0-10d7-4662-be6e-38bb6ce48eba",
+      "conversation_id": "conv_6c191798-c61e-4b4b-a856-47b2a0ea3b33",
+      "message_id": "msg_5bde2ec3-b3ab-44e5-90a2-256e5ceef318",
+      "assistant_message_id": "msg_83a26f3d-66ee-4a65-ba65-a8babac566bc",
+      "case_id": "case_b10ca20a-26f0-495e-a97c-6224548a6b5d",
       "processing_status": "needs_clarification",
       "assistant_message": "## What I understood\n\nA consumer says an e-commerce refund is outstanding.\n\n## Facts\n\nFacts you reported:\n- Refund status: no refund\n\n## Legal sources that may apply\n\n- **TEST_ACT Article A1 (FIXTURE)** — role: supporting; applicability: applicable; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: Where a consumer cancels an order or returns goods, the seller must process a refund within a reasonable period after the cancellation or return.\"\n- **TEST_ACT Article A7 (FIXTURE)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: A seller must respond to a refund request within a period set by the platform.\"\n- **TEST_ACT Article A6 (FIXTURE definition)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: 'refund' means the return of money paid for goods or services.\"\n- **TEST_ACT Article A3 (FIXTURE)** — role: supporting; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: An e-commerce platform must provide a grievance officer to receive consumer complaints about refunds and returns.\"\n- **TEST_ACT Article A1 Proviso (FIXTURE)** — role: mandatory_qualifier; applicability: unknown; source validity: current_for_date. Excerpt: \"FAKE TEST TEXT: Provided that the seller may first require the consumer to return the goods.\"\n\n## How this may relate to your case\n\n- This provision may apply if the facts described are established.\n\n## Assessment\n\n**I need more information before assessing the next step.**\n\n- An essential fact is missing: an exact cancellation/return date.\n\nSuggested next steps:\n1. Answer the follow-up question so the refund timeline can be assessed.\n\nAssessment date: 2026-11-08.\n\n## Missing information\n- When did you cancel or return the order? Please give the exact date.\n- Have you contacted the seller or platform support in writing, and on what date?\n\n## Limitations\n\n- This is general information and a draft for your review, not legal advice. I cannot guarantee any outcome.\n- FIXTURE DATA, NOT REAL LAW: the citations above come from a synthetic test corpus and must not be relied on as legal authority.\n",
       "case_summary": {
@@ -41,8 +59,8 @@
       },
       "extracted_facts": [
         {
-          "fact_id": "fact_4f708505-e776-4284-a81f-799f64dfa0c5",
-          "case_id": "case_75e321f0-10d7-4662-be6e-38bb6ce48eba",
+          "fact_id": "fact_f1f72367-9372-4781-8817-83c5c991e2ca",
+          "case_id": "case_b10ca20a-26f0-495e-a97c-6224548a6b5d",
           "fact_type": "refund_status",
           "raw_value": "no refund",
           "normalised_value": "not_received",
@@ -54,7 +72,7 @@
           "inferred": false,
           "ambiguity_flag": false,
           "supersedes_fact_id": null,
-          "created_at": "2026-11-08T01:46:02.142761Z"
+          "created_at": "2026-11-08T09:46:33.138316Z"
         }
       ],
       "evidence_processing": [],
@@ -105,8 +123,230 @@
           "official_url": ""
         }
       ],
+      "retrieval_candidates": [
+        {
+          "chunk_id": "TEST_ACT_A1::c0",
+          "provision_id": "TEST_ACT_A1",
+          "source_id": "TEST_ACT",
+          "dense_rank": 1,
+          "sparse_rank": 1,
+          "rrf_score": 0.16314958911468694,
+          "rerank_score": null,
+          "relevance_grade": 2,
+          "relevance_reason": "Shares case terms ['order', 'refund', 'return']; provision says: 'FAKE TEST TEXT: Where a consumer cancels an order or returns goods, the seller must proces'.",
+          "applicability": "applicable",
+          "applicability_reasons": [
+            "refund_status is in ['not_received', 'pending', 'initiated', 'processed', 'partial', 'denied']"
+          ],
+          "source_validity": "current_for_date",
+          "role": "supporting",
+          "rejection_reason": null,
+          "added_because": null,
+          "accepted": true,
+          "conditional": false,
+          "citation": "TEST_ACT Article A1 (FIXTURE)"
+        },
+        {
+          "chunk_id": "TEST_ACT_A7::c0",
+          "provision_id": "TEST_ACT_A7",
+          "source_id": "TEST_ACT",
+          "dense_rank": 3,
+          "sparse_rank": 4,
+          "rrf_score": 0.13757918960124843,
+          "rerank_score": null,
+          "relevance_grade": 2,
+          "relevance_reason": "Shares case terms ['platform', 'refund']; provision says: 'FAKE TEST TEXT: A seller must respond to a refund request within a period set by the platf'.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "condition TEST_ACT_A7_C1 is manual and always UNKNOWN"
+          ],
+          "source_validity": "current_for_date",
+          "role": "supporting",
+          "rejection_reason": null,
+          "added_because": null,
+          "accepted": true,
+          "conditional": true,
+          "citation": "TEST_ACT Article A7 (FIXTURE)"
+        },
+        {
+          "chunk_id": "TEST_ACT_A6::c0",
+          "provision_id": "TEST_ACT_A6",
+          "source_id": "TEST_ACT",
+          "dense_rank": 2,
+          "sparse_rank": 3,
+          "rrf_score": 0.13719831831379942,
+          "rerank_score": null,
+          "relevance_grade": 2,
+          "relevance_reason": "Shares case terms ['refund', 'return']; provision says: \"FAKE TEST TEXT: 'refund' means the return of money paid for goods or services.\".",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "supporting",
+          "rejection_reason": null,
+          "added_because": null,
+          "accepted": true,
+          "conditional": true,
+          "citation": "TEST_ACT Article A6 (FIXTURE definition)"
+        },
+        {
+          "chunk_id": "TEST_ACT_A3::c0",
+          "provision_id": "TEST_ACT_A3",
+          "source_id": "TEST_ACT",
+          "dense_rank": 2,
+          "sparse_rank": 2,
+          "rrf_score": 0.1342655341706575,
+          "rerank_score": null,
+          "relevance_grade": 2,
+          "relevance_reason": "Shares case terms ['platform', 'refund', 'return']; provision says: 'FAKE TEST TEXT: An e-commerce platform must provide a grievance officer to receive consume'.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no fact of type support_contact_made"
+          ],
+          "source_validity": "current_for_date",
+          "role": "supporting",
+          "rejection_reason": null,
+          "added_because": null,
+          "accepted": true,
+          "conditional": true,
+          "citation": "TEST_ACT Article A3 (FIXTURE)"
+        },
+        {
+          "chunk_id": "TEST_ACT_A1_P1::c0",
+          "provision_id": "TEST_ACT_A1_P1",
+          "source_id": "TEST_ACT",
+          "dense_rank": 8,
+          "sparse_rank": 9,
+          "rrf_score": 0.11553403970283765,
+          "rerank_score": null,
+          "relevance_grade": 1,
+          "relevance_reason": "Shares case terms ['return']; provision says: 'FAKE TEST TEXT: Provided that the seller may first require the consumer to return the good'.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "mandatory_qualifier",
+          "rejection_reason": null,
+          "added_because": null,
+          "accepted": true,
+          "conditional": true,
+          "citation": "TEST_ACT Article A1 Proviso (FIXTURE)"
+        },
+        {
+          "chunk_id": "TEST_ACT_A2::c0",
+          "provision_id": "TEST_ACT_A2",
+          "source_id": "TEST_ACT",
+          "dense_rank": 2,
+          "sparse_rank": 1,
+          "rrf_score": 0.1509532974204098,
+          "rerank_score": null,
+          "relevance_grade": 1,
+          "relevance_reason": "Shares case terms ['return']; provision says: 'FAKE TEST TEXT: This does not apply where the consumer has not returned the goods.'.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "background",
+          "rejection_reason": "relevance grade 1 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "TEST_ACT Article A2 (FIXTURE exception)"
+        },
+        {
+          "chunk_id": "TEST_ACT_A4::c0",
+          "provision_id": "TEST_ACT_A4",
+          "source_id": "TEST_ACT",
+          "dense_rank": 4,
+          "sparse_rank": 1,
+          "rrf_score": 0.13695529681353635,
+          "rerank_score": null,
+          "relevance_grade": 1,
+          "relevance_reason": "Shares case terms ['refund']; provision says: 'FAKE TEST TEXT: A consumer may file a complaint before the Consumer Commission where a ref'.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no fact of type grievance_officer_contacted"
+          ],
+          "source_validity": "current_for_date",
+          "role": "background",
+          "rejection_reason": "relevance grade 1 below 2",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "TEST_ACT Article A4 (FIXTURE)"
+        },
+        {
+          "chunk_id": "TEST_FUTURE_A8::c0",
+          "provision_id": "TEST_FUTURE_A8",
+          "source_id": "TEST_FUTURE",
+          "dense_rank": 2,
+          "sparse_rank": 2,
+          "rrf_score": 0.1267833756745047,
+          "rerank_score": null,
+          "relevance_grade": 1,
+          "relevance_reason": "Shares case terms ['refund']; provision says: 'FAKE TEST TEXT: Future additional refund remedy for consumers.'.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "not_yet_effective",
+          "role": "rejected",
+          "rejection_reason": "source not current for date: not_yet_effective (effective from 2030-01-01, after 2026-11-08)",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "TEST_FUTURE Article A8 (FIXTURE)"
+        },
+        {
+          "chunk_id": "TEST_UNVERIFIED_A10::c0",
+          "provision_id": "TEST_UNVERIFIED_A10",
+          "source_id": "TEST_UNVERIFIED",
+          "dense_rank": 3,
+          "sparse_rank": 4,
+          "rrf_score": 0.12479707792207792,
+          "rerank_score": null,
+          "relevance_grade": 1,
+          "relevance_reason": "Shares case terms ['refund']; provision says: 'FAKE TEST TEXT: Unverified refund rule that must never be cited.'.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "current_for_date",
+          "role": "rejected",
+          "rejection_reason": "source is not human_verified; not citable",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "TEST_UNVERIFIED Article A10 (FIXTURE)"
+        },
+        {
+          "chunk_id": "TEST_OLD_A9::c0",
+          "provision_id": "TEST_OLD_A9",
+          "source_id": "TEST_OLD",
+          "dense_rank": 4,
+          "sparse_rank": 3,
+          "rrf_score": 0.12431563564959087,
+          "rerank_score": null,
+          "relevance_grade": 2,
+          "relevance_reason": "Shares case terms ['order', 'refund']; provision says: 'FAKE TEST TEXT: Old refund rule for cancelled orders.'.",
+          "applicability": "unknown",
+          "applicability_reasons": [
+            "no reviewed conditions in the corpus for this provision"
+          ],
+          "source_validity": "superseded",
+          "role": "rejected",
+          "rejection_reason": "source not current for date: superseded (effective to 2021-01-01, before 2026-11-08)",
+          "added_because": null,
+          "accepted": false,
+          "conditional": false,
+          "citation": "TEST_OLD Article A9 (FIXTURE)"
+        }
+      ],
       "retrieval_summary": {
-        "corpus_version": "d269bfc2722114f8",
+        "corpus_version": "617774ed4e200ccb",
         "candidate_count": 10,
         "accepted_count": 5,
         "rejected_count": 5,
@@ -123,7 +363,7 @@
           "An essential fact is missing: an exact cancellation/return date."
         ],
         "facts_used": [
-          "fact_4f708505-e776-4284-a81f-799f64dfa0c5"
+          "fact_f1f72367-9372-4781-8817-83c5c991e2ca"
         ],
         "provision_ids_used": [
           "TEST_ACT_A1",

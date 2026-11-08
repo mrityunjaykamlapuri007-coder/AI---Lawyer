@@ -10,6 +10,7 @@ Run with:
 """
 from __future__ import annotations
 
+import argparse
 import csv
 import json
 import re
@@ -22,10 +23,13 @@ from typing import Any
 from ai_lawyer.backend.db.migrate import migrate
 from ai_lawyer.backend.db.repo import Database
 from ai_lawyer.backend.services.evidence_store import EvidenceStore
+from ai_lawyer.backend.services.llm_providers import get_llm
 from ai_lawyer.backend.services.orchestrator import Orchestrator, Upload
 from ai_lawyer.config.settings import PROJECT_ROOT, Settings
+from ai_lawyer.contracts.errors import CorpusValidationError
 from ai_lawyer.contracts.fakes import FakeLLM, HashEmbedder
 from ai_lawyer.legal_rag.corpus_loader import load_corpus
+from ai_lawyer.legal_rag.embedders import get_embedder
 from ai_lawyer.legal_rag.index_manager import build_index
 from ai_lawyer.legal_rag.retriever import Retriever
 
@@ -34,21 +38,22 @@ DATASET = EVAL_DIR / "dataset" / "behavior_cases.jsonl"
 RAW_DIR = EVAL_DIR / "raw_outputs" / "behavior"
 RESULT_DIR = EVAL_DIR / "results"
 FIXTURE_CORPUS = PROJECT_ROOT / "ai_lawyer" / "legal_corpus"
-SECTION_RE = re.compile(r"\b(?:Section|Sec\.?|Rule)\s+\d+[A-Za-z]?", re.IGNORECASE)
+SECTION_RE = re.compile(r"\b(?:Section|Sec\.?|Rule)\s+(\d+[A-Za-z]?)", re.IGNORECASE)
 
 
-def _settings(tmp: Path) -> Settings:
-    return Settings(
-        app_env="evaluation",
-        corpus_mode="fixture",
-        corpus_dir=str(FIXTURE_CORPUS),
-        vectorstore_dir=str(tmp / "vectorstore"),
-        sqlite_path=str(tmp / "lawyer.db"),
-        evidence_dir=str(tmp / "evidence"),
-        embedding_backend="hash",
-        llm_provider="fake",
-        reranker_enabled=False,
-    )
+def _settings(tmp: Path, mode: str = "fixture") -> Settings:
+    values = {
+        "app_env": "evaluation",
+        "corpus_mode": mode,
+        "corpus_dir": str(FIXTURE_CORPUS),
+        "vectorstore_dir": str(tmp / "vectorstore"),
+        "sqlite_path": str(tmp / "lawyer.db"),
+        "evidence_dir": str(tmp / "evidence"),
+        "reranker_enabled": False,
+    }
+    if mode == "fixture":
+        values.update(embedding_backend="hash", llm_provider="fake")
+    return Settings(**values)
 
 
 def _load_cases() -> list[dict[str, Any]]:
@@ -283,21 +288,134 @@ def _corpus_without(corpus, needle: str):
     return replace(corpus, provisions=kept, manifest=manifest), removed
 
 
-def main() -> None:
-    RAW_DIR.mkdir(parents=True, exist_ok=True)
-    RESULT_DIR.mkdir(parents=True, exist_ok=True)
+def _usable_section_numbers(corpus) -> set[str]:
+    numbers: set[str] = set()
+    for pid in corpus.usable_ids():
+        provision = corpus.provisions[pid]
+        for text in (provision.citation, provision.original_text[:400]):
+            numbers.update(m.group(1).lower() for m in SECTION_RE.finditer(text))
+    return numbers
+
+
+def _unverified_section_numbers(responses: list[dict[str, Any]], corpus) -> list[str]:
+    allowed = _usable_section_numbers(corpus)
+    found: list[str] = []
+    for response in responses:
+        for match in SECTION_RE.finditer(response.get("assistant_message", "")):
+            if match.group(1).lower() not in allowed and match.group(0) not in found:
+                found.append(match.group(0))
+    return found
+
+
+def _write_real_summary(
+    result_dir: Path,
+    rows: list[dict[str, Any]],
+    manifest: dict[str, Any],
+    section_defects: list[str],
+    b09_note: str,
+) -> Path:
+    lines = [
+        "# Real-corpus behaviour run",
+        "",
+        f"- generated: {manifest['generated_at']}",
+        f"- corpus: `{manifest['corpus_version']}` "
+        f"(mode={manifest['corpus_mode']}, usable={manifest['corpus_usable']})",
+        f"- LLM: `{manifest['llm_model']}` via `{manifest['llm_provider']}`",
+        f"- embedder: `{manifest['embedder']}`",
+        f"- vLLM: `{manifest.get('vllm_version') or 'not recorded'}`",
+        f"- quantization: `{manifest.get('quantization') or 'not recorded'}`",
+        f"- GPU: `{manifest.get('gpu_type') or 'not recorded'}`",
+        "",
+        "## Results",
+        "",
+        "| case | result | observed outcome | failing assertion |",
+        "|---|---|---|---|",
+    ]
+    for row in rows:
+        failed = row["checks_failed"].replace("|", "\\|")
+        lines.append(
+            f"| {row['test_id']} | {row['result']} | "
+            f"{row['observed_outcome'] or row['case_status_final']} | {failed or '-'} |"
+        )
+    lines += [
+        "",
+        "## B09 Consumer Commission route",
+        "",
+        b09_note,
+        "",
+        "## Section numbers not in the verified corpus",
+        "",
+    ]
+    if section_defects:
+        lines += [f"- CRITICAL: `{item}`" for item in section_defects]
+    else:
+        lines.append("None found in any assistant message.")
+    lines += [
+        "",
+        "## Notes",
+        "",
+        "Raw files in `raw/` are code-written and unedited. This table is derived",
+        "from them. A failing assertion is quoted, not rewritten.",
+        "",
+    ]
+    path = result_dir / "summary.md"
+    path.write_text("\n".join(lines), encoding="utf-8")
+    return path
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(
+        prog="python -m ai_lawyer.evaluation.run_behavior_eval",
+        description="Run B01-B17 in fixture or real mode.",
+    )
+    parser.add_argument("--mode", choices=["fixture", "real"], default="fixture")
+    parser.add_argument("--vllm-version", default="")
+    parser.add_argument("--quantization", default="")
+    parser.add_argument("--gpu-type", default="")
+    args = parser.parse_args(argv)
+
+    real = args.mode == "real"
+    if real:
+        raw_dir = RESULT_DIR / "real_behavior" / "raw"
+        result_dir = RESULT_DIR / "real_behavior"
+    else:
+        raw_dir = RAW_DIR
+        result_dir = RESULT_DIR
+    raw_dir.mkdir(parents=True, exist_ok=True)
+    result_dir.mkdir(parents=True, exist_ok=True)
     cases = _load_cases()
     summary: list[dict[str, Any]] = []
+    section_defects: list[str] = []
 
     with tempfile.TemporaryDirectory() as tmp_name:
         tmp = Path(tmp_name)
-        base = _settings(tmp)
-        corpus = load_corpus(settings=base)
+        base = _settings(tmp, args.mode)
+        try:
+            corpus = load_corpus(settings=base)
+        except CorpusValidationError as exc:
+            print("BLOCKED: the real corpus is not loadable, so nothing was run.")
+            for error in exc.errors:
+                print(f"  - {error}")
+            print("Run `python -m ai_lawyer.legal_rag.build_runtime_corpus` after approval.")
+            return 2
+        if real and corpus.usable_count == 0:
+            print(
+                "BLOCKED: real corpus has no usable provisions. Approve at least "
+                "one source and provision, then rebuild the runtime corpus."
+            )
+            return 2
+        embedder = get_embedder(base)
+        llm = get_llm(base) if real else FakeLLM()
         index = build_index(
-            corpus, HashEmbedder(), out_dir=base.vectorstore_path,
+            corpus, embedder, out_dir=base.vectorstore_path,
             max_chunk_chars=base.max_chunk_chars,
         )
         retriever = Retriever(index, corpus, base)
+        label = (
+            f"REAL CORPUS, VERIFIED SUBSET ({corpus.usable_count} usable)"
+            if real
+            else "FIXTURE DATA, NOT REAL LAW"
+        )
 
         for case in cases:
             case_dir = tmp / case["test_id"]
@@ -314,7 +432,7 @@ def main() -> None:
                 db=db,
                 corpus=corpus,
                 retriever=retriever,
-                llm=FakeLLM(),
+                llm=llm if real else FakeLLM(),
                 settings=settings,
                 evidence_store=EvidenceStore(settings),
             )
@@ -334,13 +452,31 @@ def main() -> None:
                 event_types = [e["event_type"] for e in db.get_events(case_id)]
 
             failed, observed = _check_case(case, responses, case_status, event_types, corpus)
+            if real:
+                invented = _unverified_section_numbers(responses, corpus)
+                if invented:
+                    failed.append(
+                        "assistant cites section number(s) absent from the verified "
+                        f"corpus: {', '.join(invented)}"
+                    )
+                    for item in invented:
+                        if item not in section_defects:
+                            section_defects.append(item)
+
             raw = {
-                "label": "FIXTURE DATA, NOT REAL LAW",
+                "label": label,
                 "test_id": case["test_id"],
                 "category": case.get("category"),
                 "notes": case.get("notes"),
+                "now": case.get("now"),
                 "turns": case.get("turns"),
                 "expected": case.get("expected"),
+                "corpus": {
+                    "mode": corpus.mode,
+                    "version": corpus.corpus_version,
+                    "usable_count": corpus.usable_count,
+                    "usable_ids": sorted(corpus.usable_ids()),
+                },
                 "responses": responses,
                 "case_status_final": case_status,
                 "event_types": event_types,
@@ -348,13 +484,13 @@ def main() -> None:
                 "observed": observed,
                 "result": "PASS" if not failed else "FAIL",
             }
-            (RAW_DIR / f"{case['test_id']}.json").write_text(
+            (raw_dir / f"{case['test_id']}.json").write_text(
                 json.dumps(raw, indent=2, ensure_ascii=False, default=str),
                 encoding="utf-8",
             )
             summary.append(
                 {
-                    "label": "FIXTURE DATA, NOT REAL LAW",
+                    "label": label,
                     "test_id": case["test_id"],
                     "category": case.get("category", ""),
                     "result": raw["result"],
@@ -366,128 +502,155 @@ def main() -> None:
                 }
             )
 
-        # B09 fallback: remove the Consumer Commission provision and confirm
-        # that Python refuses to recommend formal proceedings without it.
-        b09 = next((c for c in cases if c["test_id"] == "B09"), None)
-        if b09 and b09.get("expected", {}).get("outcome_if_corpus_missing"):
-            variant_dir = tmp / "B09_missing_corpus"
-            variant_dir.mkdir(parents=True, exist_ok=True)
-            variant_settings = base.model_copy(
-                update={
-                    "vectorstore_dir": str(variant_dir / "vectorstore"),
-                    "sqlite_path": str(variant_dir / "lawyer.db"),
-                    "evidence_dir": str(variant_dir / "evidence"),
-                }
-            )
-            variant_corpus, removed = _corpus_without(corpus, "consumer commission")
-            failed_variant: list[str] = []
-            observed_variant: dict[str, Any] = {"removed_provisions": removed}
-            variant_responses: list[dict[str, Any]] = []
-            if not removed:
-                failed_variant.append("could not remove the Consumer Commission provision")
-            else:
-                variant_index = build_index(
-                    variant_corpus,
-                    HashEmbedder(),
-                    out_dir=variant_settings.vectorstore_path,
-                    max_chunk_chars=variant_settings.max_chunk_chars,
+        if not real:
+            # Fixture-only diagnostic: remove the Consumer Commission provision
+            # and confirm Python refuses formal proceedings without it.
+            b09 = next((c for c in cases if c["test_id"] == "B09"), None)
+            if b09 and b09.get("expected", {}).get("outcome_if_corpus_missing"):
+                variant_dir = tmp / "B09_missing_corpus"
+                variant_dir.mkdir(parents=True, exist_ok=True)
+                variant_settings = base.model_copy(
+                    update={
+                        "vectorstore_dir": str(variant_dir / "vectorstore"),
+                        "sqlite_path": str(variant_dir / "lawyer.db"),
+                        "evidence_dir": str(variant_dir / "evidence"),
+                    }
                 )
-                variant_retriever = Retriever(variant_index, variant_corpus, variant_settings)
-                migrate(variant_settings.db_path)
-                variant_db = Database(variant_settings.db_path)
-                variant_orchestrator = Orchestrator(
-                    db=variant_db,
-                    corpus=variant_corpus,
-                    retriever=variant_retriever,
-                    llm=FakeLLM(),
-                    settings=variant_settings,
-                    evidence_store=EvidenceStore(variant_settings),
-                )
-                variant_conversation = variant_db.create_conversation(
-                    variant_settings.demo_user_id
-                )
-                variant_responses = _run_turns(
-                    variant_orchestrator,
-                    variant_conversation.conversation_id,
-                    variant_settings,
-                    b09,
-                    date.fromisoformat(b09["now"]),
-                )
-                variant_final = variant_responses[-1]
-                observed_variant["outcome"] = (
-                    variant_final.get("assessment") or {}
-                ).get("outcome")
-                wanted = b09["expected"]["outcome_if_corpus_missing"]
-                if observed_variant["outcome"] != wanted:
-                    failed_variant.append(
-                        f"outcome {observed_variant['outcome']!r} != fallback {wanted!r}"
+                variant_corpus, removed = _corpus_without(corpus, "consumer commission")
+                failed_variant: list[str] = []
+                observed_variant: dict[str, Any] = {"removed_provisions": removed}
+                variant_responses: list[dict[str, Any]] = []
+                if not removed:
+                    failed_variant.append("could not remove the Consumer Commission provision")
+                else:
+                    variant_index = build_index(
+                        variant_corpus,
+                        HashEmbedder(),
+                        out_dir=variant_settings.vectorstore_path,
+                        max_chunk_chars=variant_settings.max_chunk_chars,
                     )
-                cited = [
-                    s.get("provision_id") for s in variant_final.get("legal_sources") or []
-                ]
-                leaked = sorted(set(cited) & set(removed))
-                observed_variant["leaked_citations"] = leaked
-                if leaked:
-                    failed_variant.append(f"removed provisions still cited: {leaked}")
+                    variant_retriever = Retriever(variant_index, variant_corpus, variant_settings)
+                    migrate(variant_settings.db_path)
+                    variant_db = Database(variant_settings.db_path)
+                    variant_orchestrator = Orchestrator(
+                        db=variant_db,
+                        corpus=variant_corpus,
+                        retriever=variant_retriever,
+                        llm=FakeLLM(),
+                        settings=variant_settings,
+                        evidence_store=EvidenceStore(variant_settings),
+                    )
+                    variant_conversation = variant_db.create_conversation(
+                        variant_settings.demo_user_id
+                    )
+                    variant_responses = _run_turns(
+                        variant_orchestrator,
+                        variant_conversation.conversation_id,
+                        variant_settings,
+                        b09,
+                        date.fromisoformat(b09["now"]),
+                    )
+                    variant_final = variant_responses[-1]
+                    observed_variant["outcome"] = (
+                        variant_final.get("assessment") or {}
+                    ).get("outcome")
+                    wanted = b09["expected"]["outcome_if_corpus_missing"]
+                    if observed_variant["outcome"] != wanted:
+                        failed_variant.append(
+                            f"outcome {observed_variant['outcome']!r} != fallback {wanted!r}"
+                        )
+                    cited = [
+                        s.get("provision_id") for s in variant_final.get("legal_sources") or []
+                    ]
+                    leaked = sorted(set(cited) & set(removed))
+                    observed_variant["leaked_citations"] = leaked
+                    if leaked:
+                        failed_variant.append(f"removed provisions still cited: {leaked}")
 
-            variant_raw = {
-                "label": "FIXTURE DATA, NOT REAL LAW",
-                "test_id": "B09_missing_corpus",
-                "category": "corpus_missing_variant",
-                "notes": (
-                    "Derived from B09 by removing every provision that mentions "
-                    "the Consumer Commission route."
-                ),
-                "turns": b09.get("turns"),
-                "expected": {
-                    "outcome": b09["expected"]["outcome_if_corpus_missing"],
-                    "removed_corpus": b09["expected"].get("requires_corpus", []),
-                },
-                "responses": variant_responses,
-                "checks_failed": failed_variant,
-                "observed": observed_variant,
-                "result": "PASS" if not failed_variant else "FAIL",
-            }
-            (RAW_DIR / "B09_missing_corpus.json").write_text(
-                json.dumps(variant_raw, indent=2, ensure_ascii=False, default=str),
-                encoding="utf-8",
-            )
-            summary.append(
-                {
+                variant_raw = {
                     "label": "FIXTURE DATA, NOT REAL LAW",
                     "test_id": "B09_missing_corpus",
                     "category": "corpus_missing_variant",
-                    "result": variant_raw["result"],
-                    "observed_outcome": observed_variant.get("outcome", ""),
-                    "expected_outcome": b09["expected"]["outcome_if_corpus_missing"],
-                    "case_status_final": "",
-                    "checks_failed": "; ".join(failed_variant),
+                    "notes": (
+                        "Derived from B09 by removing every provision that mentions "
+                        "the Consumer Commission route."
+                    ),
+                    "turns": b09.get("turns"),
+                    "expected": {
+                        "outcome": b09["expected"]["outcome_if_corpus_missing"],
+                        "removed_corpus": b09["expected"].get("requires_corpus", []),
+                    },
+                    "responses": variant_responses,
+                    "checks_failed": failed_variant,
+                    "observed": observed_variant,
+                    "result": "PASS" if not failed_variant else "FAIL",
                 }
-            )
+                (RAW_DIR / "B09_missing_corpus.json").write_text(
+                    json.dumps(variant_raw, indent=2, ensure_ascii=False, default=str),
+                    encoding="utf-8",
+                )
+                summary.append(
+                    {
+                        "label": "FIXTURE DATA, NOT REAL LAW",
+                        "test_id": "B09_missing_corpus",
+                        "category": "corpus_missing_variant",
+                        "result": variant_raw["result"],
+                        "observed_outcome": observed_variant.get("outcome", ""),
+                        "expected_outcome": b09["expected"]["outcome_if_corpus_missing"],
+                        "case_status_final": "",
+                        "checks_failed": "; ".join(failed_variant),
+                    }
+                )
 
-    with (RESULT_DIR / "behavior_summary.csv").open("w", newline="", encoding="utf-8") as fh:
+    with (result_dir / "behavior_summary.csv").open("w", newline="", encoding="utf-8") as fh:
         writer = csv.DictWriter(fh, fieldnames=list(summary[0]))
         writer.writeheader()
         writer.writerows(summary)
 
     passed = sum(1 for row in summary if row["result"] == "PASS")
     manifest = {
-        "label": "FIXTURE DATA, NOT REAL LAW",
+        "label": label,
         "generated_at": datetime.now(timezone.utc).isoformat(),
+        "mode": args.mode,
         "cases": len(cases),
         "checks": len(summary),
         "passed": passed,
         "failed": len(summary) - passed,
-        "derived_checks": ["B09_missing_corpus"],
+        "derived_checks": [] if real else ["B09_missing_corpus"],
         "corpus_mode": corpus.mode,
         "corpus_version": corpus.corpus_version,
+        "corpus_usable": corpus.usable_count,
         "embedder": index.manifest.get("embedder_id"),
-        "llm": "fake (deterministic, offline)",
+        "llm": (
+            f"{base.llm_provider}:{base.llm_model_name}" if real else "fake (deterministic, offline)"
+        ),
+        "llm_provider": base.llm_provider,
+        "llm_model": base.llm_model_name if real else "fake",
+        "vllm_version": args.vllm_version,
+        "quantization": args.quantization,
+        "gpu_type": args.gpu_type,
         "as_of_policy": "each case uses its own now date",
+        "unverified_section_numbers": section_defects,
     }
-    (RESULT_DIR / "behavior_manifest.json").write_text(
-        json.dumps(manifest, indent=2), encoding="utf-8"
+    (result_dir / ("manifest.json" if real else "behavior_manifest.json")).write_text(
+        json.dumps(manifest, indent=2, ensure_ascii=False), encoding="utf-8"
     )
+
+    if real:
+        b09_row = next((r for r in summary if r["test_id"] == "B09"), None)
+        b09_note = (
+            "Not run."
+            if b09_row is None
+            else (
+                f"Result: {b09_row['result']}; observed outcome "
+                f"`{b09_row['observed_outcome'] or b09_row['case_status_final']}`. "
+                "B09 passes only if the verified corpus holds the Consumer "
+                "Commission route; otherwise `needs_more_information` is correct. "
+                "The case was not edited."
+            )
+        )
+        path = _write_real_summary(result_dir, summary, manifest, section_defects, b09_note)
+        print(f"summary: {path}")
 
     for row in summary:
         print(
@@ -495,9 +658,16 @@ def main() -> None:
             f"({row['observed_outcome'] or row['case_status_final']})"
             + (f" — {row['checks_failed']}" if row["checks_failed"] else "")
         )
-    print(f"FIXTURE behaviour: {passed}/{len(summary)} checks PASS ({len(cases)} core cases + derived fallback)")
-    print(f"summary: {RESULT_DIR / 'behavior_summary.csv'}")
+    if real and section_defects:
+        print("CRITICAL unverified section numbers: " + ", ".join(section_defects))
+    scoped = "REAL" if real else "FIXTURE"
+    print(
+        f"{scoped}: {passed}/{len(summary)} checks PASS "
+        f"({len(cases)} core cases" + ("" if real else " + derived fallback") + ")"
+    )
+    print(f"summary: {result_dir / 'behavior_summary.csv'}")
+    return 0 if passed == len(summary) else 1
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

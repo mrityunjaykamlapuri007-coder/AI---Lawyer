@@ -405,6 +405,10 @@ class MessageResponse(StrictModel):
     extracted_facts: list[Fact] = Field(default_factory=list)
     evidence_processing: list[EvidenceProcessing] = Field(default_factory=list)
     legal_sources: list[LegalSourceOut] = Field(default_factory=list)
+    # Every retrieved candidate with its three independent labels
+    # (relevance_grade, applicability, source_validity).  Used by the
+    # evaluation harness; the UI reads legal_sources instead.
+    retrieval_candidates: list[Candidate] = Field(default_factory=list)
     retrieval_summary: RetrievalSummary = Field(default_factory=RetrievalSummary)
     verification: dict[str, Any] = Field(
         default_factory=lambda: {"overall": "unverified", "blocked_claims": []}

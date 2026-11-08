@@ -3,6 +3,7 @@
   "test_id": "B12",
   "category": "out_of_scope_salary",
   "notes": "Rule R0. Must not produce a legal notice template.",
+  "now": "2026-11-08",
   "turns": [
     {
       "message": "My employer has not paid my salary for three months. Can you draft a legal notice for me?"
@@ -27,11 +28,28 @@
       "guaranteed"
     ]
   },
+  "corpus": {
+    "mode": "fixture",
+    "version": "617774ed4e200ccb",
+    "usable_count": 10,
+    "usable_ids": [
+      "TEST_ACT_A1",
+      "TEST_ACT_A1_P1",
+      "TEST_ACT_A2",
+      "TEST_ACT_A3",
+      "TEST_ACT_A4",
+      "TEST_ACT_A5",
+      "TEST_ACT_A6",
+      "TEST_ACT_A7",
+      "TEST_FUTURE_A8",
+      "TEST_OLD_A9"
+    ]
+  },
   "responses": [
     {
-      "conversation_id": "conv_93daddb5-5a01-43c1-a031-06ee483b277a",
-      "message_id": "msg_ce1d3b24-9f1f-4c8f-bb66-eb487c392244",
-      "assistant_message_id": "msg_8e472005-8897-4eb7-87d6-3cc7929d0258",
+      "conversation_id": "conv_7e796627-da72-4a2e-8be1-50d54e6c3794",
+      "message_id": "msg_dcc7da02-c30e-41af-b1a5-b8609d6c2f81",
+      "assistant_message_id": "msg_13725cc0-304f-4ac7-a0f5-84b268ffc991",
       "case_id": null,
       "processing_status": "out_of_scope",
       "assistant_message": "## Scope\n\nThis assistant only handles unresolved e-commerce refund disputes in India: cancelled or returned orders, delayed, denied, partial or incorrect refunds. It does not cover salary or employment matters, and I cannot prepare documents or represent you.\n\nPlease speak to a qualified lawyer or the appropriate authority for this issue.",
@@ -39,6 +57,7 @@
       "extracted_facts": [],
       "evidence_processing": [],
       "legal_sources": [],
+      "retrieval_candidates": [],
       "retrieval_summary": {
         "corpus_version": "",
         "candidate_count": 0,

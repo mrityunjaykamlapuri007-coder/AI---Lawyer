@@ -1,6 +1,7 @@
 {
   "label": "FIXTURE DATA, NOT REAL LAW",
-  "generated_at": "2026-11-08T01:46:04.000324+00:00",
+  "generated_at": "2026-11-08T09:46:35.769160+00:00",
+  "mode": "fixture",
   "cases": 17,
   "checks": 18,
   "passed": 18,
@@ -9,8 +10,15 @@
     "B09_missing_corpus"
   ],
   "corpus_mode": "fixture",
-  "corpus_version": "d269bfc2722114f8",
+  "corpus_version": "617774ed4e200ccb",
+  "corpus_usable": 10,
   "embedder": "hash-embedder-v1",
   "llm": "fake (deterministic, offline)",
-  "as_of_policy": "each case uses its own now date"
+  "llm_provider": "fake",
+  "llm_model": "fake",
+  "vllm_version": "",
+  "quantization": "",
+  "gpu_type": "",
+  "as_of_policy": "each case uses its own now date",
+  "unverified_section_numbers": []
 }
