@@ -85,6 +85,11 @@ class Source(StrictModel):
     effective_from: date_cls | None = None
     effective_to: date_cls | None = None
     version_status: Literal["current", "superseded", "future", "uncertain"]
+    # Provenance.  Required for every human_verified source in real mode; the
+    # acceptance gate in legal_rag.corpus_acceptance refuses to start without
+    # it, because a verified flag with no named reviewer is not evidence.
+    reviewed_by: str | None = None
+    reviewed_at: date_cls | None = None
     notes: str = ""
 
 
@@ -115,6 +120,10 @@ class Provision(StrictModel):
     conditions: list[Condition] = Field(default_factory=list)
     page_start: int = 0
     page_end: int = 0
+    # Per-provision provenance.  A human_verified source does not make every
+    # provision in it reviewed; real-mode acceptance requires both.
+    reviewed_by: str | None = None
+    reviewed_at: date_cls | None = None
 
     @field_validator("original_text")
     @classmethod

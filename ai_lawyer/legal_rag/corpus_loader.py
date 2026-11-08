@@ -112,9 +112,16 @@ def load_corpus(
 
     raw_sources = _read_json(sources_path)
     raw_provisions = _read_json(provisions_path)
-    return validate_and_build(
+    corpus = validate_and_build(
         raw_sources, raw_provisions, mode=mode, directory=directory
     )
+    if mode == "real":
+        # Imported lazily to avoid a circular import: the gate imports this
+        # module for the Corpus type only.
+        from ai_lawyer.legal_rag.corpus_acceptance import enforce_real_corpus_acceptance
+
+        enforce_real_corpus_acceptance(corpus)
+    return corpus
 
 
 def validate_and_build(
