@@ -1,0 +1,65 @@
+{
+  "about": "Sources for real_stories.jsonl: public news reports of Indian consumer-commission orders. Stories restate only the facts the report describes, in the first person, with personal names removed. Commission reasoning and outcomes are not part of the stories.",
+  "split_rule": "sorted by sha256(primary url); first 0 = development, rest = test; fixed before any run",
+  "stories": {
+    "H01": [
+      {
+        "url": "https://www.livelaw.in/consumer-cases/kurnool-consumer-commission-directs-firstcry-to-refund-order-amount-pay-50000-compensation-for-unfair-trade-practice-536692",
+        "sha256": "5e9ca67c7e62eeae15397c7b31d99576a89be5e421d460a3e7afd2f46804d218",
+        "bytes": 1114730,
+        "retrieved_at": "2026-11-08",
+        "role": "primary",
+        "passage_used": "The complainant, [complainant], placed an online order on FirstCry.com on December 1, 2024, for a children's tricycle and paid ₹2,130.06. However, the order was cancelled by the company the very next day without assigning any reason or issuing prior notice. Despite the cancellation, the amount paid was not refunded.\nUpon contacting customer care, the complainant was informed that the amount had been adjusted against a previous order placed in 2023, on the allegation that a wrong product had been returned in that transaction. The complainant denied the allegation, contending that the earlier return had been duly accepted and the refund processed only after warehouse quality verification in accordance with the company's own policy. He further alleged that the company had unlawfully recovered the amount by cancelling the fresh order and had internally flagged him as a \"fraud user\" without any notice, inquiry or supporting material.",
+        "passage_lines": [
+          7,
+          9
+        ]
+      }
+    ],
+    "H02": [
+      {
+        "url": "https://www.livelaw.in/amp/consumer-cases/failure-to-deliver-bed-set-north-goa-consumer-commission-directs-lakkadhaara-to-refund-88200-with-compensation-520803",
+        "sha256": "744752a897d0f1a34fbe90028395f4087a925b1ac640c55342ff7e2d8f8fabbf",
+        "bytes": 94702,
+        "retrieved_at": "2026-11-08",
+        "role": "primary",
+        "passage_used": "The complainant, Ms. [complainant], placed an online order for a bed set worth ₹88,200 on 7 November 2024 through the opposite party's website, Lakkadhaara. She made full payment using a credit card. The website assured that the product would be delivered within 5–6 weeks, and relying on this representation, the complainant proceeded with the purchase.\nHowever, even after the expiry of the promised delivery period, no communication was made by the opposite party. The complainant was compelled to repeatedly follow up, following which she was informed on 24 December 2024 that the bed set had been dispatched.\nOn 30 December 2024, the furniture platform shared a tracking number with the complainant. Upon verification, it was revealed that only a shipping label had been generated and the consignment had not been picked up, rendering the claim of dispatch misleading.\nHaving lost confidence in the furniture platform, the complainant cancelled her order on 30 December 2024, which was duly acknowledged by Lakkadhaara. She thereafter initiated a chargeback dispute with her bank. Although the complainant was informed that the seller would process the refund after certain calculations, no concrete response was provided. Despite repeated follow-ups, the purchase amount was not refunded.",
+        "passage_lines": [
+          5,
+          7,
+          9,
+          11
+        ]
+      }
+    ],
+    "H03": [
+      {
+        "url": "https://lawchakra.in/other-courts/flipkart-liable-soap/",
+        "sha256": "630df83152592cd7bd21db8b9859caa3cb9cdab5677f01748f9206f206ab0736",
+        "bytes": 170121,
+        "retrieved_at": "2026-11-08",
+        "role": "primary",
+        "passage_used": "The invoice dated October 24, 2021 shows a Realme Narzo 50A (Oxygen Blue, 128 GB) sold for Rs 10,574 by Luminary Lifestyle Pvt. Ltd. through the Flipkart platform. The complainant alleged that the package delivered on October 25, 2021 held a Lifebuoy soap in place of the phone. She wrote to Flipkart with her documents but, she said, no action was taken. She asked for Rs 20,000 for financial loss and Rs 50,000 for mental agony and harassment.\nThe record shows that on November 17, 2021, Flipkart told her that the seller could not process her return request because no image had been shared. She replied that she had taken screenshots. She also filed a police complaint, which was exhibited before the Commission, and showed it a video of the parcel being opened; the Commission recorded that the video showed the complainant had opened the package and received bars of soap.",
+        "passage_lines": [
+          15,
+          17
+        ]
+      }
+    ],
+    "H04": [
+      {
+        "url": "https://legal60.com/?p=34904",
+        "sha256": "2a532360be1b70cb4d72d89ae034ce60566a73009e08e3673e2f35a4026c95eb",
+        "bytes": 32220,
+        "retrieved_at": "2026-11-08",
+        "role": "primary",
+        "passage_used": "An individual, [complainant] (complainant) placed an order for two gold Lakshmi coins from Myntra.com.\nInitially priced at Rs.64,206, the complainant noticed a lower price of Rs.63,768 on the coins shortly after placing the order. Despite canceling the initial order and placing a new one at a lower price, he did not receive the product by the promised delivery date.\nEven after communicating with Myntra, [complainant] did not receive a satisfactory response. However, he was later informed that the order was canceled, and the amount would be directed as store credit, rather than refunded to his bank account.",
+        "passage_lines": [
+          9,
+          11,
+          13
+        ]
+      }
+    ]
+  }
+}

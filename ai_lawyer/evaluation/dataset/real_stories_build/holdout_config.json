@@ -1,0 +1,34 @@
+[
+  {
+    "id": "H01", "src": ["H01"], "facts_paras": [7, 9],
+    "redact": ["Shaik Altaf", "Sameer Basha Bamri"],
+    "category": "seller_cancelled_amount_withheld",
+    "story": "I placed an online order on FirstCry.com on December 1, 2024 for a children's tricycle and paid ₹2,130.06. The very next day the company cancelled the order without giving any reason or notice, and the amount was not refunded. When I contacted customer care, they told me the amount had been adjusted against a previous order from 2023, claiming a wrong product had been returned in that order. That earlier return was accepted and refunded after their own warehouse check. They have now flagged me as a \"fraud user\" without any notice or proof.",
+    "case_facts": {"platform_name": "FirstCry.com", "purchase_date": "2024-12-01", "refund_amount": "2130.06", "refund_status": "not_received", "support_contact_made": true},
+    "expected": {"outcome": "formal_grievance_recommended", "rule": "R5", "rationale": "Refund not received, exact purchase date, customer care contacted, grievance officer not mentioned."}
+  },
+  {
+    "id": "H02", "src": ["H02"], "facts_paras": [5, 7, 9, 11],
+    "redact": ["Teena Sareen"],
+    "category": "late_delivery_cancelled_refund_not_received",
+    "story": "I ordered a bed set worth ₹88,200 on 7 November 2024 from the Lakkadhaara website and paid in full by credit card. The website promised delivery within 5–6 weeks. After that period passed with no communication, I had to follow up repeatedly, and on 24 December 2024 they said it had been dispatched. On 30 December 2024 they shared a tracking number, but only a shipping label had been generated and nothing had been picked up. I cancelled the order on 30 December 2024 and they acknowledged it. I also raised a chargeback with my bank. They said the refund would be processed after some calculations, but despite repeated follow-ups I have not received the money.",
+    "case_facts": {"platform_name": "Lakkadhaara", "purchase_date": "2024-11-07", "cancellation_date": "2024-12-30", "refund_amount": "88200", "payment_method": "card", "refund_status": "not_received", "support_contact_made": true},
+    "expected": {"outcome": "formal_grievance_recommended", "rule": "R5", "rationale": "Refund not received, exact cancellation date, the seller was followed up repeatedly (contact made), grievance officer not mentioned."}
+  },
+  {
+    "id": "H03", "src": ["H03"], "facts_paras": [15, 17],
+    "redact": ["Mausam Meena"],
+    "category": "wrong_item_return_refused",
+    "story": "I bought a Realme Narzo 50A phone on Flipkart for Rs 10,574, sold by Luminary Lifestyle; the invoice is dated October 24, 2021. The package delivered on October 25, 2021 contained a Lifebuoy soap instead of the phone. I wrote to Flipkart with my documents but no action was taken. On November 17, 2021 Flipkart told me the seller could not process my return request because no image had been shared, although I had taken screenshots. I also filed a police complaint, and I have a video of the parcel being opened.",
+    "case_facts": {"platform_name": "Flipkart", "merchant_name": "Luminary Lifestyle", "purchase_date": "2021-10-24", "refund_amount": "10574", "refund_status": "denied", "support_contact_made": true},
+    "expected": {"outcome": "formal_grievance_recommended", "rule": "R5", "rationale": "Return/refund refused, exact purchase date (invoice), wrote to Flipkart (contact made), grievance officer not mentioned."}
+  },
+  {
+    "id": "H04", "src": ["H04"], "facts_paras": [9, 11, 13],
+    "redact": ["Komal Santoshkumar Jain", "Jain"],
+    "category": "cancelled_refunded_as_store_credit",
+    "story": "I ordered two gold Lakshmi coins on Myntra. They were priced at Rs.64,206, and shortly after ordering I saw a lower price of Rs.63,768, so I cancelled the first order and placed a new one at the lower price. The coins did not arrive by the promised delivery date. I communicated with Myntra but did not get a satisfactory response. Later they told me the order was cancelled and the amount would go to my store credit instead of being refunded to my bank account.",
+    "case_facts": {"platform_name": "Myntra", "refund_amount": "63768", "refund_status": "partial", "support_contact_made": true},
+    "expected": {"outcome": "needs_more_information", "rule": "R2", "rationale": "No exact purchase, cancellation or return date is stated."}
+  }
+]
