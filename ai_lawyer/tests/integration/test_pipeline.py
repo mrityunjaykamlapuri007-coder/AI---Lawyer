@@ -310,3 +310,11 @@ def test_fact_free_message_on_open_case_is_not_reanalysed(orchestrator, conversa
     assert response.case_id == first.case_id
     assert response.legal_sources == []
     assert "Read my document" in response.assistant_message
+
+
+def test_fact_free_message_without_case_asks_instead_of_analysing(orchestrator, conversation, settings):
+    orchestrator.llm.scripts["router"] = [{"intent": "refund_case", "reply": ""}]
+    response = _handle(orchestrator, conversation, settings, "yes I will upload the documents")
+    assert response.case_id is None
+    assert response.legal_sources == []
+    assert "Read my document" in response.assistant_message

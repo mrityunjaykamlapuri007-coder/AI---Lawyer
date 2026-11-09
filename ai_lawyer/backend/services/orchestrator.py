@@ -231,14 +231,18 @@ class Orchestrator:
                 default_year=reference_year,
             )
             route = self._route(message, history, has_case=bool(open_cases))
-            if route is not None and route.intent in {"refund_case", "follow_up"} and open_cases:
-                # Safety net: a message on an open case that carries no facts at
-                # all ("I will upload the documents", "ok") is not a case update;
-                # re-running the full analysis would only repeat the last answer.
+            if route is not None and route.intent in {"refund_case", "follow_up"}:
+                # Safety net: a message that carries no facts at all ("I will upload
+                # the documents", "ok") is not a case to analyse, with or without an
+                # open case; a full analysis would only ask the same questions.
                 early_facts = facts_future.result()
                 if not early_facts:
-                    route.intent = "question"
-                    route.reply = ""
+                    route.intent = "question" if open_cases else "needs_details"
+                    route.reply = (
+                        "Sure. Attach it with 📎 above and press \"Read my document\". Or just tell me: "
+                        "which app or website, whether the order was cancelled or returned and when, the "
+                        "amount, and whether you contacted customer support."
+                    )
             if route is not None and route.intent in {"greeting", "needs_details", "off_topic", "question"}:
                 pool.shutdown(wait=False)
                 return self._route_reply(conversation_id, user_message, history, route, open_cases)
