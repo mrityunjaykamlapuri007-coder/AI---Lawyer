@@ -186,7 +186,9 @@ _EVENT_KEYWORDS: list[tuple[str, tuple[str, ...]]] = [
     ("return_approved_date", ("approved",)),
     ("pickup_date", ("pickup", "picked up", "pick up", "collected")),
     ("cancellation_date", ("cancelled", "canceled", "cancellation")),
-    ("return_requested_date", ("returned", "return")),
+    ("return_requested_date", ("returned", "return", "asked for a refund", "asked for refund",
+                               "requested a refund", "requested refund", "refund request",
+                               "raised a refund", "applied for a refund", "claimed a refund")),
     ("refund_initiated_date", ("initiated", "processed", "refund sent", "refund of", "refunded")),
 ]
 _PURCHASE_KEYWORDS = ("bought", "purchased", "ordered", "placed")

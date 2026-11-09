@@ -27,7 +27,7 @@ from ai_lawyer.backend.services.context_assembler import (
 from ai_lawyer.backend.services.evidence_store import EvidenceStore
 from ai_lawyer.backend.services.fact_extractor import explicit_year, extract_fact_dicts, mark_conflicts
 from ai_lawyer.backend.services.llm_providers import get_llm
-from ai_lawyer.backend.services.response_generator import generate_response
+from ai_lawyer.backend.services.response_generator import generate_response, personalise_steps
 from ai_lawyer.backend.services.scope_classifier import (
     classify_scope,
     is_small_talk,
@@ -359,6 +359,7 @@ class Orchestrator:
             llm_proposed_outcome=draft.proposed_outcome.value if draft else None,
         )
         assessment = apply_python_decision(assessment, draft)
+        assessment.next_steps = personalise_steps(list(assessment.next_steps), facts)
 
         document = None
         draft_type = _DRAFT_OUTCOMES.get(assessment.outcome)

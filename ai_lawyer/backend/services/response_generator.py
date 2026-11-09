@@ -139,6 +139,138 @@ def _facts_line(facts: list[Fact]) -> list[str]:
     return ["### What I noted", "", " · ".join(parts)]
 
 
+def _who(latest: dict[str, Fact]) -> str:
+    for key in ("platform_name", "merchant_name"):
+        if key in latest and latest[key].raw_value:
+            return str(latest[key].normalised_value or latest[key].raw_value)
+    return ""
+
+
+def _details(latest: dict[str, Fact]) -> str:
+    """'order OD123, cancelled on 5 Nov 2026, ₹2,499 paid by UPI, refund not received'."""
+    parts = []
+    if "order_id" in latest:
+        parts.append(f"order {latest['order_id'].raw_value}")
+    for ftype, verb in (("cancellation_date", "cancelled on"), ("pickup_date", "picked up for return on"),
+                        ("return_requested_date", "return requested on"), ("purchase_date", "ordered on")):
+        if ftype in latest:
+            parts.append(f"{verb} {_readable(latest[ftype])}")
+            break
+    if "refund_amount" in latest:
+        paid = f"{_readable(latest['refund_amount'])}"
+        if "payment_method" in latest:
+            paid += f" paid by {_readable(latest['payment_method'])}"
+        parts.append(paid)
+    if "refund_status" in latest:
+        parts.append(f"refund {_readable(latest['refund_status'])}")
+    return ", ".join(parts)
+
+
+def summary_from_facts(facts: list[Fact]) -> str:
+    """Plain summary built only from extracted facts (no model text)."""
+    latest = _latest_by_type(facts)
+    if not latest:
+        return ""
+    who = _who(latest)
+    order = f"your {who} order" if who else "your order"
+    first = ""
+    for ftype, verb in (("cancellation_date", "cancelled"), ("pickup_date", "returned"),
+                        ("return_requested_date", "asked to return"), ("purchase_date", "placed")):
+        if ftype in latest:
+            when = _readable(latest[ftype])
+            if ftype == "pickup_date":
+                first = f"You returned {order} and it was picked up on {when}"
+            else:
+                first = f"You {verb} {order} on {when}"
+            break
+    if not first:
+        first = f"This is about {order}"
+    if "refund_amount" in latest:
+        first += f"; the amount is {_readable(latest['refund_amount'])}"
+        if "payment_method" in latest:
+            first += f", paid by {_readable(latest['payment_method'])}"
+    sentences = [first + "."]
+    status = str(latest["refund_status"].normalised_value) if "refund_status" in latest else ""
+    status_text = {
+        "not_received": "The refund has not reached you yet.",
+        "pending": "The refund is still pending.",
+        "initiated": "The seller says the refund was initiated, but it has not reached you.",
+        "processed": "It is marked as processed, but you have not confirmed that the money arrived.",
+        "partial": "Only part of the refund has been paid.",
+        "denied": "Your refund was refused.",
+        "reversed": "The refund was reversed.",
+        "received": "You say the money has arrived.",
+        "credited": "You say the money has arrived.",
+    }.get(status)
+    if status_text:
+        sentences.append(status_text)
+    support = latest.get("support_contact_made")
+    if support is not None and isinstance(support.normalised_value, bool):
+        if support.normalised_value:
+            when = f" on {_readable(latest['support_contact_date'])}" if "support_contact_date" in latest else ""
+            sentences.append(f"You have contacted customer support{when}.")
+        else:
+            sentences.append("You have not contacted customer support yet.")
+    grievance = latest.get("grievance_officer_contacted")
+    if grievance is not None and grievance.normalised_value is True:
+        sentences.append("You have also written to the grievance officer.")
+    return " ".join(sentences)
+
+
+_GENERIC_STEPS = {
+    "Send a written support request to the seller or platform and keep proof of sending.":
+        "Write to {who_support} customer support (email or in-app chat) and keep a copy or screenshot of what you sent.",
+    "State the order id, dates, amount and what outcome you want.":
+        "Say clearly what happened{details} and ask for the refund to be paid, with a date and a reference number.",
+    "Wait for a response before escalating.":
+        "If they do not reply or refuse, come back here and I will help you write to the grievance officer.",
+    "Send a formal written grievance to the platform's grievance officer.":
+        "Write a formal grievance to {who_owner} grievance officer. Look for the grievance officer's contact "
+        "on the website or app, and use the draft below.",
+    "Attach the order, payment, return and support messages.":
+        "Include what happened{details}, and attach screenshots of the order, payment and your support messages.",
+    "Keep proof of delivery and ask for a written response.":
+        "Keep proof that you sent it, and ask for a written reply.",
+}
+
+
+def personalise_steps(steps: list[str], facts: list[Fact]) -> list[str]:
+    """Fill the fixed Python steps with the user's own facts (no model text)."""
+    latest = _latest_by_type(facts)
+    who = _who(latest)
+    details = _details(latest)
+    out = []
+    for step in steps:
+        template = _GENERIC_STEPS.get(step)
+        if template is None:
+            out.append(step)
+            continue
+        text = template.format(
+            who_support=who or "the seller's or platform's",
+            who_owner=f"{who}'s" if who else "the platform's",
+            details=f" ({details})" if details else "",
+        )
+        if "{details}" in template and "order_id" not in latest:
+            text += " Add your order id."
+        out.append(text)
+    return out
+
+
+_KEY_WORDS = {"refund", "refunds", "return", "returned", "cancel", "cancelled", "cancellation", "grievance",
+              "complaint", "payments", "take", "back", "defective", "deficient", "late", "spurious",
+              "acknowledges", "redresses", "charges", "accepted"}
+
+
+def key_sentence(text: str, limit: int = 300) -> str:
+    """The most relevant clause of a provision, verbatim (Python picks it)."""
+    flat = " ".join((text or "").split())
+    chunks = [c.strip() for c in re.split(r"(?<=[;:])\s+|\s+(?=\([a-z]\)\s)", flat) if len(c.strip()) > 25]
+    if not chunks:
+        return _trim_quote(flat, limit)
+    best = max(chunks, key=lambda c: (len(_KEY_WORDS & set(re.findall(r"[a-z]+", c.lower()))), -len(c)))
+    return _trim_quote(best, limit)
+
+
 def _trim_quote(text: str, limit: int = 260) -> str:
     flat = " ".join((text or "").split())
     if len(flat) <= limit:
@@ -154,23 +286,16 @@ def _law_section(accepted: list[Candidate], corpus: Corpus, draft: LegalDraft | 
             "No provision in the supported corpus was established for this issue. "
             "I am therefore not giving a legal conclusion.",
         ]
-    meaning: dict[str, str] = {}
-    for item in (draft.application_analysis if draft else []):
-        statement = _second_person(item.conditional_statement.strip())
-        if statement and item.provision_id not in meaning:
-            meaning[item.provision_id] = statement
-    # Provisions the model explained come first, then the rest by rank.
-    ordered = sorted(usable, key=lambda c: (c.provision_id not in meaning,))
+    # Only verbatim corpus text is shown for the law: the key clause of each
+    # provision, chosen by Python.  Model-written explanations were dropped
+    # because a 7B model sometimes added conditions that were not in the case.
     lines = []
-    for cand in ordered[:max_items]:
+    for cand in usable[:max_items]:
         provision = corpus.get(cand.provision_id)
         if provision is None:
             continue
-        head = f"- **{_short_citation(provision.citation)}**"
-        if cand.provision_id in meaning:
-            head += f": {meaning[cand.provision_id]}"
-        lines.append(head)
-        lines.append(f'  > "{_trim_quote(provision.original_text)}"')
+        lines.append(f"- **{_short_citation(provision.citation)}**")
+        lines.append(f'  > "{key_sentence(provision.original_text)}"')
     return lines
 
 
@@ -292,7 +417,7 @@ def generate_response(
     headline = OUTCOME_LABEL.get(assessment.outcome, assessment.outcome.value)
     lines: list[str] = [f"**{headline}**", ""]
 
-    summary = _second_person(draft.issue_summary) if draft and draft.issue_summary else ""
+    summary = summary_from_facts(facts)
     if summary:
         lines += ["## What I understood", "", summary, ""]
 
