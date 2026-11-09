@@ -231,6 +231,14 @@ class Orchestrator:
                 default_year=reference_year,
             )
             route = self._route(message, history, has_case=bool(open_cases))
+            if route is not None and route.intent in {"refund_case", "follow_up"} and open_cases:
+                # Safety net: a message on an open case that carries no facts at
+                # all ("I will upload the documents", "ok") is not a case update;
+                # re-running the full analysis would only repeat the last answer.
+                early_facts = facts_future.result()
+                if not early_facts:
+                    route.intent = "question"
+                    route.reply = ""
             if route is not None and route.intent in {"greeting", "needs_details", "off_topic", "question"}:
                 pool.shutdown(wait=False)
                 return self._route_reply(conversation_id, user_message, history, route, open_cases)
@@ -803,6 +811,8 @@ class Orchestrator:
             '"what can you do?" -> greeting, "I can read your refund story or a screenshot, pick out the key '
             "facts, show the e-commerce rules that may apply, suggest your next step and draft a letter to "
             'customer support or the grievance officer. What happened with your order?"\n'
+            '"I will upload the documents" (case open) -> question, "Sure, attach them with the paperclip '
+            'above and press Read my document."\n'
             '"thanks" -> greeting, "You\'re welcome! If anything changes with your refund, just tell me."\n'
             '"I want to buy shoes from amazon" -> off_topic, "I can\'t help with choosing or buying '
             "products. I can help if you have ordered something and a refund is delayed, refused or missing.\"\n"
@@ -838,7 +848,8 @@ class Orchestrator:
             "happened: was it cancelled, returned or not delivered?",
             "off_topic": "I can't help with that. I help when a refund for an online order is delayed, "
             "refused or missing.",
-            "question": "That's fine. You can attach a screenshot of the order or refund message, or check "
+            "question": "Sure. Attach it with 📎 above and press \"Read my document\", or tell me what is new. "
+            "If you cannot find something, a screenshot of the order or refund message works too, or check "
             "the order page in the app, the confirmation email, or your bank or UPI app for the amount and date.",
         }[route.intent]
         def core(text: str) -> str:

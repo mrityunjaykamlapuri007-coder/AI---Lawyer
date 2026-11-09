@@ -301,3 +301,12 @@ def test_unusable_document_on_open_case_does_not_rerun_analysis(orchestrator, co
     assert response.case_id == first.case_id
     assert response.legal_sources == []
     assert "Nothing in your case has changed" in response.assistant_message
+
+
+def test_fact_free_message_on_open_case_is_not_reanalysed(orchestrator, conversation, settings):
+    first = _handle(orchestrator, conversation, settings, B01)
+    orchestrator.llm.scripts["router"] = [{"intent": "follow_up", "reply": ""}]
+    response = _handle(orchestrator, conversation, settings, "I will upload the documents")
+    assert response.case_id == first.case_id
+    assert response.legal_sources == []
+    assert "Read my document" in response.assistant_message
