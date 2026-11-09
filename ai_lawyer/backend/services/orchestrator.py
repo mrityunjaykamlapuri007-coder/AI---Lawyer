@@ -61,6 +61,53 @@ from ai_lawyer.legal_rag.retriever import Retriever, append_retrieval_log
 
 logger = logging.getLogger(__name__)
 
+_DOC_LABELS = {
+    "order_id": "order id",
+    "transaction_id": "transaction id",
+    "refund_amount": "amount",
+    "refund_status": "refund status",
+    "purchase_date": "order date",
+    "cancellation_date": "cancellation date",
+    "return_requested_date": "return request date",
+    "pickup_date": "pickup date",
+    "refund_initiated_date": "refund initiated date",
+    "merchant_name": "seller",
+    "platform_name": "platform",
+    "payment_method": "payment method",
+    "merchant_promised_timeline_days": "promised refund time",
+}
+
+
+def _document_verdict(evidence, file_facts: list[dict[str, Any]]) -> str:
+    """Tell the user plainly whether the file was readable and useful."""
+    name = evidence.original_filename
+    read_any = any(p.text and p.text.strip() for p in evidence.pages)
+    if not read_any:
+        return (f"❌ {name}: I could not read any text from this file. Please try a clearer, "
+                "uncropped screenshot or a PDF of the order or refund message.")
+    found = []
+    for fact in file_facts:
+        label = _DOC_LABELS.get(fact["fact_type"])
+        if not label:
+            continue
+        value = fact.get("normalised_value")
+        if fact["fact_type"] == "refund_amount" and isinstance(value, int):
+            shown = f"₹{value / 100:,.0f}"
+        else:
+            shown = str(fact.get("raw_value") or value)
+        item = f"{label} {shown}"
+        if item not in found:
+            found.append(item)
+    partial = " Some pages could not be read." if evidence.extraction_status == "partial" else ""
+    if not found:
+        return (f"⚠️ {name}: I could read the file, but it does not look like an order or refund record "
+                f"(no order id, amount, dates or refund status found).{partial} Please upload the order "
+                "page, refund message or payment receipt.")
+    ocr = any(p.method == "ocr" for p in evidence.pages if p.text)
+    check = " Text from images is read by OCR, so please check the numbers." if ocr else ""
+    return f"✅ {name}: read successfully. Found: {', '.join(found)}.{partial}{check}"
+
+
 class Route(BaseModel):
     intent: Literal["", "greeting", "off_topic", "needs_details", "refund_case", "follow_up", "question"] = ""
     reply: str = ""
@@ -260,6 +307,29 @@ class Orchestrator:
                 default_year=reference_year,
             )
         all_fact_dicts = mark_conflicts(message_facts + evidence_facts)
+
+        # An attachment that gave nothing usable, with no facts in the message
+        # and no case yet: say so straight away instead of a full analysis.
+        if uploads and not all_fact_dicts and not open_cases:
+            text = "\n".join(f"- {note}" for note in evidence_notes)
+            text = (
+                "### Your document\n\n" + text + "\n\n"
+                "You can also just tell me what happened: which app or website, whether the order was "
+                "cancelled or returned and when, the amount, and whether you contacted customer support."
+            )
+            question = "Please upload a clearer order or refund document, or describe what happened."
+            assistant = self._save_assistant(conversation_id, text, {"status": "document_not_usable"})
+            return MessageResponse(
+                conversation_id=conversation_id,
+                message_id=user_message.message_id,
+                assistant_message_id=assistant.message_id,
+                case_id=None,
+                processing_status="partial",
+                assistant_message=text,
+                evidence_processing=evidence_processing,
+                assessment=Assessment(outcome=Outcome.needs_more_information, missing_information=[question]),
+                missing_information=[question],
+            )
 
         resolution = case_manager.resolve_case(
             self.db,
@@ -489,14 +559,11 @@ class Orchestrator:
                         methods=sorted({p.method for p in evidence.pages if p.text}),
                     )
                 )
-                notes.append(
-                    f"{evidence.original_filename}: {evidence.extraction_status}"
-                    + (f" ({evidence.error_code})" if evidence.error_code else "")
-                )
+                file_facts: list[dict[str, Any]] = []
                 for page in evidence.pages:
                     if not page.text:
                         continue
-                    facts.extend(
+                    file_facts.extend(
                         extract_fact_dicts(
                             page.text,
                             source_type="evidence",
@@ -507,6 +574,8 @@ class Orchestrator:
                             default_year=default_year,
                         )
                     )
+                facts.extend(file_facts)
+                notes.append(_document_verdict(evidence, file_facts))
             except UserSafeError as exc:
                 processing.append(
                     EvidenceProcessing(
@@ -515,7 +584,7 @@ class Orchestrator:
                         error_code=exc.error_code,
                     )
                 )
-                notes.append(f"{upload.filename}: rejected — {exc.user_safe_message}")
+                notes.append(f"❌ {upload.filename}: not accepted. {exc.user_safe_message}")
             except Exception as exc:  # noqa: BLE001 - one bad file must not stop the rest
                 logger.warning("evidence processing failed: %s", type(exc).__name__)
                 processing.append(
@@ -525,7 +594,7 @@ class Orchestrator:
                         error_code="evidence_processing_failed",
                     )
                 )
-                notes.append(f"{upload.filename}: could not be processed.")
+                notes.append(f"❌ {upload.filename}: could not be processed. Try a clearer screenshot or a PDF.")
         return facts, evidence_ids
 
     def _apply_guards(self, draft, accepted, facts, blocked: list[dict[str, Any]]):

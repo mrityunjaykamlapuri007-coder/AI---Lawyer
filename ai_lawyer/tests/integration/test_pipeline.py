@@ -260,3 +260,17 @@ def test_router_refund_case_runs_full_analysis(orchestrator, conversation, setti
     _with_router(orchestrator, [{"intent": "refund_case", "reply": ""}])
     response = _handle(orchestrator, conversation, settings, B01)
     assert response.case_id and response.legal_sources
+
+
+def test_unrelated_document_is_flagged_quickly(orchestrator, conversation, settings):
+    uploads = [Upload(filename="note.txt", data=b"Happy holidays from the Sharma family. See you in Goa.\n")]
+    response = _handle(orchestrator, conversation, settings, "Please read the attached document about my refund.", uploads=uploads)
+    assert "does not look like an order or refund record" in response.assistant_message
+    assert response.legal_sources == []
+    assert response.missing_information
+
+
+def test_useful_document_is_confirmed_with_what_was_found(orchestrator, conversation, settings):
+    uploads = [Upload(filename="refund-note.txt", data=b"Refund initiated on 12 October 2026 for order FM-1001. Status: initiated.\n")]
+    response = _handle(orchestrator, conversation, settings, B01, uploads=uploads)
+    assert "refund-note.txt: read successfully. Found: order id FM-1001" in response.assistant_message

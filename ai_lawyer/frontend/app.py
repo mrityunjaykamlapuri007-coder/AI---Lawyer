@@ -238,6 +238,18 @@ def render_answer(response: dict, *, latest: bool) -> None:
     if outcome == "out_of_scope" or not (response.get("legal_sources") or response.get("extracted_facts")):
         st.markdown(response.get("assistant_message", ""))
         return
+    # The document check comes first: was the upload readable and useful?
+    doc_block = re.search(r"### Your document\s*\n+((?:- .+\n?)+)", response.get("assistant_message", ""))
+    if doc_block:
+        for line in doc_block.group(1).splitlines():
+            note = line[2:].strip()
+            if note.startswith("✅"):
+                st.success(note)
+            elif note.startswith("⚠️"):
+                st.warning(note)
+            elif note:
+                st.error(note)
+
     kind, icon, headline = OUTCOME.get(outcome, ("info", "ℹ️", "Here is what I found."))
     getattr(st, kind)(f"**{headline}**", icon=icon)
 
@@ -345,15 +357,22 @@ def main() -> None:
             else:
                 st.error(entry["content"])
 
-    with st.expander("📎 Attach a screenshot, photo or PDF of the refund message (optional)"):
+    read_files = False
+    with st.expander("📎 Attach a screenshot, photo or PDF of the order or refund message",
+                     expanded=bool(st.session_state.get("messages"))):
         uploads = st.file_uploader(
-            "Images and scanned pages are read by OCR on this machine.",
+            "PNG, JPG or PDF up to 10 MB. Images are read by OCR on this machine.",
             type=["png", "jpg", "jpeg", "pdf", "txt", "md"],
             accept_multiple_files=True,
             key=f"uploads_{st.session_state['uploader_key']}",
         )
+        if uploads:
+            st.caption("Type a message below, or just press the button to have the file read.")
+            read_files = st.button("📄 Read my document", use_container_width=True)
     typed = st.chat_input("Describe your refund problem, or answer my question…")
     message = typed or st.session_state.pop("pending", None)
+    if not message and read_files and uploads:
+        message = "Please read the attached document about my refund."
     if not message:
         return
 

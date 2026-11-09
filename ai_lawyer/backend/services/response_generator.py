@@ -417,6 +417,11 @@ def generate_response(
     headline = OUTCOME_LABEL.get(assessment.outcome, assessment.outcome.value)
     lines: list[str] = [f"**{headline}**", ""]
 
+    if evidence_notes:
+        lines += ["### Your document", ""]
+        lines.extend(f"- {note}" for note in evidence_notes)
+        lines.append("")
+
     summary = summary_from_facts(facts)
     if summary:
         lines += ["## What I understood", "", summary, ""]
@@ -456,10 +461,6 @@ def generate_response(
     fact_lines = _facts_line(facts)
     if fact_lines:
         lines += fact_lines + [""]
-    if evidence_notes:
-        lines.append("Files: " + "; ".join(evidence_notes))
-        lines.append("")
-
     if document_offered:
         lines += [
             f"📝 I have prepared a **{document_offered.replace('_', ' ')}** draft for you below. "
