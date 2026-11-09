@@ -62,7 +62,7 @@ from ai_lawyer.legal_rag.retriever import Retriever, append_retrieval_log
 logger = logging.getLogger(__name__)
 
 class Route(BaseModel):
-    intent: Literal["", "greeting", "off_topic", "needs_details", "refund_case", "follow_up"] = ""
+    intent: Literal["", "greeting", "off_topic", "needs_details", "refund_case", "follow_up", "question"] = ""
     reply: str = ""
 
 
@@ -159,18 +159,27 @@ class Orchestrator:
         early_facts = None
         route = None
         scope = None
+        # Before a case exists, details often arrive one message at a time
+        # ("Flipkart" / "last week" / "order id is 221108987").  Facts are then
+        # read from all of the user's recent messages, not only the last one.
+        fact_text = message
+        if not open_cases:
+            earlier = [str(m.get("content", "")) for m in history if m.get("role") == "user"][-8:]
+            if earlier:
+                fact_text = "\n".join(earlier + [message])
+                reference_year = reference_year or explicit_year(fact_text)
         if not uploads:
             pool = ThreadPoolExecutor(max_workers=1)
             facts_future = pool.submit(
                 extract_fact_dicts,
-                message,
+                fact_text,
                 source_type="user_message",
                 source_id="user",
                 llm=self.llm,
                 default_year=reference_year,
             )
             route = self._route(message, history, has_case=bool(open_cases))
-            if route is not None and route.intent in {"greeting", "needs_details", "off_topic"}:
+            if route is not None and route.intent in {"greeting", "needs_details", "off_topic", "question"}:
                 pool.shutdown(wait=False)
                 return self._route_reply(conversation_id, user_message, history, route, open_cases)
             if route is None and (is_small_talk(message) or (not open_cases and is_vague(message))):
@@ -244,7 +253,7 @@ class Orchestrator:
                 ]
                 reference_year = max(years) if years else None
             message_facts = extract_fact_dicts(
-                message,
+                fact_text,
                 source_type="user_message",
                 source_id="user",
                 llm=self.llm,
@@ -654,9 +663,12 @@ class Orchestrator:
             "- refund_case: they describe a refund problem with at least some facts (what happened, "
             "platform, dates, amount, support contact). When in doubt between needs_details and "
             "refund_case, choose refund_case.\n"
-            "- follow_up: a case is already open and the message adds facts, corrects facts, reports "
-            "news (e.g. 'it arrived', 'support replied') or asks what to do next.\n"
-            "Then write `reply` (only used for greeting, off_topic and needs_details):\n"
+            "- follow_up: a case is already open and the message adds NEW facts, corrects facts or "
+            "reports news (e.g. 'it arrived', 'support replied on 3 Nov', 'the amount was 999').\n"
+            "- question: a case is already open and the message asks a question or makes a comment "
+            "WITHOUT new facts (e.g. 'I don't remember the amount, any other way to give you the "
+            "information?', 'what should I write?', 'ok').\n"
+            "Then write `reply` (only used for greeting, off_topic, needs_details and question):\n"
             "- 1 to 3 short, warm sentences in plain English, speaking to them as 'you'. No lists, no headings.\n"
             "- greeting: greet them (use their name if they gave it) and ask what went wrong with their "
             "order or refund. If they asked what you can do, say it in one sentence.\n"
@@ -664,8 +676,13 @@ class Orchestrator:
             "when a refund for an online order is delayed, refused or missing.\n"
             "- needs_details: ask for the one or two most useful details: which app or website, what "
             "happened and when, the amount, whether they contacted customer support.\n"
+            "- question: answer helpfully in plain words without legal content. If they cannot remember "
+            "details, say that is fine and suggest a screenshot of the order or refund message, the order "
+            "page in the app, the confirmation email, or their bank or UPI app.\n"
             "- Never mention any law, rule, section, deadline, number of days, fee or legal outcome. "
             "Never promise anything. Never invent facts. Do not repeat your previous reply.\n"
+            "- NEVER ask again for something the consumer already told you anywhere in <chat> (for "
+            "example the app or website, the order id, the date). Ask only for what is still missing.\n"
             "Examples:\n"
             '"Hy, I am Mrityunjay" -> greeting, "Hi Mrityunjay! I help when a refund for an online order '
             'has not come through. What happened with your order?"\n'
@@ -693,6 +710,8 @@ class Orchestrator:
             route.intent = "refund_case"
         if route.intent == "needs_details" and has_case:
             route.intent = "follow_up"
+        if route.intent == "question" and not has_case:
+            route.intent = "needs_details"
         return route
 
     def _route_reply(self, conversation_id, user_message, history, route: "Route", open_cases) -> MessageResponse:
@@ -705,6 +724,8 @@ class Orchestrator:
             "happened: was it cancelled, returned or not delivered?",
             "off_topic": "I can't help with that. I help when a refund for an online order is delayed, "
             "refused or missing.",
+            "question": "That's fine. You can attach a screenshot of the order or refund message, or check "
+            "the order page in the app, the confirmation email, or your bank or UPI app for the amount and date.",
         }[route.intent]
         def core(text: str) -> str:
             # "Hi Mrityunjay! I help..." and "Hi there! I help..." are the same reply.

@@ -83,6 +83,9 @@ _AMOUNT_PATTERNS = [
 ]
 
 _ORDER_RE = re.compile(r"\b([A-Z]{2,10}-\d{2,})\b")
+_LABELLED_ORDER_RE = re.compile(
+    r"\border\s*(?:id|no\.?|number|#)\s*(?:is|was|:|-|#)?\s*([A-Z0-9][A-Z0-9-]{5,})\b", re.IGNORECASE
+)
 _MERCHANT_RES = [
     re.compile(r"\b(?:from|at|with)\s+([A-Z][A-Za-z0-9&.]*(?:\s+[A-Z][A-Za-z0-9&.]*){0,2})(?=\s*(?:\(|,|\s+on\b|\s+and\b|\s+has\b|\s+denied\b|\s+approved\b|\s+says\b|\.|$))"),
     re.compile(r"\b([A-Z][A-Za-z0-9&.]*)\s+order\b"),
@@ -336,7 +339,9 @@ def _contact_flags(text: str) -> dict[str, dict[str, Any]]:
         r"\bsent\s+(?:a\s+)?(?:legal\s+)?notices?\s+to\b|"
         r"\breported\s+(?:it|this|the\s+issue)\b[^.]{0,40}\b(?:app|support|customer care|platform)\b|"
         r"\btried\b[^.]{0,40}\b(?:chats?|calls?|emails?)\b|"
-        r"\b(?:raised|filed|lodged)\s+(?:a\s+)?(?:complaint|grievance|ticket)\s+with\b",
+        r"\b(?:raised|filed|lodged)\s+(?:a\s+)?(?:complaint|grievance|ticket)\s+with\b|"
+        # "they said they will refund it within 3 days": the seller answered them.
+        r"\b(?:they|support|customer\s+care|the\s+seller|the\s+agent)\s+(?:said|told\s+me|replied|promised|assured)\b",
         lowered,
     )
     # Run-4 defect (R05, development): a complaint to an outside body (the National
@@ -473,10 +478,25 @@ def deterministic_facts(
     facts: list[dict[str, Any]] = []
     status = "document_supported" if source_type == "evidence" else "user_reported"
 
+    seen_orders: set[str] = set()
     for match in _ORDER_RE.finditer(text):
+        seen_orders.add(match.group(1))
         facts.append(
             _make_fact(
                 "order_id", match.group(1), match.group(1), source_type, source_id, status,
+                evidence_id=evidence_id, page_number=page_number,
+            )
+        )
+    # "order id is 221108987" / "order no. OD1234567": an explicit order label
+    # followed by an id that contains a digit.
+    for match in _LABELLED_ORDER_RE.finditer(text):
+        value = match.group(1)
+        if value in seen_orders or not re.search(r"\d", value):
+            continue
+        seen_orders.add(value)
+        facts.append(
+            _make_fact(
+                "order_id", value, value, source_type, source_id, status,
                 evidence_id=evidence_id, page_number=page_number,
             )
         )
