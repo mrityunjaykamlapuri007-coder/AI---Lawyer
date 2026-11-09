@@ -5,7 +5,7 @@ own voice, then export to PDF (VS Code "Markdown PDF" or paste into Word/Google 
 
 # AI Lawyer for refunds that never came — Kuku Problem 2
 
-**[Name] · [Roll no.] · [Branch]** · Prototype: https://github.com/mrityunjaykamlapuri007-coder/AI---Lawyer · Raw outputs: `ai_lawyer/evaluation/results/`
+**Mrityunjay Kumar · 22174016 · Engineering Physics** · Prototype: https://github.com/mrityunjaykamlapuri007-coder/AI---Lawyer · Raw outputs: `ai_lawyer/evaluation/results/`
 
 ## 1. Problem and why this one
 
@@ -98,7 +98,13 @@ free Kaggle tunnel went down during my own testing; the app then falls back to r
 
 ## 7. Tools, and one place the AI got it wrong
 
-Claude Code (coding agent), [YOUR TOOLS for the specs], Kaggle, vLLM, Qwen2.5-7B, BGE, Tesseract.
+**ChatGPT:** analysing the brief, architecture design (input pipeline, case matching, storage,
+legal RAG, verification, evaluation plan), reviewing my earlier research-RAG repo for reuse, and the
+v2 coding-agent spec. **Claude (chat):** cutting scope to what fits the deadline, instruction files
+for the coding agent, 17 synthetic behaviour cases, amendment research. **Claude Code:** implemented
+and tested the product in my repo. Runtime: Kaggle, vLLM, Qwen2.5-7B, BGE, Tesseract. The scope,
+models and final claims are my decisions, and I corrected the tools when they were wrong: ChatGPT
+first made "refer to a lawyer" the default outcome; I made the assistant assess the next step itself.
 **Where it got it wrong:** the coding agent wrote a 4-bit model id from memory that does not exist
 on Hugging Face; a check caught it before it broke the Kaggle run. In live testing, an uploaded
 project spec was read as a refund case because "SHA-256" looked like an order number — fixed by
