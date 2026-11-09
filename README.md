@@ -37,6 +37,15 @@ produced with the real model (Qwen2.5-7B-Instruct on free Kaggle T4 GPUs) on rea
 | Cost at volume | [`cost_summary_run4.json`](ai_lawyer/evaluation/results/cost_summary_run4.json) | ~5 LLM calls, ~9,300 tokens, ~82 s per case; 0 JSON schema failures |
 | Model easy to swap | `.env` only | Kaggle vLLM today; any OpenAI-compatible API |
 
+**Note on timing.** The scores above were measured before the final round of chat changes (9 Nov):
+a model router that reads each message in context (greeting / off-topic / needs details / refund
+case / follow-up), answers grounded in extracted facts with the law shown as its verbatim key
+clause, multi-message intake, and a per-file document verdict (✅ read / ⚠️ not an order or refund
+record / ❌ unreadable). Those changes pass 381 offline tests and 18/18 fixture checks and were
+tried live on about a dozen conversations, but were not re-scored on the real-story set before the
+deadline. After the changes a refund case takes ~45 s; greetings, off-topic messages and unusable
+files take 2–4 s.
+
 Failures and limits are listed openly in [`SUBMISSION_NOTES.md`](SUBMISSION_NOTES.md).
 
 ## How it avoids invented law (the brief's main ground rule)
