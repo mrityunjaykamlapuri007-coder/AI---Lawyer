@@ -274,3 +274,20 @@ def test_useful_document_is_confirmed_with_what_was_found(orchestrator, conversa
     uploads = [Upload(filename="refund-note.txt", data=b"Refund initiated on 12 October 2026 for order FM-1001. Status: initiated.\n")]
     response = _handle(orchestrator, conversation, settings, B01, uploads=uploads)
     assert "refund-note.txt: read successfully. Found: order id FM-1001" in response.assistant_message
+
+
+def test_spec_document_codes_are_not_orders(orchestrator, conversation, settings):
+    text = b"Hashes use SHA-256 and dates use ISO-8601. Version 2.0, 8 November 2026. Refund disputes spec.\n"
+    response = _handle(orchestrator, conversation, settings, "Please read the attached document about my refund.",
+                       uploads=[Upload(filename="spec.txt", data=text)])
+    assert "two different order references" not in response.assistant_message
+    assert "spec.txt" in response.assistant_message
+
+
+def test_model_document_check_rejects_unrelated_document(orchestrator, conversation, settings):
+    orchestrator.llm.scripts["document_check"] = [{"is_refund_record": False, "what_it_is": "a software specification"}]
+    text = b"Refund for order FM-1001 initiated on 12 October 2026. (example in a spec)\n"
+    response = _handle(orchestrator, conversation, settings, "Please read the attached document about my refund.",
+                       uploads=[Upload(filename="spec.txt", data=text)])
+    assert "does not look like an order or refund record (it looks like a software specification)" in response.assistant_message
+    assert not any(f.status == "document_supported" for f in response.extracted_facts)

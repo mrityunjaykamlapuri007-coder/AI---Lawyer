@@ -83,6 +83,10 @@ _AMOUNT_PATTERNS = [
 ]
 
 _ORDER_RE = re.compile(r"\b([A-Z]{2,10}-\d{2,})\b")
+_NOT_ORDER_PREFIXES = {
+    "SHA", "ISO", "UTF", "RFC", "MD", "AES", "RSA", "TLS", "SSL", "COVID", "IEEE", "ASCII", "CVE",
+    "HTTP", "HTTPS", "IPV", "IS", "EN", "GPT", "BGE", "WCAG", "PEP", "OWASP", "RBI", "CPA",
+}
 _LABELLED_ORDER_RE = re.compile(
     r"\border\s*(?:id|no\.?|number|#)\s*(?:is|was|:|-|#)?\s*([A-Z0-9][A-Z0-9-]{5,})\b", re.IGNORECASE
 )
@@ -480,6 +484,10 @@ def deterministic_facts(
 
     seen_orders: set[str] = set()
     for match in _ORDER_RE.finditer(text):
+        if match.group(1).split("-")[0].upper() in _NOT_ORDER_PREFIXES:
+            continue  # SHA-256, ISO-8601, UTF-8 ... are standards, not orders
+        if source_type == "evidence" and "order" not in text[max(0, match.start() - 60):match.start()].lower():
+            continue  # in documents an order id must be labelled as one
         seen_orders.add(match.group(1))
         facts.append(
             _make_fact(
