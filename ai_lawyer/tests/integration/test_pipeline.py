@@ -291,3 +291,13 @@ def test_model_document_check_rejects_unrelated_document(orchestrator, conversat
                        uploads=[Upload(filename="spec.txt", data=text)])
     assert "does not look like an order or refund record (it looks like a software specification)" in response.assistant_message
     assert not any(f.status == "document_supported" for f in response.extracted_facts)
+
+
+def test_unusable_document_on_open_case_does_not_rerun_analysis(orchestrator, conversation, settings):
+    first = _handle(orchestrator, conversation, settings, B01)
+    orchestrator.llm.scripts["document_check"] = [{"is_refund_record": False, "what_it_is": "project notes"}]
+    response = _handle(orchestrator, conversation, settings, "Please read the attached document about my refund.",
+                       uploads=[Upload(filename="AGENTS.md", data=b"# Project instructions\nRead the spec first.\n")])
+    assert response.case_id == first.case_id
+    assert response.legal_sources == []
+    assert "Nothing in your case has changed" in response.assistant_message

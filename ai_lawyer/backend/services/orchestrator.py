@@ -313,22 +313,26 @@ class Orchestrator:
             )
         all_fact_dicts = mark_conflicts(message_facts + evidence_facts)
 
-        # An attachment that gave nothing usable, with no facts in the message
-        # and no case yet: say so straight away instead of a full analysis.
-        if uploads and not all_fact_dicts and not open_cases:
+        # An attachment that gave nothing usable and a message with no new facts:
+        # say so straight away instead of re-running the full analysis (with or
+        # without an open case, nothing has changed).
+        if uploads and not all_fact_dicts:
             text = "\n".join(f"- {note}" for note in evidence_notes)
-            text = (
-                "### Your document\n\n" + text + "\n\n"
-                "You can also just tell me what happened: which app or website, whether the order was "
+            tail = (
+                "Nothing in your case has changed. When you have it, upload the order page, refund "
+                "message or payment receipt, or tell me what is new."
+                if open_cases
+                else "You can also just tell me what happened: which app or website, whether the order was "
                 "cancelled or returned and when, the amount, and whether you contacted customer support."
             )
+            text = "### Your document\n\n" + text + "\n\n" + tail
             question = "Please upload a clearer order or refund document, or describe what happened."
             assistant = self._save_assistant(conversation_id, text, {"status": "document_not_usable"})
             return MessageResponse(
                 conversation_id=conversation_id,
                 message_id=user_message.message_id,
                 assistant_message_id=assistant.message_id,
-                case_id=None,
+                case_id=open_cases[0].case_id if open_cases else None,
                 processing_status="partial",
                 assistant_message=text,
                 evidence_processing=evidence_processing,
